@@ -6,7 +6,7 @@
 (function() {
     'use strict';
     
-    const fragmentElement = fragmentElement || document.currentScript.parentElement;
+    const fragmentElement = document.currentScript ? document.currentScript.parentElement : document.querySelector('.maestro-loan-analytics').closest('.fragment');
     let chartInstance = null;
     
     // Initialize loan analytics when fragment loads
@@ -15,28 +15,234 @@
     }
     
     function initializeLoanAnalytics() {
-        // Wait for Chart.js and global utilities to be available
-        if (typeof Chart === 'undefined' || typeof window.MaestroUtils === 'undefined') {
-            loadChartJS();
-            return;
+        // Check if all dependencies are available
+        if (!checkDependencies()) {
+            return; // Will retry via the dependency checker
         }
         
         setupChart();
         loadLoanData();
         setupTimeRangeSelector();
+        setupConfigurationHandling();
+    }
+    
+    function checkDependencies() {
+        const hasChart = typeof Chart !== 'undefined';
+        const hasMaestroUtils = typeof window.MaestroUtils !== 'undefined';
+        
+        if (!hasChart) {
+            loadChartJS();
+            return false;
+        }
+        
+        if (!hasMaestroUtils) {
+            // Wait for MaestroUtils to be available - retry every 100ms for up to 5 seconds
+            retryDependencyCheck();
+            return false;
+        }
+        
+        return true;
     }
     
     function loadChartJS() {
-        if (typeof Chart === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js';
-            script.onload = () => {
-                setTimeout(initializeLoanAnalytics, 100);
-            };
-            document.head.appendChild(script);
-        } else {
-            initializeLoanAnalytics();
+        // Prevent loading Chart.js multiple times
+        if (document.querySelector('script[src*="chart.js"]')) {
+            retryDependencyCheck();
+            return;
         }
+        
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js';
+        script.onload = () => {
+            console.log('Chart.js loaded successfully');
+            retryDependencyCheck();
+        };
+        script.onerror = () => {
+            console.error('Failed to load Chart.js from CDN');
+            // Fallback to a different CDN
+            loadChartJSFallback();
+        };
+        document.head.appendChild(script);
+    }
+    
+    function loadChartJSFallback() {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js';
+        script.onload = () => {
+            console.log('Chart.js loaded from fallback CDN');
+            retryDependencyCheck();
+        };
+        script.onerror = () => {
+            console.error('Failed to load Chart.js from fallback CDN - chart functionality will be limited');
+            // Continue without Chart.js - show error message
+            showChartError();
+        };
+        document.head.appendChild(script);
+    }
+    
+    function retryDependencyCheck() {
+        let retries = 0;
+        const maxRetries = 50; // 5 seconds total
+        
+        const checkInterval = setInterval(() => {
+            retries++;
+            
+            if (checkDependencies()) {
+                clearInterval(checkInterval);
+                initializeLoanAnalytics();
+            } else if (retries >= maxRetries) {
+                clearInterval(checkInterval);
+                console.warn('Failed to load all dependencies for loan analytics after 5 seconds');
+                showDependencyError();
+            }
+        }, 100);
+    }
+    
+    function showChartError() {
+        const canvas = fragmentElement.querySelector('#loanAnalyticsChart');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#6c757d';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Chart library failed to load', canvas.width / 2, canvas.height / 2);
+            ctx.fillText('Please refresh the page or check your internet connection', canvas.width / 2, canvas.height / 2 + 25);
+        }
+    }
+    
+    function showDependencyError() {
+        const dashboard = fragmentElement.querySelector('.maestro-loan-analytics');
+        if (dashboard) {
+            dashboard.innerHTML = `
+                <div class="maestro-error-message">
+                    <h3>Unable to load dashboard components</h3>
+                    <p>Some required resources failed to load. Please refresh the page.</p>
+                    <button onclick="location.reload()" class="maestro-btn-primary">Refresh Page</button>
+                </div>
+            `;
+        }
+    }
+    
+    function setupConfigurationHandling() {
+        // Read configuration from the fragment's configuration system
+        const config = getFragmentConfiguration();
+        
+        // Apply chart type configuration
+        if (config.chartType && config.chartType !== 'line') {
+            updateChartType(config.chartType);
+        }
+        
+        // Apply time range configuration  
+        if (config.timeRange) {
+            const selector = fragmentElement.querySelector('#timeRangeSelect');
+            if (selector) {
+                selector.value = config.timeRange;
+            }
+        }
+        
+        // Apply show data labels configuration
+        if (config.showDataLabels !== undefined) {
+            toggleDataLabels(config.showDataLabels);
+        }
+    }
+    
+    function getFragmentConfiguration() {
+        // In Liferay, configuration is typically available via global variables or data attributes
+        // This function attempts to read configuration from various sources
+        
+        let config = {};
+        
+        // Try to get configuration from a global variable (set by Liferay)
+        if (typeof fragmentConfiguration !== 'undefined') {
+            config = fragmentConfiguration;
+        }
+        
+        // Fallback: read from data attributes on the fragment element
+        if (fragmentElement && fragmentElement.dataset) {
+            config.chartType = fragmentElement.dataset.chartType || 'line';
+            config.timeRange = fragmentElement.dataset.timeRange || '30d';
+            config.showDataLabels = fragmentElement.dataset.showDataLabels === 'true';
+        }
+        
+        // Final fallback: read from DOM elements that might contain configuration
+        const timeSelector = fragmentElement.querySelector('#timeRangeSelect');
+        if (timeSelector) {
+            const selectedOption = timeSelector.querySelector('option[selected]');
+            if (selectedOption) {
+                config.timeRange = selectedOption.value;
+            }
+        }
+        
+        return config;
+    }
+    
+    function updateChartType(newType) {
+        if (chartInstance && ['line', 'bar', 'pie', 'doughnut'].includes(newType)) {
+            chartInstance.config.type = newType;
+            
+            // Adjust chart options based on type
+            if (newType === 'pie' || newType === 'doughnut') {
+                chartInstance.config.options.scales = {}; // Remove scales for pie/doughnut charts
+                chartInstance.config.options.plugins.legend.position = 'right';
+            } else {
+                // Restore scales for line/bar charts
+                chartInstance.config.options.scales = getDefaultScales();
+                chartInstance.config.options.plugins.legend.position = 'bottom';
+            }
+            
+            chartInstance.update('active');
+        }
+    }
+    
+    function toggleDataLabels(show) {
+        if (chartInstance) {
+            if (show) {
+                // Add data labels plugin configuration
+                chartInstance.config.options.plugins.datalabels = {
+                    display: true,
+                    color: '#003366',
+                    font: {
+                        weight: 'bold',
+                        size: 10
+                    },
+                    formatter: function(value) {
+                        return '€' + Math.round(value) + 'M';
+                    }
+                };
+            } else {
+                // Remove data labels
+                if (chartInstance.config.options.plugins.datalabels) {
+                    delete chartInstance.config.options.plugins.datalabels;
+                }
+            }
+            chartInstance.update('active');
+        }
+    }
+    
+    function getDefaultScales() {
+        return {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return '€' + value + 'M';
+                    },
+                    font: {
+                        family: 'var(--font-family-numbers)'
+                    }
+                },
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        };
     }
     
     function setupChart() {
@@ -45,9 +251,12 @@
         
         const ctx = canvas.getContext('2d');
         
+        // Get configuration before setting up chart
+        const config = getFragmentConfiguration();
+        
         // Default chart configuration
         const chartConfig = {
-            type: 'line', // Will be updated from configuration
+            type: config.chartType || 'line',
             data: {
                 labels: [],
                 datasets: []
