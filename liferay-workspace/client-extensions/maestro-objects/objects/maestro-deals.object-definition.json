@@ -48,9 +48,9 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en-US": "Status"
+                "en-US": "Deal Status"
             },
-            "name": "status",
+            "name": "dealStatus",
             "required": true,
             "listTypeDefinitionExternalReferenceCode": "DEAL_STATUS"
         },

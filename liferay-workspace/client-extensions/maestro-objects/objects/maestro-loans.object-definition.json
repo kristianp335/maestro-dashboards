@@ -48,9 +48,9 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en-US": "Status"
+                "en-US": "Loan Status"
             },
-            "name": "status",
+            "name": "loanStatus",
             "required": true,
             "listTypeDefinitionExternalReferenceCode": "LOAN_STATUS"
         },

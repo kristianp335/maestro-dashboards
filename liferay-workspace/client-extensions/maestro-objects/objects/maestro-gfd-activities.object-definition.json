@@ -41,9 +41,9 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en-US": "Status"
+                "en-US": "Activity Status"
             },
-            "name": "status",
+            "name": "activityStatus",
             "required": true,
             "listTypeDefinitionExternalReferenceCode": "ACTIVITY_STATUS"
         },
