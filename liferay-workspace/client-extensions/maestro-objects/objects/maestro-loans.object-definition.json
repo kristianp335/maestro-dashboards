@@ -1,14 +1,14 @@
 {
-    "defaultLanguageId": "en_US",
+    "defaultLanguageId": "en-US",
     "label": {
-        "en_US": "Maestro Loans"
+        "en-US": "Maestro Loans"
     },
     "name": "MaestroLoan",
     "objectFields": [
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Loan ID"
+                "en-US": "Loan ID"
             },
             "name": "loanId",
             "required": true
@@ -16,7 +16,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Client Name"
+                "en-US": "Client Name"
             },
             "name": "clientName",
             "required": true
@@ -24,7 +24,7 @@
         {
             "businessType": "Decimal",
             "label": {
-                "en_US": "Loan Amount"
+                "en-US": "Loan Amount"
             },
             "name": "loanAmount",
             "required": true
@@ -32,7 +32,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Currency"
+                "en-US": "Currency"
             },
             "name": "currency",
             "required": true
@@ -40,7 +40,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Loan Type"
+                "en-US": "Loan Type"
             },
             "name": "loanType",
             "required": true
@@ -48,7 +48,7 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en_US": "Status"
+                "en-US": "Status"
             },
             "name": "status",
             "required": true,
@@ -57,7 +57,7 @@
         {
             "businessType": "Date",
             "label": {
-                "en_US": "Origination Date"
+                "en-US": "Origination Date"
             },
             "name": "originationDate",
             "required": true
@@ -65,7 +65,7 @@
         {
             "businessType": "Date",
             "label": {
-                "en_US": "Maturity Date"
+                "en-US": "Maturity Date"
             },
             "name": "maturityDate",
             "required": true
@@ -73,7 +73,7 @@
         {
             "businessType": "Decimal",
             "label": {
-                "en_US": "Interest Rate"
+                "en-US": "Interest Rate"
             },
             "name": "interestRate",
             "required": true
@@ -81,7 +81,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Risk Rating"
+                "en-US": "Risk Rating"
             },
             "name": "riskRating",
             "required": false
@@ -89,7 +89,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Sector"
+                "en-US": "Sector"
             },
             "name": "sector",
             "required": false
@@ -97,7 +97,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Purpose"
+                "en-US": "Purpose"
             },
             "name": "purpose",
             "required": false
@@ -105,14 +105,14 @@
         {
             "businessType": "LongText",
             "label": {
-                "en_US": "Notes"
+                "en-US": "Notes"
             },
             "name": "notes",
             "required": false
         }
     ],
     "pluralLabel": {
-        "en_US": "Maestro Loans"
+        "en-US": "Maestro Loans"
     },
     "scope": "company"
 }
