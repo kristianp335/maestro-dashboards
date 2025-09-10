@@ -1,0 +1,43 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "displayStyle",
+                    "label": "Display Style",
+                    "description": "Choose how to display the KPI cards",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Grid Layout", "value": "grid"},
+                            {"label": "Horizontal Row", "value": "row"},
+                            {"label": "Vertical Stack", "value": "stack"}
+                        ]
+                    },
+                    "defaultValue": "grid"
+                },
+                {
+                    "name": "cardsToShow",
+                    "label": "Number of Cards",
+                    "description": "How many KPI cards to display",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "3 Cards", "value": "3"},
+                            {"label": "4 Cards", "value": "4"},
+                            {"label": "6 Cards", "value": "6"}
+                        ]
+                    },
+                    "defaultValue": "4"
+                },
+                {
+                    "name": "showTrends",
+                    "label": "Show Trend Indicators",
+                    "description": "Display up/down trend arrows and percentages",
+                    "type": "checkbox",
+                    "defaultValue": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "trackingMode",
+                    "label": "Tracking Mode",
+                    "description": "Choose what to track in GFD workflow",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Loan Origination", "value": "origination"},
+                            {"label": "Credit Workflow", "value": "credit"},
+                            {"label": "Distribution Process", "value": "distribution"},
+                            {"label": "All Processes", "value": "all"}
+                        ]
+                    },
+                    "defaultValue": "all"
+                },
+                {
+                    "name": "statusDetail",
+                    "label": "Status Detail Level",
+                    "description": "Level of detail for workflow status",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Summary", "value": "summary"},
+                            {"label": "Detailed", "value": "detailed"},
+                            {"label": "Complete", "value": "complete"}
+                        ]
+                    },
+                    "defaultValue": "detailed"
+                },
+                {
+                    "name": "showProgressBar",
+                    "label": "Show Progress Indicators",
+                    "description": "Display progress bars for workflows",
+                    "type": "checkbox",
+                    "defaultValue": true
+                }
+            ]
+        }
+    ]
+}

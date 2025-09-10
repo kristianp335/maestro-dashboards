@@ -1,0 +1,183 @@
+<div class="maestro-dashboard maestro-deal-management">
+    <div class="deal-header">
+        <div class="header-content">
+            <h3 data-lfr-editable-id="deal-title" data-lfr-editable-type="text">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 21V5A2 2 0 0 0 14 3H10A2 2 0 0 0 8 5V21L12 19L16 21Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+                Active Deal Pipeline
+            </h3>
+            <p data-lfr-editable-id="deal-subtitle" data-lfr-editable-type="text">Track and manage active business opportunities</p>
+        </div>
+        
+        [#if configuration.showFilters!true]
+        <div class="deal-filters">
+            <div class="filter-group">
+                <input type="text" class="maestro-search" placeholder="Search deals..." id="dealSearch">
+                <select class="maestro-select" id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="negotiation">Negotiation</option>
+                    <option value="due-diligence">Due Diligence</option>
+                    <option value="approval">Approval</option>
+                    <option value="closing">Closing</option>
+                </select>
+                <select class="maestro-select" id="priorityFilter">
+                    <option value="all">All Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+            </div>
+        </div>
+        [/#if]
+    </div>
+    
+    <!-- Deal Statistics -->
+    <div class="deal-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value" data-lfr-editable-id="active-deals" data-lfr-editable-type="text">147</div>
+                <div class="stat-label">Active Deals</div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <path d="M17 5H9.5A3.5 3.5 0 0 0 6 8.5V8.5A3.5 3.5 0 0 0 9.5 12H14.5A3.5 3.5 0 0 1 18 15.5V15.5A3.5 3.5 0 0 1 14.5 19H6" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value maestro-amount medium" data-lfr-editable-id="pipeline-value" data-lfr-editable-type="text">€542M</div>
+                <div class="stat-label">Pipeline Value</div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value" data-lfr-editable-id="avg-cycle" data-lfr-editable-type="text">45 days</div>
+                <div class="stat-label">Avg. Cycle Time</div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value" data-lfr-editable-id="success-rate" data-lfr-editable-type="text">87.3%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Deal Table/Cards View -->
+    <div class="deal-content [#if configuration.viewMode!"table" == "cards"]deal-cards-view[/#if] [#if configuration.viewMode!"table" == "list"]deal-list-view[/#if]">
+        [#if configuration.viewMode!"table" == "table"]
+        <div class="maestro-data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th data-sortable>Deal Name</th>
+                        <th data-sortable>Client</th>
+                        <th data-sortable>Value</th>
+                        <th data-sortable>Status</th>
+                        <th data-sortable>Priority</th>
+                        <th data-sortable>Closing Date</th>
+                        [#if configuration.showActions!true]<th>Actions</th>[/#if]
+                    </tr>
+                </thead>
+                <tbody id="dealTableBody">
+                    <!-- Dynamic content will be loaded here -->
+                    <tr>
+                        <td><strong>Project Meridian</strong></td>
+                        <td>TotalEnergies SE</td>
+                        <td class="maestro-amount medium">€45.2M</td>
+                        <td><span class="maestro-status-badge pending">Due Diligence</span></td>
+                        <td><span class="maestro-risk-indicator high">High</span></td>
+                        <td>2025-11-15</td>
+                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm">View</button></td>[/#if]
+                    </tr>
+                    <tr>
+                        <td><strong>Infrastructure Finance</strong></td>
+                        <td>EDF Group</td>
+                        <td class="maestro-amount medium">€28.7M</td>
+                        <td><span class="maestro-status-badge approved">Approval</span></td>
+                        <td><span class="maestro-risk-indicator medium">Medium</span></td>
+                        <td>2025-10-30</td>
+                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm">View</button></td>[/#if]
+                    </tr>
+                    <tr>
+                        <td><strong>Green Bond Facility</strong></td>
+                        <td>Schneider Electric</td>
+                        <td class="maestro-amount medium">€15.8M</td>
+                        <td><span class="maestro-status-badge in-review">Negotiation</span></td>
+                        <td><span class="maestro-risk-indicator low">Low</span></td>
+                        <td>2025-12-01</td>
+                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm">View</button></td>[/#if]
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        [/#if]
+        
+        [#if configuration.viewMode!"table" == "cards"]
+        <div class="deal-cards-grid" id="dealCardsGrid">
+            <!-- Dynamic content will be loaded here -->
+            <div class="deal-card high-priority">
+                <div class="deal-card-header">
+                    <h4>Project Meridian</h4>
+                    <span class="maestro-status-badge pending">Due Diligence</span>
+                </div>
+                <div class="deal-card-body">
+                    <div class="deal-client">TotalEnergies SE</div>
+                    <div class="deal-value maestro-amount large">€45.2M</div>
+                    <div class="deal-meta">
+                        <span class="maestro-risk-indicator high">High Priority</span>
+                        <span class="deal-date">Closing: Nov 15, 2025</span>
+                    </div>
+                </div>
+                [#if configuration.showActions!true]
+                <div class="deal-card-actions">
+                    <button class="maestro-btn-primary">View Details</button>
+                    <button class="maestro-btn-secondary">Update</button>
+                </div>
+                [/#if]
+            </div>
+        </div>
+        [/#if]
+    </div>
+    
+    <!-- Pagination -->
+    <div class="deal-pagination">
+        <div class="pagination-info">
+            <span>Showing 1-[#assign pageSize = configuration.dealsPerPage!"10"][#if pageSize?number > 147]147[#else]${pageSize}[/#if] of 147 deals</span>
+        </div>
+        <div class="pagination-controls">
+            <button class="maestro-btn-secondary" disabled>← Previous</button>
+            <span class="page-numbers">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <span>...</span>
+                <button class="page-btn">15</button>
+            </span>
+            <button class="maestro-btn-secondary">Next →</button>
+        </div>
+    </div>
+</div>

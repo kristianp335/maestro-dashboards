@@ -1,0 +1,50 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "viewMode",
+                    "label": "View Mode",
+                    "description": "Choose how to display deal information",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Table View", "value": "table"},
+                            {"label": "Card View", "value": "cards"},
+                            {"label": "List View", "value": "list"}
+                        ]
+                    },
+                    "defaultValue": "table"
+                },
+                {
+                    "name": "dealsPerPage",
+                    "label": "Deals Per Page",
+                    "description": "Number of deals to show",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "5 Deals", "value": "5"},
+                            {"label": "10 Deals", "value": "10"},
+                            {"label": "20 Deals", "value": "20"}
+                        ]
+                    },
+                    "defaultValue": "10"
+                },
+                {
+                    "name": "showFilters",
+                    "label": "Show Filter Options",
+                    "description": "Display filtering and search controls",
+                    "type": "checkbox",
+                    "defaultValue": true
+                },
+                {
+                    "name": "showActions",
+                    "label": "Show Action Buttons",
+                    "description": "Display action buttons for deal management",
+                    "type": "checkbox",
+                    "defaultValue": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,120 @@
+<div class="maestro-dashboard maestro-kpi-dashboard">
+    <div class="maestro-dashboard-header">
+        <h2 data-lfr-editable-id="title" data-lfr-editable-type="text">Financial Performance Dashboard</h2>
+        <p data-lfr-editable-id="subtitle" data-lfr-editable-type="text">Key performance indicators for loan portfolio and business metrics</p>
+    </div>
+    
+    <div class="maestro-dashboard-grid [#if configuration.displayStyle == "row"]maestro-row-layout[/#if] [#if configuration.displayStyle == "stack"]maestro-stack-layout[/#if]">
+        <!-- Total Loan Portfolio -->
+        <div class="maestro-kpi-card">
+            <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V10C2 16 6 21.5 12 23C18 21.5 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="kpi-title">Total Loan Portfolio</div>
+            <div class="kpi-value maestro-amount large" data-lfr-editable-id="portfolio-value" data-lfr-editable-type="text">€2.47B</div>
+            [#if configuration.showTrends!true]
+            <div class="kpi-change positive">
+                <span>↑</span>
+                <span data-lfr-editable-id="portfolio-change" data-lfr-editable-type="text">+5.2% vs last month</span>
+            </div>
+            [/#if]
+        </div>
+        
+        <!-- Active Deals -->
+        <div class="maestro-kpi-card">
+            <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                    <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="kpi-title">Active Deals</div>
+            <div class="kpi-value" data-lfr-editable-id="deals-value" data-lfr-editable-type="text">147</div>
+            [#if configuration.showTrends!true]
+            <div class="kpi-change positive">
+                <span>↑</span>
+                <span data-lfr-editable-id="deals-change" data-lfr-editable-type="text">+12 new this week</span>
+            </div>
+            [/#if]
+        </div>
+        
+        <!-- Risk Exposure -->
+        <div class="maestro-kpi-card">
+            <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 9V13" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 17H12.01" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="kpi-title">Risk Exposure</div>
+            <div class="kpi-value maestro-amount large" data-lfr-editable-id="risk-value" data-lfr-editable-type="text">€156M</div>
+            [#if configuration.showTrends!true]
+            <div class="kpi-change negative">
+                <span>↓</span>
+                <span data-lfr-editable-id="risk-change" data-lfr-editable-type="text">-2.1% reduced exposure</span>
+            </div>
+            [/#if]
+        </div>
+        
+        <!-- Monthly Revenue -->
+        <div class="maestro-kpi-card">
+            <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <path d="M17 5H9.5A3.5 3.5 0 0 0 6 8.5V8.5A3.5 3.5 0 0 0 9.5 12H14.5A3.5 3.5 0 0 1 18 15.5V15.5A3.5 3.5 0 0 1 14.5 19H6" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="kpi-title">Monthly Revenue</div>
+            <div class="kpi-value maestro-amount large" data-lfr-editable-id="revenue-value" data-lfr-editable-type="text">€45.2M</div>
+            [#if configuration.showTrends!true]
+            <div class="kpi-change positive">
+                <span>↑</span>
+                <span data-lfr-editable-id="revenue-change" data-lfr-editable-type="text">+8.7% above target</span>
+            </div>
+            [/#if]
+        </div>
+        
+        [#if configuration.cardsToShow!"4" == "6"]
+        <!-- Credit Approval Rate -->
+        <div class="maestro-kpi-card">
+            <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="kpi-title">Credit Approval Rate</div>
+            <div class="kpi-value" data-lfr-editable-id="approval-rate" data-lfr-editable-type="text">87.3%</div>
+            [#if configuration.showTrends!true]
+            <div class="kpi-change positive">
+                <span>↑</span>
+                <span data-lfr-editable-id="approval-change" data-lfr-editable-type="text">+3.2% improvement</span>
+            </div>
+            [/#if]
+        </div>
+        
+        <!-- Average Deal Size -->
+        <div class="maestro-kpi-card">
+            <div class="kpi-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M22 6L12 13L2 6V19C2 19.5304 2.21071 20.0391 2.58579 20.4142C2.96086 20.7893 3.46957 21 4 21H20C20.5304 21 21.0391 20.7893 21.4142 20.4142C21.7893 20.0391 22 19.5304 22 19V6Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="kpi-title">Average Deal Size</div>
+            <div class="kpi-value maestro-amount large" data-lfr-editable-id="deal-size" data-lfr-editable-type="text">€16.8M</div>
+            [#if configuration.showTrends!true]
+            <div class="kpi-change neutral">
+                <span>=</span>
+                <span data-lfr-editable-id="deal-change" data-lfr-editable-type="text">Stable vs last quarter</span>
+            </div>
+            [/#if]
+        </div>
+        [/#if]
+    </div>
+</div>

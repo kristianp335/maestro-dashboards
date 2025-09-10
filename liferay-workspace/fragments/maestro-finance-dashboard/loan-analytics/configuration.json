@@ -1,0 +1,45 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "chartType",
+                    "label": "Chart Type",
+                    "description": "Select the type of chart to display",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Line Chart", "value": "line"},
+                            {"label": "Bar Chart", "value": "bar"},
+                            {"label": "Pie Chart", "value": "pie"},
+                            {"label": "Doughnut Chart", "value": "doughnut"}
+                        ]
+                    },
+                    "defaultValue": "line"
+                },
+                {
+                    "name": "timeRange",
+                    "label": "Time Range",
+                    "description": "Data time range to display",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Last 7 days", "value": "7d"},
+                            {"label": "Last 30 days", "value": "30d"},
+                            {"label": "Last 3 months", "value": "3m"},
+                            {"label": "Last 12 months", "value": "12m"}
+                        ]
+                    },
+                    "defaultValue": "30d"
+                },
+                {
+                    "name": "showDataLabels",
+                    "label": "Show Data Labels",
+                    "description": "Display values on chart points",
+                    "type": "checkbox",
+                    "defaultValue": false
+                }
+            ]
+        }
+    ]
+}

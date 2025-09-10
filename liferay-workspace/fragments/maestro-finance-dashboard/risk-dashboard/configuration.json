@@ -1,0 +1,44 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "riskView",
+                    "label": "Risk View Type",
+                    "description": "Choose the risk analysis view",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Portfolio Overview", "value": "portfolio"},
+                            {"label": "Credit Risk Analysis", "value": "credit"},
+                            {"label": "Market Risk", "value": "market"},
+                            {"label": "Operational Risk", "value": "operational"}
+                        ]
+                    },
+                    "defaultValue": "portfolio"
+                },
+                {
+                    "name": "alertLevel",
+                    "label": "Alert Threshold",
+                    "description": "Risk level that triggers alerts",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "High Risk Only", "value": "high"},
+                            {"label": "Medium & High Risk", "value": "medium"},
+                            {"label": "All Risk Levels", "value": "all"}
+                        ]
+                    },
+                    "defaultValue": "medium"
+                },
+                {
+                    "name": "showHeatmap",
+                    "label": "Show Risk Heatmap",
+                    "description": "Display visual risk heatmap",
+                    "type": "checkbox",
+                    "defaultValue": true
+                }
+            ]
+        }
+    ]
+}
