@@ -1,47 +1,48 @@
 {
   "system": false,
-  "name_i18n": {"en-US": "Deal Status"},
+  "name_i18n": {"en_US": "Deal Status"},
   "name": "Deal Status",
+  "externalReferenceCode": "DEAL_STATUS",
   "listTypeEntries": [
     {
-      "name_i18n": {"en-US": "Lead"},
+      "name_i18n": {"en_US": "Lead"},
       "name": "Lead",
-      "type": "",
+      
       "key": "lead",
       "externalReferenceCode": "LEAD"
     },
     {
-      "name_i18n": {"en-US": "Qualified"},
+      "name_i18n": {"en_US": "Qualified"},
       "name": "Qualified",
-      "type": "",
+      
       "key": "qualified",
       "externalReferenceCode": "QUALIFIED"
     },
     {
-      "name_i18n": {"en-US": "Proposal"},
+      "name_i18n": {"en_US": "Proposal"},
       "name": "Proposal",
-      "type": "",
+      
       "key": "proposal",
       "externalReferenceCode": "PROPOSAL"
     },
     {
-      "name_i18n": {"en-US": "Negotiation"},
+      "name_i18n": {"en_US": "Negotiation"},
       "name": "Negotiation",
-      "type": "",
+      
       "key": "negotiation",
       "externalReferenceCode": "NEGOTIATION"
     },
     {
-      "name_i18n": {"en-US": "Closed Won"},
+      "name_i18n": {"en_US": "Closed Won"},
       "name": "Closed Won",
-      "type": "",
+      
       "key": "closed_won",
       "externalReferenceCode": "CLOSED_WON"
     },
     {
-      "name_i18n": {"en-US": "Closed Lost"},
+      "name_i18n": {"en_US": "Closed Lost"},
       "name": "Closed Lost",
-      "type": "",
+      
       "key": "closed_lost",
       "externalReferenceCode": "CLOSED_LOST"
     }
