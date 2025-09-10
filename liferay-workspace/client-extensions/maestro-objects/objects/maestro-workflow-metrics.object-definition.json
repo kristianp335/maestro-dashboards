@@ -1,0 +1,101 @@
+{
+    "defaultLanguageId": "en_US",
+    "label": {
+        "en_US": "Workflow Metrics"
+    },
+    "name": "WorkflowMetrics",
+    "objectFields": [
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Report Date"
+            },
+            "name": "reportDate",
+            "required": true
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "Active Workflows"
+            },
+            "name": "activeWorkflows",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Average Processing Time"
+            },
+            "name": "avgProcessingTime",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Completion Rate"
+            },
+            "name": "completionRate",
+            "required": true
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "Exceptions Count"
+            },
+            "name": "exceptions",
+            "required": true
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "Origination Workflows"
+            },
+            "name": "originationWorkflows",
+            "required": false
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "Credit Assessment Workflows"
+            },
+            "name": "creditWorkflows",
+            "required": false
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "Distribution Workflows"
+            },
+            "name": "distributionWorkflows",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Origination Progress"
+            },
+            "name": "originationProgress",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Credit Progress"
+            },
+            "name": "creditProgress",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Distribution Progress"
+            },
+            "name": "distributionProgress",
+            "required": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Workflow Metrics"
+    },
+    "scope": "company"
+}

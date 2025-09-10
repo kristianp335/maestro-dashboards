@@ -1,0 +1,93 @@
+{
+    "defaultLanguageId": "en_US",
+    "label": {
+        "en_US": "Risk Metrics"
+    },
+    "name": "RiskMetrics",
+    "objectFields": [
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Report Date"
+            },
+            "name": "reportDate",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Total Risk Exposure"
+            },
+            "name": "totalRiskExposure",
+            "required": true
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "High Risk Loans Count"
+            },
+            "name": "highRiskLoans",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Average Credit Score"
+            },
+            "name": "averageCreditScore",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Coverage Ratio"
+            },
+            "name": "coverageRatio",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Credit Risk Percentage"
+            },
+            "name": "creditRiskPercentage",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Market Risk Percentage"
+            },
+            "name": "marketRiskPercentage",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Operational Risk Percentage"
+            },
+            "name": "operationalRiskPercentage",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Risk Trend"
+            },
+            "name": "riskTrend",
+            "required": false
+        },
+        {
+            "businessType": "LongText",
+            "label": {
+                "en_US": "Risk Summary"
+            },
+            "name": "riskSummary",
+            "required": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Risk Metrics"
+    },
+    "scope": "company"
+}

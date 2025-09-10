@@ -1,0 +1,110 @@
+{
+    "defaultLanguageId": "en_US",
+    "label": {
+        "en_US": "Maestro Client"
+    },
+    "name": "MaestroClient",
+    "objectFields": [
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Client ID"
+            },
+            "name": "clientId",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Client Name"
+            },
+            "name": "clientName",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Legal Entity Type"
+            },
+            "name": "legalEntityType",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Country"
+            },
+            "name": "country",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Sector"
+            },
+            "name": "sector",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Credit Rating"
+            },
+            "name": "creditRating",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Annual Revenue"
+            },
+            "name": "annualRevenue",
+            "required": false
+        },
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Relationship Start Date"
+            },
+            "name": "relationshipStartDate",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Relationship Manager"
+            },
+            "name": "relationshipManager",
+            "required": false
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Client Status"
+            },
+            "name": "clientStatus",
+            "required": true,
+            "listTypeDefinitionExternalReferenceCode": "CLIENT_STATUS"
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Risk Classification"
+            },
+            "name": "riskClassification",
+            "required": false
+        },
+        {
+            "businessType": "LongText",
+            "label": {
+                "en_US": "Client Notes"
+            },
+            "name": "clientNotes",
+            "required": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Maestro Clients"
+    },
+    "scope": "company"
+}

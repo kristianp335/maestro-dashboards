@@ -1,0 +1,23 @@
+assemble:
+    - from: objects
+      into: static
+microservice:
+    cmd: echo "Objects defined"
+    readinessProbe:
+        failureThreshold: 3
+        httpGet:
+            path: /ready
+            port: 8080
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 5
+name: Maestro GFD Objects
+object-definitions:
+    - maestro-loans.object-definition.json
+    - maestro-deals.object-definition.json
+    - maestro-clients.object-definition.json
+    - maestro-risk-metrics.object-definition.json
+    - maestro-performance-kpis.object-definition.json
+    - maestro-workflow-metrics.object-definition.json
+    - maestro-gfd-activities.object-definition.json
+type: objectDefinition

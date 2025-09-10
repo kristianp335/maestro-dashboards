@@ -1,0 +1,103 @@
+{
+    "defaultLanguageId": "en_US",
+    "label": {
+        "en_US": "GFD Activity"
+    },
+    "name": "GFDActivities",
+    "objectFields": [
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Activity ID"
+            },
+            "name": "activityId",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Activity Title"
+            },
+            "name": "activityTitle",
+            "required": true
+        },
+        {
+            "businessType": "LongText",
+            "label": {
+                "en_US": "Activity Description"
+            },
+            "name": "activityDescription",
+            "required": true
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Activity Type"
+            },
+            "name": "activityType",
+            "required": true,
+            "listTypeDefinitionExternalReferenceCode": "ACTIVITY_TYPE"
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Status"
+            },
+            "name": "status",
+            "required": true,
+            "listTypeDefinitionExternalReferenceCode": "ACTIVITY_STATUS"
+        },
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Activity Date"
+            },
+            "name": "activityDate",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Related Entity ID"
+            },
+            "name": "relatedEntityId",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Related Entity Type"
+            },
+            "name": "relatedEntityType",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Created By"
+            },
+            "name": "createdBy",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Priority"
+            },
+            "name": "priority",
+            "required": false
+        },
+        {
+            "businessType": "LongText",
+            "label": {
+                "en_US": "Notes"
+            },
+            "name": "notes",
+            "required": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "GFD Activities"
+    },
+    "scope": "company"
+}

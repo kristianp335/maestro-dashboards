@@ -1,0 +1,119 @@
+{
+    "defaultLanguageId": "en_US",
+    "label": {
+        "en_US": "Maestro Deal"
+    },
+    "name": "MaestroDeal",
+    "objectFields": [
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Deal ID"
+            },
+            "name": "dealId",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Deal Name"
+            },
+            "name": "dealName",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Client Name"
+            },
+            "name": "clientName",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Deal Value"
+            },
+            "name": "dealValue",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Currency"
+            },
+            "name": "currency",
+            "required": true
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Status"
+            },
+            "name": "status",
+            "required": true,
+            "listTypeDefinitionExternalReferenceCode": "DEAL_STATUS"
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Priority"
+            },
+            "name": "priority",
+            "required": true,
+            "listTypeDefinitionExternalReferenceCode": "DEAL_PRIORITY"
+        },
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Expected Closing Date"
+            },
+            "name": "expectedClosingDate",
+            "required": true
+        },
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Last Updated"
+            },
+            "name": "lastUpdated",
+            "required": true
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Deal Type"
+            },
+            "name": "dealType",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Sector"
+            },
+            "name": "sector",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Relationship Manager"
+            },
+            "name": "relationshipManager",
+            "required": false
+        },
+        {
+            "businessType": "LongText",
+            "label": {
+                "en_US": "Description"
+            },
+            "name": "description",
+            "required": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Maestro Deals"
+    },
+    "scope": "company"
+}

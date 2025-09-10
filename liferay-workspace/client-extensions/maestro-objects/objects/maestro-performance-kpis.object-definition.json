@@ -1,0 +1,93 @@
+{
+    "defaultLanguageId": "en_US",
+    "label": {
+        "en_US": "Performance KPI"
+    },
+    "name": "PerformanceKPI",
+    "objectFields": [
+        {
+            "businessType": "Date",
+            "label": {
+                "en_US": "Report Date"
+            },
+            "name": "reportDate",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Total Loan Volume"
+            },
+            "name": "totalLoanVolume",
+            "required": true
+        },
+        {
+            "businessType": "Integer",
+            "label": {
+                "en_US": "Active Clients"
+            },
+            "name": "activeClients",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Average Deal Size"
+            },
+            "name": "averageDealSize",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Portfolio Growth"
+            },
+            "name": "portfolioGrowth",
+            "required": true
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Revenue Generated"
+            },
+            "name": "revenueGenerated",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Default Rate"
+            },
+            "name": "defaultRate",
+            "required": false
+        },
+        {
+            "businessType": "Decimal",
+            "label": {
+                "en_US": "Return on Assets"
+            },
+            "name": "returnOnAssets",
+            "required": false
+        },
+        {
+            "businessType": "Text",
+            "label": {
+                "en_US": "Period Type"
+            },
+            "name": "periodType",
+            "required": false
+        },
+        {
+            "businessType": "LongText",
+            "label": {
+                "en_US": "Performance Summary"
+            },
+            "name": "performanceSummary",
+            "required": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Performance KPIs"
+    },
+    "scope": "company"
+}
