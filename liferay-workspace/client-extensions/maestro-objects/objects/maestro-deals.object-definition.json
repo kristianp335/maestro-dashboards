@@ -1,14 +1,14 @@
 {
-    "defaultLanguageId": "en_US",
+    "defaultLanguageId": "en-US",
     "label": {
-        "en_US": "Maestro Deal"
+        "en-US": "Maestro Deal"
     },
     "name": "MaestroDeal",
     "objectFields": [
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Deal ID"
+                "en-US": "Deal ID"
             },
             "name": "dealId",
             "required": true
@@ -16,7 +16,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Deal Name"
+                "en-US": "Deal Name"
             },
             "name": "dealName",
             "required": true
@@ -24,7 +24,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Client Name"
+                "en-US": "Client Name"
             },
             "name": "clientName",
             "required": true
@@ -32,7 +32,7 @@
         {
             "businessType": "Decimal",
             "label": {
-                "en_US": "Deal Value"
+                "en-US": "Deal Value"
             },
             "name": "dealValue",
             "required": true
@@ -40,7 +40,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Currency"
+                "en-US": "Currency"
             },
             "name": "currency",
             "required": true
@@ -48,7 +48,7 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en_US": "Status"
+                "en-US": "Status"
             },
             "name": "status",
             "required": true,
@@ -57,7 +57,7 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en_US": "Priority"
+                "en-US": "Priority"
             },
             "name": "priority",
             "required": true,
@@ -66,7 +66,7 @@
         {
             "businessType": "Date",
             "label": {
-                "en_US": "Expected Closing Date"
+                "en-US": "Expected Closing Date"
             },
             "name": "expectedClosingDate",
             "required": true
@@ -74,7 +74,7 @@
         {
             "businessType": "Date",
             "label": {
-                "en_US": "Last Updated"
+                "en-US": "Last Updated"
             },
             "name": "lastUpdated",
             "required": true
@@ -82,7 +82,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Deal Type"
+                "en-US": "Deal Type"
             },
             "name": "dealType",
             "required": false
@@ -90,7 +90,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Sector"
+                "en-US": "Sector"
             },
             "name": "sector",
             "required": false
@@ -98,7 +98,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Relationship Manager"
+                "en-US": "Relationship Manager"
             },
             "name": "relationshipManager",
             "required": false
@@ -106,14 +106,14 @@
         {
             "businessType": "LongText",
             "label": {
-                "en_US": "Description"
+                "en-US": "Description"
             },
             "name": "description",
             "required": false
         }
     ],
     "pluralLabel": {
-        "en_US": "Maestro Deals"
+        "en-US": "Maestro Deals"
     },
     "scope": "company"
 }
