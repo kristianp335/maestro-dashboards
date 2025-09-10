@@ -1,0 +1,389 @@
+/* GFD Tracking Fragment - Maestro Finance Dashboard */
+
+.maestro-gfd-tracking {
+    padding: var(--spacing-lg, 1.5rem);
+}
+
+.gfd-header {
+    margin-bottom: var(--spacing-xl, 2rem);
+    text-align: center;
+}
+
+.gfd-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm, 0.5rem);
+    margin-bottom: var(--spacing-xs, 0.25rem);
+}
+
+.gfd-header h3 svg {
+    color: var(--ca-cib-green, #00A651);
+}
+
+.gfd-header p {
+    color: var(--ca-cib-dark-gray, #333333);
+    opacity: 0.8;
+}
+
+/* GFD Process Overview */
+.gfd-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md, 1rem);
+    margin-bottom: var(--spacing-xxl, 3rem);
+}
+
+.process-stat {
+    background: var(--ca-cib-white, #ffffff);
+    border-radius: var(--border-radius-md, 8px);
+    padding: var(--spacing-lg, 1.5rem);
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.12));
+    border-left: 4px solid var(--ca-cib-green, #00A651);
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 1rem);
+}
+
+.process-stat:hover {
+    transform: translateY(-2px);
+}
+
+.process-stat .stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ca-cib-green, #00A651);
+    color: var(--ca-cib-white, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.process-stat .stat-content {
+    flex: 1;
+}
+
+.process-stat .stat-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ca-cib-dark-gray, #333333);
+    opacity: 0.8;
+    margin-bottom: var(--spacing-xs, 0.25rem);
+}
+
+.process-stat .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ca-cib-dark-blue, #003366);
+    font-family: var(--font-family-numbers, 'SF Mono', monospace);
+}
+
+/* Workflow Progress Section */
+.workflow-progress-section {
+    background: var(--ca-cib-white, #ffffff);
+    border-radius: var(--border-radius-lg, 12px);
+    padding: var(--spacing-xl, 2rem);
+    box-shadow: var(--shadow-md, 0 3px 6px rgba(0, 0, 0, 0.15));
+    margin-bottom: var(--spacing-xxl, 3rem);
+}
+
+.workflow-progress-section h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+    margin-bottom: var(--spacing-lg, 1.5rem);
+    text-align: center;
+}
+
+.progress-workflows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg, 1.5rem);
+}
+
+.workflow-item {
+    background: var(--ca-cib-light-gray, #F5F5F5);
+    border-radius: var(--border-radius-md, 8px);
+    padding: var(--spacing-lg, 1.5rem);
+    border-left: 4px solid var(--ca-cib-green, #00A651);
+}
+
+.workflow-item.origination {
+    border-left-color: var(--ca-cib-green, #00A651);
+}
+
+.workflow-item.credit {
+    border-left-color: var(--info-blue, #17a2b8);
+}
+
+.workflow-item.distribution {
+    border-left-color: var(--warning-orange, #ffc107);
+}
+
+.workflow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md, 1rem);
+}
+
+.workflow-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm, 0.5rem);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+}
+
+.workflow-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ca-cib-green, #00A651);
+    color: var(--ca-cib-white, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.workflow-item.credit .workflow-icon {
+    background: var(--info-blue, #17a2b8);
+}
+
+.workflow-item.distribution .workflow-icon {
+    background: var(--warning-orange, #ffc107);
+    color: var(--ca-cib-dark-gray, #333333);
+}
+
+.workflow-status {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ca-cib-dark-gray, #333333);
+    background: var(--ca-cib-white, #ffffff);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--ca-cib-medium-gray, #E0E0E0);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--ca-cib-medium-gray, #E0E0E0);
+    border-radius: 4px;
+    margin-bottom: var(--spacing-sm, 0.5rem);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ca-cib-green, #00A651) 0%, var(--success-green, #28a745) 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.workflow-item.credit .progress-fill {
+    background: linear-gradient(90deg, var(--info-blue, #17a2b8) 0%, var(--ca-cib-dark-blue, #003366) 100%);
+}
+
+.workflow-item.distribution .progress-fill {
+    background: linear-gradient(90deg, var(--warning-orange, #ffc107) 0%, var(--ca-cib-green, #00A651) 100%);
+}
+
+.progress-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--ca-cib-dark-gray, #333333);
+}
+
+.progress-details span:first-child {
+    font-weight: 600;
+}
+
+.progress-details span:last-child {
+    opacity: 0.8;
+}
+
+/* GFD Activities */
+.gfd-activities {
+    background: var(--ca-cib-white, #ffffff);
+    border-radius: var(--border-radius-lg, 12px);
+    padding: var(--spacing-xl, 2rem);
+    box-shadow: var(--shadow-md, 0 3px 6px rgba(0, 0, 0, 0.15));
+}
+
+.activities-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg, 1.5rem);
+    flex-wrap: wrap;
+    gap: var(--spacing-md, 1rem);
+}
+
+.activities-header h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+    margin: 0;
+}
+
+.activity-filters {
+    display: flex;
+    gap: var(--spacing-md, 1rem);
+}
+
+.activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md, 1rem);
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 1rem);
+    padding: var(--spacing-md, 1rem);
+    border-radius: var(--border-radius-md, 8px);
+    border-left: 4px solid var(--ca-cib-green, #00A651);
+    background: var(--ca-cib-light-gray, #F5F5F5);
+    transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+    background: rgba(0, 166, 81, 0.05);
+    transform: translateX(4px);
+}
+
+.activity-item.completed {
+    border-left-color: var(--success-green, #28a745);
+    background: rgba(40, 167, 69, 0.05);
+}
+
+.activity-item.in-progress {
+    border-left-color: var(--info-blue, #17a2b8);
+    background: rgba(23, 162, 184, 0.05);
+}
+
+.activity-item.exception {
+    border-left-color: var(--danger-red, #dc3545);
+    background: rgba(220, 53, 69, 0.05);
+}
+
+.activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.activity-item.completed .activity-icon {
+    background: rgba(40, 167, 69, 0.2);
+    color: var(--success-green, #28a745);
+}
+
+.activity-item.in-progress .activity-icon {
+    background: rgba(23, 162, 184, 0.2);
+    color: var(--info-blue, #17a2b8);
+}
+
+.activity-item.exception .activity-icon {
+    background: rgba(220, 53, 69, 0.2);
+    color: var(--danger-red, #dc3545);
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+    margin-bottom: var(--spacing-xs, 0.25rem);
+}
+
+.activity-description {
+    font-size: 0.875rem;
+    color: var(--ca-cib-dark-gray, #333333);
+    margin-bottom: var(--spacing-xs, 0.25rem);
+}
+
+.activity-meta {
+    display: flex;
+    gap: var(--spacing-md, 1rem);
+    font-size: 0.75rem;
+    color: var(--ca-cib-dark-gray, #333333);
+    opacity: 0.8;
+}
+
+.activity-type {
+    background: var(--ca-cib-white, #ffffff);
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--ca-cib-medium-gray, #E0E0E0);
+    font-weight: 500;
+}
+
+.activity-status {
+    flex-shrink: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gfd-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-stat {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm, 0.5rem);
+    }
+    
+    .workflow-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm, 0.5rem);
+    }
+    
+    .activities-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm, 0.5rem);
+    }
+    
+    .activity-meta {
+        flex-direction: column;
+        gap: var(--spacing-xs, 0.25rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .gfd-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs, 0.25rem);
+    }
+}

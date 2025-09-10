@@ -1,0 +1,264 @@
+<div class="maestro-dashboard maestro-gfd-tracking">
+    <div class="gfd-header">
+        <h3 data-lfr-editable-id="gfd-title" data-lfr-editable-type="text">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22S2 16 2 8A10 10 0 0 1 22 8C22 16 12 22 12 22Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M8 14L12 18L22 8" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Global Finance Data Tracking
+        </h3>
+        <p data-lfr-editable-id="gfd-subtitle" data-lfr-editable-type="text">Monitor loan origination workflow and distribution processes</p>
+    </div>
+    
+    <!-- GFD Process Overview -->
+    <div class="gfd-overview">
+        <div class="process-stat">
+            <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12L21 12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M18 9L21 12L18 15" stroke="currentColor" stroke-width="2"/>
+                    <path d="M6 9L3 12L6 15" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-title">Active Workflows</div>
+                <div class="stat-value" data-lfr-editable-id="active-workflows" data-lfr-editable-type="text">34</div>
+            </div>
+        </div>
+        
+        <div class="process-stat">
+            <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-title">Avg Processing Time</div>
+                <div class="stat-value" data-lfr-editable-id="avg-processing" data-lfr-editable-type="text">3.2 days</div>
+            </div>
+        </div>
+        
+        <div class="process-stat">
+            <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-title">Completion Rate</div>
+                <div class="stat-value" data-lfr-editable-id="completion-rate" data-lfr-editable-type="text">96.8%</div>
+            </div>
+        </div>
+        
+        <div class="process-stat">
+            <div class="stat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 9V13" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 17H12.01" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-title">Exceptions</div>
+                <div class="stat-value" data-lfr-editable-id="exceptions" data-lfr-editable-type="text">7</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Workflow Progress Section -->
+    [#if configuration.showProgressBar!true]
+    <div class="workflow-progress-section">
+        <h4 data-lfr-editable-id="progress-title" data-lfr-editable-type="text">Current Workflow Progress</h4>
+        
+        <div class="progress-workflows">
+            <!-- Loan Origination Workflow -->
+            <div class="workflow-item origination">
+                <div class="workflow-header">
+                    <div class="workflow-title">
+                        <span class="workflow-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7V10C2 16 6 21.5 12 23C18 21.5 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </span>
+                        <span>Loan Origination</span>
+                    </div>
+                    <div class="workflow-status">18 Active</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <div class="progress-details">
+                    <span>75% Complete</span>
+                    <span>Est. 2.5 days remaining</span>
+                </div>
+            </div>
+            
+            <!-- Credit Assessment Workflow -->
+            <div class="workflow-item credit">
+                <div class="workflow-header">
+                    <div class="workflow-title">
+                        <span class="workflow-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </span>
+                        <span>Credit Assessment</span>
+                    </div>
+                    <div class="workflow-status">12 Active</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <div class="progress-details">
+                    <span>60% Complete</span>
+                    <span>Est. 1.8 days remaining</span>
+                </div>
+            </div>
+            
+            <!-- Distribution Process -->
+            <div class="workflow-item distribution">
+                <div class="workflow-header">
+                    <div class="workflow-title">
+                        <span class="workflow-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 16V8A2 2 0 0 0 19 6H5A2 2 0 0 0 3 8V16A2 2 0 0 0 5 18H19A2 2 0 0 0 21 16Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </span>
+                        <span>Distribution</span>
+                    </div>
+                    <div class="workflow-status">4 Active</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <div class="progress-details">
+                    <span>90% Complete</span>
+                    <span>Est. 0.5 days remaining</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    [/#if]
+    
+    <!-- Recent Activities -->
+    <div class="gfd-activities">
+        <div class="activities-header">
+            <h4 data-lfr-editable-id="activities-title" data-lfr-editable-type="text">Recent GFD Activities</h4>
+            <div class="activity-filters">
+                <select class="maestro-select" id="activityTypeFilter">
+                    <option value="all">All Activities</option>
+                    <option value="origination">Origination</option>
+                    <option value="credit">Credit</option>
+                    <option value="distribution">Distribution</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="activities-list">
+            <div class="activity-item completed">
+                <div class="activity-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-title">Loan LN-2025-0847 - Credit Approval Completed</div>
+                    <div class="activity-description">TotalEnergies SE infrastructure loan approved for €45.2M</div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Credit Assessment</span>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-status">
+                    <span class="maestro-status-badge approved">Approved</span>
+                </div>
+            </div>
+            
+            <div class="activity-item in-progress">
+                <div class="activity-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-title">Loan LN-2025-0848 - Due Diligence Review</div>
+                    <div class="activity-description">EDF Group renewable energy facility under review</div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Origination</span>
+                        <span class="activity-time">4 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-status">
+                    <span class="maestro-status-badge pending">In Review</span>
+                </div>
+            </div>
+            
+            <div class="activity-item completed">
+                <div class="activity-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 16V8A2 2 0 0 0 19 6H5A2 2 0 0 0 3 8V16A2 2 0 0 0 5 18H19A2 2 0 0 0 21 16Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-title">Distribution Package DP-2025-0156 - Syndication Complete</div>
+                    <div class="activity-description">Schneider Electric green bond distributed to 8 institutional investors</div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Distribution</span>
+                        <span class="activity-time">6 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-status">
+                    <span class="maestro-status-badge approved">Completed</span>
+                </div>
+            </div>
+            
+            <div class="activity-item exception">
+                <div class="activity-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 9V13" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 17H12.01" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-title">Loan LN-2025-0849 - Documentation Exception</div>
+                    <div class="activity-description">Missing environmental compliance certificate for LVMH project</div>
+                    <div class="activity-meta">
+                        <span class="activity-type">Origination</span>
+                        <span class="activity-time">8 hours ago</span>
+                    </div>
+                </div>
+                <div class="activity-status">
+                    <span class="maestro-status-badge rejected">Exception</span>
+                </div>
+            </div>
+            
+            <div class="activity-item completed">
+                <div class="activity-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-title">System Integration - Real-time Data Sync</div>
+                    <div class="activity-description">Successfully synchronized portfolio data with central risk system</div>
+                    <div class="activity-meta">
+                        <span class="activity-type">System</span>
+                        <span class="activity-time">1 day ago</span>
+                    </div>
+                </div>
+                <div class="activity-status">
+                    <span class="maestro-status-badge approved">Synced</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

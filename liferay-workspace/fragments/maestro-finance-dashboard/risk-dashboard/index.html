@@ -1,0 +1,219 @@
+<div class="maestro-dashboard maestro-risk-dashboard">
+    <div class="risk-header">
+        <h3 data-lfr-editable-id="risk-title" data-lfr-editable-type="text">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9V13" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 17H12.01" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            Risk Management Dashboard
+        </h3>
+        <p data-lfr-editable-id="risk-subtitle" data-lfr-editable-type="text">Monitor portfolio risk exposure and credit analytics</p>
+    </div>
+    
+    <!-- Risk Overview Cards -->
+    <div class="risk-overview">
+        <div class="risk-card critical">
+            <div class="risk-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="risk-content">
+                <div class="risk-label">Total Risk Exposure</div>
+                <div class="risk-value maestro-amount large" data-lfr-editable-id="total-risk" data-lfr-editable-type="text">€156M</div>
+                <div class="risk-trend negative">
+                    <span>↓</span>
+                    <span>-2.1% this month</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="risk-card warning">
+            <div class="risk-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.29 3.86L1.82 18A2 2 0 0 0 3.55 21H20.45A2 2 0 0 0 22.18 18L13.71 3.86A2 2 0 0 0 10.29 3.86Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="risk-content">
+                <div class="risk-label">High Risk Loans</div>
+                <div class="risk-value" data-lfr-editable-id="high-risk-loans" data-lfr-editable-type="text">23</div>
+                <div class="risk-trend neutral">
+                    <span>=</span>
+                    <span>Stable count</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="risk-card info">
+            <div class="risk-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M9.09 9A3 3 0 0 1 15 9" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 12C16.5 18 7.5 18 3 12" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="risk-content">
+                <div class="risk-label">Credit Score Avg</div>
+                <div class="risk-value" data-lfr-editable-id="credit-avg" data-lfr-editable-type="text">742</div>
+                <div class="risk-trend positive">
+                    <span>↑</span>
+                    <span>+8 points</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="risk-card success">
+            <div class="risk-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V10C2 16 6 21.5 12 23C18 21.5 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="risk-content">
+                <div class="risk-label">Coverage Ratio</div>
+                <div class="risk-value" data-lfr-editable-id="coverage-ratio" data-lfr-editable-type="text">94.2%</div>
+                <div class="risk-trend positive">
+                    <span>↑</span>
+                    <span>+1.3% improved</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Risk Analytics Chart -->
+    [#if configuration.riskView!"portfolio" == "portfolio" || configuration.riskView!"portfolio" == "credit"]
+    <div class="maestro-chart-container risk-chart">
+        <div class="chart-header">
+            <h4>Risk Exposure Trends</h4>
+            <div class="chart-controls">
+                <select class="maestro-select" id="riskTimeRange">
+                    <option value="7d">Last 7 days</option>
+                    <option value="30d" selected>Last 30 days</option>
+                    <option value="3m">Last 3 months</option>
+                    <option value="12m">Last 12 months</option>
+                </select>
+            </div>
+        </div>
+        <div class="chart-content">
+            <canvas id="riskChart" width="400" height="250"></canvas>
+        </div>
+    </div>
+    [/#if]
+    
+    <!-- Risk Heatmap -->
+    [#if configuration.showHeatmap!true]
+    <div class="risk-heatmap-container">
+        <h4 data-lfr-editable-id="heatmap-title" data-lfr-editable-type="text">Portfolio Risk Heatmap</h4>
+        <div class="risk-heatmap">
+            <div class="heatmap-grid">
+                <!-- Credit Risk by Sector -->
+                <div class="heatmap-row">
+                    <div class="sector-label">Energy</div>
+                    <div class="risk-cell low" data-risk="2.1">2.1%</div>
+                    <div class="risk-cell medium" data-risk="4.3">4.3%</div>
+                    <div class="risk-cell low" data-risk="1.8">1.8%</div>
+                    <div class="risk-cell high" data-risk="6.2">6.2%</div>
+                </div>
+                <div class="heatmap-row">
+                    <div class="sector-label">Technology</div>
+                    <div class="risk-cell low" data-risk="1.9">1.9%</div>
+                    <div class="risk-cell low" data-risk="2.7">2.7%</div>
+                    <div class="risk-cell medium" data-risk="3.5">3.5%</div>
+                    <div class="risk-cell medium" data-risk="4.1">4.1%</div>
+                </div>
+                <div class="heatmap-row">
+                    <div class="sector-label">Healthcare</div>
+                    <div class="risk-cell low" data-risk="1.2">1.2%</div>
+                    <div class="risk-cell low" data-risk="2.0">2.0%</div>
+                    <div class="risk-cell low" data-risk="2.8">2.8%</div>
+                    <div class="risk-cell medium" data-risk="3.9">3.9%</div>
+                </div>
+                <div class="heatmap-row">
+                    <div class="sector-label">Manufacturing</div>
+                    <div class="risk-cell medium" data-risk="3.2">3.2%</div>
+                    <div class="risk-cell high" data-risk="5.1">5.1%</div>
+                    <div class="risk-cell medium" data-risk="4.7">4.7%</div>
+                    <div class="risk-cell high" data-risk="7.3">7.3%</div>
+                </div>
+            </div>
+            <div class="heatmap-legend">
+                <div class="legend-item">
+                    <div class="legend-color low"></div>
+                    <span>Low Risk (0-3%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color medium"></div>
+                    <span>Medium Risk (3-5%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color high"></div>
+                    <span>High Risk (5%+)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    [/#if]
+    
+    <!-- Risk Alerts -->
+    <div class="risk-alerts">
+        <h4 data-lfr-editable-id="alerts-title" data-lfr-editable-type="text">Risk Alerts & Notifications</h4>
+        <div class="alerts-list">
+            <div class="alert-item high">
+                <div class="alert-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">High Risk Exposure Detected</div>
+                    <div class="alert-description">Manufacturing sector shows increased risk (+2.3%) above threshold</div>
+                    <div class="alert-time">2 hours ago</div>
+                </div>
+                <div class="alert-actions">
+                    <button class="maestro-btn-sm">Review</button>
+                </div>
+            </div>
+            
+            <div class="alert-item medium">
+                <div class="alert-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.29 3.86L1.82 18A2 2 0 0 0 3.55 21H20.45A2 2 0 0 0 22.18 18L13.71 3.86A2 2 0 0 0 10.29 3.86Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">Credit Score Downgrade</div>
+                    <div class="alert-description">Client ABC Corp credit rating decreased from A- to B+</div>
+                    <div class="alert-time">6 hours ago</div>
+                </div>
+                <div class="alert-actions">
+                    <button class="maestro-btn-sm">Review</button>
+                </div>
+            </div>
+            
+            <div class="alert-item low">
+                <div class="alert-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M12 16V12" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 8H12.01" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">Compliance Review Due</div>
+                    <div class="alert-description">Quarterly risk assessment for Energy portfolio due in 5 days</div>
+                    <div class="alert-time">1 day ago</div>
+                </div>
+                <div class="alert-actions">
+                    <button class="maestro-btn-sm">Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
