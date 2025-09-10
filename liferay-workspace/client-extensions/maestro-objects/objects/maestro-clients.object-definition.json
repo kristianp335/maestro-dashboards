@@ -1,14 +1,14 @@
 {
-    "defaultLanguageId": "en_US",
+    "defaultLanguageId": "en-US",
     "label": {
-        "en_US": "Maestro Client"
+        "en-US": "Maestro Client"
     },
     "name": "MaestroClient",
     "objectFields": [
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Client ID"
+                "en-US": "Client ID"
             },
             "name": "clientId",
             "required": true
@@ -16,7 +16,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Client Name"
+                "en-US": "Client Name"
             },
             "name": "clientName",
             "required": true
@@ -24,7 +24,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Legal Entity Type"
+                "en-US": "Legal Entity Type"
             },
             "name": "legalEntityType",
             "required": true
@@ -32,7 +32,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Country"
+                "en-US": "Country"
             },
             "name": "country",
             "required": true
@@ -40,7 +40,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Sector"
+                "en-US": "Sector"
             },
             "name": "sector",
             "required": true
@@ -48,7 +48,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Credit Rating"
+                "en-US": "Credit Rating"
             },
             "name": "creditRating",
             "required": false
@@ -56,7 +56,7 @@
         {
             "businessType": "Decimal",
             "label": {
-                "en_US": "Annual Revenue"
+                "en-US": "Annual Revenue"
             },
             "name": "annualRevenue",
             "required": false
@@ -64,7 +64,7 @@
         {
             "businessType": "Date",
             "label": {
-                "en_US": "Relationship Start Date"
+                "en-US": "Relationship Start Date"
             },
             "name": "relationshipStartDate",
             "required": false
@@ -72,7 +72,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Relationship Manager"
+                "en-US": "Relationship Manager"
             },
             "name": "relationshipManager",
             "required": false
@@ -80,7 +80,7 @@
         {
             "businessType": "Picklist",
             "label": {
-                "en_US": "Client Status"
+                "en-US": "Client Status"
             },
             "name": "clientStatus",
             "required": true,
@@ -89,7 +89,7 @@
         {
             "businessType": "Text",
             "label": {
-                "en_US": "Risk Classification"
+                "en-US": "Risk Classification"
             },
             "name": "riskClassification",
             "required": false
@@ -97,14 +97,14 @@
         {
             "businessType": "LongText",
             "label": {
-                "en_US": "Client Notes"
+                "en-US": "Client Notes"
             },
             "name": "clientNotes",
             "required": false
         }
     ],
     "pluralLabel": {
-        "en_US": "Maestro Clients"
+        "en-US": "Maestro Clients"
     },
     "scope": "company"
 }
