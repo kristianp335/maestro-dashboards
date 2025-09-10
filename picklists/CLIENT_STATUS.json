@@ -1,0 +1,42 @@
+{
+  "system": false,
+  "name_i18n": {"en-US": "Client Status"},
+  "name": "Client Status",
+  "listTypeEntries": [
+    {
+      "name_i18n": {"en-US": "Active"},
+      "name": "Active",
+      "type": "",
+      "key": "active",
+      "externalReferenceCode": "ACTIVE"
+    },
+    {
+      "name_i18n": {"en-US": "Prospect"},
+      "name": "Prospect",
+      "type": "",
+      "key": "prospect",
+      "externalReferenceCode": "PROSPECT"
+    },
+    {
+      "name_i18n": {"en-US": "Inactive"},
+      "name": "Inactive",
+      "type": "",
+      "key": "inactive",
+      "externalReferenceCode": "INACTIVE"
+    },
+    {
+      "name_i18n": {"en-US": "Under Review"},
+      "name": "Under Review",
+      "type": "",
+      "key": "under_review",
+      "externalReferenceCode": "UNDER_REVIEW"
+    },
+    {
+      "name_i18n": {"en-US": "Suspended"},
+      "name": "Suspended",
+      "type": "",
+      "key": "suspended",
+      "externalReferenceCode": "SUSPENDED"
+    }
+  ]
+}
