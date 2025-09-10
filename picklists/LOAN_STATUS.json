@@ -7,49 +7,49 @@
     {
       "name_i18n": {"en_US": "Application"},
       "name": "Application",
-      
+      "type": "",
       "key": "application",
       "externalReferenceCode": "APPLICATION"
     },
     {
       "name_i18n": {"en_US": "Under Review"},
       "name": "Under Review",
-      
+      "type": "",
       "key": "under_review",
       "externalReferenceCode": "UNDER_REVIEW"
     },
     {
       "name_i18n": {"en_US": "Approved"},
       "name": "Approved",
-      
+      "type": "",
       "key": "approved",
       "externalReferenceCode": "APPROVED"
     },
     {
       "name_i18n": {"en_US": "Active"},
       "name": "Active",
-      
+      "type": "",
       "key": "active",
       "externalReferenceCode": "ACTIVE"
     },
     {
       "name_i18n": {"en_US": "Paid Off"},
       "name": "Paid Off",
-      
+      "type": "",
       "key": "paid_off",
       "externalReferenceCode": "PAID_OFF"
     },
     {
       "name_i18n": {"en_US": "Default"},
       "name": "Default",
-      
+      "type": "",
       "key": "default",
       "externalReferenceCode": "DEFAULT"
     },
     {
       "name_i18n": {"en_US": "Rejected"},
       "name": "Rejected",
-      
+      "type": "",
       "key": "rejected",
       "externalReferenceCode": "REJECTED"
     }

@@ -7,28 +7,28 @@
     {
       "name_i18n": {"en_US": "Low"},
       "name": "Low",
-      
+      "type": "",
       "key": "low",
       "externalReferenceCode": "LOW"
     },
     {
       "name_i18n": {"en_US": "Medium"},
       "name": "Medium",
-      
+      "type": "",
       "key": "medium",
       "externalReferenceCode": "MEDIUM"
     },
     {
       "name_i18n": {"en_US": "High"},
       "name": "High",
-      
+      "type": "",
       "key": "high",
       "externalReferenceCode": "HIGH"
     },
     {
       "name_i18n": {"en_US": "Critical"},
       "name": "Critical",
-      
+      "type": "",
       "key": "critical",
       "externalReferenceCode": "CRITICAL"
     }
