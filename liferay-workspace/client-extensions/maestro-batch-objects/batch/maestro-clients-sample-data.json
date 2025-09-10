@@ -1,0 +1,80 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/MaestroClient/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "clientId": "CL-TEF-001",
+            "clientName": "TotalEnergies SE",
+            "legalEntityType": "Public Limited Company",
+            "country": "France",
+            "sector": "Energy",
+            "creditRating": "A-",
+            "annualRevenue": 184000000000.00,
+            "relationshipStartDate": "2018-03-15",
+            "relationshipManager": "Marie Dubois",
+            "clientStatus": "active",
+            "riskClassification": "Medium",
+            "clientNotes": "Leading integrated energy company with strong ESG commitments and renewable energy expansion strategy"
+        },
+        {
+            "clientId": "CL-EDF-002",
+            "clientName": "EDF Group",
+            "legalEntityType": "State-Owned Enterprise",
+            "country": "France",
+            "sector": "Utilities",
+            "creditRating": "A",
+            "annualRevenue": 84500000000.00,
+            "relationshipStartDate": "2015-07-22",
+            "relationshipManager": "Antoine Rousseau",
+            "clientStatus": "active",
+            "riskClassification": "Low",
+            "clientNotes": "Dominant French utility with nuclear expertise and growing renewable portfolio"
+        },
+        {
+            "clientId": "CL-LVM-003",
+            "clientName": "LVMH Moët Hennessy",
+            "legalEntityType": "Public Limited Company",
+            "country": "France",
+            "sector": "Consumer Goods",
+            "creditRating": "AA-",
+            "annualRevenue": 79183000000.00,
+            "relationshipStartDate": "2020-01-10",
+            "relationshipManager": "Claire Lefevre",
+            "clientStatus": "active",
+            "riskClassification": "Low",
+            "clientNotes": "World's largest luxury goods conglomerate with premium brand portfolio and global presence"
+        },
+        {
+            "clientId": "CL-AIR-004",
+            "clientName": "Air France-KLM",
+            "legalEntityType": "Public Limited Company",
+            "country": "France",
+            "sector": "Transportation",
+            "creditRating": "BBB+",
+            "annualRevenue": 26762000000.00,
+            "relationshipStartDate": "2019-09-05",
+            "relationshipManager": "Jean-Pierre Martin",
+            "clientStatus": "active",
+            "riskClassification": "Medium",
+            "clientNotes": "Major European airline group focusing on sustainable aviation and operational efficiency"
+        },
+        {
+            "clientId": "CL-SCH-005",
+            "clientName": "Schneider Electric",
+            "legalEntityType": "Public Limited Company",
+            "country": "France",
+            "sector": "Technology",
+            "creditRating": "A+",
+            "annualRevenue": 34178000000.00,
+            "relationshipStartDate": "2017-11-30",
+            "relationshipManager": "Sophie Bernard",
+            "clientStatus": "active",
+            "riskClassification": "Low",
+            "clientNotes": "Global leader in energy management and automation solutions with strong sustainability focus"
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/WorkflowMetrics/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "reportDate": "2025-09-01",
+            "activeWorkflows": 34,
+            "avgProcessingTime": 3.2,
+            "completionRate": 0.968,
+            "exceptions": 7,
+            "originationWorkflows": 15,
+            "creditWorkflows": 12,
+            "distributionWorkflows": 7,
+            "originationProgress": 75.0,
+            "creditProgress": 60.0,
+            "distributionProgress": 90.0
+        },
+        {
+            "reportDate": "2025-08-01",
+            "activeWorkflows": 31,
+            "avgProcessingTime": 3.5,
+            "completionRate": 0.952,
+            "exceptions": 9,
+            "originationWorkflows": 14,
+            "creditWorkflows": 10,
+            "distributionWorkflows": 7,
+            "originationProgress": 68.0,
+            "creditProgress": 55.0,
+            "distributionProgress": 85.0
+        },
+        {
+            "reportDate": "2025-07-01",
+            "activeWorkflows": 38,
+            "avgProcessingTime": 3.8,
+            "completionRate": 0.934,
+            "exceptions": 12,
+            "originationWorkflows": 18,
+            "creditWorkflows": 13,
+            "distributionWorkflows": 7,
+            "originationProgress": 72.0,
+            "creditProgress": 58.0,
+            "distributionProgress": 88.0
+        },
+        {
+            "reportDate": "2025-06-01",
+            "activeWorkflows": 29,
+            "avgProcessingTime": 2.9,
+            "completionRate": 0.976,
+            "exceptions": 5,
+            "originationWorkflows": 12,
+            "creditWorkflows": 11,
+            "distributionWorkflows": 6,
+            "originationProgress": 78.0,
+            "creditProgress": 65.0,
+            "distributionProgress": 92.0
+        },
+        {
+            "reportDate": "2025-05-01",
+            "activeWorkflows": 26,
+            "avgProcessingTime": 2.7,
+            "completionRate": 0.981,
+            "exceptions": 4,
+            "originationWorkflows": 11,
+            "creditWorkflows": 9,
+            "distributionWorkflows": 6,
+            "originationProgress": 80.0,
+            "creditProgress": 70.0,
+            "distributionProgress": 95.0
+        }
+    ]
+}

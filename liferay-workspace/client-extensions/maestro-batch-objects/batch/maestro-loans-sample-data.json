@@ -1,0 +1,85 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/MaestroLoan/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "loanId": "LN-2025-0847",
+            "clientName": "TotalEnergies SE",
+            "loanAmount": 45200000.00,
+            "currency": "EUR",
+            "loanType": "Infrastructure Financing",
+            "status": "approved",
+            "originationDate": "2025-01-15",
+            "maturityDate": "2030-01-15",
+            "interestRate": 3.75,
+            "riskRating": "A-",
+            "sector": "Energy",
+            "purpose": "Renewable energy infrastructure development",
+            "notes": "Green energy project for solar and wind facilities across Europe"
+        },
+        {
+            "loanId": "LN-2025-0848",
+            "clientName": "EDF Group",
+            "loanAmount": 78500000.00,
+            "currency": "EUR",
+            "loanType": "Corporate Facility",
+            "status": "under_review",
+            "originationDate": "2025-02-01",
+            "maturityDate": "2032-02-01",
+            "interestRate": 4.10,
+            "riskRating": "A",
+            "sector": "Utilities",
+            "purpose": "Nuclear facility modernization",
+            "notes": "Modernization of existing nuclear power infrastructure"
+        },
+        {
+            "loanId": "LN-2025-0849",
+            "clientName": "LVMH Moët Hennessy",
+            "loanAmount": 32800000.00,
+            "currency": "EUR",
+            "loanType": "Working Capital",
+            "status": "approved",
+            "originationDate": "2025-01-20",
+            "maturityDate": "2027-01-20",
+            "interestRate": 3.25,
+            "riskRating": "AA-",
+            "sector": "Consumer Goods",
+            "purpose": "Luxury brand expansion in Asia-Pacific markets",
+            "notes": "Expansion funding for premium retail operations"
+        },
+        {
+            "loanId": "LN-2025-0850",
+            "clientName": "Air France-KLM",
+            "loanAmount": 125000000.00,
+            "currency": "EUR",
+            "loanType": "Aircraft Financing",
+            "status": "pending",
+            "originationDate": "2025-03-01",
+            "maturityDate": "2035-03-01",
+            "interestRate": 4.50,
+            "riskRating": "BBB+",
+            "sector": "Transportation",
+            "purpose": "Fleet modernization with sustainable aircraft",
+            "notes": "Purchase of new fuel-efficient aircraft for European routes"
+        },
+        {
+            "loanId": "LN-2025-0851",
+            "clientName": "Schneider Electric",
+            "loanAmount": 55600000.00,
+            "currency": "EUR",
+            "loanType": "Green Bond",
+            "status": "approved",
+            "originationDate": "2025-01-10",
+            "maturityDate": "2030-01-10",
+            "interestRate": 3.50,
+            "riskRating": "A+",
+            "sector": "Technology",
+            "purpose": "Smart grid technology development",
+            "notes": "Development of advanced energy management systems"
+        }
+    ]
+}

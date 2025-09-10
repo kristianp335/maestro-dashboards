@@ -1,0 +1,70 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/PerformanceKPI/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "reportDate": "2025-09-01",
+            "totalLoanVolume": 2850000000.00,
+            "activeClients": 847,
+            "averageDealSize": 45200000.00,
+            "portfolioGrowth": 12.5,
+            "revenueGenerated": 156780000.00,
+            "defaultRate": 0.8,
+            "returnOnAssets": 2.3,
+            "periodType": "Monthly",
+            "performanceSummary": "Strong monthly performance with robust loan volume growth and maintained credit quality"
+        },
+        {
+            "reportDate": "2025-08-01",
+            "totalLoanVolume": 2720000000.00,
+            "activeClients": 832,
+            "averageDealSize": 43800000.00,
+            "portfolioGrowth": 11.2,
+            "revenueGenerated": 148950000.00,
+            "defaultRate": 0.9,
+            "returnOnAssets": 2.1,
+            "periodType": "Monthly",
+            "performanceSummary": "Solid performance with steady client acquisition and portfolio expansion"
+        },
+        {
+            "reportDate": "2025-07-01",
+            "totalLoanVolume": 2590000000.00,
+            "activeClients": 818,
+            "averageDealSize": 42100000.00,
+            "portfolioGrowth": 9.8,
+            "revenueGenerated": 142340000.00,
+            "defaultRate": 1.1,
+            "returnOnAssets": 1.9,
+            "periodType": "Monthly",
+            "performanceSummary": "Moderate growth with focus on risk management and client relationship strengthening"
+        },
+        {
+            "reportDate": "2025-06-01",
+            "totalLoanVolume": 2480000000.00,
+            "activeClients": 805,
+            "averageDealSize": 41500000.00,
+            "portfolioGrowth": 10.5,
+            "revenueGenerated": 138920000.00,
+            "defaultRate": 0.7,
+            "returnOnAssets": 2.4,
+            "periodType": "Monthly",
+            "performanceSummary": "Excellent performance with low default rates and strong return on assets"
+        },
+        {
+            "reportDate": "2025-05-01",
+            "totalLoanVolume": 2380000000.00,
+            "activeClients": 792,
+            "averageDealSize": 40200000.00,
+            "portfolioGrowth": 13.2,
+            "revenueGenerated": 135670000.00,
+            "defaultRate": 0.6,
+            "returnOnAssets": 2.6,
+            "periodType": "Monthly",
+            "performanceSummary": "Outstanding month with exceptional growth and minimal credit losses"
+        }
+    ]
+}

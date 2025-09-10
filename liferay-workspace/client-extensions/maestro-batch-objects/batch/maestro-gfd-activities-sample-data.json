@@ -1,0 +1,114 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/GFDActivities/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "activityId": "ACT-2025-09-001",
+            "activityTitle": "Loan LN-2025-0847 - Credit Approval Completed",
+            "activityDescription": "TotalEnergies SE infrastructure loan approved for €45.2M with favorable terms and conditions",
+            "activityType": "credit",
+            "status": "completed",
+            "activityDate": "2025-09-10",
+            "relatedEntityId": "LN-2025-0847",
+            "relatedEntityType": "Loan",
+            "createdBy": "Marie Dubois",
+            "priority": "high",
+            "notes": "Expedited approval process due to client relationship and strong ESG credentials"
+        },
+        {
+            "activityId": "ACT-2025-09-002",
+            "activityTitle": "Loan LN-2025-0848 - Due Diligence Review",
+            "activityDescription": "EDF Group renewable energy facility under comprehensive due diligence review",
+            "activityType": "origination",
+            "status": "in_progress",
+            "activityDate": "2025-09-10",
+            "relatedEntityId": "LN-2025-0848",
+            "relatedEntityType": "Loan",
+            "createdBy": "Antoine Rousseau",
+            "priority": "medium",
+            "notes": "Technical review of renewable energy facility specifications in progress"
+        },
+        {
+            "activityId": "ACT-2025-09-003",
+            "activityTitle": "Distribution Package DP-2025-0156 - Syndication Complete",
+            "activityDescription": "Schneider Electric green bond successfully distributed to 8 institutional investors",
+            "activityType": "distribution",
+            "status": "completed",
+            "activityDate": "2025-09-10",
+            "relatedEntityId": "LN-2025-0851",
+            "relatedEntityType": "Loan",
+            "createdBy": "Sophie Bernard",
+            "priority": "high",
+            "notes": "Oversubscribed by 150% - excellent market reception for green financing"
+        },
+        {
+            "activityId": "ACT-2025-09-004",
+            "activityTitle": "Loan LN-2025-0849 - Documentation Exception",
+            "activityDescription": "Missing environmental compliance certificate for LVMH project requires immediate attention",
+            "activityType": "origination",
+            "status": "exception",
+            "activityDate": "2025-09-09",
+            "relatedEntityId": "LN-2025-0849",
+            "relatedEntityType": "Loan",
+            "createdBy": "Claire Lefevre",
+            "priority": "urgent",
+            "notes": "Client notified - expecting certificate delivery within 48 hours"
+        },
+        {
+            "activityId": "ACT-2025-09-005",
+            "activityTitle": "System Integration - Real-time Data Sync",
+            "activityDescription": "Successfully synchronized portfolio data with central risk management system",
+            "activityType": "system",
+            "status": "completed",
+            "activityDate": "2025-09-09",
+            "relatedEntityId": null,
+            "relatedEntityType": "System",
+            "createdBy": "System Administrator",
+            "priority": "medium",
+            "notes": "Automated sync completed without errors - all risk metrics updated"
+        },
+        {
+            "activityId": "ACT-2025-09-006",
+            "activityTitle": "Deal DL-2025-0234 - Proposal Submission",
+            "activityDescription": "Airbus Sustainable Aviation Facility proposal submitted to credit committee",
+            "activityType": "origination",
+            "status": "in_progress",
+            "activityDate": "2025-09-08",
+            "relatedEntityId": "DL-2025-0234",
+            "relatedEntityType": "Deal",
+            "createdBy": "Marie Dubois",
+            "priority": "high",
+            "notes": "Large syndicated facility - decision expected within one week"
+        },
+        {
+            "activityId": "ACT-2025-09-007",
+            "activityTitle": "Client CL-TEF-001 - Annual Review Completed",
+            "activityDescription": "TotalEnergies SE annual credit review completed with rating maintained at A-",
+            "activityType": "credit",
+            "status": "completed",
+            "activityDate": "2025-09-07",
+            "relatedEntityId": "CL-TEF-001",
+            "relatedEntityType": "Client",
+            "createdBy": "Marie Dubois",
+            "priority": "medium",
+            "notes": "Strong ESG performance offset by energy market volatility - rating stable"
+        },
+        {
+            "activityId": "ACT-2025-09-008",
+            "activityTitle": "Risk Alert - Market Volatility Impact",
+            "activityDescription": "Elevated market volatility detected in energy sector exposures",
+            "activityType": "system",
+            "status": "completed",
+            "activityDate": "2025-09-06",
+            "relatedEntityId": null,
+            "relatedEntityType": "Portfolio",
+            "createdBy": "Risk Management System",
+            "priority": "high",
+            "notes": "Automated alert triggered - portfolio review scheduled for next business day"
+        }
+    ]
+}

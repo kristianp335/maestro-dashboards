@@ -1,0 +1,85 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/MaestroDeal/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "dealId": "DL-2025-0234",
+            "dealName": "Airbus Sustainable Aviation Facility",
+            "clientName": "Airbus SE",
+            "dealValue": 850000000.00,
+            "currency": "EUR",
+            "status": "negotiation",
+            "priority": "high",
+            "expectedClosingDate": "2025-04-15",
+            "lastUpdated": "2025-09-10",
+            "dealType": "Syndicated Loan",
+            "sector": "Aerospace",
+            "relationshipManager": "Marie Dubois",
+            "description": "Financing for sustainable aviation fuel production facilities and next-generation aircraft development"
+        },
+        {
+            "dealId": "DL-2025-0235",
+            "dealName": "Carrefour Digital Transformation",
+            "clientName": "Carrefour Group",
+            "dealValue": 420000000.00,
+            "currency": "EUR",
+            "status": "due_diligence",
+            "priority": "medium",
+            "expectedClosingDate": "2025-03-30",
+            "lastUpdated": "2025-09-09",
+            "dealType": "Corporate Credit Line",
+            "sector": "Retail",
+            "relationshipManager": "Jean-Pierre Martin",
+            "description": "Multi-year credit facility for e-commerce platform expansion and supply chain digitalization"
+        },
+        {
+            "dealId": "DL-2025-0236",
+            "dealName": "Sanofi Biotech Research Facility",
+            "clientName": "Sanofi SA",
+            "dealValue": 650000000.00,
+            "currency": "EUR",
+            "status": "proposal",
+            "priority": "high",
+            "expectedClosingDate": "2025-05-20",
+            "lastUpdated": "2025-09-08",
+            "dealType": "Term Loan",
+            "sector": "Healthcare",
+            "relationshipManager": "Claire Lefevre",
+            "description": "Funding for new biotechnology research and development facility in Lyon"
+        },
+        {
+            "dealId": "DL-2025-0237",
+            "dealName": "Orange 5G Infrastructure",
+            "clientName": "Orange SA",
+            "dealValue": 320000000.00,
+            "currency": "EUR",
+            "status": "approved",
+            "priority": "medium",
+            "expectedClosingDate": "2025-02-28",
+            "lastUpdated": "2025-09-07",
+            "dealType": "Infrastructure Bond",
+            "sector": "Telecommunications",
+            "relationshipManager": "Antoine Rousseau",
+            "description": "5G network infrastructure expansion across France and European markets"
+        },
+        {
+            "dealId": "DL-2025-0238",
+            "dealName": "Veolia Water Technology",
+            "clientName": "Veolia Environnement",
+            "dealValue": 180000000.00,
+            "currency": "EUR",
+            "status": "closed",
+            "priority": "low",
+            "expectedClosingDate": "2025-01-31",
+            "lastUpdated": "2025-09-06",
+            "dealType": "Green Loan",
+            "sector": "Environmental Services",
+            "relationshipManager": "Sophie Bernard",
+            "description": "Completed financing for advanced water treatment technology development and deployment"
+        }
+    ]
+}

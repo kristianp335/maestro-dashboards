@@ -1,0 +1,70 @@
+{
+    "actions": {
+        "createBatch": {
+            "method": "POST",
+            "href": "/o/object-admin/v1.0/object-definitions/by-externalReferenceCode/RiskMetrics/object-entries/batch"
+        }
+    },
+    "items": [
+        {
+            "reportDate": "2025-09-01",
+            "totalRiskExposure": 3280000000.00,
+            "highRiskLoans": 12,
+            "averageCreditScore": 725.6,
+            "coverageRatio": 1.85,
+            "creditRiskPercentage": 3.2,
+            "marketRiskPercentage": 2.1,
+            "operationalRiskPercentage": 1.8,
+            "riskTrend": "stable",
+            "riskSummary": "Overall portfolio risk remains within acceptable parameters with strong credit quality and adequate coverage ratios"
+        },
+        {
+            "reportDate": "2025-08-01",
+            "totalRiskExposure": 3150000000.00,
+            "highRiskLoans": 15,
+            "averageCreditScore": 720.3,
+            "coverageRatio": 1.92,
+            "creditRiskPercentage": 3.5,
+            "marketRiskPercentage": 2.3,
+            "operationalRiskPercentage": 1.9,
+            "riskTrend": "improving",
+            "riskSummary": "Risk metrics showing positive trend with reduced high-risk exposures and improved credit scores"
+        },
+        {
+            "reportDate": "2025-07-01",
+            "totalRiskExposure": 3425000000.00,
+            "highRiskLoans": 18,
+            "averageCreditScore": 715.8,
+            "coverageRatio": 1.78,
+            "creditRiskPercentage": 3.8,
+            "marketRiskPercentage": 2.5,
+            "operationalRiskPercentage": 2.1,
+            "riskTrend": "deteriorating",
+            "riskSummary": "Elevated risk levels due to market volatility and increased exposure to volatile sectors"
+        },
+        {
+            "reportDate": "2025-06-01",
+            "totalRiskExposure": 3090000000.00,
+            "highRiskLoans": 10,
+            "averageCreditScore": 730.2,
+            "coverageRatio": 2.05,
+            "creditRiskPercentage": 2.9,
+            "marketRiskPercentage": 1.8,
+            "operationalRiskPercentage": 1.6,
+            "riskTrend": "stable",
+            "riskSummary": "Strong risk management performance with low default rates and excellent coverage ratios"
+        },
+        {
+            "reportDate": "2025-05-01",
+            "totalRiskExposure": 2980000000.00,
+            "highRiskLoans": 8,
+            "averageCreditScore": 735.1,
+            "coverageRatio": 2.12,
+            "creditRiskPercentage": 2.7,
+            "marketRiskPercentage": 1.7,
+            "operationalRiskPercentage": 1.5,
+            "riskTrend": "improving",
+            "riskSummary": "Optimal risk positioning with minimal high-risk exposures and strong portfolio quality"
+        }
+    ]
+}

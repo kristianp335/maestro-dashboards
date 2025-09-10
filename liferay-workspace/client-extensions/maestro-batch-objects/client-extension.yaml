@@ -1,0 +1,13 @@
+assemble:
+    - from: batch
+      into: static
+name: Maestro GFD Batch Import
+batch:
+    - maestro-loans-sample-data.json
+    - maestro-deals-sample-data.json
+    - maestro-clients-sample-data.json
+    - maestro-risk-metrics-sample-data.json
+    - maestro-performance-kpis-sample-data.json
+    - maestro-workflow-metrics-sample-data.json
+    - maestro-gfd-activities-sample-data.json
+type: batchObjects
