@@ -1,0 +1,327 @@
+/* Maestro GFD Cockpit - CA-CIB Frontend Client Extension */
+/* Professional Banking Theme with CA-CIB Brand Colors */
+
+:root {
+    /* CA-CIB Brand Colors */
+    --ca-cib-green: #00A651;
+    --ca-cib-dark-blue: #003366;
+    --ca-cib-light-gray: #F5F5F5;
+    --ca-cib-medium-gray: #E0E0E0;
+    --ca-cib-dark-gray: #333333;
+    --ca-cib-white: #FFFFFF;
+    
+    /* Financial Dashboard Colors */
+    --success-green: #28a745;
+    --warning-orange: #ffc107;
+    --danger-red: #dc3545;
+    --info-blue: #17a2b8;
+    
+    /* Typography */
+    --font-family-primary: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-family-numbers: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
+    
+    /* Border Radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+}
+
+/* Global Styles for Maestro Finance Dashboard */
+#wrapper .maestro-dashboard {
+    font-family: var(--font-family-primary);
+    color: var(--ca-cib-dark-gray);
+    line-height: 1.6;
+}
+
+/* Financial KPI Cards */
+#wrapper .maestro-kpi-card {
+    background: var(--ca-cib-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--ca-cib-green);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#wrapper .maestro-kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+#wrapper .maestro-kpi-card .kpi-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-sm);
+}
+
+#wrapper .maestro-kpi-card .kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ca-cib-dark-blue);
+    font-family: var(--font-family-numbers);
+    margin-bottom: var(--spacing-xs);
+}
+
+#wrapper .maestro-kpi-card .kpi-change {
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+#wrapper .maestro-kpi-card .kpi-change.positive {
+    color: var(--success-green);
+}
+
+#wrapper .maestro-kpi-card .kpi-change.negative {
+    color: var(--danger-red);
+}
+
+#wrapper .maestro-kpi-card .kpi-change.neutral {
+    color: var(--ca-cib-dark-gray);
+}
+
+/* Financial Data Tables */
+#wrapper .maestro-data-table {
+    background: var(--ca-cib-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+#wrapper .maestro-data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#wrapper .maestro-data-table th {
+    background: var(--ca-cib-dark-blue);
+    color: var(--ca-cib-white);
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#wrapper .maestro-data-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--ca-cib-medium-gray);
+    font-size: 0.875rem;
+}
+
+#wrapper .maestro-data-table tr:hover {
+    background: var(--ca-cib-light-gray);
+}
+
+/* Financial Status Indicators */
+#wrapper .maestro-status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#wrapper .maestro-status-badge.approved {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+}
+
+#wrapper .maestro-status-badge.pending {
+    background: rgba(255, 193, 7, 0.1);
+    color: var(--warning-orange);
+    border: 1px solid var(--warning-orange);
+}
+
+#wrapper .maestro-status-badge.rejected {
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
+}
+
+#wrapper .maestro-status-badge.in-review {
+    background: rgba(23, 162, 184, 0.1);
+    color: var(--info-blue);
+    border: 1px solid var(--info-blue);
+}
+
+/* Chart Containers */
+#wrapper .maestro-chart-container {
+    background: var(--ca-cib-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+#wrapper .maestro-chart-container .chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+#wrapper .maestro-chart-container canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Dashboard Grid Layout */
+#wrapper .maestro-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+#wrapper .maestro-dashboard-full-width {
+    grid-column: 1 / -1;
+}
+
+/* Financial Amount Formatting */
+#wrapper .maestro-amount {
+    font-family: var(--font-family-numbers);
+    font-weight: 600;
+}
+
+#wrapper .maestro-amount.large {
+    font-size: 1.5rem;
+}
+
+#wrapper .maestro-amount.medium {
+    font-size: 1.125rem;
+}
+
+#wrapper .maestro-amount.small {
+    font-size: 0.875rem;
+}
+
+#wrapper .maestro-amount.positive {
+    color: var(--success-green);
+}
+
+#wrapper .maestro-amount.negative {
+    color: var(--danger-red);
+}
+
+/* Risk Level Indicators */
+#wrapper .maestro-risk-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+#wrapper .maestro-risk-indicator.low {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--success-green);
+}
+
+#wrapper .maestro-risk-indicator.medium {
+    background: rgba(255, 193, 7, 0.1);
+    color: var(--warning-orange);
+}
+
+#wrapper .maestro-risk-indicator.high {
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--danger-red);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #wrapper .maestro-dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    #wrapper .maestro-kpi-card {
+        padding: var(--spacing-md);
+    }
+    
+    #wrapper .maestro-kpi-card .kpi-value {
+        font-size: 1.5rem;
+    }
+    
+    #wrapper .maestro-data-table {
+        overflow-x: auto;
+    }
+}
+
+/* Loading States */
+#wrapper .maestro-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    color: var(--ca-cib-dark-gray);
+}
+
+#wrapper .maestro-loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ca-cib-medium-gray);
+    border-top: 2px solid var(--ca-cib-green);
+    border-radius: 50%;
+    animation: maestro-spin 1s linear infinite;
+    margin-left: var(--spacing-sm);
+}
+
+@keyframes maestro-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Edit Mode Styles */
+#wrapper .control-menu-shown .maestro-dashboard,
+#wrapper .has-edit-mode-menu .maestro-dashboard,
+#wrapper .portlet-layout .maestro-dashboard {
+    padding: var(--spacing-md);
+    border: 2px dashed var(--ca-cib-green);
+    background: rgba(0, 166, 81, 0.05);
+}
+
+#wrapper .control-menu-shown .maestro-dashboard::before,
+#wrapper .has-edit-mode-menu .maestro-dashboard::before,
+#wrapper .portlet-layout .maestro-dashboard::before {
+    content: '✏️ Finance Dashboard - Edit Mode';
+    display: block;
+    background: var(--ca-cib-green);
+    color: var(--ca-cib-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) var(--spacing-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

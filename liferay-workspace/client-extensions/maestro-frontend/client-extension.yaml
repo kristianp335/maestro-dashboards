@@ -1,0 +1,12 @@
+assemble:
+  - from: assets
+    include: "**/*"
+    into: static
+maestro-frontend:
+  name: Maestro Frontend
+  type: themeCSS
+  url: css/main.css
+maestro-frontend-js:
+  name: Maestro Frontend JS
+  type: themeJS
+  url: js/main.js

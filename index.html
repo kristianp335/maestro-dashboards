@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maestro GFD Cockpit - Finance Dashboard Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #003366 0%, #00A651 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .status.development {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+        
+        .deliverables {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .deliverables h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .deliverable-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .deliverable-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #00A651;
+        }
+        
+        .deliverable-item h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .deliverable-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Maestro GFD Cockpit</h1>
+        <p>Finance Dashboard for Credit Agricole CIB</p>
+    </div>
+    
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>Fragment Collection</h3>
+                <p>Comprehensive set of Liferay fragments for finance dashboard components including KPI cards, loan analytics, deal management, and risk assessment tools.</p>
+                <span class="status development">In Development</span>
+            </div>
+            
+            <div class="card">
+                <h3>Client Extensions</h3>
+                <p>Frontend client extension with CA-CIB branding and batch objects client extension for data import into Liferay Objects.</p>
+                <span class="status development">In Development</span>
+            </div>
+            
+            <div class="card">
+                <h3>Liferay Objects</h3>
+                <p>Complete data structure for loans, deals, clients, risk metrics, and performance KPIs with realistic financial data.</p>
+                <span class="status development">In Development</span>
+            </div>
+            
+            <div class="card">
+                <h3>CA-CIB Branding</h3>
+                <p>Professional banking aesthetic with green and dark blue theming, responsive design optimized for financial professionals.</p>
+                <span class="status development">In Development</span>
+            </div>
+        </div>
+        
+        <div class="deliverables">
+            <h2>Project Deliverables</h2>
+            <div class="deliverable-list">
+                <div class="deliverable-item">
+                    <h4>Finance Dashboard Collection</h4>
+                    <p>ZIP package containing all dashboard fragments</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Frontend Client Extension</h4>
+                    <p>Global styling and JavaScript functionality</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Batch Objects Extension</h4>
+                    <p>Data import system for Liferay Objects</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>Financial Data Files</h4>
+                    <p>Mock data for loans, deals, clients, and metrics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2025 Maestro GFD Cockpit Project - Liferay Finance Dashboard System</p>
+        <p>Ready for deployment to Liferay DXP/Portal</p>
+    </div>
+</body>
+</html>
