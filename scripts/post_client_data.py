@@ -30,8 +30,18 @@ def get_auth_header():
 def transform_client_data(sample_client):
     """Transform client data from sample format to API format"""
     
-    # Use just the key string for clientStatus - Liferay may expect this simpler format
-    client_status_str = sample_client.get("clientStatus", "active")
+    # Map lowercase sample data to actual Liferay picklist keys
+    status_mapping = {
+        "active": "Active",
+        "prospect": "Prospect", 
+        "inactive": "Inactive",
+        "under_review": "UnderReview",
+        "suspended": "Suspended"
+    }
+    
+    # Get the correct picklist key
+    sample_status = sample_client.get("clientStatus", "active")
+    liferay_status_key = status_mapping.get(sample_status, "Active")
     
     # Transform data to match API format
     api_data = {
@@ -45,7 +55,7 @@ def transform_client_data(sample_client):
         "annualRevenue": sample_client["annualRevenue"],
         "relationshipStartDate": sample_client["relationshipStartDate"],
         "relationshipManager": sample_client["relationshipManager"],
-        "clientStatus": client_status_str,  # Try simple string format first
+        "clientStatus": liferay_status_key,  # Use correct Liferay picklist key
         "riskClassification": sample_client["riskClassification"],
         "clientNotes": sample_client["clientNotes"]
     }
