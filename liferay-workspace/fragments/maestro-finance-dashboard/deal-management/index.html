@@ -158,18 +158,11 @@
     <!-- Pagination -->
     <div class="deal-pagination">
         <div class="pagination-info">
-            <span>Showing 1-[#assign pageSize = configuration.dealsPerPage!"10"][#if pageSize?number > 147]147[#else]${pageSize}[/#if] of 147 deals</span>
+            <span>Showing 1-10 of 0 deals</span>
         </div>
         <div class="pagination-controls">
-            <button class="maestro-btn-secondary" disabled>← Previous</button>
-            <span class="page-numbers">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <span>...</span>
-                <button class="page-btn">15</button>
-            </span>
-            <button class="maestro-btn-secondary">Next →</button>
+            <button class="maestro-btn-secondary" id="prevPageBtn">← Previous</button>
+            <button class="maestro-btn-secondary" id="nextPageBtn">Next →</button>
         </div>
     </div>
 </div>
