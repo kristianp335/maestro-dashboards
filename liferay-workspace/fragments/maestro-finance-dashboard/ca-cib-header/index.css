@@ -474,9 +474,7 @@ body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone lfr-drop-zo
 }
 
 /* Edit Mode Static Display */
-[data-editor-enabled="true"] #wrapper .maestro-search-overlay.maestro-edit-mode-static,
-.is-edit-mode #wrapper .maestro-search-overlay.maestro-edit-mode-static,
-body.has-edit-mode-menu #wrapper .maestro-search-overlay.maestro-edit-mode-static {
+body.has-edit-mode-menu #wrapper .maestro-search-overlay {
     display: block !important;
     position: static;
     width: auto;
@@ -490,9 +488,7 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay.maestro-edit-mode-stati
     background: var(--gray-50, #f8f9fa);
 }
 
-[data-editor-enabled="true"] #wrapper .maestro-edit-mode-static .maestro-search-modal,
-.is-edit-mode #wrapper .maestro-edit-mode-static .maestro-search-modal,
-body.has-edit-mode-menu #wrapper .maestro-edit-mode-static .maestro-search-modal {
+body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     max-width: 100%;
     margin: 0 auto;
     box-shadow: none;
