@@ -320,7 +320,7 @@
         const timeRange = getSelectedTimeRange();
         
         // Load loan data from Liferay Objects
-        window.MaestroUtils.loadObjectData('LoanAnalytics', function(error, data) {
+        window.MaestroUtils.loadObjectData('MaestroLoan', function(error, data) {
             if (error) {
                 console.warn('Failed to load loan analytics data, using mock data:', error);
                 updateChartWithMockData(timeRange);

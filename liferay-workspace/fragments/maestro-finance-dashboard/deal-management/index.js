@@ -51,7 +51,7 @@
         
         // Load deal data from Liferay Objects
         if (window.MaestroUtils && window.MaestroUtils.loadObjectData) {
-            window.MaestroUtils.loadObjectData('Deals', function(error, data) {
+            window.MaestroUtils.loadObjectData('MaestroDeal', function(error, data) {
                 dealContainer.classList.remove('loading');
                 
                 if (error) {
