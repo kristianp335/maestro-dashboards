@@ -1,0 +1,141 @@
+<div class="maestro-header-fragment">
+    <header class="maestro-header [#if configuration.headerStyle == "primary"]maestro-header-primary[/#if]">
+        <div class="maestro-container">
+            <div class="maestro-header-content">
+                [#if configuration.showNavigation!true]
+                <!-- Left Sliding Menu Toggle -->
+                <button 
+                    class="maestro-menu-toggle maestro-focus-visible" 
+                    id="maestro-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="maestro-sliding-menu"
+                    aria-label="Toggle navigation menu"
+                >
+                    <span class="maestro-menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="maestro-sr-only">Menu</span>
+                </button>
+                [/#if]
+                
+                <!-- CA-CIB Logo -->
+                <div class="maestro-header-logo">
+                    <img 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjQ4IiB2aWV3Qm94PSIwIDAgMTgwIDQ4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxzdHlsZT4uY2Ete2ZpbGw6IzAwQTY1MTtmb250LWZhbWlseTonSGVsdmV0aWNhJyxzYW5zLXNlcmlmO2ZvbnQtc2l6ZToxOHB4O2ZvbnQtd2VpZ2h0OmJvbGQ7fS5jaWJ7Zm9udC1zaXplOjE0cHg7Y29sb3I6IzAwMzM2NjtmZWF0dXJlLXNldHRpbmdzOidrZXJuJyBvZmY7fTwvc3R5bGU+PC9kZWZzPjx0ZXh0IHg9IjEwIiB5PSIzMCIgY2xhc3M9ImNhIj5DUkVESVQgQUdSSUNPTEU8L3RleHQ+PHRleHQgeD0iMTAiIHk9IjQ0IiBjbGFzcz0iY2liIj5DT1JQT1JBVEUgJmFtcDsgSU5WRVNUTUVOVCBCQU5LPC90ZXh0Pjwvc3ZnPg=="
+                        alt="Credit Agricole CIB"
+                        width="180"
+                        height="48"
+                        data-lfr-editable-id="header-logo"
+                        data-lfr-editable-type="image"
+                    >
+                </div>
+                
+                <!-- Platform Title -->
+                <div class="maestro-platform-title">
+                    <h1 data-lfr-editable-id="platform-title" data-lfr-editable-type="text">Maestro GFD Cockpit</h1>
+                    <span data-lfr-editable-id="platform-subtitle" data-lfr-editable-type="text">Global Finance Dashboard</span>
+                </div>
+                
+                <!-- Header Actions -->
+                <div class="maestro-header-actions">
+                    [#if configuration.showAccountSelector!true]
+                    <!-- Account Selector Dropzone -->
+                    <div class="maestro-account-selector-dropzone">
+                        <lfr-drop-zone data-lfr-drop-zone-id="account-selector">
+                        </lfr-drop-zone>
+                    </div>
+                    [/#if]
+                    
+                    [#if configuration.showSearch!true]
+                    <!-- Search Button -->
+                    <button class="maestro-search-btn maestro-focus-visible" id="maestro-search-btn" aria-label="Open search">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="2"/>
+                            <path d="M15 15L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    [/#if]
+                    
+                    <!-- Language Selector Dropzone -->
+                    <div class="maestro-language-selector-dropzone">
+                        <lfr-drop-zone data-lfr-drop-zone-id="language-selector">
+                        </lfr-drop-zone>
+                    </div>
+                    
+                    [#if configuration.showUserProfile!true]
+                    <!-- Login/User Button -->
+                    [#if themeDisplay.isSignedIn()]
+                        <div class="maestro-user-profile-widget">
+                            [@liferay.user_personal_bar /]
+                        </div>
+                    [#else]
+                        <button class="maestro-header-action-btn maestro-login-btn" id="maestro-login-btn" aria-label="Sign in">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="10,17 15,12 10,7" stroke="currentColor" stroke-width="2"/>
+                                <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Sign In</span>
+                        </button>
+                    [/#if]
+                    [/#if]
+                </div>
+            </div>
+        </div>
+        
+        [#if configuration.showNavigation!true]
+        <!-- Left Sliding Menu -->
+        <div class="maestro-sliding-menu" id="maestro-sliding-menu" aria-hidden="true">
+            <div class="maestro-menu-header">
+                <h2 class="maestro-menu-title" data-lfr-editable-id="menu-title" data-lfr-editable-type="text">Finance Dashboard Navigation</h2>
+                <button class="maestro-menu-close" id="maestro-menu-close" aria-label="Close navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="maestro-menu-nav" role="navigation" aria-label="Main navigation">
+                <ul class="maestro-menu-list" id="maestro-menu-list">
+                    <!-- Navigation will be populated by JavaScript -->
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Menu Overlay -->
+        <div class="maestro-overlay" id="maestro-overlay"></div>
+        [/#if]
+    </header>
+    
+    <!-- Search Modal -->
+    [#if configuration.showSearch!true]
+    <div id="maestro-search-overlay" class="maestro-search-overlay maestro-edit-mode-static" style="display: none;">
+        <div class="maestro-search-modal">
+            <div class="maestro-modal-header">
+                <h3 class="maestro-modal-title" data-lfr-editable-id="search-title" data-lfr-editable-type="text">Search Finance Dashboard</h3>
+                <button id="maestro-close-search" class="maestro-modal-close" aria-label="Close search">&times;</button>
+            </div>
+            <div class="maestro-modal-body search-content">
+                <lfr-drop-zone data-lfr-drop-zone-id="search-modal-content">
+                </lfr-drop-zone>
+            </div>
+        </div>
+    </div>
+    [/#if]
+    
+    <!-- Login Modal -->
+    [#if !themeDisplay.isSignedIn()]
+    <div id="maestro-login-overlay" class="maestro-login-overlay" style="display: none;">
+        <div class="maestro-login-modal">
+            <div class="maestro-modal-header">
+                <h3 class="maestro-modal-title" data-lfr-editable-id="login-title" data-lfr-editable-type="text">Sign In to Maestro GFD</h3>
+                <button id="maestro-close-login" class="maestro-modal-close" aria-label="Close login">&times;</button>
+            </div>
+            <div class="maestro-modal-body login-content">
+                [@liferay_portlet["runtime"] portletName="com_liferay_login_web_portlet_LoginPortlet" /]
+            </div>
+        </div>
+    </div>
+    [/#if]
+</div>

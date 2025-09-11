@@ -1,0 +1,141 @@
+<div class="boots-header-fragment">
+    <header class="boots-header [#if configuration.headerStyle == "primary"]boots-header-primary[/#if]">
+        <div class="boots-container">
+            <div class="boots-header-content">
+                [#if configuration.showNavigation!true]
+                <!-- Left Sliding Menu Toggle -->
+                <button 
+                    class="boots-menu-toggle boots-focus-visible" 
+                    id="boots-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="boots-sliding-menu"
+                    aria-label="Toggle navigation menu"
+                >
+                    <span class="boots-menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="boots-sr-only">Menu</span>
+                </button>
+                [/#if]
+                
+                <!-- Boots Logo -->
+                <div class="boots-header-logo">
+                    <img 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxzdHlsZT4uYntmaWxsOiMxODQyOTA7Zm9udC1mYW1pbHk6J0NvdXJpZXIgTmV3Jyxtb25vc3BhY2U7Zm9udC1zaXplOjI0cHg7Zm9udC13ZWlnaHQ6Ym9sZDt9PC9zdHlsZT48L2RlZnM+PHRleHQgeD0iMTAiIHk9IjI4IiBjbGFzcz0iYiI+Qm9vdHM8L3RleHQ+PC9zdmc+"
+                        alt="Boots"
+                        width="120"
+                        height="40"
+                        data-lfr-editable-id="header-logo"
+                        data-lfr-editable-type="image"
+                    >
+                </div>
+                
+
+                
+                <!-- Header Actions -->
+                <div class="boots-header-actions">
+                    [#if configuration.showAccountSelector!true]
+                    <!-- Account Selector Dropzone -->
+                    <div class="boots-account-selector-dropzone">
+                        <lfr-drop-zone data-lfr-drop-zone-id="account-selector">
+                        </lfr-drop-zone>
+                    </div>
+                    [/#if]
+                    
+                    [#if configuration.showSearch!true]
+                    <!-- Search Button -->
+                    <button class="boots-search-btn boots-focus-visible" id="boots-search-btn" aria-label="Open search">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="2"/>
+                            <path d="M15 15L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    [/#if]
+                    
+                    <!-- Language Selector Dropzone -->
+                    <div class="boots-language-selector-dropzone">
+                        <lfr-drop-zone data-lfr-drop-zone-id="language-selector">
+                        </lfr-drop-zone>
+                    </div>
+                    
+
+                    
+                    [#if configuration.showUserProfile!true]
+                    <!-- Login/User Button -->
+                    [#if themeDisplay.isSignedIn()]
+                        <div class="boots-user-profile-widget">
+                            [@liferay.user_personal_bar /]
+                        </div>
+                    [#else]
+                        <button class="boots-header-action-btn boots-login-btn" id="boots-login-btn" aria-label="Sign in">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="10,17 15,12 10,7" stroke="currentColor" stroke-width="2"/>
+                                <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Sign In</span>
+                        </button>
+                    [/#if]
+                    [/#if]
+                </div>
+            </div>
+        </div>
+        
+
+        
+        [#if configuration.showNavigation!true]
+        <!-- Left Sliding Menu -->
+        <div class="boots-sliding-menu" id="boots-sliding-menu" aria-hidden="true">
+            <div class="boots-menu-header">
+                <h2 class="boots-menu-title" data-lfr-editable-id="menu-title" data-lfr-editable-type="text">Navigation</h2>
+                <button class="boots-menu-close" id="boots-menu-close" aria-label="Close navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="boots-menu-nav" role="navigation" aria-label="Main navigation">
+                <ul class="boots-menu-list" id="boots-menu-list">
+                    <!-- Navigation will be populated by JavaScript -->
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Menu Overlay -->
+        <div class="boots-overlay" id="boots-overlay"></div>
+        [/#if]
+    </header>
+    
+    <!-- Search Modal -->
+    [#if configuration.showSearch!true]
+    <div id="boots-search-overlay" class="boots-search-overlay boots-edit-mode-static" style="display: none;">
+        <div class="boots-search-modal">
+            <div class="boots-modal-header">
+                <h3 class="boots-modal-title" data-lfr-editable-id="search-title" data-lfr-editable-type="text">Search Partner Portal</h3>
+                <button id="boots-close-search" class="boots-modal-close" aria-label="Close search">&times;</button>
+            </div>
+            <div class="boots-modal-body search-content">
+                <lfr-drop-zone data-lfr-drop-zone-id="search-modal-content">
+                </lfr-drop-zone>
+            </div>
+        </div>
+    </div>
+    [/#if]
+    
+    <!-- Login Modal -->
+    [#if !themeDisplay.isSignedIn()]
+    <div id="boots-login-overlay" class="boots-login-overlay" style="display: none;">
+        <div class="boots-login-modal">
+            <div class="boots-modal-header">
+                <h3 class="boots-modal-title" data-lfr-editable-id="login-title" data-lfr-editable-type="text">Sign In to Partner Portal</h3>
+                <button id="boots-close-login" class="boots-modal-close" aria-label="Close login">&times;</button>
+            </div>
+            <div class="boots-modal-body login-content">
+                [@liferay_portlet["runtime"] portletName="com_liferay_login_web_portlet_LoginPortlet" /]
+            </div>
+        </div>
+    </div>
+    [/#if]
+</div>

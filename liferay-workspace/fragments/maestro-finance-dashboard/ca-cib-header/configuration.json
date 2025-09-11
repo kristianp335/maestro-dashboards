@@ -1,0 +1,69 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showUserProfile",
+          "label": "Show User Profile",
+          "description": "Display user profile dropdown in header",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showSearch",
+          "label": "Show Search Button",
+          "description": "Display the search button in the header with modal overlay",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showNavigation",
+          "label": "Show Navigation Menu",
+          "description": "Display the navigation menu toggle button and sliding menu",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showAccountSelector",
+          "label": "Show Account Selector",
+          "description": "Display account selector dropdown widget in header",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "headerStyle",
+          "label": "Header Style",
+          "description": "Choose header background style",
+          "type": "select",
+          "defaultValue": "white",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "White Background",
+                "value": "white"
+              },
+              {
+                "label": "CA-CIB Green Background",
+                "value": "primary"
+              }
+            ]
+          }
+        },
+        {
+          "name": "navigationMenuId",
+          "label": "Navigation Menu ID",
+          "description": "ID of the Liferay navigation menu to use",
+          "type": "text",
+          "defaultValue": "primary-menu"
+        },
+        {
+          "name": "sitePrefix",
+          "label": "Site Prefix",
+          "description": "URL prefix to prepend to all navigation menu links (e.g., /web/maestro-gfd)",
+          "type": "text",
+          "defaultValue": "/web/maestro-gfd"
+        }
+      ]
+    }
+  ]
+}

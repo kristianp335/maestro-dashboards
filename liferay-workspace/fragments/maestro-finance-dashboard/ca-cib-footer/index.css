@@ -1,0 +1,311 @@
+/*
+ * CA-CIB Maestro Footer Fragment
+ * Credit Agricole Corporate & Investment Bank branding
+ */
+
+/* Footer Container */
+#wrapper .maestro-footer-fragment {
+    margin-top: auto;
+}
+
+#wrapper .maestro-footer {
+    background: var(--gray-50, #f8f9fa);
+    border-top: 1px solid var(--gray-200, #f1f2f5);
+    color: var(--brand-color-2, #003366);
+    font-size: var(--font-size-sm, 0.875rem);
+}
+
+#wrapper .maestro-footer-dark {
+    background: var(--brand-color-2, #003366);
+    color: var(--brand-color-neutral-1, #ffffff);
+    border-top-color: var(--brand-color-1, #00A651);
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-title,
+#wrapper .maestro-footer-dark .maestro-footer-links a {
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-links a:hover {
+    color: var(--brand-color-1, #00A651);
+}
+
+/* Footer Content */
+#wrapper .maestro-footer-content {
+    padding: var(--spacer-5, 2rem) 0;
+}
+
+#wrapper .maestro-footer-main {
+    margin-bottom: var(--spacer-4, 1.5rem);
+}
+
+/* Footer Grid */
+#wrapper .maestro-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacer-4, 1.5rem);
+    margin-bottom: var(--spacer-4, 1.5rem);
+}
+
+@media (max-width: 768px) {
+    #wrapper .maestro-footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacer-3, 1rem);
+    }
+}
+
+/* Footer Sections */
+#wrapper .maestro-footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+#wrapper .maestro-footer-section:first-child {
+    grid-column: 1 / 2;
+}
+
+/* Footer Logo */
+#wrapper .maestro-footer-logo {
+    margin-bottom: var(--spacer-3, 1rem);
+}
+
+#wrapper .maestro-footer-logo img {
+    height: 36px;
+    width: auto;
+    opacity: 0.9;
+}
+
+/* Footer Description */
+#wrapper .maestro-footer-description {
+    color: var(--text-color-secondary, #6c757d);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 280px;
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-description {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Footer Titles */
+#wrapper .maestro-footer-title {
+    font-size: var(--font-size-base, 1rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--brand-color-2, #003366);
+    margin: 0 0 var(--spacer-3, 1rem) 0;
+    border-bottom: 2px solid var(--brand-color-1, #00A651);
+    padding-bottom: var(--spacer-1, 0.25rem);
+    display: inline-block;
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-title {
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+/* Footer Links */
+#wrapper .maestro-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper .maestro-footer-links li {
+    margin-bottom: var(--spacer-2, 0.5rem);
+}
+
+#wrapper .maestro-footer-links a {
+    color: var(--text-color-secondary, #6c757d);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacer-1, 0.25rem);
+}
+
+#wrapper .maestro-footer-links a:hover {
+    color: var(--brand-color-1, #00A651);
+    text-decoration: none;
+}
+
+#wrapper .maestro-footer-links a:focus {
+    outline: 2px solid var(--brand-color-1, #00A651);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Contact Info */
+#wrapper .maestro-footer-contact p {
+    margin: 0 0 var(--spacer-2, 0.5rem) 0;
+    color: var(--text-color-secondary, #6c757d);
+    line-height: 1.5;
+}
+
+#wrapper .maestro-footer-contact a {
+    color: var(--brand-color-1, #00A651);
+    text-decoration: none;
+}
+
+#wrapper .maestro-footer-contact a:hover {
+    text-decoration: underline;
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-contact p,
+#wrapper .maestro-footer-dark .maestro-footer-contact a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-contact a:hover {
+    color: var(--brand-color-1, #00A651);
+}
+
+/* Footer Bottom */
+#wrapper .maestro-footer-bottom {
+    border-top: 1px solid var(--gray-200, #f1f2f5);
+    padding-top: var(--spacer-4, 1.5rem);
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-bottom {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+#wrapper .maestro-footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacer-4, 1.5rem);
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    #wrapper .maestro-footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacer-3, 1rem);
+    }
+}
+
+/* Copyright */
+#wrapper .maestro-footer-copyright {
+    flex: 1;
+}
+
+#wrapper .maestro-footer-copyright p {
+    margin: 0;
+    color: var(--text-color-secondary, #6c757d);
+    font-size: var(--font-size-xs, 0.75rem);
+    line-height: 1.5;
+}
+
+#wrapper .maestro-footer-powered {
+    margin-top: var(--spacer-1, 0.25rem) !important;
+    font-size: var(--font-size-xs, 0.75rem) !important;
+}
+
+#wrapper .maestro-footer-powered strong {
+    color: var(--brand-color-1, #00A651);
+    font-weight: var(--font-weight-semibold, 600);
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-copyright p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Social Links */
+#wrapper .maestro-footer-social {
+    display: flex;
+    gap: var(--spacer-3, 1rem);
+    align-items: center;
+}
+
+#wrapper .maestro-footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gray-200, #f1f2f5);
+    color: var(--brand-color-2, #003366);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+#wrapper .maestro-footer-social a:hover {
+    background: var(--brand-color-1, #00A651);
+    color: var(--brand-color-neutral-1, #ffffff);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 166, 81, 0.2);
+}
+
+#wrapper .maestro-footer-social a:focus {
+    outline: 2px solid var(--brand-color-1, #00A651);
+    outline-offset: 2px;
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-social a {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+#wrapper .maestro-footer-dark .maestro-footer-social a:hover {
+    background: var(--brand-color-1, #00A651);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    #wrapper .maestro-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #wrapper .maestro-footer-section:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    #wrapper .maestro-footer-content {
+        padding: var(--spacer-4, 1.5rem) 0;
+    }
+    
+    #wrapper .maestro-footer-section:first-child {
+        text-align: center;
+        grid-column: 1;
+    }
+    
+    #wrapper .maestro-footer-description {
+        max-width: none;
+    }
+    
+    #wrapper .maestro-footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #wrapper .maestro-footer-content {
+        padding: var(--spacer-3, 1rem) 0;
+    }
+    
+    #wrapper .maestro-footer-grid {
+        gap: var(--spacer-4, 1.5rem);
+    }
+    
+    #wrapper .maestro-footer-bottom {
+        padding-top: var(--spacer-3, 1rem);
+    }
+}
+
+/* Print Styles */
+@media print {
+    #wrapper .maestro-footer-fragment {
+        background: transparent !important;
+        color: #000 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    #wrapper .maestro-footer-social,
+    #wrapper .maestro-footer-links {
+        display: none;
+    }
+}

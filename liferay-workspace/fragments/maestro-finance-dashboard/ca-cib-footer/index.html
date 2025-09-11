@@ -1,0 +1,118 @@
+<footer class="maestro-footer-fragment">
+    <div class="maestro-footer [#if configuration.footerStyle == "dark"]maestro-footer-dark[/#if]">
+        <div class="maestro-container">
+            <div class="maestro-footer-content">
+                <!-- Footer Main Content -->
+                <div class="maestro-footer-main">
+                    <div class="maestro-footer-grid">
+                        <!-- Company Info -->
+                        <div class="maestro-footer-section">
+                            <div class="maestro-footer-logo">
+                                <img 
+                                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwIiBoZWlnaHQ9IjM2IiB2aWV3Qm94PSIwIDAgMTQwIDM2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxzdHlsZT4uY2Ete2ZpbGw6IzAwQTY1MTtmb250LWZhbWlseTonSGVsdmV0aWNhJyxzYW5zLXNlcmlmO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtd2VpZ2h0OmJvbGQ7fS5jaWJ7Zm9udC1zaXplOjEwcHg7Y29sb3I6IzAwMzM2Njt9PC9zdHlsZT48L2RlZnM+PHRleHQgeD0iOCIgeT0iMjAiIGNsYXNzPSJjYSI+Q1JFRElUIEFHUklDT0xFPC90ZXh0Pjx0ZXh0IHg9IjgiIHk9IjMwIiBjbGFzcz0iY2liIj5DT1JQT1JBVEUgJmFtcDsgSU5WRVNUTUVOVCBCQU5LPC90ZXh0Pjwvc3ZnPg=="
+                                    alt="Credit Agricole CIB"
+                                    width="140"
+                                    height="36"
+                                    data-lfr-editable-id="footer-logo"
+                                    data-lfr-editable-type="image"
+                                >
+                            </div>
+                            <p class="maestro-footer-description" data-lfr-editable-id="company-description" data-lfr-editable-type="text">
+                                Leading corporate and investment bank providing comprehensive financial solutions for businesses worldwide.
+                            </p>
+                        </div>
+
+                        <!-- Dashboard Links -->
+                        [#if configuration.showDashboardLinks!true]
+                        <div class="maestro-footer-section">
+                            <h4 class="maestro-footer-title" data-lfr-editable-id="dashboard-title" data-lfr-editable-type="text">Dashboard</h4>
+                            <ul class="maestro-footer-links">
+                                <li><a href="#" data-lfr-editable-id="dashboard-link-1" data-lfr-editable-type="link">KPI Overview</a></li>
+                                <li><a href="#" data-lfr-editable-id="dashboard-link-2" data-lfr-editable-type="link">Loan Analytics</a></li>
+                                <li><a href="#" data-lfr-editable-id="dashboard-link-3" data-lfr-editable-type="link">Deal Management</a></li>
+                                <li><a href="#" data-lfr-editable-id="dashboard-link-4" data-lfr-editable-type="link">Risk Assessment</a></li>
+                            </ul>
+                        </div>
+                        [/#if]
+
+                        <!-- Support Links -->
+                        [#if configuration.showSupportLinks!true]
+                        <div class="maestro-footer-section">
+                            <h4 class="maestro-footer-title" data-lfr-editable-id="support-title" data-lfr-editable-type="text">Support</h4>
+                            <ul class="maestro-footer-links">
+                                <li><a href="#" data-lfr-editable-id="support-link-1" data-lfr-editable-type="link">Help Center</a></li>
+                                <li><a href="#" data-lfr-editable-id="support-link-2" data-lfr-editable-type="link">Documentation</a></li>
+                                <li><a href="#" data-lfr-editable-id="support-link-3" data-lfr-editable-type="link">Contact Support</a></li>
+                                <li><a href="#" data-lfr-editable-id="support-link-4" data-lfr-editable-type="link">System Status</a></li>
+                            </ul>
+                        </div>
+                        [/#if]
+
+                        <!-- Legal Links -->
+                        [#if configuration.showLegalLinks!true]
+                        <div class="maestro-footer-section">
+                            <h4 class="maestro-footer-title" data-lfr-editable-id="legal-title" data-lfr-editable-type="text">Legal</h4>
+                            <ul class="maestro-footer-links">
+                                <li><a href="#" data-lfr-editable-id="legal-link-1" data-lfr-editable-type="link">Privacy Policy</a></li>
+                                <li><a href="#" data-lfr-editable-id="legal-link-2" data-lfr-editable-type="link">Terms of Service</a></li>
+                                <li><a href="#" data-lfr-editable-id="legal-link-3" data-lfr-editable-type="link">Cookie Policy</a></li>
+                                <li><a href="#" data-lfr-editable-id="legal-link-4" data-lfr-editable-type="link">Compliance</a></li>
+                            </ul>
+                        </div>
+                        [/#if]
+
+                        <!-- Contact Info -->
+                        [#if configuration.showContactInfo!true]
+                        <div class="maestro-footer-section">
+                            <h4 class="maestro-footer-title" data-lfr-editable-id="contact-title" data-lfr-editable-type="text">Contact</h4>
+                            <div class="maestro-footer-contact">
+                                <p data-lfr-editable-id="contact-address" data-lfr-editable-type="text">
+                                    12 Place des États-Unis<br>
+                                    75012 Paris, France
+                                </p>
+                                <p>
+                                    <strong data-lfr-editable-id="contact-phone" data-lfr-editable-type="text">+33 1 43 23 52 02</strong>
+                                </p>
+                                <p>
+                                    <a href="mailto:maestro-support@ca-cib.com" data-lfr-editable-id="contact-email" data-lfr-editable-type="link">maestro-support@ca-cib.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        [/#if]
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="maestro-footer-bottom">
+                    <div class="maestro-footer-bottom-content">
+                        <div class="maestro-footer-copyright">
+                            <p data-lfr-editable-id="copyright-text" data-lfr-editable-type="text">
+                                © 2025 Crédit Agricole Corporate and Investment Bank. All rights reserved.
+                            </p>
+                            <p class="maestro-footer-powered">
+                                <span data-lfr-editable-id="powered-text" data-lfr-editable-type="text">Powered by</span>
+                                <strong data-lfr-editable-id="platform-name" data-lfr-editable-type="text">Maestro GFD Platform</strong>
+                            </p>
+                        </div>
+
+                        [#if configuration.showSocialLinks!true]
+                        <!-- Social Links -->
+                        <div class="maestro-footer-social">
+                            <a href="#" aria-label="LinkedIn" data-lfr-editable-id="social-linkedin" data-lfr-editable-type="link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Twitter" data-lfr-editable-id="social-twitter" data-lfr-editable-type="link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        [/#if]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

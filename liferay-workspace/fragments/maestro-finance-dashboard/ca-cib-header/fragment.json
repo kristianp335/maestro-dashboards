@@ -1,0 +1,11 @@
+{
+  "fragmentEntryKey": "ca-cib-header",
+  "name": "CA-CIB Maestro Header",
+  "type": "section",
+  "htmlPath": "index.html",
+  "cssPath": "index.css",
+  "jsPath": "index.js",
+  "configurationPath": "configuration.json",
+  "thumbnailPath": "thumbnail.png",
+  "icon": "header"
+}

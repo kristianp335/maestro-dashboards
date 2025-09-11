@@ -1,0 +1,62 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "footerStyle",
+          "label": "Footer Style",
+          "description": "Choose footer background style",
+          "type": "select",
+          "defaultValue": "light",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Light Background",
+                "value": "light"
+              },
+              {
+                "label": "Dark Background",
+                "value": "dark"
+              }
+            ]
+          }
+        },
+        {
+          "name": "showDashboardLinks",
+          "label": "Show Dashboard Links",
+          "description": "Display dashboard navigation links in footer",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showSupportLinks",
+          "label": "Show Support Links",
+          "description": "Display support and help links in footer",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showLegalLinks",
+          "label": "Show Legal Links",
+          "description": "Display legal and compliance links in footer",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showContactInfo",
+          "label": "Show Contact Information",
+          "description": "Display contact details in footer",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "showSocialLinks",
+          "label": "Show Social Media Links",
+          "description": "Display social media links in footer",
+          "type": "checkbox",
+          "defaultValue": true
+        }
+      ]
+    }
+  ]
+}

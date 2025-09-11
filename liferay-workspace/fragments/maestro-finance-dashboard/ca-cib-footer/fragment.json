@@ -1,0 +1,11 @@
+{
+  "fragmentEntryKey": "ca-cib-footer",
+  "name": "CA-CIB Maestro Footer",
+  "type": "section",
+  "htmlPath": "index.html",
+  "cssPath": "index.css",
+  "jsPath": "index.js",
+  "configurationPath": "configuration.json",
+  "thumbnailPath": "thumbnail.png",
+  "icon": "footer"
+}

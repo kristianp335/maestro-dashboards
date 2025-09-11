@@ -1,0 +1,11 @@
+{
+  "fragmentEntryKey": "boots-header",
+  "name": "Boots Header",
+  "type": "section",
+  "htmlPath": "index.html",
+  "cssPath": "index.css",
+  "jsPath": "index.js",
+  "configurationPath": "configuration.json",
+  "thumbnailPath": "thumbnail.png",
+  "icon": "header"
+}

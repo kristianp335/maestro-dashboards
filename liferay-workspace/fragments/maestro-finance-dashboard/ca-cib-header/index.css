@@ -1,0 +1,539 @@
+/*
+ * CA-CIB Maestro Header Fragment
+ * Credit Agricole Corporate & Investment Bank branding
+ */
+
+/* Header Container */
+#wrapper .maestro-header-fragment {
+    position: relative;
+    z-index: 1030;
+}
+
+#wrapper .maestro-header {
+    background: var(--brand-color-neutral-1, #ffffff);
+    border-bottom: 1px solid var(--gray-200, #f1f2f5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-header-primary {
+    background: var(--brand-color-1, #00A651);
+    color: var(--brand-color-neutral-1, #ffffff);
+    border-bottom-color: var(--brand-color-2, #003366);
+}
+
+#wrapper .maestro-header-primary .maestro-platform-title h1,
+#wrapper .maestro-header-primary .maestro-platform-title span,
+#wrapper .maestro-header-primary .maestro-search-btn,
+#wrapper .maestro-header-primary .maestro-login-btn {
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+/* Header Content */
+#wrapper .maestro-header-content {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    gap: var(--spacer-4, 1.5rem);
+}
+
+/* Menu Toggle Button */
+#wrapper .maestro-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius, 4px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-menu-toggle:hover {
+    background: var(--gray-100, #f7f8f9);
+    border-color: var(--gray-200, #f1f2f5);
+}
+
+#wrapper .maestro-menu-toggle:focus {
+    outline: none;
+    border-color: var(--brand-color-1, #00A651);
+    box-shadow: 0 0 0 2px rgba(0, 166, 81, 0.1);
+}
+
+#wrapper .maestro-menu-toggle.active {
+    background: var(--brand-color-1, #00A651);
+    border-color: var(--brand-color-1, #00A651);
+}
+
+#wrapper .maestro-menu-toggle.active .maestro-menu-icon span {
+    background: var(--brand-color-neutral-1, #ffffff);
+}
+
+/* Menu Icon Animation */
+#wrapper .maestro-menu-icon {
+    position: relative;
+    width: 20px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#wrapper .maestro-menu-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--brand-color-2, #003366);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-menu-toggle.active .maestro-menu-icon span:first-child {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#wrapper .maestro-menu-toggle.active .maestro-menu-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+#wrapper .maestro-menu-toggle.active .maestro-menu-icon span:last-child {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Logo */
+#wrapper .maestro-header-logo {
+    flex-shrink: 0;
+}
+
+#wrapper .maestro-header-logo img {
+    height: 48px;
+    width: auto;
+}
+
+/* Platform Title */
+#wrapper .maestro-platform-title {
+    margin-left: var(--spacer-4, 1.5rem);
+}
+
+#wrapper .maestro-platform-title h1 {
+    margin: 0;
+    font-size: var(--font-size-lg, 1.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--brand-color-2, #003366);
+    line-height: 1.2;
+    font-family: var(--font-family-primary, system-ui, -apple-system, sans-serif);
+}
+
+#wrapper .maestro-platform-title span {
+    display: block;
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--success, #28a745);
+    font-weight: var(--font-weight-normal, 400);
+    margin-top: 2px;
+}
+
+/* Header Actions */
+#wrapper .maestro-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-3, 1rem);
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* Search Button */
+#wrapper .maestro-search-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-2, 0.5rem);
+    padding: var(--spacer-2, 0.5rem) var(--spacer-3, 1rem);
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius, 4px);
+    color: var(--brand-color-2, #003366);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-search-btn:hover,
+#wrapper .maestro-search-btn:focus {
+    background: var(--gray-100, #f7f8f9);
+    border-color: var(--gray-200, #f1f2f5);
+    outline: none;
+}
+
+#wrapper .maestro-search-btn:focus {
+    border-color: var(--brand-color-1, #00A651);
+    box-shadow: 0 0 0 2px rgba(0, 166, 81, 0.1);
+}
+
+/* Login Button */
+#wrapper .maestro-login-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-2, 0.5rem);
+    padding: var(--spacer-2, 0.5rem) var(--spacer-3, 1rem);
+    background: var(--brand-color-1, #00A651);
+    border: 2px solid var(--brand-color-1, #00A651);
+    border-radius: var(--border-radius, 4px);
+    color: var(--brand-color-neutral-1, #ffffff);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-login-btn:hover,
+#wrapper .maestro-login-btn:focus {
+    background: var(--success, #28a745);
+    border-color: var(--success, #28a745);
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 166, 81, 0.2);
+}
+
+/* Account & Language Selector Dropzones */
+#wrapper .maestro-account-selector-dropzone,
+#wrapper .maestro-language-selector-dropzone {
+    display: none;
+    margin: 0 var(--spacer-2, 0.5rem);
+}
+
+#wrapper .maestro-account-selector-dropzone.has-content,
+#wrapper .maestro-language-selector-dropzone.has-content {
+    display: block;
+}
+
+/* Edit mode visibility */
+[data-editor-enabled="true"] #wrapper .maestro-account-selector-dropzone,
+.is-edit-mode #wrapper .maestro-account-selector-dropzone,
+body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone,
+[data-editor-enabled="true"] #wrapper .maestro-language-selector-dropzone,
+.is-edit-mode #wrapper .maestro-language-selector-dropzone,
+body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone {
+    display: block !important;
+    border: 2px dashed var(--brand-color-1, #00A651);
+    border-radius: var(--border-radius, 4px);
+    padding: var(--spacer-2, 0.5rem);
+    background: rgba(0, 166, 81, 0.05);
+}
+
+[data-editor-enabled="true"] #wrapper .maestro-account-selector-dropzone:empty::after,
+.is-edit-mode #wrapper .maestro-account-selector-dropzone:empty::after,
+body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone:empty::after {
+    content: "Add Account Selector";
+    color: var(--text-color-secondary, #6c757d);
+    font-size: 0.75rem;
+    font-style: italic;
+    text-align: center;
+    display: block;
+}
+
+[data-editor-enabled="true"] #wrapper .maestro-language-selector-dropzone:empty::after,
+.is-edit-mode #wrapper .maestro-language-selector-dropzone:empty::after,
+body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone:empty::after {
+    content: "Add Language Selector";
+    color: var(--text-color-secondary, #6c757d);
+    font-size: 0.75rem;
+    font-style: italic;
+    text-align: center;
+    display: block;
+}
+
+/* Left Sliding Menu */
+#wrapper .maestro-sliding-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    background: var(--brand-color-neutral-1, #ffffff);
+    border-right: 1px solid var(--gray-200, #f1f2f5);
+    box-shadow: 0 8px 32px rgba(0, 51, 102, 0.15);
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    display: block !important;
+    visibility: visible !important;
+}
+
+#wrapper .maestro-sliding-menu.show {
+    transform: translateX(0);
+}
+
+/* Menu Header */
+#wrapper .maestro-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacer-4, 1.5rem);
+    border-bottom: 1px solid var(--gray-200, #f1f2f5);
+    background: var(--brand-color-2, #003366);
+    color: var(--brand-color-neutral-1, #ffffff);
+    height: 80px;
+}
+
+#wrapper .maestro-menu-title {
+    margin: 0;
+    font-size: var(--font-size-lg, 1.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+#wrapper .maestro-menu-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius, 4px);
+    color: var(--brand-color-neutral-1, #ffffff);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-menu-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+#wrapper .maestro-menu-close:focus {
+    outline: none;
+    border-color: var(--brand-color-1, #00A651);
+    box-shadow: 0 0 0 2px rgba(0, 166, 81, 0.2);
+}
+
+/* Menu Navigation */
+#wrapper .maestro-menu-nav {
+    padding: var(--spacer-4, 1.5rem);
+}
+
+#wrapper .maestro-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    visibility: visible;
+}
+
+#wrapper .maestro-menu-item {
+    margin-bottom: var(--spacer-2, 0.5rem);
+    display: list-item;
+    visibility: visible;
+}
+
+#wrapper .maestro-menu-link {
+    display: flex !important;
+    align-items: center;
+    gap: var(--spacer-3, 1rem);
+    padding: var(--spacer-3, 1rem);
+    color: var(--brand-color-2, #003366);
+    text-decoration: none;
+    border-radius: var(--border-radius, 4px);
+    transition: all 0.3s ease;
+    font-weight: var(--font-weight-normal, 400);
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#wrapper .maestro-menu-link:hover {
+    background: var(--gray-100, #f7f8f9);
+    color: var(--brand-color-1, #00A651);
+}
+
+#wrapper .maestro-menu-link.active {
+    background: var(--brand-color-1, #00A651);
+    color: var(--brand-color-neutral-1, #ffffff);
+    font-weight: var(--font-weight-semibold, 600);
+}
+
+#wrapper .maestro-menu-link.active svg {
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+/* Overlay */
+#wrapper .maestro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 51, 102, 0.6);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Styling */
+#wrapper .maestro-search-overlay,
+#wrapper .maestro-login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 51, 102, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#wrapper .maestro-search-modal,
+#wrapper .maestro-login-modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    background: var(--brand-color-neutral-1, #ffffff);
+    border-radius: var(--border-radius-lg, 8px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.3);
+    animation: slideInDown 0.3s ease-out;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#wrapper .maestro-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacer-4, 1.5rem) var(--spacer-5, 2rem);
+    border-bottom: 1px solid var(--gray-200, #f1f2f5);
+    background: var(--brand-color-2, #003366);
+    color: var(--brand-color-neutral-1, #ffffff);
+}
+
+#wrapper .maestro-modal-title {
+    margin: 0;
+    font-size: var(--font-size-lg, 1.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+}
+
+#wrapper .maestro-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--brand-color-neutral-1, #ffffff);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius, 4px);
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#wrapper .maestro-modal-body {
+    padding: var(--spacer-4, 1.5rem);
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* Edit Mode Static Display */
+[data-editor-enabled="true"] #wrapper .maestro-search-overlay.maestro-edit-mode-static,
+.is-edit-mode #wrapper .maestro-search-overlay.maestro-edit-mode-static,
+body.has-edit-mode-menu #wrapper .maestro-search-overlay.maestro-edit-mode-static {
+    display: block !important;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    backdrop-filter: none;
+    z-index: auto;
+    padding: var(--spacer-4, 1.5rem);
+    border-top: 1px solid var(--gray-200, #f1f2f5);
+    margin-top: var(--spacer-2, 0.5rem);
+    background: var(--gray-50, #f8f9fa);
+}
+
+[data-editor-enabled="true"] #wrapper .maestro-edit-mode-static .maestro-search-modal,
+.is-edit-mode #wrapper .maestro-edit-mode-static .maestro-search-modal,
+body.has-edit-mode-menu #wrapper .maestro-edit-mode-static .maestro-search-modal {
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: none;
+    animation: none;
+    max-height: none;
+    border: 2px dashed var(--gray-400, #ced4da);
+}
+
+/* Animation */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #wrapper .maestro-header-content {
+        height: 70px;
+        gap: var(--spacer-3, 1rem);
+    }
+    
+    #wrapper .maestro-platform-title h1 {
+        font-size: var(--font-size-base, 1rem);
+    }
+    
+    #wrapper .maestro-platform-title span {
+        font-size: var(--font-size-xs, 0.75rem);
+    }
+    
+    #wrapper .maestro-sliding-menu {
+        width: 280px;
+    }
+    
+    #wrapper .maestro-header-logo img {
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    #wrapper .maestro-header-content {
+        height: 60px;
+    }
+    
+    #wrapper .maestro-header-logo img {
+        height: 32px;
+    }
+    
+    #wrapper .maestro-platform-title {
+        margin-left: var(--spacer-2, 0.5rem);
+    }
+    
+    #wrapper .maestro-menu-header {
+        height: 60px;
+    }
+}
