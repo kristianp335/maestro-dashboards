@@ -97,5 +97,6 @@
     "pluralLabel": {
         "en_US": "Workflow Metrics"
     },
-    "scope": "company"
+    "scope": "company",
+    "objectFolderExternalReferenceCode": "21dc960e-1c90-d476-c009-88ba7f09365a"
 }
