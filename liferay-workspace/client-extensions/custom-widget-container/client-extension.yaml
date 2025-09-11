@@ -1,0 +1,8 @@
+assemble:
+    - from: build/static
+      into: static
+custom-widget-container-cx-js-import-maps-entry:
+    bareSpecifier: customWidgetContainerCX
+    name: Custom Widget Container CX JS Import Maps Entry
+    type: jsImportMapsEntry
+    url: assets/index-*.js
