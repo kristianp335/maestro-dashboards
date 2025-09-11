@@ -69,3 +69,51 @@ The system addresses critical data population issues by exclusively using an API
 - **Liferay Headless Delivery API**: Used for data fetching and API integration with Liferay Objects.
 - **Chart.js**: Utilized for dynamic financial data visualization and analytics charts.
 - **Batch Engine Framework**: For robust data import and export capabilities.
+
+## Implementation Reference Documentation
+
+### Previous Project Documentation (Reference Library)
+These documentation files from previous Liferay implementations provide proven patterns, best practices, and solutions for common challenges:
+
+#### Performance Optimization Guides
+- **`attached_assets/LCP_OPTIMIZATION_1757585262673.md`**: Resolves hero fragment LCP render delays (88% reduction from 4,800ms to <1,500ms). Includes critical CSS inline strategies, CSS client extension optimization, and CLS fixes with explicit dimensions.
+- **`attached_assets/PERFORMANCE_ANALYSIS_1757585262674.md`**: Ultra-optimized performance analysis targeting 90+ Lighthouse scores. Covers LCP render blocking elimination, CLS prevention, debugging code removal, and critical CSS priority implementation.
+- **`attached_assets/PERFORMANCE_OPTIMIZATION_SUMMARY_1757585262676.md`**: Comprehensive performance status tracking with render-blocking independence strategies, CSS variable hardcoding, and anti-blocking techniques.
+
+#### Project Implementation Examples
+- **`attached_assets/README_1757585262677.md`**: Johnson Matthey project structure with dual-deployment strategy (client extensions + fragment collections), showing complete Liferay-native website recreation patterns.
+- **`attached_assets/replit_1757585262678.md`**: Johnson Matthey project documentation with comprehensive fragment modularity, modal systems, FreeMarker templates, and performance optimizations including render-blocking independence.
+- **`attached_assets/replit_1757585298676.md`**: Vanden Recycling implementation with authentication integration, navigation API handling, dropdown scoping, and comprehensive CSS wrapper scoping requirements.
+
+#### Technical Implementation Guide
+- **`attached_assets/liferay-implementation-guide_1757585298676.md`**: Master implementation guide covering:
+  - Fragment image editing requirements with `data-lfr-editable` attributes
+  - Modal implementation with embedded Liferay portlets and theme styling overrides
+  - Navigation implementation handling API structure mismatches (`navigationMenuItems` vs `children`)
+  - Fragment dropdown scoping to prevent interference with Liferay functionality
+  - CSS wrapper scoping requirements (`#wrapper` for admin interface protection)
+  - Conservative z-index strategies for edit mode compatibility
+  - Liferay dropzone implementation with edit mode detection
+  - Above-the-fold performance optimizations with inline SVG and animation strategies
+
+### Key Implementation Patterns for Maestro GFD Cockpit
+
+**From Previous Projects - Apply These Patterns**:
+- **Performance First**: Always implement critical CSS inline for LCP elements, eliminate render-blocking dependencies
+- **API Structure Handling**: Use both `navigationMenuItems` and `children` properties for navigation compatibility  
+- **Fragment Scoping**: All JavaScript scoped to `fragmentElement`, all CSS scoped to `#wrapper`
+- **Modal Integration**: Embed Liferay portlets with comprehensive CSS overrides using `!important` declarations
+- **Edit Mode Detection**: Use multiple selectors for robust dropzone visibility across Liferay versions
+- **Conservative Z-Index**: Use standard Bootstrap values (1050-1060) to avoid admin interface conflicts
+
+**Banking-Specific Adaptations Needed**:
+- Color scheme: CA-CIB Professional Green (#00A651) instead of brand colors from previous projects
+- Financial data visualization: Chart.js integration for banking metrics
+- Object-based data architecture: Leverage Liferay Objects for financial entities
+- Compliance considerations: Banking-grade security and data handling
+
+## Recent Changes
+- 2025-09-11: **CRITICAL BREAKTHROUGH**: Resolved blank fields issue via complete headless API methodology
+- 2025-09-11: Created all 7 Maestro objects via object-admin API with proper folder organization (100% success)
+- 2025-09-11: Successfully uploaded 380 realistic banking records across all objects via REST APIs (100% success)
+- 2025-09-11: Added reference library of previous project documentation for implementation guidance
