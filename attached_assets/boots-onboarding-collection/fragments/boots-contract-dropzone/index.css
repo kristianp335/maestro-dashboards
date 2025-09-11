@@ -1,0 +1,77 @@
+/**
+ * Boots Contract Dropzone Fragment Styles
+ * Simple dropzone container for contract task fragments
+ */
+
+/* Dropzone Container */
+#wrapper #contractDropZone {
+    width: 100%;
+    display: block;
+}
+
+/* Dropzone Styling */
+#wrapper #contractDropZone lfr-drop-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    min-width: 100%;
+    border: 2px dashed transparent;
+    border-radius: var(--boots-border-radius-lg);
+    transition: var(--boots-transition);
+    padding: var(--boots-spacing-lg);
+    box-sizing: border-box;
+}
+
+/* Edit Mode Detection and Styling */
+#wrapper #contractDropZone lfr-drop-zone[data-editor-enabled="true"],
+#wrapper .is-edit-mode #contractDropZone lfr-drop-zone,
+body.has-edit-mode-menu #contractDropZone lfr-drop-zone,
+#wrapper .lfr-layout-structure-item-container #contractDropZone lfr-drop-zone {
+    border-color: var(--boots-primary) !important;
+    background-color: rgba(59, 130, 246, 0.05) !important;
+    position: relative;
+    min-width: 100% !important;
+    min-height: 120px !important;
+    width: auto;
+    display: flex !important;
+    visibility: visible !important;
+}
+
+/* Edit Mode Placeholder Text */
+#wrapper #contractDropZone lfr-drop-zone[data-editor-enabled="true"]:before,
+#wrapper .is-edit-mode #contractDropZone lfr-drop-zone:before,
+body.has-edit-mode-menu #contractDropZone lfr-drop-zone:before,
+#wrapper .lfr-layout-structure-item-container #contractDropZone lfr-drop-zone:before {
+    content: "Drop Contract Tasks Here";
+    color: var(--boots-primary);
+    font-size: var(--boots-font-size-sm);
+    font-weight: var(--boots-font-weight-medium);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    display: block !important;
+}
+
+/* Hide placeholder when content is present */
+#wrapper #contractDropZone lfr-drop-zone:not(:empty):before {
+    display: none;
+}
+
+/* Non-edit mode - hide empty dropzone */
+#wrapper #contractDropZone lfr-drop-zone:empty {
+    display: none;
+}
+
+/* Edit mode - show dropzone container */
+#wrapper .lfr-layout-structure-item-container #contractDropZone {
+    min-height: 120px;
+    border: 2px dashed var(--boots-border-light);
+    border-radius: var(--boots-border-radius-lg);
+    padding: var(--boots-spacing-md);
+    margin: var(--boots-spacing-md) 0;
+}

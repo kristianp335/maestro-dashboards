@@ -1,0 +1,366 @@
+/**
+ * Boots Onboarding Tasks Fragment Styles
+ * Outstanding tasks card component with overdue detection
+ */
+
+/* Fragment Container */
+#wrapper .boots-onboarding-tasks-fragment {
+    width: 100%;
+    display: block;
+}
+
+/* Task Card Base */
+#wrapper .boots-task-card {
+    background: var(--boots-white);
+    border: 1px solid var(--boots-border-light);
+    border-radius: var(--boots-border-radius-lg);
+    padding: var(--boots-spacing-lg);
+    transition: var(--boots-transition);
+    height: 100%;
+    display: flex;
+    gap: var(--boots-spacing-md);
+    position: relative;
+    overflow: hidden;
+}
+
+#wrapper .boots-task-card:hover {
+    box-shadow: var(--boots-shadow-lg);
+    transform: translateY(-1px);
+}
+
+/* Overdue Task Styling */
+#wrapper .boots-task-card.boots-overdue {
+    border: 2px solid #DC2626;
+    border-left: 4px solid #DC2626;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.02) 0%, rgba(220, 38, 38, 0.05) 100%);
+}
+
+#wrapper .boots-task-card.boots-overdue .boots-icon-default {
+    display: none;
+}
+
+#wrapper .boots-task-card.boots-overdue .boots-icon-problem {
+    display: block !important;
+}
+
+/* Status Indicator */
+#wrapper .boots-task-status-indicator {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 4px;
+}
+
+#wrapper .boots-task-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--boots-border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Priority-based Icon Colors */
+#wrapper .boots-priority-urgent {
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    color: var(--boots-white);
+}
+
+#wrapper .boots-priority-high {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: var(--boots-white);
+}
+
+#wrapper .boots-priority-medium {
+    background: linear-gradient(135deg, var(--boots-primary) 0%, var(--boots-primary-dark) 100%);
+    color: var(--boots-white);
+}
+
+#wrapper .boots-priority-low {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: var(--boots-white);
+}
+
+/* Overdue Task Icon Override */
+#wrapper .boots-task-card.boots-overdue .boots-task-icon {
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    color: var(--boots-white);
+}
+
+/* Task Content */
+#wrapper .boots-task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--boots-spacing-sm);
+    min-width: 0;
+}
+
+/* Task Header */
+#wrapper .boots-task-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--boots-spacing-xs);
+}
+
+#wrapper .boots-task-title {
+    font-size: var(--boots-font-size-lg);
+    font-weight: var(--boots-font-weight-bold);
+    color: var(--boots-text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Task Dates */
+#wrapper .boots-task-dates {
+    display: flex;
+    gap: var(--boots-spacing-md);
+    flex-wrap: wrap;
+}
+
+#wrapper .boots-task-created,
+#wrapper .boots-task-deadline {
+    display: flex;
+    align-items: center;
+    gap: var(--boots-spacing-xs);
+    font-size: var(--boots-font-size-sm);
+}
+
+#wrapper .boots-date-label {
+    color: var(--boots-text-secondary);
+    font-weight: var(--boots-font-weight-medium);
+}
+
+#wrapper .boots-date-value {
+    color: var(--boots-text-primary);
+    font-weight: var(--boots-font-weight-semi-bold);
+}
+
+/* Overdue Date Styling */
+#wrapper .boots-task-card.boots-overdue .boots-deadline-date {
+    color: #DC2626;
+    font-weight: var(--boots-font-weight-bold);
+}
+
+/* Task Description */
+#wrapper .boots-task-description {
+    margin: var(--boots-spacing-xs) 0;
+}
+
+#wrapper .boots-task-description p {
+    margin: 0;
+    font-size: var(--boots-font-size-sm);
+    color: var(--boots-text-secondary);
+    line-height: 1.5;
+}
+
+/* Task Footer */
+#wrapper .boots-task-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: var(--boots-spacing-sm);
+    border-top: 1px solid var(--boots-border-light);
+    gap: var(--boots-spacing-md);
+}
+
+#wrapper .boots-task-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--boots-spacing-md);
+}
+
+#wrapper .boots-task-actions {
+    margin-left: auto;
+}
+
+/* Task Complete Button */
+#wrapper .boots-task-button {
+    padding: var(--boots-spacing-xs) var(--boots-spacing-md);
+    font-size: var(--boots-font-size-sm);
+    font-weight: var(--boots-font-weight-semi-bold);
+    border-radius: var(--boots-border-radius-md);
+    text-decoration: none;
+    transition: var(--boots-transition);
+    white-space: nowrap;
+    color: white !important;
+    background-color: var(--boots-primary);
+    border: 1px solid var(--boots-primary);
+}
+
+#wrapper .boots-task-button:hover,
+#wrapper .boots-task-button:focus {
+    color: white !important;
+    background-color: var(--boots-primary-dark);
+    border-color: var(--boots-primary-dark);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#wrapper .boots-task-button:active {
+    color: white !important;
+    background-color: var(--boots-primary-dark);
+    border-color: var(--boots-primary-dark);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Priority Badge */
+#wrapper .boots-task-priority {
+    padding: 4px 8px;
+    border-radius: var(--boots-border-radius-sm);
+    font-size: var(--boots-font-size-xs);
+    font-weight: var(--boots-font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#wrapper .boots-task-priority.boots-priority-urgent {
+    background: rgba(220, 38, 38, 0.1);
+    color: #B91C1C;
+}
+
+#wrapper .boots-task-priority.boots-priority-high {
+    background: rgba(245, 158, 11, 0.1);
+    color: #D97706;
+}
+
+#wrapper .boots-task-priority.boots-priority-medium {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--boots-primary-dark);
+}
+
+#wrapper .boots-task-priority.boots-priority-low {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+/* Task Status */
+#wrapper .boots-task-status {
+    font-size: var(--boots-font-size-xs);
+    color: var(--boots-text-secondary);
+    font-weight: var(--boots-font-weight-medium);
+}
+
+#wrapper .boots-status-label {
+    padding: 4px 8px;
+    background: var(--boots-gray-100);
+    border-radius: var(--boots-border-radius-sm);
+}
+
+/* Completed Task Styling */
+#wrapper .boots-task-card.boots-completed {
+    border: 2px solid #10B981;
+    border-left: 4px solid #10B981;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.02) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+#wrapper .boots-task-card.boots-completed .boots-icon-default,
+#wrapper .boots-task-card.boots-completed .boots-icon-problem {
+    display: none;
+}
+
+#wrapper .boots-task-card.boots-completed .boots-icon-completed {
+    display: block !important;
+}
+
+#wrapper .boots-task-card.boots-completed .boots-task-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: var(--boots-white);
+}
+
+/* Overdue Status Override */
+#wrapper .boots-task-card.boots-overdue .boots-status-label {
+    background: rgba(220, 38, 38, 0.1);
+    color: #B91C1C;
+}
+
+#wrapper .boots-task-card.boots-overdue .boots-status-label::before {
+    content: "⚠️ ";
+}
+
+/* Layout Variants */
+#wrapper .boots-layout-compact .boots-task-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#wrapper .boots-layout-compact .boots-task-dates {
+    margin-left: auto;
+    gap: var(--boots-spacing-sm);
+}
+
+#wrapper .boots-layout-compact .boots-task-description {
+    display: none;
+}
+
+#wrapper .boots-layout-detailed .boots-task-header {
+    flex-direction: column;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #wrapper .boots-task-card {
+        padding: var(--boots-spacing-md);
+        gap: var(--boots-spacing-sm);
+    }
+    
+    #wrapper .boots-task-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    #wrapper .boots-task-title {
+        font-size: var(--boots-font-size-base);
+    }
+    
+    #wrapper .boots-task-dates {
+        flex-direction: column;
+        gap: var(--boots-spacing-xs);
+    }
+    
+    #wrapper .boots-task-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--boots-spacing-sm);
+    }
+    
+    #wrapper .boots-task-actions {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    #wrapper .boots-task-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #wrapper .boots-layout-compact .boots-task-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--boots-spacing-xs);
+    }
+    
+    #wrapper .boots-layout-compact .boots-task-dates {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Edit Mode Styling */
+#wrapper .lfr-layout-structure-item-container .boots-onboarding-tasks-fragment {
+    min-height: 120px;
+    border: 2px dashed var(--boots-border-light);
+    border-radius: var(--boots-border-radius-lg);
+    padding: var(--boots-spacing-md);
+}
+
+#wrapper .lfr-layout-structure-item-container .boots-task-card {
+    border: none;
+    background: transparent;
+}

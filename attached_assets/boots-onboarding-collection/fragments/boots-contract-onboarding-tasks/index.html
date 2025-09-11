@@ -1,0 +1,79 @@
+<div class="boots-onboarding-tasks-fragment">
+    <div class="boots-task-card boots-card boots-layout-${configuration.cardLayout!"detailed"}" data-action-date="${configuration.actionByDate!"2024-12-31"}">
+        <div class="boots-completion-status" data-lfr-editable-id="completion-status" data-lfr-editable-type="text" style="display: none;">${configuration.isCompleted!"false"}</div>
+        <div class="boots-task-status-indicator">
+            <div class="boots-task-icon boots-priority-${configuration.taskPriority!"medium"}">
+                <!-- Completed icon for finished tasks -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="boots-icon-completed" style="display: none;">
+                    <path d="M22 11.08V12C22 17.52 17.52 22 12 22S2 17.52 2 12S6.48 2 12 2C14.1 2 15.99 2.64 17.54 3.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+                <!-- Problem icon for overdue tasks (will be shown via CSS/JS) -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="boots-icon-problem" style="display: none;">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                
+                <!-- Default task icons based on priority -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="boots-icon-default">
+                    [#if (configuration.taskPriority!"medium") == "urgent"]
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    [#elseif (configuration.taskPriority!"medium") == "high"]
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    [#elseif (configuration.taskPriority!"medium") == "medium"]
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    [#else]
+                    <path d="M22 11.08V12C22 17.52 17.52 22 12 22S2 17.52 2 12S6.48 2 12 2C14.1 2 15.99 2.64 17.54 3.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    [/#if]
+                </svg>
+            </div>
+        </div>
+        
+        <div class="boots-task-content">
+            <div class="boots-task-header">
+                <h3 class="boots-task-title" data-lfr-editable-id="task-title" data-lfr-editable-type="text">${configuration.taskTitle!"Contract Onboarding Task"}</h3>
+                <div class="boots-task-dates">
+                    <div class="boots-task-created">
+                        <span class="boots-date-label">Created:</span>
+                        <span class="boots-date-value" data-lfr-editable-id="created-date" data-lfr-editable-type="text">${configuration.createdDate!"2024-01-01"}</span>
+                    </div>
+                    <div class="boots-task-deadline">
+                        <span class="boots-date-label">Due:</span>
+                        <span class="boots-date-value boots-deadline-date" data-lfr-editable-id="action-by-date" data-lfr-editable-type="text">${configuration.actionByDate!"2024-12-31"}</span>
+                    </div>
+                </div>
+            </div>
+            
+            [#if (configuration.cardLayout!"detailed") == "detailed"]
+            <div class="boots-task-description">
+                <p data-lfr-editable-id="task-description" data-lfr-editable-type="text">${configuration.taskDescription!"Complete this contract task to continue your onboarding process."}</p>
+            </div>
+            [/#if]
+            
+            <div class="boots-task-footer">
+                <div class="boots-task-meta">
+                    <div class="boots-task-priority boots-priority-${configuration.taskPriority!"medium"}">
+                        <span class="boots-priority-label">${(configuration.taskPriority!"medium")?cap_first} Priority</span>
+                    </div>
+                    <div class="boots-task-status">
+                        <span class="boots-status-label">Outstanding</span>
+                    </div>
+                </div>
+                <div class="boots-task-actions">
+                    [#if (configuration.showDownloadButton!true)]
+                    <a class="btn btn-outline-primary boots-download-button" data-lfr-editable-id="download-button" data-lfr-editable-type="link" href="#download-contract">Download Contract</a>
+                    [/#if]
+                    [#if (configuration.showActionButton!true)]
+                    <a class="btn btn-primary boots-task-button" data-lfr-editable-id="complete-button" data-lfr-editable-type="link" href="#complete-task">Complete Task</a>
+                    [/#if]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "taskTitle",
+                    "label": "Task Title",
+                    "description": "The title of the contract onboarding task",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "Sign Partnership Contract"
+                    },
+                    "defaultValue": "Contract Onboarding Task"
+                },
+                {
+                    "name": "taskDescription",
+                    "label": "Task Description",
+                    "description": "Detailed description of what needs to be done",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "Please review and sign the partnership contract to complete your onboarding"
+                    },
+                    "defaultValue": "Complete this contract task to continue your onboarding process."
+                },
+                {
+                    "name": "createdDate",
+                    "label": "Created Date",
+                    "description": "When this task was created (YYYY-MM-DD)",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "2024-01-15"
+                    },
+                    "defaultValue": "2024-01-01"
+                },
+                {
+                    "name": "actionByDate",
+                    "label": "Action Required By Date",
+                    "description": "Deadline for completing this task (YYYY-MM-DD)",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "2024-02-15"
+                    },
+                    "defaultValue": "2024-12-31"
+                },
+                {
+                    "name": "taskPriority",
+                    "label": "Task Priority",
+                    "description": "Priority level of the task",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"value": "low", "label": "Low Priority"},
+                            {"value": "medium", "label": "Medium Priority"},
+                            {"value": "high", "label": "High Priority"},
+                            {"value": "urgent", "label": "Urgent"}
+                        ]
+                    },
+                    "defaultValue": "medium"
+                },
+                {
+                    "name": "cardLayout",
+                    "label": "Card Layout",
+                    "description": "Layout style for the task card",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"value": "compact", "label": "Compact (Single Line)"},
+                            {"value": "detailed", "label": "Detailed (Multi-line)"}
+                        ]
+                    },
+                    "defaultValue": "detailed"
+                },
+                {
+                    "name": "showActionButton",
+                    "label": "Show Action Button",
+                    "description": "Display the Complete Task button",
+                    "type": "checkbox",
+                    "defaultValue": true
+                },
+                {
+                    "name": "showDownloadButton",
+                    "label": "Show Download Button",
+                    "description": "Display the Download Contract button",
+                    "type": "checkbox",
+                    "defaultValue": true
+                },
+                {
+                    "name": "isCompleted",
+                    "label": "Task Completion Status",
+                    "description": "Whether this contract task is completed (true/false)",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "false"
+                    },
+                    "defaultValue": "false"
+                }
+            ]
+        }
+    ]
+}
