@@ -25,55 +25,6 @@
                        data-lfr-editable-type="rich-text">
                         ${configuration.heroDescription!'Comprehensive finance dashboard for global banking operations, loan management, and risk analysis at Credit Agricole Corporate & Investment Bank.'}
                     </p>
-                    
-                    [#if configuration.showCTAButtons!true]
-                    <div class="maestro-hero-actions">
-                        <button class="maestro-btn-primary maestro-hero-cta" 
-                                data-lfr-editable-id="primary-cta" 
-                                data-lfr-editable-type="text"
-                                onclick="window.MaestroHero && window.MaestroHero.handlePrimaryCTA()">
-                            ${configuration.primaryCTAText!'View Dashboard'}
-                        </button>
-                        
-                        [#if configuration.showSecondaryCTA!true]
-                        <button class="maestro-btn-secondary maestro-hero-cta" 
-                                data-lfr-editable-id="secondary-cta" 
-                                data-lfr-editable-type="text"
-                                onclick="window.MaestroHero && window.MaestroHero.handleSecondaryCTA()">
-                            ${configuration.secondaryCTAText!'Learn More'}
-                        </button>
-                        [/#if]
-                    </div>
-                    [/#if]
-                    
-                    [#if configuration.showKPIPreview!true]
-                    <div class="maestro-hero-kpi-preview">
-                        <div class="maestro-kpi-item">
-                            <span class="maestro-kpi-value" 
-                                  data-lfr-editable-id="kpi-1-value" 
-                                  data-lfr-editable-type="text">€2.47B</span>
-                            <span class="maestro-kpi-label" 
-                                  data-lfr-editable-id="kpi-1-label" 
-                                  data-lfr-editable-type="text">Total Portfolio</span>
-                        </div>
-                        <div class="maestro-kpi-item">
-                            <span class="maestro-kpi-value" 
-                                  data-lfr-editable-id="kpi-2-value" 
-                                  data-lfr-editable-type="text">147</span>
-                            <span class="maestro-kpi-label" 
-                                  data-lfr-editable-id="kpi-2-label" 
-                                  data-lfr-editable-type="text">Active Deals</span>
-                        </div>
-                        <div class="maestro-kpi-item">
-                            <span class="maestro-kpi-value" 
-                                  data-lfr-editable-id="kpi-3-value" 
-                                  data-lfr-editable-type="text">94.8%</span>
-                            <span class="maestro-kpi-label" 
-                                  data-lfr-editable-id="kpi-3-label" 
-                                  data-lfr-editable-type="text">Success Rate</span>
-                        </div>
-                    </div>
-                    [/#if]
                 </div>
             </div>
         </div>
