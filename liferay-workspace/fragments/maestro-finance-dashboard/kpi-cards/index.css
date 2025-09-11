@@ -1,50 +1,50 @@
 /* KPI Cards Fragment - Maestro Finance Dashboard */
 
-.maestro-kpi-dashboard {
+#wrapper .maestro-kpi-dashboard {
     padding: var(--spacing-lg, 1.5rem);
 }
 
-.maestro-dashboard-header {
+#wrapper .maestro-dashboard-header {
     margin-bottom: var(--spacing-xl, 2rem);
     text-align: center;
 }
 
-.maestro-dashboard-header h2 {
+#wrapper .maestro-dashboard-header h2 {
     font-size: 2rem;
     font-weight: 600;
     color: var(--ca-cib-dark-blue, #003366);
     margin-bottom: var(--spacing-sm, 0.5rem);
 }
 
-.maestro-dashboard-header p {
+#wrapper .maestro-dashboard-header p {
     font-size: 1rem;
     color: var(--ca-cib-dark-gray, #333333);
     opacity: 0.8;
 }
 
 /* KPI Card Grid Layouts */
-.maestro-dashboard-grid {
+#wrapper .maestro-dashboard-grid {
     display: grid;
     gap: var(--spacing-lg, 1.5rem);
 }
 
-.maestro-dashboard-grid:not(.maestro-row-layout):not(.maestro-stack-layout) {
+#wrapper .maestro-dashboard-grid:not(.maestro-row-layout):not(.maestro-stack-layout) {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.maestro-dashboard-grid.maestro-row-layout {
+#wrapper .maestro-dashboard-grid.maestro-row-layout {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-md, 1rem);
 }
 
-.maestro-dashboard-grid.maestro-stack-layout {
+#wrapper .maestro-dashboard-grid.maestro-stack-layout {
     grid-template-columns: 1fr;
     max-width: 400px;
     margin: 0 auto;
 }
 
 /* Enhanced KPI Card Styling */
-.maestro-kpi-card {
+#wrapper .maestro-kpi-card {
     position: relative;
     background: var(--ca-cib-white, #ffffff);
     border-radius: var(--border-radius-lg, 12px);
@@ -55,7 +55,7 @@
     overflow: hidden;
 }
 
-.maestro-kpi-card::before {
+#wrapper .maestro-kpi-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -67,23 +67,23 @@
     border-radius: 0 12px 0 100%;
 }
 
-.maestro-kpi-card:hover {
+#wrapper .maestro-kpi-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg, 0 10px 20px rgba(0, 0, 0, 0.15));
     border-left-color: var(--ca-cib-dark-blue, #003366);
 }
 
-.maestro-kpi-card .kpi-icon {
+#wrapper .maestro-kpi-card .kpi-icon {
     margin-bottom: var(--spacing-md, 1rem);
     color: var(--ca-cib-green, #00A651);
 }
 
-.maestro-kpi-card .kpi-icon svg {
+#wrapper .maestro-kpi-card .kpi-icon svg {
     width: 32px;
     height: 32px;
 }
 
-.maestro-kpi-card .kpi-title {
+#wrapper .maestro-kpi-card .kpi-title {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--ca-cib-dark-gray, #333333);
@@ -93,7 +93,7 @@
     opacity: 0.8;
 }
 
-.maestro-kpi-card .kpi-value {
+#wrapper .maestro-kpi-card .kpi-value {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--ca-cib-dark-blue, #003366);
@@ -102,7 +102,7 @@
     line-height: 1.2;
 }
 
-.maestro-kpi-card .kpi-change {
+#wrapper .maestro-kpi-card .kpi-change {
     font-size: 0.875rem;
     font-weight: 500;
     display: flex;
@@ -110,33 +110,33 @@
     gap: var(--spacing-xs, 0.25rem);
 }
 
-.maestro-kpi-card .kpi-change span:first-child {
+#wrapper .maestro-kpi-card .kpi-change span:first-child {
     font-size: 1rem;
     font-weight: 700;
 }
 
 /* Row Layout Specific Styles */
-.maestro-row-layout .maestro-kpi-card {
+#wrapper .maestro-row-layout .maestro-kpi-card {
     padding: var(--spacing-md, 1rem);
 }
 
-.maestro-row-layout .maestro-kpi-card .kpi-value {
+#wrapper .maestro-row-layout .maestro-kpi-card .kpi-value {
     font-size: 1.8rem;
 }
 
 /* Stack Layout Specific Styles */
-.maestro-stack-layout .maestro-kpi-card {
+#wrapper .maestro-stack-layout .maestro-kpi-card {
     display: flex;
     align-items: center;
     gap: var(--spacing-lg, 1.5rem);
     padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
 }
 
-.maestro-stack-layout .maestro-kpi-card .kpi-content {
+#wrapper .maestro-stack-layout .maestro-kpi-card .kpi-content {
     flex: 1;
 }
 
-.maestro-stack-layout .maestro-kpi-card .kpi-value {
+#wrapper .maestro-stack-layout .maestro-kpi-card .kpi-value {
     font-size: 2rem;
     margin-bottom: var(--spacing-xs, 0.25rem);
 }
@@ -157,12 +157,12 @@
 }
 
 /* Loading State */
-.maestro-kpi-dashboard.loading .maestro-kpi-card {
+#wrapper .maestro-kpi-dashboard.loading .maestro-kpi-card {
     opacity: 0.6;
     pointer-events: none;
 }
 
-.maestro-kpi-dashboard.loading .kpi-value {
+#wrapper .maestro-kpi-dashboard.loading .kpi-value {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
     animation: maestro-shimmer 1.5s infinite;
