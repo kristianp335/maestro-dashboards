@@ -61,7 +61,15 @@
                 }
                 
                 if (data && data.items && data.items.length > 0) {
-                    dealsData = data.items;
+                    // Map API field names to expected field names
+                    dealsData = data.items.map(deal => ({
+                        ...deal,
+                        client: deal.clientName,
+                        value: deal.dealValue,
+                        status: deal.dealStatus,
+                        statusLabel: getStatusLabel(deal.dealStatus),
+                        closingDate: deal.expectedClosingDate
+                    }));
                     applyFilters();
                 } else {
                     generateMockDealsData();
@@ -351,12 +359,26 @@
     
     function getStatusClass(status) {
         const statusClasses = {
+            'lead': 'pending',
+            'qualified': 'in-review',
+            'proposal': 'in-review',
             'negotiation': 'in-review',
-            'due-diligence': 'pending',
-            'approval': 'approved',
-            'closing': 'approved'
+            'closedwon': 'approved',
+            'closedlost': 'rejected'
         };
         return statusClasses[status] || 'pending';
+    }
+    
+    function getStatusLabel(status) {
+        const statusLabels = {
+            'lead': 'Lead',
+            'qualified': 'Qualified',
+            'proposal': 'Proposal',
+            'negotiation': 'Negotiation',
+            'closedwon': 'Closed Won',
+            'closedlost': 'Closed Lost'
+        };
+        return statusLabels[status] || status;
     }
     
     function capitalize(str) {
