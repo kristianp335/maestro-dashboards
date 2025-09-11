@@ -284,7 +284,7 @@
                     };
                     
                     statusBadge.className = `maestro-status-badge ${statusClasses[activity.status] || 'pending'}`;
-                    statusBadge.textContent = capitalize(activity.status.replace('-', ' '));
+                    statusBadge.textContent = capitalize(typeof activity.status === 'string' ? activity.status.replace('-', ' ') : activity.status);
                 }
                 
                 item.style.display = 'flex';
