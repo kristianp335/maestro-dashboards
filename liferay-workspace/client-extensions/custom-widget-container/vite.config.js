@@ -10,7 +10,7 @@ export default defineConfig({
             external: local
                 ? []  
                 : [
-                    // '@clayui/*', // Commented out to bundle Clay UI components
+                    '@clayui/*',
                     'react',
                     'react-dom'
                 ]

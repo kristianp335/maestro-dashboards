@@ -6,19 +6,3 @@ custom-widget-container-cx-js-import-maps-entry:
     name: Custom Widget Container CX JS Import Maps Entry
     type: jsImportMapsEntry
     url: assets/index-*.js
-
-# CORS Configuration to allow cross-origin access from main Liferay site
-cors-config:
-    name: Custom Widget Container CORS Configuration
-    type: instanceSettings
-    pid: com.liferay.portal.remote.cors.configuration.PortalCORSConfiguration
-    enabled: true
-    urlPattern:
-        - "/static/*"
-        - "/assets/*"
-    corsResponseHeaders:
-        Access-Control-Allow-Origin: "https://webserver-lctcreditagricole-prd.lfr.cloud"
-        Access-Control-Allow-Methods: "GET, POST, OPTIONS"
-        Access-Control-Allow-Headers: "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization"
-        Access-Control-Allow-Credentials: "true"
-        Access-Control-Max-Age: "3600"
