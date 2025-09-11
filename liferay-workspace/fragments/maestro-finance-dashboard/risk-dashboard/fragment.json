@@ -4,5 +4,6 @@
     "jsPath": "index.js",
     "name": "Risk Dashboard",
     "type": "component",
-    "configurationPath": "configuration.json"
+    "configurationPath": "configuration.json",
+    "thumbnailPath": "thumbnail.png"
 }

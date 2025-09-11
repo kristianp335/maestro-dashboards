@@ -4,5 +4,6 @@
     "jsPath": "index.js",
     "name": "Deal Management",
     "type": "component",
-    "configurationPath": "configuration.json"
+    "configurationPath": "configuration.json",
+    "thumbnailPath": "thumbnail.png"
 }

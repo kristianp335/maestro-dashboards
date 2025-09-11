@@ -4,5 +4,6 @@
     "jsPath": "index.js",
     "name": "GFD Tracking",
     "type": "component",
-    "configurationPath": "configuration.json"
+    "configurationPath": "configuration.json",
+    "thumbnailPath": "thumbnail.png"
 }
