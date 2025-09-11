@@ -171,19 +171,21 @@
     // Utility for loading Liferay Object data
     window.MaestroUtils.loadObjectData = function(objectName, callback) {
         if (typeof Liferay !== 'undefined' && Liferay.authToken) {
-            // Map object names to correct API endpoints
+            // Map object names to correct API endpoints based on Liferay Objects
             const objectEndpoints = {
-                'MaestroLoan': '/o/c/maestroloans/',
-                'MaestroDeal': '/o/c/maestrodeals/',
-                'MaestroClient': '/o/c/maestroclients/',
-                'PerformanceKPI': '/o/c/performancekpis/',
-                'RiskMetrics': '/o/c/riskmetrics/',
-                'WorkflowMetrics': '/o/c/workflowmetrics/',
-                'GFDActivities': '/o/c/gfdactivities/'
+                'MaestroLoan': '/o/c/maestroloans',
+                'MaestroDeal': '/o/c/maestrodeals',
+                'MaestroClient': '/o/c/maestroclients',
+                'PerformanceKPI': '/o/c/dashboardlayouts',
+                'RiskMetrics': '/o/c/maestroloans',
+                'WorkflowMetrics': '/o/c/gfdactivitieses',
+                'GFDActivities': '/o/c/gfdactivitieses',
+                'KYCSubmission': '/o/c/kycsubmissions',
+                'LoanApplication': '/o/c/loanapplications'
             };
             
             // Use Liferay's Object REST API with proper authentication
-            const baseUrl = objectEndpoints[objectName] || `/o/c/${objectName.toLowerCase()}s/`;
+            const baseUrl = objectEndpoints[objectName] || `/o/c/${objectName.toLowerCase()}s`;
             const apiUrl = `${baseUrl}?p_auth=${Liferay.authToken}`;
             
             fetch(apiUrl, {
@@ -223,10 +225,12 @@
                 'MaestroLoan': 'maestroloans',
                 'MaestroDeal': 'maestrodeals', 
                 'MaestroClient': 'maestroclients',
-                'PerformanceKPI': 'performancekpis',
-                'RiskMetrics': 'riskmetrics',
-                'WorkflowMetrics': 'workflowmetrics',
-                'GFDActivities': 'gfdactivities'
+                'PerformanceKPI': 'dashboardlayouts',
+                'RiskMetrics': 'maestroloans',
+                'WorkflowMetrics': 'gfdactivitieses',
+                'GFDActivities': 'gfdactivitieses',
+                'KYCSubmission': 'kycsubmissions',
+                'LoanApplication': 'loanapplications'
             };
             
             // Fallback to GraphQL API if available
