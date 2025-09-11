@@ -6,13 +6,13 @@
 (function() {
     'use strict';
     
-    const fragmentElement = document.currentScript ? document.currentScript.parentElement : 
-                           (document.querySelector('.maestro-loan-analytics')?.closest('.fragment') || 
-                            document.querySelector('.maestro-loan-analytics'));
+    // Use Liferay-provided fragmentElement (preferred) or fallback to script parent
+    const root = (typeof fragmentElement !== 'undefined') ? fragmentElement : 
+                 (document.currentScript ? document.currentScript.parentElement : null);
     let chartInstance = null;
     
     // Initialize loan analytics when fragment loads
-    if (fragmentElement) {
+    if (root) {
         initializeLoanAnalytics();
     }
     
@@ -48,7 +48,7 @@
     
     function loadChartJS() {
         // Prevent loading Chart.js multiple times
-        if (fragmentElement.closest('#wrapper')?.querySelector('script[src*="chart.js"]') || document.querySelector('script[src*="chart.js"]')) {
+        if (root.closest('#wrapper')?.querySelector('script[src*="chart.js"]') || document.querySelector('script[src*="chart.js"]')) {
             retryDependencyCheck();
             return;
         }
@@ -101,7 +101,7 @@
     }
     
     function showChartError() {
-        const canvas = fragmentElement.querySelector('#loanAnalyticsChart');
+        const canvas = root.querySelector('#loanAnalyticsChart');
         if (canvas) {
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = '#f8f9fa';
@@ -115,7 +115,7 @@
     }
     
     function showDependencyError() {
-        const dashboard = fragmentElement.querySelector('.maestro-loan-analytics');
+        const dashboard = root.querySelector('.maestro-loan-analytics');
         if (dashboard) {
             dashboard.innerHTML = `
                 <div class="maestro-error-message">
@@ -138,7 +138,7 @@
         
         // Apply time range configuration  
         if (config.timeRange) {
-            const selector = fragmentElement.querySelector('#timeRangeSelect');
+            const selector = root.querySelector('#timeRangeSelect');
             if (selector) {
                 selector.value = config.timeRange;
             }
@@ -162,14 +162,14 @@
         }
         
         // Fallback: read from data attributes on the fragment element
-        if (fragmentElement && fragmentElement.dataset) {
-            config.chartType = fragmentElement.dataset.chartType || 'line';
-            config.timeRange = fragmentElement.dataset.timeRange || '30d';
-            config.showDataLabels = fragmentElement.dataset.showDataLabels === 'true';
+        if (fragmentElement && root.dataset) {
+            config.chartType = root.dataset.chartType || 'line';
+            config.timeRange = root.dataset.timeRange || '30d';
+            config.showDataLabels = root.dataset.showDataLabels === 'true';
         }
         
         // Final fallback: read from DOM elements that might contain configuration
-        const timeSelector = fragmentElement.querySelector('#timeRangeSelect');
+        const timeSelector = root.querySelector('#timeRangeSelect');
         if (timeSelector) {
             const selectedOption = timeSelector.querySelector('option[selected]');
             if (selectedOption) {
@@ -248,7 +248,7 @@
     }
     
     function setupChart() {
-        const canvas = fragmentElement.querySelector('#loanAnalyticsChart');
+        const canvas = root.querySelector('#loanAnalyticsChart');
         if (!canvas) return;
         
         const ctx = canvas.getContext('2d');
@@ -460,7 +460,7 @@
     }
     
     function setupTimeRangeSelector() {
-        const selector = fragmentElement.querySelector('#timeRangeSelect');
+        const selector = root.querySelector('#timeRangeSelect');
         if (!selector) return;
         
         selector.addEventListener('change', function() {
@@ -469,7 +469,7 @@
     }
     
     function getSelectedTimeRange() {
-        const selector = fragmentElement.querySelector('#timeRangeSelect');
+        const selector = root.querySelector('#timeRangeSelect');
         return selector ? selector.value : '30d';
     }
     

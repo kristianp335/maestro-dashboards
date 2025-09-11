@@ -6,12 +6,12 @@
 (function() {
     'use strict';
     
-    const fragmentElement = document.currentScript ? document.currentScript.parentElement : 
-                           (document.querySelector('.maestro-kpi-dashboard')?.closest('.fragment') || 
-                            document.querySelector('.maestro-kpi-dashboard'));
+    // Use Liferay-provided fragmentElement (preferred) or fallback to script parent
+    const root = (typeof fragmentElement !== 'undefined') ? fragmentElement : 
+                 (document.currentScript ? document.currentScript.parentElement : null);
     
     // Initialize KPI cards when fragment loads
-    if (fragmentElement) {
+    if (root) {
         initializeKPICards();
     }
     
@@ -58,14 +58,14 @@
         }
         
         // Fallback: read from data attributes on the fragment element
-        if (fragmentElement && fragmentElement.dataset) {
-            config.displayStyle = fragmentElement.dataset.displayStyle || 'grid';
-            config.cardsToShow = fragmentElement.dataset.cardsToShow || '4';
-            config.showTrends = fragmentElement.dataset.showTrends !== 'false';
+        if (root && root.dataset) {
+            config.displayStyle = root.dataset.displayStyle || 'grid';
+            config.cardsToShow = root.dataset.cardsToShow || '4';
+            config.showTrends = root.dataset.showTrends !== 'false';
         }
         
         // Final fallback: read from CSS classes that might indicate configuration
-        const dashboard = fragmentElement.querySelector('.maestro-kpi-dashboard');
+        const dashboard = root.querySelector('.maestro-kpi-dashboard');
         if (dashboard) {
             if (dashboard.classList.contains('maestro-row-layout')) {
                 config.displayStyle = 'row';
@@ -78,7 +78,7 @@
     }
     
     function applyDisplayStyle(style) {
-        const dashboard = fragmentElement.querySelector('.maestro-kpi-dashboard');
+        const dashboard = root.querySelector('.maestro-kpi-dashboard');
         if (!dashboard) return;
         
         // Remove existing layout classes
@@ -100,7 +100,7 @@
     }
     
     function applyCardsToShow(numberOfCards) {
-        const cards = fragmentElement.querySelectorAll('.maestro-kpi-card');
+        const cards = root.querySelectorAll('.maestro-kpi-card');
         const cardsToShow = parseInt(numberOfCards) || 4;
         
         cards.forEach((card, index) => {
@@ -112,7 +112,7 @@
         });
         
         // Adjust grid layout based on number of cards
-        const dashboard = fragmentElement.querySelector('.maestro-dashboard-grid');
+        const dashboard = root.querySelector('.maestro-dashboard-grid');
         if (dashboard) {
             dashboard.className = dashboard.className.replace(/maestro-cards-\d+/, '');
             dashboard.classList.add(`maestro-cards-${cardsToShow}`);
@@ -120,7 +120,7 @@
     }
     
     function applyShowTrends(showTrends) {
-        const changeElements = fragmentElement.querySelectorAll('.kpi-change');
+        const changeElements = root.querySelectorAll('.kpi-change');
         
         changeElements.forEach(element => {
             if (showTrends) {
@@ -132,7 +132,7 @@
     }
     
     function loadKPIData() {
-        const dashboard = fragmentElement.querySelector('.maestro-kpi-dashboard');
+        const dashboard = root.querySelector('.maestro-kpi-dashboard');
         if (!dashboard) {
             console.error('KPI dashboard element not found');
             return;
@@ -177,7 +177,7 @@
     }
     
     function showLoadingIndicator() {
-        const dashboard = fragmentElement.querySelector('.maestro-kpi-dashboard');
+        const dashboard = root.querySelector('.maestro-kpi-dashboard');
         if (!dashboard) return;
         
         // Add loading overlay if it doesn't exist
@@ -197,14 +197,14 @@
     }
     
     function hideLoadingIndicator() {
-        const loadingOverlay = fragmentElement.querySelector('.maestro-loading-overlay');
+        const loadingOverlay = root.querySelector('.maestro-loading-overlay');
         if (loadingOverlay) {
             loadingOverlay.style.display = 'none';
         }
     }
     
     function showErrorMessage(message) {
-        const dashboard = fragmentElement.querySelector('.maestro-kpi-dashboard');
+        const dashboard = root.querySelector('.maestro-kpi-dashboard');
         if (!dashboard) return;
         
         // Remove existing error message
@@ -234,7 +234,7 @@
     }
     
     function hideErrorMessage() {
-        const errorBanner = fragmentElement.querySelector('.maestro-error-banner');
+        const errorBanner = root.querySelector('.maestro-error-banner');
         if (errorBanner) {
             errorBanner.remove();
         }
@@ -246,7 +246,7 @@
         
         try {
             // Try to extract data from existing HTML elements as fallback
-            const cards = fragmentElement.querySelectorAll('.maestro-kpi-card');
+            const cards = root.querySelectorAll('.maestro-kpi-card');
             cards.forEach(card => {
                 const valueElement = card.querySelector('.kpi-value');
                 if (valueElement && !valueElement.textContent.trim()) {
@@ -277,7 +277,7 @@
     }
     
     function updateKPICards(kpiData) {
-        const cards = fragmentElement.querySelectorAll('.maestro-kpi-card');
+        const cards = root.querySelectorAll('.maestro-kpi-card');
         
         // Map KPI data to cards
         const kpiMapping = {
@@ -339,7 +339,7 @@
     function setupResponsiveKPIs() {
         const handleResize = () => {
             const isMobile = window.innerWidth < 768;
-            const dashboard = fragmentElement.querySelector('.maestro-kpi-dashboard');
+            const dashboard = root.querySelector('.maestro-kpi-dashboard');
             
             if (dashboard) {
                 if (isMobile) {
@@ -355,7 +355,7 @@
     }
     
     // Add click handlers for interactive KPI cards
-    fragmentElement.querySelectorAll('.maestro-kpi-card').forEach(card => {
+    root.querySelectorAll('.maestro-kpi-card').forEach(card => {
         card.addEventListener('click', function() {
             const title = this.querySelector('.kpi-title')?.textContent.trim();
             
@@ -368,7 +368,7 @@
                 bubbles: true
             });
             
-            fragmentElement.dispatchEvent(event);
+            root.dispatchEvent(event);
         });
     });
     

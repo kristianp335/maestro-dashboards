@@ -6,6 +6,7 @@
 (function() {
     'use strict';
     
+    // Use Liferay-provided fragmentElement (preferred) or fallback to script parent
     const root = (typeof fragmentElement !== 'undefined') ? fragmentElement : 
                  (document.currentScript ? document.currentScript.parentElement : null);
     
@@ -197,7 +198,7 @@
         }
         
         // Fallback to direct loading
-        if (fragmentElement.closest('#wrapper')?.querySelector('script[src*="chart.js"]') || document.querySelector('script[src*="chart.js"]')) {
+        if (root.closest('#wrapper')?.querySelector('script[src*="chart.js"]') || document.querySelector('script[src*="chart.js"]')) {
             callback();
             return;
         }
