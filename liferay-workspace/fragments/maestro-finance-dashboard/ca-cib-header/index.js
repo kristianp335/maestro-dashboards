@@ -236,8 +236,9 @@
         const config = getFragmentConfiguration();
         const menuId = config.navigationMenuId;
         
-        // Skip API call if no valid menu ID is provided
+        // Skip API call if no valid menu ID is provided or in edit mode
         if (!menuId || menuId === 'primary-menu' || menuId === 'undefined' || menuId === undefined || typeof menuId !== 'string') {
+            // Don't render sample navigation in live mode
             return;
         }
         
@@ -350,17 +351,22 @@
         
         function openMenu() {
             isMenuOpen = true;
-            slidingMenu.classList.add('active');
+            slidingMenu.classList.add('show');
             slidingMenu.setAttribute('aria-hidden', 'false');
             menuToggle.setAttribute('aria-expanded', 'true');
             menuToggle.classList.add('active');
             
             if (overlay) {
-                overlay.classList.add('active');
+                overlay.classList.add('show');
             }
             
             if (mainContent) {
                 mainContent.classList.add('menu-open');
+            }
+            
+            // Integrate with global Boots sliding menu if available
+            if (typeof window.Boots !== 'undefined' && window.Boots.SlidingMenu) {
+                document.dispatchEvent(new CustomEvent('boots:menu-opened'));
             }
             
             // Focus management
@@ -374,17 +380,22 @@
         
         function closeMenu() {
             isMenuOpen = false;
-            slidingMenu.classList.remove('active');
+            slidingMenu.classList.remove('show');
             slidingMenu.setAttribute('aria-hidden', 'true');
             menuToggle.setAttribute('aria-expanded', 'false');
             menuToggle.classList.remove('active');
             
             if (overlay) {
-                overlay.classList.remove('active');
+                overlay.classList.remove('show');
             }
             
             if (mainContent) {
                 mainContent.classList.remove('menu-open');
+            }
+            
+            // Integrate with global Boots sliding menu if available
+            if (typeof window.Boots !== 'undefined' && window.Boots.SlidingMenu) {
+                document.dispatchEvent(new CustomEvent('boots:menu-closed'));
             }
             
             // Return focus to toggle button

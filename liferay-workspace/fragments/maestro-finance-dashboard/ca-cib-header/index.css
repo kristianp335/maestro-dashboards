@@ -3,6 +3,11 @@
  * Credit Agricole Corporate & Investment Bank branding
  */
 
+/* Prevent horizontal overflow from sliding menu */
+#wrapper {
+    overflow-x: hidden;
+}
+
 /* Header Container */
 #wrapper .maestro-header-fragment {
     position: relative;
@@ -30,6 +35,14 @@
 #wrapper .maestro-header-primary .maestro-search-btn,
 #wrapper .maestro-header-primary .maestro-login-btn {
     color: var(--brand-color-neutral-1, #ffffff);
+}
+
+/* Container constraint */
+#wrapper .maestro-container {
+    width: 100%;
+    max-width: var(--container-max-xl, 1248px);
+    margin: 0 auto;
+    padding: 0 var(--spacer-4, 1.5rem);
 }
 
 /* Header Content */
