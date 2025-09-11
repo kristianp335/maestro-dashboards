@@ -457,12 +457,73 @@
     
     function processLoanDataByTimeRange(loanData, timeRange) {
         // Process real loan data from Liferay Objects
-        // This would be implemented based on the actual data structure
-        return {
-            labels: [],
-            volumes: [],
-            approved: []
+        const dataPoints = {
+            '7d': 7,
+            '30d': 30,
+            '3m': 12, // Weekly data for 3 months
+            '12m': 12  // Monthly data for 12 months
         };
+        
+        const points = dataPoints[timeRange] || 30;
+        const labels = [];
+        const volumes = [];
+        const approved = [];
+        
+        const now = new Date();
+        
+        // Create time buckets
+        for (let i = points - 1; i >= 0; i--) {
+            let date;
+            let bucketStart, bucketEnd;
+            
+            if (timeRange === '7d') {
+                date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+                bucketStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                bucketEnd = new Date(bucketStart.getTime() + 24 * 60 * 60 * 1000);
+                labels.push(date.toLocaleDateString('en-US', { weekday: 'short' }));
+            } else if (timeRange === '30d') {
+                date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+                bucketStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                bucketEnd = new Date(bucketStart.getTime() + 24 * 60 * 60 * 1000);
+                labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+            } else if (timeRange === '3m') {
+                date = new Date(now.getTime() - i * 7 * 24 * 60 * 60 * 1000);
+                bucketStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                bucketEnd = new Date(bucketStart.getTime() + 7 * 24 * 60 * 60 * 1000);
+                labels.push('Week ' + (points - i));
+            } else {
+                date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+                bucketStart = new Date(date.getFullYear(), date.getMonth(), 1);
+                bucketEnd = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+                labels.push(date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' }));
+            }
+            
+            // Filter and aggregate loans for this time bucket
+            let bucketVolume = 0;
+            let bucketApproved = 0;
+            
+            loanData.forEach(loan => {
+                const originationDate = new Date(loan.originationDate);
+                
+                // Check if loan falls within this time bucket
+                if (originationDate >= bucketStart && originationDate < bucketEnd) {
+                    // Convert loan amount to millions
+                    const amountInMillions = (loan.loanAmount || 0) / 1000000;
+                    bucketVolume += amountInMillions;
+                    
+                    // Count as approved if loan status is active or approved
+                    const status = typeof loan.loanStatus === 'object' ? loan.loanStatus.key : loan.loanStatus;
+                    if (status === 'active' || status === 'approved' || loan.status?.label === 'approved') {
+                        bucketApproved += amountInMillions;
+                    }
+                }
+            });
+            
+            volumes.push(Math.round(bucketVolume * 10) / 10); // Round to 1 decimal
+            approved.push(Math.round(bucketApproved * 10) / 10);
+        }
+        
+        return { labels, volumes, approved };
     }
     
     function setupTimeRangeSelector() {
