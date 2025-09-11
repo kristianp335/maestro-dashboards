@@ -159,7 +159,7 @@ def generate_loans(count=50):
     
     return loans
 
-def generate_deals(count=50):
+def generate_deals(count=150):
     """Generate expanded deal data"""
     deals = []
     
@@ -303,7 +303,7 @@ def main():
     # Generate all data
     clients = generate_clients(50)
     loans = generate_loans(50)
-    deals = generate_deals(50)
+    deals = generate_deals(150)
     activities = generate_activities(80)
     performance_kpis = generate_performance_kpis(50)
     risk_metrics = generate_risk_metrics(50)
