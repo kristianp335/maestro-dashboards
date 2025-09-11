@@ -113,7 +113,7 @@ def main():
     
     # Load sample data
     try:
-        with open("liferay-workspace/client-extensions/maestro-batch-objects/batch/maestro-deals-sample-data.json", "r") as f:
+        with open("expanded_data/expanded-deals.json", "r") as f:
             sample_data = json.load(f)
     except FileNotFoundError:
         print("❌ ERROR: Sample data file not found")
