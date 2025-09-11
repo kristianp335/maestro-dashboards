@@ -18,7 +18,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "homepage": "https://fabian-bouche-liferay.github.io/custom-widget-container-cx/",
+
   "browserslist": {
     "production": [
       ">0.2%",
