@@ -1,0 +1,116 @@
+main.js:218 Failed to load MaestroDeal data from Liferay Objects: TypeError: str.charAt is not a function
+    at capitalize (maestro-dashboard:8519:20)
+    at maestro-dashboard:8352:77
+    at Array.map (<anonymous>)
+    at updateTableView (maestro-dashboard:8346:41)
+    at updateDisplay (maestro-dashboard:8327:13)
+    at applyFilters (maestro-dashboard:8319:9)
+    at maestro-dashboard:8221:21
+    at main.js:210:17
+(anonymous) @ main.js:218
+Promise.catch
+(anonymous) @ main.js:212
+loadDealsData @ maestro-dashboard:8210
+(anonymous) @ maestro-dashboard:8183
+waitForDependencies @ maestro-dashboard:8192
+initializeDealManagement @ maestro-dashboard:8182
+(anonymous) @ maestro-dashboard:8178
+(anonymous) @ maestro-dashboard:8545
+main.js:218 Failed to load GFDActivities data from Liferay Objects: TypeError: Cannot read properties of undefined (reading 'charAt')
+    at capitalize (maestro-dashboard:7638:20)
+    at maestro-dashboard:7569:46
+    at Array.forEach (<anonymous>)
+    at updateActivitiesDisplay (maestro-dashboard:7552:28)
+    at applyActivityFilters (maestro-dashboard:7542:9)
+    at maestro-dashboard:7469:21
+    at main.js:210:17
+(anonymous) @ main.js:218
+Promise.catch
+(anonymous) @ main.js:212
+loadActivitiesData @ maestro-dashboard:7460
+(anonymous) @ maestro-dashboard:7325
+waitForDependencies @ maestro-dashboard:7333
+initializeGFDTracking @ maestro-dashboard:7322
+(anonymous) @ maestro-dashboard:7319
+(anonymous) @ maestro-dashboard:7664
+core.controller.js:146 Uncaught Error: Canvas is already in use. Chart with ID '0' must be destroyed before the canvas with ID 'loanAnalyticsChart' can be reused.
+An @ core.controller.js:146
+setupChart @ maestro-dashboard:5861
+initializeLoanAnalytics @ maestro-dashboard:5568
+(anonymous) @ maestro-dashboard:5637
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+(anonymous) @ maestro-dashboard:5635
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+initializeLoanAnalytics @ maestro-dashboard:5564
+(anonymous) @ maestro-dashboard:5559
+(anonymous) @ maestro-dashboard:6024
+core.controller.js:146 Uncaught Error: Canvas is already in use. Chart with ID '0' must be destroyed before the canvas with ID 'loanAnalyticsChart' can be reused.
+An @ core.controller.js:146
+setupChart @ maestro-dashboard:5861
+initializeLoanAnalytics @ maestro-dashboard:5568
+(anonymous) @ maestro-dashboard:5637
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+(anonymous) @ maestro-dashboard:5635
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+initializeLoanAnalytics @ maestro-dashboard:5564
+(anonymous) @ maestro-dashboard:5559
+(anonymous) @ maestro-dashboard:6024
+core.controller.js:146 Uncaught Error: Canvas is already in use. Chart with ID '0' must be destroyed before the canvas with ID 'loanAnalyticsChart' can be reused.
+An @ core.controller.js:146
+setupChart @ maestro-dashboard:5861
+initializeLoanAnalytics @ maestro-dashboard:5568
+(anonymous) @ maestro-dashboard:5637
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+(anonymous) @ maestro-dashboard:5635
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+(anonymous) @ maestro-dashboard:5635
+setInterval
+retryDependencyCheck @ maestro-dashboard:5632
+loadChartJS @ maestro-dashboard:5595
+checkDependencies @ maestro-dashboard:5579
+initializeLoanAnalytics @ maestro-dashboard:5564
+(anonymous) @ maestro-dashboard:5559
+(anonymous) @ maestro-dashboard:6024
+maestro-dashboard:7638 Uncaught TypeError: Cannot read properties of undefined (reading 'charAt')
+    at capitalize (maestro-dashboard:7638:20)
+    at maestro-dashboard:7569:46
+    at Array.forEach (<anonymous>)
+    at updateActivitiesDisplay (maestro-dashboard:7552:28)
+    at applyActivityFilters (maestro-dashboard:7542:9)
+    at maestro-dashboard:7469:21
+    at main.js:354:26
+capitalize @ maestro-dashboard:7638
+(anonymous) @ maestro-dashboard:7569
+updateActivitiesDisplay @ maestro-dashboard:7552
+applyActivityFilters @ maestro-dashboard:7542
+(anonymous) @ maestro-dashboard:7469
+(anonymous) @ main.js:354
+setTimeout
+generateMockObjectData @ main.js:354
+(anonymous) @ main.js:219
+Promise.catch
+(anonymous) @ main.js:212
+loadActivitiesData @ maestro-dashboard:7460
+(anonymous) @ maestro-dashboard:7325
+waitForDependencies @ maestro-dashboard:7333
+initializeGFDTracking @ maestro-dashboard:7322
+(anonymous) @ maestro-dashboard:7319
+(anonymous) @ maestro-dashboard:7664
