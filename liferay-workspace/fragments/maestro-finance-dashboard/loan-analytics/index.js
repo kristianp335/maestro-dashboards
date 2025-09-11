@@ -251,6 +251,12 @@
         const canvas = root.querySelector('#loanAnalyticsChart');
         if (!canvas) return;
         
+        // Destroy existing chart instance if it exists
+        if (chartInstance) {
+            chartInstance.destroy();
+            chartInstance = null;
+        }
+        
         const ctx = canvas.getContext('2d');
         
         // Get configuration before setting up chart
