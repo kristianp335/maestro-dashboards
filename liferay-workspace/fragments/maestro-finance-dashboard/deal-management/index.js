@@ -197,8 +197,6 @@
         const endIndex = startIndex + dealsPerPage;
         const pageDeals = filteredDeals.slice(startIndex, endIndex);
         
-        const showActions = getConfiguration('showActions', 'true') === 'true';
-        
         tableBody.innerHTML = pageDeals.map(deal => `
             <tr>
                 <td><strong>${deal.dealName}</strong></td>
@@ -207,7 +205,6 @@
                 <td><span class="maestro-status-badge ${getStatusClass(deal.status)}">${deal.statusLabel}</span></td>
                 <td><span class="maestro-risk-indicator ${deal.priority}">${deal.priorityLabel || capitalize(deal.priority)}</span></td>
                 <td>${formatDate(deal.closingDate)}</td>
-                ${showActions ? `<td><button class="maestro-btn-sm" onclick="viewDeal(${deal.id})"><span data-lfr-editable-id="view-deal-button-${deal.id}" data-lfr-editable-type="text">View Deal</span></button></td>` : ''}
             </tr>
         `).join('');
     }
@@ -220,8 +217,6 @@
         const startIndex = (currentPage - 1) * dealsPerPage;
         const endIndex = startIndex + dealsPerPage;
         const pageDeals = filteredDeals.slice(startIndex, endIndex);
-        
-        const showActions = getConfiguration('showActions', 'true') === 'true';
         
         cardsGrid.innerHTML = pageDeals.map(deal => `
             <div class="deal-card ${deal.priority === 'high' ? 'high-priority' : ''}">
@@ -237,11 +232,6 @@
                         <span class="deal-date">Closing: ${formatDate(deal.closingDate)}</span>
                     </div>
                 </div>
-                ${showActions ? `
-                <div class="deal-card-actions">
-                    <button class="maestro-btn-primary" onclick="viewDeal(${deal.id})">View Details</button>
-                    <button class="maestro-btn-secondary" onclick="editDeal(${deal.id})">Update</button>
-                </div>` : ''}
             </div>
         `).join('');
     }
