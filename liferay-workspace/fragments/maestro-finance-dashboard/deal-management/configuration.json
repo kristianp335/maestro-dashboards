@@ -23,12 +23,14 @@
                     "type": "select",
                     "typeOptions": {
                         "validValues": [
-                            {"label": "5 Deals", "value": "5"},
                             {"label": "10 Deals", "value": "10"},
-                            {"label": "20 Deals", "value": "20"}
+                            {"label": "25 Deals", "value": "25"},
+                            {"label": "50 Deals", "value": "50"},
+                            {"label": "100 Deals", "value": "100"},
+                            {"label": "All Deals", "value": "999"}
                         ]
                     },
-                    "defaultValue": "10"
+                    "defaultValue": "25"
                 },
                 {
                     "name": "showFilters",
