@@ -62,12 +62,14 @@
                 
                 if (data && data.items && data.items.length > 0) {
                     // Map API field names to expected field names
+                    // Handle picklist objects that have {key, name} structure
                     dealsData = data.items.map(deal => ({
                         ...deal,
                         client: deal.clientName,
                         value: deal.dealValue,
-                        status: deal.dealStatus,
-                        statusLabel: getStatusLabel(deal.dealStatus),
+                        status: typeof deal.dealStatus === 'object' ? deal.dealStatus.key : deal.dealStatus,
+                        statusLabel: getStatusLabel(typeof deal.dealStatus === 'object' ? deal.dealStatus.key : deal.dealStatus),
+                        priority: typeof deal.priority === 'object' ? deal.priority.key : deal.priority,
                         closingDate: deal.expectedClosingDate
                     }));
                     applyFilters();
