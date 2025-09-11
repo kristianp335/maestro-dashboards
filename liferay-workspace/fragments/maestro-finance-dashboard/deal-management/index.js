@@ -68,8 +68,9 @@
                         client: deal.clientName,
                         value: deal.dealValue,
                         status: typeof deal.dealStatus === 'object' ? deal.dealStatus.key : deal.dealStatus,
-                        statusLabel: getStatusLabel(typeof deal.dealStatus === 'object' ? deal.dealStatus.key : deal.dealStatus),
+                        statusLabel: typeof deal.dealStatus === 'object' ? deal.dealStatus.name : getStatusLabel(deal.dealStatus),
                         priority: typeof deal.priority === 'object' ? deal.priority.key : deal.priority,
+                        priorityLabel: typeof deal.priority === 'object' ? deal.priority.name : capitalize(deal.priority),
                         closingDate: deal.expectedClosingDate
                     }));
                     applyFilters();
@@ -127,6 +128,7 @@
                 status: status,
                 statusLabel: statusLabels[status],
                 priority: priority,
+                priorityLabel: capitalize(priority),
                 closingDate: closingDate.toISOString().split('T')[0],
                 lastUpdate: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
             });
@@ -203,9 +205,9 @@
                 <td>${deal.client}</td>
                 <td class="maestro-amount medium">${formatCurrency(deal.value)}</td>
                 <td><span class="maestro-status-badge ${getStatusClass(deal.status)}">${deal.statusLabel}</span></td>
-                <td><span class="maestro-risk-indicator ${deal.priority}">${capitalize(deal.priority)}</span></td>
+                <td><span class="maestro-risk-indicator ${deal.priority}">${deal.priorityLabel || capitalize(deal.priority)}</span></td>
                 <td>${formatDate(deal.closingDate)}</td>
-                ${showActions ? `<td><button class="maestro-btn-sm" onclick="viewDeal(${deal.id})" data-lfr-editable-id="view-deal-button" data-lfr-editable-type="text">View Deal</button></td>` : ''}
+                ${showActions ? `<td><button class="maestro-btn-sm" onclick="viewDeal(${deal.id})"><span data-lfr-editable-id="view-deal-button-${deal.id}" data-lfr-editable-type="text">View Deal</span></button></td>` : ''}
             </tr>
         `).join('');
     }
@@ -231,7 +233,7 @@
                     <div class="deal-client">${deal.client}</div>
                     <div class="deal-value maestro-amount large">${formatCurrency(deal.value)}</div>
                     <div class="deal-meta">
-                        <span class="maestro-risk-indicator ${deal.priority}">${capitalize(deal.priority)} Priority</span>
+                        <span class="maestro-risk-indicator ${deal.priority}">${deal.priorityLabel || capitalize(deal.priority)} Priority</span>
                         <span class="deal-date">Closing: ${formatDate(deal.closingDate)}</span>
                     </div>
                 </div>

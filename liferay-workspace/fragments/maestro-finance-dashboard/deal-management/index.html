@@ -16,10 +16,12 @@
                 <input type="text" class="maestro-search" placeholder="Search deals..." id="dealSearch">
                 <select class="maestro-select" id="statusFilter">
                     <option value="all">All Status</option>
+                    <option value="closedlost">Closed Lost</option>
+                    <option value="proposal">Proposal</option>
+                    <option value="qualified">Qualified</option>
                     <option value="negotiation">Negotiation</option>
-                    <option value="due-diligence">Due Diligence</option>
-                    <option value="approval">Approval</option>
-                    <option value="closing">Closing</option>
+                    <option value="lead">Lead</option>
+                    <option value="closedwon">Closed Won</option>
                 </select>
                 <select class="maestro-select" id="priorityFilter">
                     <option value="all">All Priority</option>
@@ -111,7 +113,7 @@
                         <td><span class="maestro-status-badge pending">Due Diligence</span></td>
                         <td><span class="maestro-risk-indicator high">High</span></td>
                         <td>2025-11-15</td>
-                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm">View</button></td>[/#if]
+                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm"><span data-lfr-editable-id="view-deal-button" data-lfr-editable-type="text">View Deal</span></button></td>[/#if]
                     </tr>
                     <tr>
                         <td><strong>Infrastructure Finance</strong></td>
@@ -120,7 +122,7 @@
                         <td><span class="maestro-status-badge approved">Approval</span></td>
                         <td><span class="maestro-risk-indicator medium">Medium</span></td>
                         <td>2025-10-30</td>
-                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm">View</button></td>[/#if]
+                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm"><span data-lfr-editable-id="view-deal-button-2" data-lfr-editable-type="text">View Deal</span></button></td>[/#if]
                     </tr>
                     <tr>
                         <td><strong>Green Bond Facility</strong></td>
@@ -129,7 +131,7 @@
                         <td><span class="maestro-status-badge in-review">Negotiation</span></td>
                         <td><span class="maestro-risk-indicator low">Low</span></td>
                         <td>2025-12-01</td>
-                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm">View</button></td>[/#if]
+                        [#if configuration.showActions!true]<td><button class="maestro-btn-sm"><span data-lfr-editable-id="view-deal-button-3" data-lfr-editable-type="text">View Deal</span></button></td>[/#if]
                     </tr>
                 </tbody>
             </table>

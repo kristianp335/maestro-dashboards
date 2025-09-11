@@ -24,6 +24,7 @@ The system utilizes a dual-deployment strategy:
 - **Fixed Edit Mode Headers**: Resolved issue where fragment edit mode headers were showing when not in edit mode by removing `.portlet-layout` selector from CSS rules
 - **Fragment Resources System**: Implemented shared resources directory for images and assets across fragments
 - **Hero Fragment Enhancement**: Created comprehensive Maestro Hero section with CA-CIB branded background image and editable content
+- **Deal Management Fragment Fixes**: Fixed missing "View Deal" buttons with proper Liferay editable attributes, corrected status and priority filter mappings to match real API data structure (closedlost, qualified, proposal, etc.), and updated field mapping to properly handle nested objects from Liferay Objects API
 
 ### Key Architectural Decisions
 - **Color System**: Adheres to CA-CIB brand colors (Primary: Professional Green #00A651; Secondary: Dark Blue #003366; Accent: Light Gray #F5F5F5), using Liferay StyleBooks tokens for consistency.
