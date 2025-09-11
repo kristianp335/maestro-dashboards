@@ -20,23 +20,23 @@
     --font-family-primary: var(--font-family-base, 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif);
     --font-family-numbers: var(--font-family-monospace, 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace);
     
-    /* Spacing - Using Liferay Spacing Tokens */
-    --spacing-xs: var(--spacer-1, 0.25rem);
-    --spacing-sm: var(--spacer-2, 0.5rem);
-    --spacing-md: var(--spacer-3, 1rem);
-    --spacing-lg: var(--spacer-4, 1.5rem);
-    --spacing-xl: var(--spacer-5, 2rem);
-    --spacing-xxl: var(--spacer-6, 3rem);
+    /* Spacing - Fixed Values */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
     
-    /* Shadows - Using Liferay Shadow Tokens */
-    --shadow-sm: var(--box-shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
-    --shadow-md: var(--box-shadow, 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12));
-    --shadow-lg: var(--box-shadow-lg, 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10));
+    /* Shadows - Fixed Values */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
     
-    /* Border Radius - Using Liferay Border Tokens */
-    --border-radius-sm: var(--border-radius-sm, 4px);
-    --border-radius-md: var(--border-radius, 8px);
-    --border-radius-lg: var(--border-radius-lg, 12px);
+    /* Border Radius - Fixed Values */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
 }
 
 /* Global Styles for Maestro Finance Dashboard */
