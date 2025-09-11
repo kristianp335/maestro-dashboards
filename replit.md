@@ -1,7 +1,7 @@
 # Maestro GFD Cockpit Finance Dashboard
 
 ## Overview
-This project develops a comprehensive Liferay-based finance dashboard for Credit Agricole CIB's Maestro GFD (Global Finance Data) Cockpit. It aims to provide modular, configurable dashboard components for critical financial operations like loan management, deal tracking, risk analysis, and performance monitoring, adhering to CA-CIB's professional banking aesthetic. The system is designed to streamline financial data visualization and management for banking professionals, improving efficiency and analytical capabilities within the organization.
+This project develops a comprehensive Liferay-based finance dashboard for Credit Agricole CIB's Maestro GFD (Global Finance Data) Cockpit. It aims to provide modular, configurable dashboard components for critical financial operations like loan management, deal tracking, risk analysis, and performance monitoring, adhering to CA-CIB's professional banking aesthetic. The system is designed to streamline financial data visualization and management for banking professionals, improving efficiency and analytical capabilities within the organization, with a business vision to enhance efficiency and analytical capabilities within the organization, leading to improved decision-making and competitive advantage in the financial sector.
 
 ## User Preferences
 - Use simple, everyday language for communication
@@ -20,7 +20,7 @@ The system utilizes a dual-deployment strategy:
 - **Batch Objects Client Extension**: For the data import system populating Liferay Objects.
 
 ### Key Architectural Decisions
-- **Color System**: Adheres to CA-CIB brand colors (Primary: Professional Green #00A651; Secondary: Dark Blue #003366; Accent: Light Gray #F5F5F5).
+- **Color System**: Adheres to CA-CIB brand colors (Primary: Professional Green #00A651; Secondary: Dark Blue #003366; Accent: Light Gray #F5F5F5), using Liferay StyleBooks tokens for consistency.
 - **Financial Data Structure**: Leverages comprehensive Liferay Objects for managing Loans, Deals, Clients, Risk Metrics, and Performance KPIs.
 - **Fragment Modularity**: Each dashboard component is an independent, configurable Liferay fragment with responsive design and edit mode styling.
 - **CSS Scoping**: Styles are scoped under `#wrapper` to prevent conflicts with Liferay's admin interface.
@@ -37,7 +37,6 @@ The system utilizes a dual-deployment strategy:
 
 ### Core Finance Dashboard Components
 The system includes several core Liferay fragments:
-- **Finance Dashboard Collection**: The main collection housing all dashboard components.
 - **KPI Cards Fragment**: Configurable key performance indicators.
 - **Loan Analytics Fragment**: Chart.js-powered loan volume trends.
 - **Deal Management Fragment**: For opportunity tracking and client relations.
@@ -46,22 +45,17 @@ The system includes several core Liferay fragments:
 - **Performance Metrics Fragment**: For financial performance tracking.
 
 ### Liferay Objects Data Structure
-The project defines custom Liferay Objects for key financial entities:
-- **Loan Objects**: Details, terms, status, and metrics.
-- **Deal Objects**: Business opportunities, pipeline, and client information.
-- **Client Objects**: Corporate client data, relationships, and credit profiles.
-- **Risk Objects**: Credit scores, risk assessments, and compliance.
-- **Performance Objects**: KPIs, targets, and actual vs. projected performance.
+The project defines custom Liferay Objects for key financial entities: Loan, Deal, Client, Risk, and Performance Objects, detailing terms, status, metrics, business opportunities, client data, risk assessments, and KPIs.
 
 ### Headless API Methodology
 The system addresses critical data population issues by exclusively using an API-based approach for Liferay Objects:
-- **Object Folder Organization**: All Maestro objects are organized under a dedicated folder (`MAESTRO_FOLDER_ERC`) to ensure proper API field visibility.
-- **Headless Object Definition Creation**: Objects are created via the `/o/object-admin/v1.0/object-definitions` API endpoint and immediately published, avoiding the Liferay interface for object creation.
-- **Picklist Creation and Mapping**: Picklists (e.g., Client Status, Loan Status) are created and managed via the `/o/headless-admin-list-type/v1.0/list-type-definitions` API, with careful consideration for external reference codes and proper i18n mappings.
-- **Realistic Banking Data Generation**: The system handles a large volume (380+ records) of realistic, multi-year banking data across various objects, clients, and geographies.
-- **API Data Population Methodology**: Data is populated in batches using Python scripts, transforming raw data into the required Liferay Object format and ensuring 100% data upload success and correct field population.
-- **API Endpoint Discovery**: Endpoints are dynamically determined from object creation responses (`restContextPath`) to account for Liferay's pluralization rules, avoiding hardcoded paths.
-- **Authentication and Security**: Uses environment variables (`LIFERAY_USERNAME`, `LIFERAY_PASSWORD`) for basic authentication over HTTPS, ensuring secure API operations.
+- **Object Folder Organization**: All Maestro objects are organized under a dedicated folder (`MAESTRO_FOLDER_ERC`).
+- **Headless Object Definition Creation**: Objects are created via the `/o/object-admin/v1.0/object-definitions` API endpoint and immediately published.
+- **Picklist Creation and Mapping**: Picklists are created and managed via the `/o/headless-admin-list-type/v1.0/list-type-definitions` API.
+- **Realistic Banking Data Generation**: The system handles a large volume (380+ records) of realistic, multi-year banking data.
+- **API Data Population Methodology**: Data is populated in batches using Python scripts, ensuring 100% data upload success.
+- **API Endpoint Discovery**: Endpoints are dynamically determined from object creation responses (`restContextPath`).
+- **Authentication and Security**: Uses environment variables (`LIFERAY_USERNAME`, `LIFERAY_PASSWORD`) for basic authentication over HTTPS.
 
 ## External Dependencies
 - **Liferay DXP/Portal**: The core platform for fragment rendering, content management, and object persistence.
@@ -69,51 +63,3 @@ The system addresses critical data population issues by exclusively using an API
 - **Liferay Headless Delivery API**: Used for data fetching and API integration with Liferay Objects.
 - **Chart.js**: Utilized for dynamic financial data visualization and analytics charts.
 - **Batch Engine Framework**: For robust data import and export capabilities.
-
-## Implementation Reference Documentation
-
-### Previous Project Documentation (Reference Library)
-These documentation files from previous Liferay implementations provide proven patterns, best practices, and solutions for common challenges:
-
-#### Performance Optimization Guides
-- **`attached_assets/LCP_OPTIMIZATION_1757585262673.md`**: Resolves hero fragment LCP render delays (88% reduction from 4,800ms to <1,500ms). Includes critical CSS inline strategies, CSS client extension optimization, and CLS fixes with explicit dimensions.
-- **`attached_assets/PERFORMANCE_ANALYSIS_1757585262674.md`**: Ultra-optimized performance analysis targeting 90+ Lighthouse scores. Covers LCP render blocking elimination, CLS prevention, debugging code removal, and critical CSS priority implementation.
-- **`attached_assets/PERFORMANCE_OPTIMIZATION_SUMMARY_1757585262676.md`**: Comprehensive performance status tracking with render-blocking independence strategies, CSS variable hardcoding, and anti-blocking techniques.
-
-#### Project Implementation Examples
-- **`attached_assets/README_1757585262677.md`**: Johnson Matthey project structure with dual-deployment strategy (client extensions + fragment collections), showing complete Liferay-native website recreation patterns.
-- **`attached_assets/replit_1757585262678.md`**: Johnson Matthey project documentation with comprehensive fragment modularity, modal systems, FreeMarker templates, and performance optimizations including render-blocking independence.
-- **`attached_assets/replit_1757585298676.md`**: Vanden Recycling implementation with authentication integration, navigation API handling, dropdown scoping, and comprehensive CSS wrapper scoping requirements.
-
-#### Technical Implementation Guide
-- **`attached_assets/liferay-implementation-guide_1757585298676.md`**: Master implementation guide covering:
-  - Fragment image editing requirements with `data-lfr-editable` attributes
-  - Modal implementation with embedded Liferay portlets and theme styling overrides
-  - Navigation implementation handling API structure mismatches (`navigationMenuItems` vs `children`)
-  - Fragment dropdown scoping to prevent interference with Liferay functionality
-  - CSS wrapper scoping requirements (`#wrapper` for admin interface protection)
-  - Conservative z-index strategies for edit mode compatibility
-  - Liferay dropzone implementation with edit mode detection
-  - Above-the-fold performance optimizations with inline SVG and animation strategies
-
-### Key Implementation Patterns for Maestro GFD Cockpit
-
-**From Previous Projects - Apply These Patterns**:
-- **Performance First**: Always implement critical CSS inline for LCP elements, eliminate render-blocking dependencies
-- **API Structure Handling**: Use both `navigationMenuItems` and `children` properties for navigation compatibility  
-- **Fragment Scoping**: All JavaScript scoped to `fragmentElement`, all CSS scoped to `#wrapper`
-- **Modal Integration**: Embed Liferay portlets with comprehensive CSS overrides using `!important` declarations
-- **Edit Mode Detection**: Use multiple selectors for robust dropzone visibility across Liferay versions
-- **Conservative Z-Index**: Use standard Bootstrap values (1050-1060) to avoid admin interface conflicts
-
-**Banking-Specific Adaptations Needed**:
-- Color scheme: CA-CIB Professional Green (#00A651) instead of brand colors from previous projects
-- Financial data visualization: Chart.js integration for banking metrics
-- Object-based data architecture: Leverage Liferay Objects for financial entities
-- Compliance considerations: Banking-grade security and data handling
-
-## Recent Changes
-- 2025-09-11: **CRITICAL BREAKTHROUGH**: Resolved blank fields issue via complete headless API methodology
-- 2025-09-11: Created all 7 Maestro objects via object-admin API with proper folder organization (100% success)
-- 2025-09-11: Successfully uploaded 380 realistic banking records across all objects via REST APIs (100% success)
-- 2025-09-11: Added reference library of previous project documentation for implementation guidance
