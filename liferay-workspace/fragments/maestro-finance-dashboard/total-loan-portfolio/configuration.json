@@ -1,0 +1,15 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "showTrends",
+                    "label": "Show Trend Indicator",
+                    "description": "Display trend arrow and percentage change",
+                    "type": "checkbox",
+                    "defaultValue": true
+                }
+            ]
+        }
+    ]
+}

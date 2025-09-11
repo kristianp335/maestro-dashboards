@@ -1,0 +1,18 @@
+<div class="maestro-single-kpi">
+    <div class="maestro-kpi-card">
+        <div class="kpi-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="kpi-title" data-lfr-editable-id="title" data-lfr-editable-type="text">Avg Processing Time</div>
+        <div class="kpi-value" data-lfr-editable-id="value" data-lfr-editable-type="text">3.2 days</div>
+        [#if configuration.showTrends!true]
+        <div class="kpi-change negative">
+            <span class="trend-arrow">↓</span>
+            <span class="trend-text" data-lfr-editable-id="change" data-lfr-editable-type="text">-0.8 days faster</span>
+        </div>
+        [/#if]
+    </div>
+</div>

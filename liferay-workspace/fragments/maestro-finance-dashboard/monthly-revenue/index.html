@@ -1,0 +1,18 @@
+<div class="maestro-single-kpi">
+    <div class="maestro-kpi-card">
+        <div class="kpi-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                <path d="M17 5H9.5A3.5 3.5 0 0 0 6 8.5V8.5A3.5 3.5 0 0 0 9.5 12H14.5A3.5 3.5 0 0 1 18 15.5V15.5A3.5 3.5 0 0 1 14.5 19H6" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+        <div class="kpi-title" data-lfr-editable-id="title" data-lfr-editable-type="text">Monthly Revenue</div>
+        <div class="kpi-value maestro-amount large" data-lfr-editable-id="value" data-lfr-editable-type="text">€45.2M</div>
+        [#if configuration.showTrends!true]
+        <div class="kpi-change positive">
+            <span class="trend-arrow">↑</span>
+            <span class="trend-text" data-lfr-editable-id="change" data-lfr-editable-type="text">+8.7% above target</span>
+        </div>
+        [/#if]
+    </div>
+</div>

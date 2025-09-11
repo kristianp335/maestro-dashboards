@@ -1,0 +1,8 @@
+{
+    "cssPath": "index.css",
+    "htmlPath": "index.html",
+    "jsPath": "index.js",
+    "name": "Completion Rate KPI",
+    "type": "component",
+    "configurationPath": "configuration.json"
+}

@@ -1,0 +1,160 @@
+/* Total Loan Portfolio KPI Fragment Styles */
+
+#wrapper .maestro-single-kpi {
+    padding: var(--spacing-md, 1rem);
+}
+
+#wrapper .maestro-kpi-card {
+    position: relative;
+    background: var(--ca-cib-white, #ffffff);
+    border-radius: var(--border-radius-lg, 12px);
+    padding: var(--spacing-lg, 1.5rem);
+    box-shadow: var(--shadow-md, 0 3px 6px rgba(0, 0, 0, 0.15));
+    border-left: 4px solid var(--ca-cib-green, #00A651);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#wrapper .maestro-kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--ca-cib-green, #00A651) 0%, transparent 70%);
+    opacity: 0.1;
+    border-radius: 0 12px 0 100%;
+}
+
+#wrapper .maestro-kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg, 0 10px 20px rgba(0, 0, 0, 0.15));
+    border-left-color: var(--ca-cib-dark-blue, #003366);
+}
+
+#wrapper .kpi-icon {
+    position: absolute;
+    top: var(--spacing-lg, 1.5rem);
+    right: var(--spacing-lg, 1.5rem);
+    width: 24px;
+    height: 24px;
+    color: var(--ca-cib-green, #00A651);
+    opacity: 0.7;
+    z-index: 2;
+}
+
+#wrapper .kpi-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ca-cib-dark-gray, #333333);
+    margin-bottom: var(--spacing-sm, 0.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+#wrapper .kpi-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--ca-cib-dark-blue, #003366);
+    margin-bottom: var(--spacing-sm, 0.5rem);
+    line-height: 1;
+}
+
+#wrapper .kpi-value.maestro-amount {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+}
+
+#wrapper .kpi-change {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, 0.25rem);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: auto;
+}
+
+#wrapper .kpi-change.positive {
+    color: var(--ca-cib-green, #00A651);
+}
+
+#wrapper .kpi-change.negative {
+    color: var(--ca-cib-red, #e74c3c);
+}
+
+#wrapper .kpi-change.neutral {
+    color: var(--ca-cib-gray, #666666);
+}
+
+#wrapper .trend-arrow {
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+#wrapper .trend-text {
+    line-height: 1.2;
+}
+
+/* Loading State */
+#wrapper .maestro-single-kpi.loading .maestro-kpi-card {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+#wrapper .maestro-single-kpi.loading .kpi-value::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--ca-cib-green, #00A651);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: maestro-spin 1s linear infinite;
+    margin-left: var(--spacing-sm, 0.5rem);
+}
+
+@keyframes maestro-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error State */
+#wrapper .maestro-error-banner {
+    background: #fee;
+    border: 1px solid #fcc;
+    border-radius: var(--border-radius-md, 8px);
+    padding: var(--spacing-sm, 0.5rem);
+    margin-bottom: var(--spacing-md, 1rem);
+    font-size: 0.875rem;
+    color: #c33;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #wrapper .maestro-kpi-card {
+        padding: var(--spacing-md, 1rem);
+        min-height: 120px;
+    }
+    
+    #wrapper .kpi-value {
+        font-size: 1.875rem;
+    }
+    
+    #wrapper .kpi-title {
+        font-size: 0.8125rem;
+    }
+}
+
+/* Edit Mode Protection */
+.has-edit-mode-menu #wrapper .maestro-single-kpi {
+    pointer-events: none;
+}
+
+.has-edit-mode-menu #wrapper .maestro-kpi-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-md, 0 3px 6px rgba(0, 0, 0, 0.15));
+}

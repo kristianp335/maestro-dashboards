@@ -1,0 +1,8 @@
+{
+    "cssPath": "index.css",
+    "htmlPath": "index.html",
+    "jsPath": "index.js",
+    "name": "Average Processing Time KPI",
+    "type": "component",
+    "configurationPath": "configuration.json"
+}
