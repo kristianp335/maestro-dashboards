@@ -205,7 +205,7 @@
                 <td><span class="maestro-status-badge ${getStatusClass(deal.status)}">${deal.statusLabel}</span></td>
                 <td><span class="maestro-risk-indicator ${deal.priority}">${capitalize(deal.priority)}</span></td>
                 <td>${formatDate(deal.closingDate)}</td>
-                ${showActions ? `<td><button class="maestro-btn-sm" onclick="viewDeal(${deal.id})">View</button></td>` : ''}
+                ${showActions ? `<td><button class="maestro-btn-sm" onclick="viewDeal(${deal.id})" data-lfr-editable-id="view-deal-button" data-lfr-editable-type="text">View Deal</button></td>` : ''}
             </tr>
         `).join('');
     }
