@@ -10,7 +10,7 @@
 - **Eliminates render blocking** by providing instant CSS for largest contentful paint element
 - **Reduced external CSS dependencies** for critical path elements
 
-### 2. ThemeCSS Client Extension Optimization
+### 2. CSS Client Extension Optimization
 - **Reordered CSS properties** by usage frequency and criticality
 - **Added performance optimizations**: `contain: layout style`, `font-display: swap`, `will-change: transform`
 - **Prioritized core brand colors** and layout variables at top of cascade

@@ -15,7 +15,7 @@ This project develops a comprehensive Liferay-based finance dashboard for Credit
 
 ### Dual-Deployment Strategy
 The system utilizes a dual-deployment strategy:
-- **ThemeCSS & ThemeJS Client Extensions**: For global CSS and JavaScript, establishing CA-CIB branding and site-wide functionality.
+- **Frontend Client Extension**: For global CSS and JavaScript, establishing CA-CIB branding and site-wide functionality.
 - **Fragment Collection**: For individual UI components that make up the finance dashboard features.
 - **Batch Objects Client Extension**: For the data import system populating Liferay Objects.
 
@@ -102,7 +102,6 @@ These documentation files from previous Liferay implementations provide proven p
 - **Performance First**: Always implement critical CSS inline for LCP elements, eliminate render-blocking dependencies
 - **API Structure Handling**: Use both `navigationMenuItems` and `children` properties for navigation compatibility  
 - **Fragment Scoping**: All JavaScript scoped to `fragmentElement`, all CSS scoped to `#wrapper`
-- **Global CSS/JS**: Use themeCSS and themeJS client extensions for site-wide styling and functionality
 - **Modal Integration**: Embed Liferay portlets with comprehensive CSS overrides using `!important` declarations
 - **Edit Mode Detection**: Use multiple selectors for robust dropzone visibility across Liferay versions
 - **Conservative Z-Index**: Use standard Bootstrap values (1050-1060) to avoid admin interface conflicts
