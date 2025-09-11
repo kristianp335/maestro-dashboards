@@ -183,14 +183,14 @@
             };
             
             // Use Liferay's Object REST API with proper authentication
-            const apiUrl = objectEndpoints[objectName] || `/o/c/${objectName.toLowerCase()}s/`;
+            const baseUrl = objectEndpoints[objectName] || `/o/c/${objectName.toLowerCase()}s/`;
+            const apiUrl = `${baseUrl}?p_auth=${Liferay.authToken}`;
             
             fetch(apiUrl, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': Liferay.authToken
+                    'Content-Type': 'application/json'
                 },
                 credentials: 'same-origin'
             })
@@ -241,12 +241,11 @@
                 }
             }`;
             
-            fetch('/o/graphql', {
+            fetch(`/o/graphql?p_auth=${Liferay.authToken}`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': Liferay.authToken
+                    'Content-Type': 'application/json'
                 },
                 credentials: 'same-origin',
                 body: JSON.stringify({ query })
