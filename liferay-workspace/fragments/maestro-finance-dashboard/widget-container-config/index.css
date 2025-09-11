@@ -1,0 +1,93 @@
+/* Widget Container Configuration Fragment Styles */
+
+#wrapper .widget-container-config {
+    padding: var(--spacing-md, 1rem);
+}
+
+/* Edit Mode Styles */
+#wrapper .widget-container-config .component-paragraph {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+    margin-bottom: var(--spacing-sm, 0.5rem);
+    padding: var(--spacing-xs, 0.25rem) var(--spacing-sm, 0.5rem);
+    background-color: var(--ca-cib-light-gray, #f8f9fa);
+    border-left: 3px solid var(--ca-cib-green, #00A651);
+    border-radius: var(--border-radius-sm, 4px);
+}
+
+/* Drop Zone Styling in Edit Mode */
+#wrapper .widget-container-config lfr-drop-zone {
+    min-height: 200px;
+    border: 2px dashed var(--ca-cib-gray, #dee2e6);
+    border-radius: var(--border-radius-md, 8px);
+    background-color: var(--ca-cib-white, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#wrapper .widget-container-config lfr-drop-zone:hover {
+    border-color: var(--ca-cib-green, #00A651);
+    background-color: rgba(0, 166, 81, 0.05);
+}
+
+#wrapper .widget-container-config lfr-drop-zone::before {
+    content: 'Drop widgets here';
+    color: var(--ca-cib-gray, #6c757d);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+#wrapper .widget-container-config lfr-drop-zone:not(:empty)::before {
+    display: none;
+}
+
+/* Container Spacing */
+#wrapper .widget-container-config .container {
+    max-width: 100%;
+}
+
+#wrapper .widget-container-config .mb-4 {
+    margin-bottom: var(--spacing-lg, 1.5rem) !important;
+}
+
+/* Custom Widget Container Styles (Runtime) */
+#wrapper custom-widget-container {
+    display: block;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #wrapper .widget-container-config .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    #wrapper .widget-container-config lfr-drop-zone {
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    #wrapper .widget-container-config .component-paragraph {
+        font-size: 0.8125rem;
+    }
+    
+    #wrapper .widget-container-config lfr-drop-zone {
+        min-height: 120px;
+    }
+}
+
+/* Edit Mode Protection */
+.has-edit-mode-menu #wrapper .widget-container-config {
+    pointer-events: auto;
+}
+
+.has-edit-mode-menu #wrapper .widget-container-config custom-widget-container {
+    pointer-events: none;
+}

@@ -1,0 +1,25 @@
+[#assign isEdit=layoutMode == "edit"]
+[#if !isEdit]
+	<custom-widget-container data-number-of-widgets="${configuration.numberOfItems}">
+[#else]
+  <div class="container">
+		<div class="row">
+[/#if]
+	[#list 0..configuration.numberOfWidgets-1 as i]
+		<div slot="widget-${i+1}" [#if isEdit] class="${configuration.columnClass} mb-4" [/#if]>
+			<h2 
+					 data-label-for="widget-${i+1}"
+					 class="clearfix component-paragraph text-break [#if !isEdit]d-none[/#if]"
+					 data-lfr-editable-id="widget-label-${i+1}"
+					 data-lfr-editable-type="text">
+				Label of the Widget
+			</h2>			
+			<lfr-drop-zone data-lfr-drop-zone-id="${i+1}" data-lfr-priority="${i+1}"></lfr-drop-zone>
+		</div>
+	[/#list]
+[#if !isEdit]
+	</custom-widget-container>
+[#else]
+		</div>
+	</div>
+[/#if]
