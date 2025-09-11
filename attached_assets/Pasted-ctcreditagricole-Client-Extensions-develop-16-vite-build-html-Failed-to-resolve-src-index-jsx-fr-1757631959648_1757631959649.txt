@@ -1,0 +1,50 @@
+ctcreditagricole Client Extensions/develop|16] [vite:build-html] Failed to resolve /src/index.jsx from /var/jenkins_home/workspace/ricole_Client_Extensions_develop/liferay/client-extensions/custom-widget-container/index.html
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16] file: /var/jenkins_home/workspace/ricole_Client_Extensions_develop/liferay/client-extensions/custom-widget-container/index.html
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16]     at file:///var/jenkins_home/workspace/ricole_Client_Extensions_develop/liferay/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36313:29
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16]     at async Promise.all (index 0)
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16]     at async Object.handler (file:///var/jenkins_home/workspace/ricole_Client_Extensions_develop/liferay/node_modules/vite/dist/node/chunks/dep-Bu492Fnd.js:36510:11)
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16]     at async transform (file:///var/jenkins_home/workspace/ricole_Client_Extensions_develop/liferay/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:21113:16)
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16]     at async ModuleLoader.addModuleSource (file:///var/jenkins_home/workspace/ricole_Client_Extensions_develop/liferay/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:21326:36)
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16] error Command failed with exit code 1.
+INFO
+Sep 11 23:49:11.419
+ci
+0
+[lctcreditagricole Client Extensions/develop|16] info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+INFO
+Sep 11 23:49:11.519
+ci
+0
+INFO
+Sep 11 23:49:11.519
+ci
+0
+[lctcreditagricole Client Extensions/develop|16] FAILURE: Build failed with an exception.
