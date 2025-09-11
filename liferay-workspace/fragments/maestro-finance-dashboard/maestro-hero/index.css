@@ -1,0 +1,293 @@
+/*
+ * Maestro GFD Hero Fragment
+ * Credit Agricole Corporate & Investment Bank
+ */
+
+/* Critical path CSS for LCP optimization - inline in HTML if needed */
+#wrapper .maestro-lcp-optimized {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--brand-color-neutral-1, #ffffff);
+    margin-bottom: 2rem;
+    flex: 1;
+    contain: layout style;
+    will-change: auto;
+}
+
+/* Hero Container */
+#wrapper .maestro-hero-fragment {
+    position: relative;
+    overflow: hidden;
+}
+
+#wrapper .maestro-hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--brand-color-2, #003366) 0%, var(--brand-color-1, #00A651) 100%);
+    contain: layout style paint;
+}
+
+#wrapper .maestro-hero-overlay {
+    min-height: 600px;
+}
+
+/* Background Image */
+#wrapper .maestro-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#wrapper .maestro-hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+#wrapper .maestro-hero-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(0, 51, 102, 0.8) 0%, 
+        rgba(0, 166, 81, 0.6) 50%, 
+        rgba(0, 51, 102, 0.8) 100%
+    );
+    z-index: 2;
+}
+
+/* Container */
+#wrapper .maestro-container {
+    width: 100%;
+    max-width: var(--container-max-xl, 1248px);
+    margin: 0 auto;
+    padding: 0 var(--spacer-4, 1.5rem);
+    position: relative;
+    z-index: 3;
+}
+
+/* Hero Content */
+#wrapper .maestro-hero-content {
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+    padding: var(--spacer-6, 3rem) 0;
+}
+
+#wrapper .maestro-hero-text {
+    max-width: 600px;
+    color: var(--brand-color-neutral-1, #ffffff);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Typography */
+#wrapper .maestro-hero-title {
+    font-size: var(--font-size-4xl, 2.5rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--brand-color-neutral-1, #ffffff);
+    margin-bottom: var(--spacer-4, 1.5rem);
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-family-primary, system-ui, -apple-system, sans-serif);
+}
+
+#wrapper .maestro-hero-description {
+    font-size: var(--font-size-lg, 1.125rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: var(--spacer-6, 3rem);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Call to Action Buttons */
+#wrapper .maestro-hero-actions {
+    display: flex;
+    gap: var(--spacer-4, 1.5rem);
+    margin-bottom: var(--spacer-6, 3rem);
+    flex-wrap: wrap;
+}
+
+#wrapper .maestro-hero-cta {
+    padding: var(--spacer-3, 1rem) var(--spacer-5, 2rem);
+    font-size: var(--font-size-base, 1rem);
+    font-weight: var(--font-weight-semibold, 600);
+    border-radius: var(--border-radius, 4px);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transform: translateZ(0);
+}
+
+#wrapper .maestro-btn-primary {
+    background: var(--brand-color-1, #00A651);
+    color: var(--brand-color-neutral-1, #ffffff);
+    border-color: var(--brand-color-1, #00A651);
+    box-shadow: 0 4px 12px rgba(0, 166, 81, 0.3);
+}
+
+#wrapper .maestro-btn-primary:hover,
+#wrapper .maestro-btn-primary:focus {
+    background: var(--success, #28a745);
+    border-color: var(--success, #28a745);
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 6px 20px rgba(0, 166, 81, 0.4);
+}
+
+#wrapper .maestro-btn-secondary {
+    background: transparent;
+    color: var(--brand-color-neutral-1, #ffffff);
+    border-color: var(--brand-color-neutral-1, #ffffff);
+}
+
+#wrapper .maestro-btn-secondary:hover,
+#wrapper .maestro-btn-secondary:focus {
+    background: var(--brand-color-neutral-1, #ffffff);
+    color: var(--brand-color-2, #003366);
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* KPI Preview */
+#wrapper .maestro-hero-kpi-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacer-4, 1.5rem);
+    padding: var(--spacer-4, 1.5rem);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-lg, 8px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+}
+
+#wrapper .maestro-kpi-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-1, 0.25rem);
+}
+
+#wrapper .maestro-kpi-value {
+    font-size: var(--font-size-2xl, 1.75rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--brand-color-neutral-1, #ffffff);
+    font-family: var(--font-family-numbers, 'Courier New', monospace);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#wrapper .maestro-kpi-label {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: var(--font-weight-medium, 500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #wrapper .maestro-hero {
+        min-height: 400px;
+    }
+    
+    #wrapper .maestro-hero-overlay {
+        min-height: 450px;
+    }
+    
+    #wrapper .maestro-hero-content {
+        min-height: 400px;
+        padding: var(--spacer-4, 1.5rem) 0;
+    }
+    
+    #wrapper .maestro-hero-title {
+        font-size: var(--font-size-3xl, 2rem);
+        margin-bottom: var(--spacer-3, 1rem);
+    }
+    
+    #wrapper .maestro-hero-description {
+        font-size: var(--font-size-base, 1rem);
+        margin-bottom: var(--spacer-4, 1.5rem);
+    }
+    
+    #wrapper .maestro-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacer-3, 1rem);
+        margin-bottom: var(--spacer-4, 1.5rem);
+    }
+    
+    #wrapper .maestro-hero-kpi-preview {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: var(--spacer-3, 1rem);
+        padding: var(--spacer-3, 1rem);
+    }
+    
+    #wrapper .maestro-kpi-value {
+        font-size: var(--font-size-xl, 1.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    #wrapper .maestro-hero {
+        min-height: 350px;
+    }
+    
+    #wrapper .maestro-hero-title {
+        font-size: var(--font-size-2xl, 1.75rem);
+    }
+    
+    #wrapper .maestro-hero-kpi-preview {
+        grid-template-columns: 1fr;
+        max-width: none;
+    }
+    
+    #wrapper .maestro-hero-cta {
+        padding: var(--spacer-2, 0.75rem) var(--spacer-4, 1.5rem);
+        font-size: var(--font-size-sm, 0.875rem);
+    }
+}
+
+/* Edit Mode Optimizations */
+body.has-edit-mode-menu #wrapper .maestro-hero {
+    border: 2px dashed var(--brand-color-1, #00A651);
+    margin: var(--spacer-2, 0.5rem);
+    border-radius: var(--border-radius, 4px);
+}
+
+/* Performance Optimizations */
+#wrapper .maestro-hero-fragment {
+    contain: layout style;
+}
+
+#wrapper .maestro-hero-bg-image {
+    will-change: auto;
+    contain: size layout style;
+}

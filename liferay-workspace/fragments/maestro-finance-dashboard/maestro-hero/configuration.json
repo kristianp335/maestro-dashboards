@@ -1,0 +1,80 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "heroTitle",
+                    "label": "Hero Title",
+                    "description": "Main headline for the hero section",
+                    "type": "text",
+                    "defaultValue": "Maestro GFD Cockpit"
+                },
+                {
+                    "name": "heroDescription", 
+                    "label": "Hero Description",
+                    "description": "Descriptive text below the title",
+                    "type": "text",
+                    "defaultValue": "Comprehensive finance dashboard for global banking operations, loan management, and risk analysis at Credit Agricole Corporate & Investment Bank."
+                },
+                {
+                    "name": "heroStyle",
+                    "label": "Hero Style",
+                    "description": "Visual style for the hero section",
+                    "type": "select",
+                    "typeOptions": {
+                        "validValues": [
+                            {"label": "Standard", "value": "standard"},
+                            {"label": "With Overlay", "value": "overlay"}
+                        ]
+                    },
+                    "defaultValue": "overlay"
+                }
+            ]
+        },
+        {
+            "label": "Call-to-Action Buttons",
+            "fields": [
+                {
+                    "name": "showCTAButtons",
+                    "label": "Show CTA Buttons",
+                    "description": "Display call-to-action buttons",
+                    "type": "checkbox",
+                    "defaultValue": true
+                },
+                {
+                    "name": "primaryCTAText",
+                    "label": "Primary Button Text",
+                    "description": "Text for the primary action button",
+                    "type": "text", 
+                    "defaultValue": "View Dashboard"
+                },
+                {
+                    "name": "showSecondaryCTA",
+                    "label": "Show Secondary CTA",
+                    "description": "Display secondary action button",
+                    "type": "checkbox",
+                    "defaultValue": true
+                },
+                {
+                    "name": "secondaryCTAText",
+                    "label": "Secondary Button Text",
+                    "description": "Text for the secondary action button",
+                    "type": "text",
+                    "defaultValue": "Learn More"
+                }
+            ]
+        },
+        {
+            "label": "KPI Preview",
+            "fields": [
+                {
+                    "name": "showKPIPreview",
+                    "label": "Show KPI Preview",
+                    "description": "Display key performance indicators",
+                    "type": "checkbox", 
+                    "defaultValue": true
+                }
+            ]
+        }
+    ]
+}

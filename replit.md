@@ -35,9 +35,11 @@ The system utilizes a dual-deployment strategy:
 - **Edit Mode Detection**: Robust detection of Liferay's edit mode is implemented.
 - **Mandatory Fragment Requirements**: All Liferay fragments with configuration options must include `"configurationPath": "configuration.json"` and a `thumbnail.png`.
 - **Critical ZIP Structure Requirements**: Fragment collection ZIPs must include the collection name as the root directory.
+- **Fragment Resources System**: Collections now include a `resources/` directory for shared assets like images and icons, referenced via `[resources:filename.ext]` syntax in fragments.
 
 ### Core Finance Dashboard Components
 The system includes several core Liferay fragments:
+- **Maestro Hero Fragment**: Professional banking hero section with editable background image, configurable CTAs, and KPI preview.
 - **KPI Cards Fragment**: Configurable key performance indicators.
 - **Loan Analytics Fragment**: Chart.js-powered loan volume trends.
 - **Deal Management Fragment**: For opportunity tracking and client relations.
