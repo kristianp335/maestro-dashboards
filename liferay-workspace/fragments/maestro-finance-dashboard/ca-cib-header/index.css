@@ -212,40 +212,57 @@
     display: block;
 }
 
-/* Edit mode visibility */
-[data-editor-enabled="true"] #wrapper .maestro-account-selector-dropzone,
-.is-edit-mode #wrapper .maestro-account-selector-dropzone,
-body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone,
-[data-editor-enabled="true"] #wrapper .maestro-language-selector-dropzone,
-.is-edit-mode #wrapper .maestro-language-selector-dropzone,
-body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone {
-    display: block !important;
-    border: 2px dashed var(--brand-color-1, #00A651);
-    border-radius: var(--border-radius, 4px);
-    padding: var(--spacer-2, 0.5rem);
-    background: rgba(0, 166, 81, 0.05);
+/* Edit mode visibility - Only show when Liferay is actually in edit mode */
+body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone lfr-drop-zone,
+body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone lfr-drop-zone {
+    border-color: var(--brand-color-1, #00A651) !important;
+    background-color: rgba(0, 166, 81, 0.05) !important;
+    position: relative;
+    min-width: 120px !important;
+    min-height: 40px !important;
+    width: auto;
+    display: flex !important;
+    visibility: visible !important;
+    border-style: dashed !important;
+    border-width: 2px !important;
+    border-radius: var(--border-radius, 4px) !important;
+    padding: var(--spacer-2, 0.5rem) !important;
 }
 
-[data-editor-enabled="true"] #wrapper .maestro-account-selector-dropzone:empty::after,
-.is-edit-mode #wrapper .maestro-account-selector-dropzone:empty::after,
-body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone:empty::after {
+body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone lfr-drop-zone:before {
     content: "Add Account Selector";
-    color: var(--text-color-secondary, #6c757d);
+    color: var(--brand-color-1, #00A651);
     font-size: 0.75rem;
-    font-style: italic;
-    text-align: center;
-    display: block;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    display: block !important;
 }
 
-[data-editor-enabled="true"] #wrapper .maestro-language-selector-dropzone:empty::after,
-.is-edit-mode #wrapper .maestro-language-selector-dropzone:empty::after,
-body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone:empty::after {
+body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone lfr-drop-zone:before {
     content: "Add Language Selector";
-    color: var(--text-color-secondary, #6c757d);
+    color: var(--brand-color-1, #00A651);
     font-size: 0.75rem;
-    font-style: italic;
-    text-align: center;
-    display: block;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    display: block !important;
+}
+
+/* Hide placeholder when dropzone has content */
+body.has-edit-mode-menu #wrapper .maestro-account-selector-dropzone lfr-drop-zone:not(:empty):before,
+body.has-edit-mode-menu #wrapper .maestro-language-selector-dropzone lfr-drop-zone:not(:empty):before {
+    display: none;
 }
 
 /* Left Sliding Menu */

@@ -134,12 +134,9 @@
     
     function isInEditMode() {
         const body = document.body;
-        const hasEditModeMenu = body.classList.contains('has-edit-mode-menu');
-        const isEditMode = body.classList.contains('is-edit-mode');
-        const hasPageEditor = document.querySelector('.page-editor__sidebar, .page-editor-sidebar, [data-qa-id="pageEditor"]');
-        const hasEditableElements = document.querySelector('[contenteditable="true"], .lfr-editable-field');
         
-        return (hasEditModeMenu || isEditMode) && (hasPageEditor || hasEditableElements);
+        // Only check for Liferay's built-in edit mode class - do not modify it
+        return body.classList.contains('has-edit-mode-menu');
     }
     
     // Initialize copyright year update

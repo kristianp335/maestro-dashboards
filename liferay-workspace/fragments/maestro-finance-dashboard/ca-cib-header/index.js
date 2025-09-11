@@ -148,27 +148,17 @@
     function isInEditMode() {
         const body = document.body;
         
-        // Check for specific Liferay edit mode indicators
+        // Only check for Liferay's built-in edit mode class - do not modify it
         const hasEditModeMenu = body.classList.contains('has-edit-mode-menu');
-        const isEditMode = body.classList.contains('is-edit-mode');
-        const hasControlMenu = document.querySelector('.control-menu');
-        const hasPageEditor = document.querySelector('.page-editor__sidebar, .page-editor-sidebar, [data-qa-id="pageEditor"]');
-        const hasFragmentEntryProcessorEditable = document.querySelector('.fragment-entry-processor-editable');
-        const hasEditableElements = document.querySelector('[contenteditable="true"], .lfr-editable-field');
         
-        // Must have both control menu AND active page editor OR actively editable elements
-        const inEditMode = (hasEditModeMenu || isEditMode) && (hasPageEditor || hasEditableElements);
-        
-        // Add/remove body class to help with dropzone visibility
-        if (inEditMode) {
-            body.classList.add('has-edit-mode-menu');
+        // Add fragment-specific class for internal logic (without affecting Liferay classes)
+        if (hasEditModeMenu) {
             fragmentElement.classList.add('maestro-edit-mode');
         } else {
-            body.classList.remove('has-edit-mode-menu');
             fragmentElement.classList.remove('maestro-edit-mode');
         }
         
-        return inEditMode;
+        return hasEditModeMenu;
     }
     
     function ensureModalsHidden() {
