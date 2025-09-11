@@ -6,7 +6,9 @@
 (function() {
     'use strict';
     
-    const fragmentElement = document.currentScript ? document.currentScript.parentElement : document.querySelector('.maestro-kpi-dashboard').closest('.fragment');
+    const fragmentElement = document.currentScript ? document.currentScript.parentElement : 
+                           (document.querySelector('.maestro-kpi-dashboard')?.closest('.fragment') || 
+                            document.querySelector('.maestro-kpi-dashboard'));
     
     // Initialize KPI cards when fragment loads
     if (fragmentElement) {

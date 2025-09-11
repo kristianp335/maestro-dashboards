@@ -6,7 +6,9 @@
 (function() {
     'use strict';
     
-    const fragmentElement = document.currentScript ? document.currentScript.parentElement : document.querySelector('.maestro-loan-analytics').closest('.fragment');
+    const fragmentElement = document.currentScript ? document.currentScript.parentElement : 
+                           (document.querySelector('.maestro-loan-analytics')?.closest('.fragment') || 
+                            document.querySelector('.maestro-loan-analytics'));
     let chartInstance = null;
     
     // Initialize loan analytics when fragment loads
@@ -46,7 +48,7 @@
     
     function loadChartJS() {
         // Prevent loading Chart.js multiple times
-        if (document.querySelector('script[src*="chart.js"]')) {
+        if (fragmentElement.closest('#wrapper')?.querySelector('script[src*="chart.js"]') || document.querySelector('script[src*="chart.js"]')) {
             retryDependencyCheck();
             return;
         }

@@ -197,7 +197,7 @@
         }
         
         // Fallback to direct loading
-        if (document.querySelector('script[src*="chart.js"]')) {
+        if (fragmentElement.closest('#wrapper')?.querySelector('script[src*="chart.js"]') || document.querySelector('script[src*="chart.js"]')) {
             callback();
             return;
         }

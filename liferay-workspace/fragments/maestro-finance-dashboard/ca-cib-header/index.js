@@ -104,7 +104,7 @@
      * Adjust navigation position based on Liferay control menu presence
      */
     function adjustNavigationForControlMenu() {
-        const controlMenu = document.querySelector('.control-menu-level-1-nav.control-menu-nav');
+        const controlMenu = fragmentElement.closest('#wrapper')?.querySelector('.control-menu-level-1-nav.control-menu-nav') || document.querySelector('.control-menu-level-1-nav.control-menu-nav');
         const navigation = fragmentElement.querySelector('#maestro-sliding-menu');
         
         if (!controlMenu && navigation) {
@@ -340,7 +340,7 @@
         const menuClose = fragmentElement.querySelector('#maestro-menu-close');
         const slidingMenu = fragmentElement.querySelector('#maestro-sliding-menu');
         const overlay = fragmentElement.querySelector('#maestro-overlay');
-        const mainContent = document.querySelector('#wrapper');
+        const mainContent = fragmentElement.closest('#wrapper') || document.querySelector('#wrapper');
         
         if (!menuToggle || !slidingMenu) {
             return;
