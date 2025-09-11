@@ -87,8 +87,8 @@
     </div>
     
     <!-- Deal Table/Cards View -->
-    <div class="deal-content [#if configuration.viewMode!"table" == "cards"]deal-cards-view[/#if] [#if configuration.viewMode!"table" == "list"]deal-list-view[/#if]">
-        [#if configuration.viewMode!"table" == "table"]
+    <div class="deal-content [#if (configuration.viewMode!"table") == "cards"]deal-cards-view[/#if] [#if (configuration.viewMode!"table") == "list"]deal-list-view[/#if]">
+        [#if (configuration.viewMode!"table") == "table"]
         <div class="maestro-data-table">
             <table>
                 <thead>

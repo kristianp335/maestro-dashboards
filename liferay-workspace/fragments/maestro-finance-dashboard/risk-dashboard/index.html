@@ -84,7 +84,7 @@
     </div>
     
     <!-- Risk Analytics Chart -->
-    [#if configuration.riskView!"portfolio" == "portfolio" || configuration.riskView!"portfolio" == "credit"]
+    [#if (configuration.riskView!"portfolio") == "portfolio" || (configuration.riskView!"portfolio") == "credit"]
     <div class="maestro-chart-container risk-chart">
         <div class="chart-header">
             <h4>Risk Exposure Trends</h4>

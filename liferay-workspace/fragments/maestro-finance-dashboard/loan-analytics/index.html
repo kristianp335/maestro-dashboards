@@ -12,10 +12,10 @@
                 <div class="time-range-selector">
                     <span class="range-label">Period:</span>
                     <select class="maestro-select" id="timeRangeSelect">
-                        <option value="7d" [#if configuration.timeRange!"30d" == "7d"]selected[/#if]>Last 7 days</option>
-                        <option value="30d" [#if configuration.timeRange!"30d" == "30d"]selected[/#if]>Last 30 days</option>
-                        <option value="3m" [#if configuration.timeRange!"30d" == "3m"]selected[/#if]>Last 3 months</option>
-                        <option value="12m" [#if configuration.timeRange!"30d" == "12m"]selected[/#if]>Last 12 months</option>
+                        <option value="7d" [#if (configuration.timeRange!"30d") == "7d"]selected[/#if]>Last 7 days</option>
+                        <option value="30d" [#if (configuration.timeRange!"30d") == "30d"]selected[/#if]>Last 30 days</option>
+                        <option value="3m" [#if (configuration.timeRange!"30d") == "3m"]selected[/#if]>Last 3 months</option>
+                        <option value="12m" [#if (configuration.timeRange!"30d") == "12m"]selected[/#if]>Last 12 months</option>
                     </select>
                 </div>
             </div>
