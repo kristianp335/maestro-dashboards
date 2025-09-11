@@ -10,6 +10,7 @@ This project develops a comprehensive Liferay-based finance dashboard for Credit
 - Work independently for extended periods without constant check-ins
 - Document all architectural decisions and changes
 - **CRITICAL**: Always verify ZIP packaging correctness - check that updated code is actually included in generated ZIPs before considering deployment ready
+- **MANDATORY WORKFLOW**: Every time any fragment file is modified (HTML, CSS, JS, JSON), immediately regenerate the fragment collection ZIP using: `cd liferay-workspace/fragments && zip -r ../../deployment-package/fragments/maestro-finance-dashboard-fragments.zip maestro-finance-dashboard/`
 
 ## System Architecture
 
