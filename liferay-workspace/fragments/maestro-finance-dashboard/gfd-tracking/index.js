@@ -167,7 +167,15 @@
                 }
                 
                 if (data && data.items && data.items.length > 0) {
-                    activitiesData = data.items;
+                    // Map API field names and handle picklist objects
+                    activitiesData = data.items.map(activity => ({
+                        ...activity,
+                        title: activity.activityTitle,
+                        description: activity.activityDescription,
+                        type: typeof activity.activityType === 'object' ? activity.activityType.key : activity.activityType,
+                        status: typeof activity.activityStatus === 'object' ? activity.activityStatus.key : activity.activityStatus,
+                        time: activity.activityDate // Will be formatted later
+                    }));
                     applyActivityFilters();
                 } else {
                     generateMockActivitiesData();
