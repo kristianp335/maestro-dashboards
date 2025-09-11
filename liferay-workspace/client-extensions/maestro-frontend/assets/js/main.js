@@ -171,8 +171,19 @@
     // Utility for loading Liferay Object data
     window.MaestroUtils.loadObjectData = function(objectName, callback) {
         if (typeof Liferay !== 'undefined' && Liferay.authToken) {
+            // Map object names to correct API endpoints
+            const objectEndpoints = {
+                'MaestroLoan': '/o/c/maestroloans/',
+                'MaestroDeal': '/o/c/maestrodeals/',
+                'MaestroClient': '/o/c/maestroclients/',
+                'PerformanceKPI': '/o/c/performancekpis/',
+                'RiskMetrics': '/o/c/riskmetrics/',
+                'WorkflowMetrics': '/o/c/workflowmetrics/',
+                'GFDActivities': '/o/c/gfdactivities/'
+            };
+            
             // Use Liferay's Object REST API with proper authentication
-            const apiUrl = `/o/c/${objectName.toLowerCase()}s/`;
+            const apiUrl = objectEndpoints[objectName] || `/o/c/${objectName.toLowerCase()}s/`;
             
             fetch(apiUrl, {
                 method: 'GET',
@@ -202,9 +213,21 @@
                 generateMockObjectData(objectName, callback);
             });
         } else if (typeof Liferay !== 'undefined' && Liferay.Service) {
+            // Map object names to GraphQL field names
+            const graphqlFields = {
+                'MaestroLoan': 'maestroloans',
+                'MaestroDeal': 'maestrodeals', 
+                'MaestroClient': 'maestroclients',
+                'PerformanceKPI': 'performancekpis',
+                'RiskMetrics': 'riskmetrics',
+                'WorkflowMetrics': 'workflowmetrics',
+                'GFDActivities': 'gfdactivities'
+            };
+            
             // Fallback to GraphQL API if available
+            const graphqlFieldName = graphqlFields[objectName] || objectName.toLowerCase() + 's';
             const query = `{
-                ${objectName.toLowerCase()}s {
+                ${graphqlFieldName} {
                     items {
                         id
                         dateCreated
@@ -217,8 +240,10 @@
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': Liferay.authToken
                 },
+                credentials: 'same-origin',
                 body: JSON.stringify({ query })
             })
             .then(response => response.json())
@@ -226,7 +251,7 @@
                 if (data.errors) {
                     throw new Error('GraphQL errors: ' + JSON.stringify(data.errors));
                 }
-                callback(null, { items: data.data?.[objectName.toLowerCase() + 's']?.items || [] });
+                callback(null, { items: data.data?.[graphqlFieldName]?.items || [] });
             })
             .catch(error => {
                 console.warn(`Failed to load ${objectName} data via GraphQL:`, error);
