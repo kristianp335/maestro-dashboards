@@ -1,42 +1,42 @@
 /* Maestro GFD Cockpit - CA-CIB Frontend Client Extension */
-/* Professional Banking Theme with CA-CIB Brand Colors */
+/* Professional Banking Theme using Liferay Classic Theme Tokens */
 
-:root {
-    /* CA-CIB Brand Colors */
-    --ca-cib-green: #00A651;
-    --ca-cib-dark-blue: #003366;
-    --ca-cib-light-gray: #F5F5F5;
-    --ca-cib-medium-gray: #E0E0E0;
-    --ca-cib-dark-gray: #333333;
-    --ca-cib-white: #FFFFFF;
+#wrapper {
+    /* CA-CIB Brand Colors - Using Liferay StyleBooks Frontend Tokens */
+    --ca-cib-green: var(--brand-color-1, #00A651);
+    --ca-cib-dark-blue: var(--brand-color-2, #003366);
+    --ca-cib-light-gray: var(--light, #F5F5F5);
+    --ca-cib-medium-gray: var(--gray-300, #E0E0E0);
+    --ca-cib-dark-gray: var(--gray-700, #333333);
+    --ca-cib-white: var(--white, #FFFFFF);
     
-    /* Financial Dashboard Colors */
-    --success-green: #28a745;
-    --warning-orange: #ffc107;
-    --danger-red: #dc3545;
-    --info-blue: #17a2b8;
+    /* Financial Dashboard Colors - Using Liferay Theme Tokens */
+    --success-green: var(--success, #28a745);
+    --warning-orange: var(--warning, #ffc107);
+    --danger-red: var(--danger, #dc3545);
+    --info-blue: var(--info, #17a2b8);
     
-    /* Typography */
-    --font-family-primary: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-family-numbers: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    /* Typography - Using Liferay Font Tokens */
+    --font-family-primary: var(--font-family-base, 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif);
+    --font-family-numbers: var(--font-family-monospace, 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace);
     
-    /* Spacing */
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-    --spacing-xxl: 3rem;
+    /* Spacing - Using Liferay Spacing Tokens */
+    --spacing-xs: var(--spacer-1, 0.25rem);
+    --spacing-sm: var(--spacer-2, 0.5rem);
+    --spacing-md: var(--spacer-3, 1rem);
+    --spacing-lg: var(--spacer-4, 1.5rem);
+    --spacing-xl: var(--spacer-5, 2rem);
+    --spacing-xxl: var(--spacer-6, 3rem);
     
-    /* Shadows */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
+    /* Shadows - Using Liferay Shadow Tokens */
+    --shadow-sm: var(--box-shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24));
+    --shadow-md: var(--box-shadow, 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12));
+    --shadow-lg: var(--box-shadow-lg, 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10));
     
-    /* Border Radius */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 12px;
+    /* Border Radius - Using Liferay Border Tokens */
+    --border-radius-sm: var(--border-radius-sm, 4px);
+    --border-radius-md: var(--border-radius, 8px);
+    --border-radius-lg: var(--border-radius-lg, 12px);
 }
 
 /* Global Styles for Maestro Finance Dashboard */
