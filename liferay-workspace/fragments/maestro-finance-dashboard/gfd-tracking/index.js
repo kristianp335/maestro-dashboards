@@ -174,7 +174,7 @@
                         description: activity.activityDescription,
                         type: typeof activity.activityType === 'object' ? activity.activityType.key : activity.activityType,
                         status: typeof activity.activityStatus === 'object' ? activity.activityStatus.key : activity.activityStatus,
-                        time: activity.activityDate // Will be formatted later
+                        time: formatActivityDate(activity.activityDate)
                     }));
                     applyActivityFilters();
                 } else {
@@ -190,47 +190,51 @@
         const activities = [
             {
                 id: 1,
-                title: 'Loan LN-2025-0847 - Credit Approval Completed',
-                description: 'TotalEnergies SE infrastructure loan approved for €45.2M',
-                type: 'credit',
-                status: 'completed',
-                time: '2 hours ago'
+                title: 'Loan Processing - Compliance Check',
+                description: 'Professional processing of client portfolio with comprehensive risk evaluation.',
+                type: 'duediligence',
+                status: 'cancelled',
+                time: '2025-04-20T00:00:00.000Z'
             },
             {
                 id: 2,
-                title: 'Loan LN-2025-0848 - Due Diligence Review',
-                description: 'EDF Group renewable energy facility under review',
-                type: 'origination',
-                status: 'in-progress',
-                time: '4 hours ago'
+                title: 'System Review - Credit Approval',
+                description: 'Professional processing of credit application with comprehensive due diligence.',
+                type: 'creditanalysis',
+                status: 'planned',
+                time: '2025-08-19T00:00:00.000Z'
             },
             {
                 id: 3,
-                title: 'Distribution Package DP-2025-0156 - Syndication Complete',
-                description: 'Schneider Electric green bond distributed to 8 institutional investors',
-                type: 'distribution',
-                status: 'completed',
-                time: '6 hours ago'
+                title: 'Deal Assessment - Due Diligence',
+                description: 'Professional processing of credit application with comprehensive due diligence.',
+                type: 'creditanalysis',
+                status: 'cancelled',
+                time: '2025-03-29T00:00:00.000Z'
             },
             {
                 id: 4,
-                title: 'Loan LN-2025-0849 - Documentation Exception',
-                description: 'Missing environmental compliance certificate for LVMH project',
-                type: 'origination',
-                status: 'exception',
-                time: '8 hours ago'
+                title: 'System Assessment - Credit Approval',
+                description: 'Professional analysis of client portfolio with comprehensive due diligence.',
+                type: 'compliancecheck',
+                status: 'cancelled',
+                time: '2025-07-31T00:00:00.000Z'
             },
             {
                 id: 5,
-                title: 'System Integration - Real-time Data Sync',
-                description: 'Successfully synchronized portfolio data with central risk system',
-                type: 'system',
-                status: 'completed',
-                time: '1 day ago'
+                title: 'Deal Monitoring - Risk Assessment',
+                description: 'Professional assessment of client portfolio with comprehensive due diligence.',
+                type: 'duediligence',
+                status: 'inprogress',
+                time: '2025-05-13T00:00:00.000Z'
             }
         ];
         
-        activitiesData = activities;
+        // Format the mock data to match the real API structure
+        activitiesData = activities.map(activity => ({
+            ...activity,
+            time: formatActivityDate(activity.time)
+        }));
         applyActivityFilters();
     }
     
@@ -274,11 +278,11 @@
                 const description = item.querySelector('.activity-description');
                 if (description) description.textContent = activity.description;
                 
-                // Update type
+                // Update type with proper formatting
                 const type = item.querySelector('.activity-type');
-                if (type) type.textContent = capitalize(activity.type);
+                if (type) type.textContent = formatActivityType(activity.type);
                 
-                // Update time
+                // Update time (already formatted)
                 const time = item.querySelector('.activity-time');
                 if (time) time.textContent = activity.time;
                 
@@ -292,7 +296,7 @@
                     };
                     
                     statusBadge.className = `maestro-status-badge ${statusClasses[activity.status] || 'pending'}`;
-                    statusBadge.textContent = capitalize(typeof activity.status === 'string' ? activity.status.replace('-', ' ') : activity.status);
+                    statusBadge.textContent = formatActivityStatus(activity.status);
                 }
                 
                 item.style.display = 'flex';
@@ -349,6 +353,75 @@
             return str || '';
         }
         return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    
+    function formatActivityDate(dateString) {
+        if (!dateString) return '';
+        
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return dateString; // Return original if not a valid date
+            }
+            
+            const now = new Date();
+            const diffMs = now - date;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffMinutes = Math.floor(diffMs / (1000 * 60));
+            
+            // Format relative time for recent dates
+            if (diffMinutes < 60) {
+                return diffMinutes <= 1 ? 'Just now' : `${diffMinutes} minutes ago`;
+            } else if (diffHours < 24) {
+                return diffHours === 1 ? '1 hour ago' : `${diffHours} hours ago`;
+            } else if (diffDays === 1) {
+                return '1 day ago';
+            } else if (diffDays < 7) {
+                return `${diffDays} days ago`;
+            } else {
+                // For older dates, show formatted date
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
+        } catch (e) {
+            return dateString; // Return original if formatting fails
+        }
+    }
+    
+    function formatActivityType(type) {
+        if (!type) return '';
+        
+        const typeMapping = {
+            'duediligence': 'Due Diligence',
+            'creditanalysis': 'Credit Analysis',
+            'compliancecheck': 'Compliance Check',
+            'riskassessment': 'Risk Assessment',
+            'origination': 'Origination',
+            'credit': 'Credit',
+            'distribution': 'Distribution',
+            'system': 'System'
+        };
+        
+        return typeMapping[type.toLowerCase()] || capitalize(type);
+    }
+    
+    function formatActivityStatus(status) {
+        if (!status) return '';
+        
+        const statusMapping = {
+            'cancelled': 'CANCELLED',
+            'planned': 'PLANNED',
+            'inprogress': 'IN PROGRESS',
+            'completed': 'COMPLETED',
+            'exception': 'EXCEPTION',
+            'in-progress': 'IN PROGRESS'
+        };
+        
+        return statusMapping[status.toLowerCase()] || status.toUpperCase();
     }
     
     function getConfiguration(key, defaultValue) {
