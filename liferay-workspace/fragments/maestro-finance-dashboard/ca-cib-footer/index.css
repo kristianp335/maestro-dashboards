@@ -73,6 +73,7 @@
     height: 36px;
     width: auto;
     opacity: 0.9;
+    filter: brightness(0) invert(1);
 }
 
 /* Footer Description */
