@@ -20,6 +20,11 @@ The system utilizes a dual-deployment strategy:
 - **Fragment Collection**: For individual UI components that make up the finance dashboard features.
 - **Batch Objects Client Extension**: For the data import system populating Liferay Objects.
 
+### Latest Updates (December 2024)
+- **Fixed Edit Mode Headers**: Resolved issue where fragment edit mode headers were showing when not in edit mode by removing `.portlet-layout` selector from CSS rules
+- **Fragment Resources System**: Implemented shared resources directory for images and assets across fragments
+- **Hero Fragment Enhancement**: Created comprehensive Maestro Hero section with CA-CIB branded background image and editable content
+
 ### Key Architectural Decisions
 - **Color System**: Adheres to CA-CIB brand colors (Primary: Professional Green #00A651; Secondary: Dark Blue #003366; Accent: Light Gray #F5F5F5), using Liferay StyleBooks tokens for consistency.
 - **Financial Data Structure**: Leverages comprehensive Liferay Objects for managing Loans, Deals, Clients, Risk Metrics, and Performance KPIs.

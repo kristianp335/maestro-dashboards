@@ -302,18 +302,16 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Edit Mode Styles */
+/* Edit Mode Styles - Only show when truly in edit mode */
 #wrapper .control-menu-shown .maestro-dashboard,
-#wrapper .has-edit-mode-menu .maestro-dashboard,
-#wrapper .portlet-layout .maestro-dashboard {
+#wrapper .has-edit-mode-menu .maestro-dashboard {
     padding: var(--spacing-md);
     border: 2px dashed var(--ca-cib-green);
     background: rgba(0, 166, 81, 0.05);
 }
 
 #wrapper .control-menu-shown .maestro-dashboard::before,
-#wrapper .has-edit-mode-menu .maestro-dashboard::before,
-#wrapper .portlet-layout .maestro-dashboard::before {
+#wrapper .has-edit-mode-menu .maestro-dashboard::before {
     content: '✏️ Finance Dashboard - Edit Mode';
     display: block;
     background: var(--ca-cib-green);
