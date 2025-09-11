@@ -186,27 +186,45 @@
             
             // Use Liferay's Object REST API with proper authentication
             const baseUrl = objectEndpoints[objectName] || `/o/c/${objectName.toLowerCase()}s`;
-            const apiUrl = `${baseUrl}?p_auth=${Liferay.authToken}`;
             
-            fetch(apiUrl, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'same-origin'
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Transform response to consistent format
-                const transformedData = {
-                    items: data.items || data.data || (Array.isArray(data) ? data : [])
-                };
+            // Function to fetch all pages of data
+            function fetchAllPages(page = 1, allItems = []) {
+                const apiUrl = `${baseUrl}?p_auth=${Liferay.authToken}&page=${page}&pageSize=100`;
+                
+                return fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'same-origin'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const items = data.items || data.data || (Array.isArray(data) ? data : []);
+                    const combinedItems = allItems.concat(items);
+                    
+                    // If there are more pages, fetch them recursively
+                    if (data.lastPage && page < data.lastPage) {
+                        return fetchAllPages(page + 1, combinedItems);
+                    } else {
+                        // Return all combined items
+                        return {
+                            items: combinedItems,
+                            totalCount: data.totalCount || combinedItems.length
+                        };
+                    }
+                });
+            }
+            
+            // Start fetching from page 1
+            fetchAllPages()
+            .then(transformedData => {
                 callback(null, transformedData);
             })
             .catch(error => {

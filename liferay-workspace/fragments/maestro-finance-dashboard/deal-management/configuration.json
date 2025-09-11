@@ -30,7 +30,7 @@
                             {"label": "All Deals", "value": "999"}
                         ]
                     },
-                    "defaultValue": "25"
+                    "defaultValue": "20"
                 },
                 {
                     "name": "showFilters",
