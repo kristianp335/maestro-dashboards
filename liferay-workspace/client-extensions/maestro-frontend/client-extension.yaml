@@ -4,9 +4,9 @@ assemble:
     into: static
 maestro-frontend:
   name: Maestro Frontend
-  type: themeCSS
+  type: globalCSS
   url: css/main.css
 maestro-frontend-js:
   name: Maestro Frontend JS
-  type: themeJS
+  type: globalJS
   url: js/main.js
