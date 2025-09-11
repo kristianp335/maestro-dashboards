@@ -208,9 +208,14 @@
                 callback(null, transformedData);
             })
             .catch(error => {
-                console.warn(`Failed to load ${objectName} data from Liferay Objects:`, error);
-                // Fallback to mock data for development/demo purposes
-                generateMockObjectData(objectName, callback);
+                // Only show warnings for unexpected errors (not 404s for expected missing objects)
+                if (error.message.includes('404') && ['WorkflowMetrics', 'GFDActivities'].includes(objectName)) {
+                    // Silently fall back to mock data for objects that may not exist yet
+                    generateMockObjectData(objectName, callback);
+                } else {
+                    console.warn(`Failed to load ${objectName} data from Liferay Objects:`, error);
+                    generateMockObjectData(objectName, callback);
+                }
             });
         } else if (typeof Liferay !== 'undefined' && Liferay.Service) {
             // Map object names to GraphQL field names
@@ -296,7 +301,49 @@
                 mockData = { items: mockAnalytics };
                 break;
                 
+            case 'WorkflowMetrics':
+                mockData = {
+                    items: [{
+                        totalOriginations: 1247,
+                        pendingApprovals: 23,
+                        averageProcessingTime: 4.2,
+                        completionRate: 94.8,
+                        bottleneckStage: 'Credit Review',
+                        slaCompliance: 87.6
+                    }]
+                };
+                break;
+                
+            case 'GFDActivities':
+                const mockActivities = [];
+                const activities = [
+                    'Loan Application Submitted',
+                    'Credit Check Completed', 
+                    'Documentation Review',
+                    'Risk Assessment',
+                    'Final Approval',
+                    'Deal Closure'
+                ];
+                const statuses = ['completed', 'in-progress', 'pending', 'approved'];
+                
+                for (let i = 0; i < 25; i++) {
+                    const date = new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000);
+                    mockActivities.push({
+                        id: `activity-${i + 1}`,
+                        title: activities[Math.floor(Math.random() * activities.length)],
+                        status: statuses[Math.floor(Math.random() * statuses.length)],
+                        priority: ['high', 'medium', 'low'][Math.floor(Math.random() * 3)],
+                        assignee: ['John Smith', 'Sarah Wilson', 'Mike Johnson', 'Emily Davis'][Math.floor(Math.random() * 4)],
+                        dueDate: new Date(Date.now() + Math.random() * 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                        progress: Math.floor(Math.random() * 100),
+                        dateCreated: date.toISOString()
+                    });
+                }
+                mockData = { items: mockActivities };
+                break;
+                
             default:
+                // Provide empty data for unknown object types
                 mockData = { items: [] };
         }
         
