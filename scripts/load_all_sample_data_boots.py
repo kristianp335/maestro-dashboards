@@ -32,6 +32,9 @@ def load_sample_data_file(file_path):
         # Handle direct array format
         elif isinstance(data, list):
             return data
+        # Handle single record format (expand to array)
+        elif isinstance(data, dict):
+            return [data]
         else:
             print(f"⚠️ Unexpected data format in {file_path}")
             return None
