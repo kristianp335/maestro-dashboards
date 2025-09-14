@@ -46,8 +46,10 @@
         while (hasMorePages) {
           const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals?page=${page}&pageSize=${pageSize}`, {
             method: 'GET',
+            credentials: 'same-origin', // Include session cookies for authentication
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest' // CSRF protection
             }
           });
           
