@@ -113,10 +113,8 @@
           const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals?page=${page}&pageSize=${pageSize}&p_auth=${Liferay.authToken}`, {
             method: 'GET',
             headers: {
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest'
-            },
-            credentials: 'include'
+              'Content-Type': 'application/json'
+            }
           });
           
           if (!response.ok) {
