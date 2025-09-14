@@ -53,12 +53,10 @@
         
         // Fetch all pages of deals
         while (hasMorePages) {
-          const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals?page=${page}&pageSize=${pageSize}`, {
+          const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals?page=${page}&pageSize=${pageSize}&p_auth=${Liferay.authToken}`, {
             method: 'GET',
-            credentials: 'same-origin', // Include session cookies for authentication
             headers: {
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest' // CSRF protection
+              'Content-Type': 'application/json'
             }
           });
           
