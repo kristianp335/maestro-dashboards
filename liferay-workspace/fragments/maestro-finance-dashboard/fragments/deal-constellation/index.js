@@ -97,14 +97,14 @@
         dealName: deal.dealName || 'Unknown Deal',
         clientName: deal.clientName || 'Unknown Client',
         dealValue: parseFloat(deal.dealValue) || 0,
-        dealStatus: deal.dealStatus?.key || deal.dealStatus || 'prospect',
+        dealStatus: deal.dealStatus || 'prospect', // Preserve full object with name
         dealProbability: parseFloat(deal.dealProbability) || 0,
-        priority: deal.priority?.key || deal.priority || 'medium',
+        priority: deal.priority || 'medium', // Preserve full object with name
         relationshipManager: deal.relationshipManager || 'Unknown Manager',
         expectedClosingDate: deal.expectedClosingDate || '',
         lastUpdated: deal.lastUpdated || '',
-        dealType: deal.dealType?.key || deal.dealType || 'Unknown',
-        sector: deal.sector?.key || deal.sector || 'Unknown'
+        dealType: deal.dealType || 'Unknown', // Preserve full object with name
+        sector: deal.sector || 'Unknown' // Preserve full object with name
       };
     }
     
