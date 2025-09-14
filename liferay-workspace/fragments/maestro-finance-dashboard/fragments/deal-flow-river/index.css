@@ -1,0 +1,302 @@
+#wrapper .deal-flow-river-container {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 12px;
+  padding: 24px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+#wrapper .river-title {
+  color: #00A651;
+  margin: 0 0 24px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Pipeline System */
+#wrapper .river-system {
+  position: relative;
+  height: 370px;
+  width: 100%;
+}
+
+#wrapper .pipeline-stages {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 0 20px;
+}
+
+#wrapper .stage-label {
+  background: rgba(0, 166, 81, 0.2);
+  color: #00A651;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 166, 81, 0.3);
+}
+
+/* River Channels */
+#wrapper .river-channels {
+  position: relative;
+  height: 300px;
+  margin-bottom: 16px;
+}
+
+#wrapper .channel {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#wrapper .channel[data-stage="prospect"] {
+  top: 0;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 100%);
+}
+
+#wrapper .channel[data-stage="qualified"] {
+  top: 50px;
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.1) 100%);
+}
+
+#wrapper .channel[data-stage="proposal"] {
+  top: 100px;
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.3) 0%, rgba(251, 191, 36, 0.1) 100%);
+}
+
+#wrapper .channel[data-stage="negotiation"] {
+  top: 150px;
+  background: linear-gradient(90deg, rgba(245, 101, 101, 0.3) 0%, rgba(245, 101, 101, 0.1) 100%);
+}
+
+#wrapper .victory-channel {
+  top: 200px;
+  background: linear-gradient(90deg, rgba(0, 166, 81, 0.4) 0%, rgba(0, 166, 81, 0.2) 100%);
+  box-shadow: 0 0 20px rgba(0, 166, 81, 0.3);
+}
+
+#wrapper .lost-channel {
+  top: 250px;
+  background: linear-gradient(90deg, rgba(220, 38, 38, 0.3) 0%, rgba(220, 38, 38, 0.1) 100%);
+  opacity: 0.7;
+}
+
+/* Flowing Animation */
+#wrapper .channel-flow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 20%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 80%, 
+    transparent 100%);
+  animation: flowRight var(--flow-duration, 4s) linear infinite;
+}
+
+#wrapper .victory-flow {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 166, 81, 0.3) 20%, 
+    rgba(0, 166, 81, 0.5) 50%, 
+    rgba(0, 166, 81, 0.3) 80%, 
+    transparent 100%);
+}
+
+@keyframes flowRight {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Deal Particles */
+#wrapper .deal-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#wrapper .deal-particle {
+  position: absolute;
+  width: calc(12px * var(--particle-size-multiplier, 1));
+  height: calc(12px * var(--particle-size-multiplier, 1));
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+
+#wrapper .deal-particle:hover {
+  transform: scale(1.3);
+}
+
+/* Particle Colors by Status */
+#wrapper .particle-prospect { background: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.6); }
+#wrapper .particle-qualified { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+#wrapper .particle-proposal { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
+#wrapper .particle-negotiation { background: #f56565; box-shadow: 0 0 8px rgba(245, 101, 101, 0.6); }
+#wrapper .particle-closedwon { background: #00A651; box-shadow: 0 0 12px rgba(0, 166, 81, 0.8); }
+#wrapper .particle-closedlost { background: #dc2626; box-shadow: 0 0 8px rgba(220, 38, 38, 0.6); }
+
+/* Large deals get bigger particles */
+#wrapper .deal-particle.large-deal {
+  width: calc(18px * var(--particle-size-multiplier, 1));
+  height: calc(18px * var(--particle-size-multiplier, 1));
+}
+
+#wrapper .deal-particle.mega-deal {
+  width: calc(24px * var(--particle-size-multiplier, 1));
+  height: calc(24px * var(--particle-size-multiplier, 1));
+}
+
+/* Lost Deals Drain */
+#wrapper .lost-drain {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  width: 150px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#wrapper .drain-label {
+  color: #dc2626;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+#wrapper .drain-particles {
+  position: relative;
+  width: 100%;
+  height: 20px;
+}
+
+/* Deal Tooltip */
+#wrapper .deal-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 166, 81, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  font-size: 0.85rem;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  transition: opacity 0.2s ease;
+  min-width: 200px;
+}
+
+#wrapper .deal-tooltip.show {
+  opacity: 1;
+}
+
+#wrapper .tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 4px;
+}
+
+#wrapper .deal-client {
+  color: #00A651;
+}
+
+#wrapper .deal-value {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+#wrapper .tooltip-details {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* Loading State */
+#wrapper .river-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+}
+
+#wrapper .loading-text {
+  color: #00A651;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+#wrapper .loading-river {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#wrapper .loading-river::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00A651, transparent);
+  animation: loadingFlow 1.5s linear infinite;
+}
+
+@keyframes loadingFlow {
+  0% { transform: translateX(-40px); }
+  100% { transform: translateX(240px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #wrapper .pipeline-stages {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  #wrapper .stage-label {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  
+  #wrapper .river-system {
+    height: 280px;
+  }
+  
+  #wrapper .channel {
+    height: 35px;
+  }
+  
+  #wrapper .channel[data-stage="prospect"] { top: 0; }
+  #wrapper .channel[data-stage="qualified"] { top: 42px; }
+  #wrapper .channel[data-stage="proposal"] { top: 84px; }
+  #wrapper .channel[data-stage="negotiation"] { top: 126px; }
+  #wrapper .victory-channel { top: 168px; }
+}

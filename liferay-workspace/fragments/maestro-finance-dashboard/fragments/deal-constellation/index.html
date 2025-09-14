@@ -1,0 +1,97 @@
+<div class="deal-constellation-container" data-lfr-editable-id="title" data-lfr-editable-type="rich-text">
+  <h2 class="constellation-title">Deal Universe</h2>
+</div>
+
+<div class="universe-viewport">
+  <!-- Star Field Background -->
+  <div class="star-field">
+    <div class="distant-stars"></div>
+  </div>
+  
+  <!-- Constellation Canvas -->
+  <div class="constellation-canvas" id="constellationCanvas">
+    <!-- Deal stars will be dynamically created here -->
+  </div>
+  
+  <!-- Connection Lines -->
+  <svg class="connection-svg" id="connectionSvg">
+    <!-- Connection lines will be drawn here -->
+  </svg>
+  
+  <!-- Legend -->
+  <div class="constellation-legend">
+    <div class="legend-title">Deal Status</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="legend-star legend-prospect"></div>
+        <span>Prospect</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-star legend-qualified"></div>
+        <span>Qualified</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-star legend-proposal"></div>
+        <span>Proposal</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-star legend-negotiation"></div>
+        <span>Negotiation</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-star legend-closedwon"></div>
+        <span>Closed Won</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Controls -->
+  <div class="constellation-controls">
+    <button class="control-btn" id="zoomIn">🔍+</button>
+    <button class="control-btn" id="zoomOut">🔍-</button>
+    <button class="control-btn" id="resetView">⌂</button>
+    <button class="control-btn" id="toggleConnections">⚡</button>
+  </div>
+</div>
+
+<!-- Deal Detail Panel -->
+<div class="deal-detail-panel" id="dealDetailPanel">
+  <div class="panel-header">
+    <h3 class="deal-title"></h3>
+    <button class="close-btn" id="closePanel">×</button>
+  </div>
+  <div class="panel-content">
+    <div class="deal-info">
+      <div class="info-row">
+        <span class="label">Client:</span>
+        <span class="value deal-client"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">Value:</span>
+        <span class="value deal-value"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">Status:</span>
+        <span class="value deal-status"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">Probability:</span>
+        <span class="value deal-probability"></span>
+      </div>
+      <div class="info-row">
+        <span class="label">Manager:</span>
+        <span class="value deal-manager"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading State -->
+<div class="constellation-loading" id="constellationLoading">
+  <div class="loading-text">Mapping deal universe...</div>
+  <div class="loading-stars">
+    <div class="loading-star"></div>
+    <div class="loading-star"></div>
+    <div class="loading-star"></div>
+  </div>
+</div>

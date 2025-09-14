@@ -1,0 +1,46 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "riverSpeed",
+          "label": "Animation Speed",
+          "description": "Control the speed of the flowing animation",
+          "type": "select",
+          "defaultValue": "normal",
+          "options": [
+            { "label": "Slow", "value": "slow" },
+            { "label": "Normal", "value": "normal" },
+            { "label": "Fast", "value": "fast" }
+          ]
+        },
+        {
+          "name": "showTooltips",
+          "label": "Show Deal Tooltips",
+          "description": "Enable or disable deal information tooltips on hover",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "particleSize",
+          "label": "Particle Size",
+          "description": "Base size for deal particles",
+          "type": "select",
+          "defaultValue": "medium",
+          "options": [
+            { "label": "Small", "value": "small" },
+            { "label": "Medium", "value": "medium" },
+            { "label": "Large", "value": "large" }
+          ]
+        },
+        {
+          "name": "showLostDrain",
+          "label": "Show Lost Deals Drain",
+          "description": "Display the lost deals collection area",
+          "type": "checkbox",
+          "defaultValue": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+#wrapper .deal-constellation-container {
+  font-family: 'Arial', sans-serif;
+  background: radial-gradient(ellipse at center, #0f0f23 0%, #050511 70%, #000000 100%);
+  border-radius: 12px;
+  padding: 24px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+#wrapper .constellation-title {
+  color: #00A651;
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 166, 81, 0.5);
+}
+
+/* Universe Viewport */
+#wrapper .universe-viewport {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: inherit;
+}
+
+/* Star Field Background */
+#wrapper .star-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#wrapper .distant-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(1px 1px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 130px 80px, #fff, transparent),
+    radial-gradient(1px 1px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Constellation Canvas */
+#wrapper .constellation-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+/* Deal Stars */
+#wrapper .deal-star {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  animation: starPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes starPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* Animation intensity configurations */
+#wrapper .star-animation-none .deal-star {
+  animation: none;
+}
+
+#wrapper .star-animation-subtle .deal-star {
+  animation: starPulse 6s ease-in-out infinite alternate;
+}
+
+#wrapper .star-animation-normal .deal-star {
+  animation: starPulse 3s ease-in-out infinite alternate;
+}
+
+#wrapper .star-animation-intense .deal-star {
+  animation: starPulse 1.5s ease-in-out infinite alternate;
+}
+
+#wrapper .deal-star:hover {
+  transform: scale(1.3) !important;
+  z-index: 30;
+}
+
+/* Star Sizes based on deal value */
+#wrapper .deal-star.size-small {
+  width: 8px;
+  height: 8px;
+}
+
+#wrapper .deal-star.size-medium {
+  width: 12px;
+  height: 12px;
+}
+
+#wrapper .deal-star.size-large {
+  width: 16px;
+  height: 16px;
+}
+
+#wrapper .deal-star.size-huge {
+  width: 20px;
+  height: 20px;
+}
+
+#wrapper .deal-star.size-mega {
+  width: 24px;
+  height: 24px;
+}
+
+/* Star Colors by Status */
+#wrapper .star-prospect {
+  background: radial-gradient(circle, #3b82f6 0%, #1e40af 100%);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+#wrapper .star-qualified {
+  background: radial-gradient(circle, #a855f7 0%, #7c3aed 100%);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+#wrapper .star-proposal {
+  background: radial-gradient(circle, #fbbf24 0%, #f59e0b 100%);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.4);
+}
+
+#wrapper .star-negotiation {
+  background: radial-gradient(circle, #f56565 0%, #e53e3e 100%);
+  box-shadow: 0 0 15px rgba(245, 101, 101, 0.8), 0 0 30px rgba(245, 101, 101, 0.4);
+}
+
+#wrapper .star-closedwon {
+  background: radial-gradient(circle, #00A651 0%, #027a3e 100%);
+  box-shadow: 0 0 20px rgba(0, 166, 81, 1), 0 0 40px rgba(0, 166, 81, 0.6);
+  animation: victoryPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes victoryPulse {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(0, 166, 81, 1), 0 0 40px rgba(0, 166, 81, 0.6);
+  }
+  100% { 
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 166, 81, 1), 0 0 50px rgba(0, 166, 81, 0.8);
+  }
+}
+
+#wrapper .star-closedlost {
+  background: radial-gradient(circle, #dc2626 0%, #991b1b 100%);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.6), 0 0 20px rgba(220, 38, 38, 0.3);
+  opacity: 0.6;
+}
+
+/* Connection SVG */
+#wrapper .connection-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+#wrapper .connection-line {
+  stroke: rgba(0, 166, 81, 0.3);
+  stroke-width: 1;
+  opacity: 0.7;
+  animation: connectionPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes connectionPulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
+}
+
+#wrapper .connection-line.strong {
+  stroke: rgba(0, 166, 81, 0.6);
+  stroke-width: 2;
+}
+
+#wrapper .connection-line.active {
+  stroke: rgba(251, 191, 36, 0.8);
+  stroke-width: 2;
+  animation: activeConnection 2s ease-in-out infinite alternate;
+}
+
+@keyframes activeConnection {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Legend */
+#wrapper .constellation-legend {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 166, 81, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+#wrapper .legend-title {
+  color: #00A651;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+#wrapper .legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#wrapper .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #ffffff;
+}
+
+#wrapper .legend-star {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+#wrapper .legend-prospect { background: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.6); }
+#wrapper .legend-qualified { background: #a855f7; box-shadow: 0 0 6px rgba(168, 85, 247, 0.6); }
+#wrapper .legend-proposal { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.6); }
+#wrapper .legend-negotiation { background: #f56565; box-shadow: 0 0 6px rgba(245, 101, 101, 0.6); }
+#wrapper .legend-closedwon { background: #00A651; box-shadow: 0 0 8px rgba(0, 166, 81, 0.8); }
+
+/* Controls */
+#wrapper .constellation-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+#wrapper .control-btn {
+  background: rgba(0, 166, 81, 0.2);
+  border: 1px solid rgba(0, 166, 81, 0.5);
+  color: #00A651;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+#wrapper .control-btn:hover {
+  background: rgba(0, 166, 81, 0.3);
+  box-shadow: 0 0 10px rgba(0, 166, 81, 0.4);
+}
+
+/* Deal Detail Panel */
+#wrapper .deal-detail-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 166, 81, 0.5);
+  border-radius: 8px;
+  z-index: 200;
+  backdrop-filter: blur(15px);
+  transform: translateX(-320px);
+  transition: transform 0.3s ease;
+}
+
+#wrapper .deal-detail-panel.show {
+  transform: translateX(0);
+}
+
+#wrapper .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#wrapper .deal-title {
+  color: #00A651;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+#wrapper .close-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#wrapper .panel-content {
+  padding: 16px;
+}
+
+#wrapper .info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+}
+
+#wrapper .info-row .label {
+  color: #cccccc;
+  font-weight: 500;
+}
+
+#wrapper .info-row .value {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Loading State */
+#wrapper .constellation-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+}
+
+#wrapper .loading-text {
+  color: #00A651;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+#wrapper .loading-stars {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+#wrapper .loading-star {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00A651 0%, #027a3e 100%);
+  box-shadow: 0 0 15px rgba(0, 166, 81, 0.8);
+  animation: loadingPulse 1.5s ease-in-out infinite alternate;
+}
+
+#wrapper .loading-star:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+#wrapper .loading-star:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes loadingPulse {
+  0% { 
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% { 
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #wrapper .constellation-legend {
+    position: static;
+    margin-bottom: 16px;
+  }
+  
+  #wrapper .legend-items {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  #wrapper .constellation-controls {
+    position: static;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  #wrapper .deal-detail-panel {
+    width: calc(100% - 40px);
+    left: 20px;
+    transform: translateY(-100%);
+  }
+  
+  #wrapper .deal-detail-panel.show {
+    transform: translateY(0);
+  }
+}

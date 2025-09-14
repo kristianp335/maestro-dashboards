@@ -1,0 +1,54 @@
+{
+  "fieldSets": [
+    {
+      "fields": [
+        {
+          "name": "showConnections",
+          "label": "Show Star Connections",
+          "description": "Display connection lines between related deals",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "starAnimation",
+          "label": "Star Animation",
+          "description": "Control the pulsing animation of deal stars",
+          "type": "select",
+          "defaultValue": "normal",
+          "options": [
+            { "label": "None", "value": "none" },
+            { "label": "Subtle", "value": "subtle" },
+            { "label": "Normal", "value": "normal" },
+            { "label": "Intense", "value": "intense" }
+          ]
+        },
+        {
+          "name": "galaxyLayout",
+          "label": "Galaxy Layout",
+          "description": "Choose the arrangement pattern for deals",
+          "type": "select",
+          "defaultValue": "spiral",
+          "options": [
+            { "label": "Spiral Galaxy", "value": "spiral" },
+            { "label": "Scattered", "value": "scattered" },
+            { "label": "Clustered", "value": "clustered" }
+          ]
+        },
+        {
+          "name": "showLegend",
+          "label": "Show Status Legend",
+          "description": "Display the deal status color legend",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "interactiveZoom",
+          "label": "Interactive Zoom",
+          "description": "Enable zoom and pan controls",
+          "type": "checkbox",
+          "defaultValue": true
+        }
+      ]
+    }
+  ]
+}
