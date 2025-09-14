@@ -749,7 +749,7 @@
   // Handle resize events
   window.addEventListener('resize', () => {
     setTimeout(() => {
-      constellationInstance.createStars();
+      // Stars are created automatically by the render method when ResizeObserver detects viewport changes
       constellationInstance.createConnections();
     }, 100);
   });

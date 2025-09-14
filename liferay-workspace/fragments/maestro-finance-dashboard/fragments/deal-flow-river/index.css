@@ -30,85 +30,53 @@
 /* Pipeline System */
 #river-wrapper .river-system {
   position: relative;
-  height: 370px;
+  height: 600px;
   width: 100%;
 }
 
-#river-wrapper .pipeline-stages {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  padding: 0 20px;
-}
-
-#river-wrapper .stage-label {
-  background: rgba(0, 166, 81, 0.2);
-  color: #00A651;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: 1px solid rgba(0, 166, 81, 0.3);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#river-wrapper .stage-label:hover {
-  background: rgba(0, 166, 81, 0.3);
-  box-shadow: 0 0 10px rgba(0, 166, 81, 0.4);
-}
-
-#river-wrapper .stage-label.active {
-  background: rgba(0, 166, 81, 0.4);
-  color: #ffffff;
-  border-color: rgba(0, 166, 81, 0.6);
-  box-shadow: 0 0 15px rgba(0, 166, 81, 0.5);
-}
 
 /* River Channels */
 #river-wrapper .river-channels {
   position: relative;
-  height: 300px;
-  margin-bottom: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+  gap: 20px;
 }
 
 #river-wrapper .channel {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 40px;
-  border-radius: 20px;
+  height: 80px;
+  border-radius: 40px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #river-wrapper .channel[data-stage="prospect"] {
-  top: 0;
   background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 100%);
 }
 
 #river-wrapper .channel[data-stage="qualified"] {
-  top: 50px;
   background: linear-gradient(90deg, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.1) 100%);
 }
 
 #river-wrapper .channel[data-stage="proposal"] {
-  top: 100px;
   background: linear-gradient(90deg, rgba(251, 191, 36, 0.3) 0%, rgba(251, 191, 36, 0.1) 100%);
 }
 
 #river-wrapper .channel[data-stage="negotiation"] {
-  top: 150px;
   background: linear-gradient(90deg, rgba(245, 101, 101, 0.3) 0%, rgba(245, 101, 101, 0.1) 100%);
 }
 
 #river-wrapper .victory-channel {
-  top: 200px;
   background: linear-gradient(90deg, rgba(0, 166, 81, 0.4) 0%, rgba(0, 166, 81, 0.2) 100%);
   box-shadow: 0 0 20px rgba(0, 166, 81, 0.3);
 }
 
 #river-wrapper .lost-channel {
-  top: 250px;
   background: linear-gradient(90deg, rgba(220, 38, 38, 0.3) 0%, rgba(220, 38, 38, 0.1) 100%);
   opacity: 0.7;
 }
@@ -155,8 +123,8 @@
 
 #river-wrapper .deal-particle {
   position: absolute;
-  width: calc(12px * var(--particle-size-multiplier, 1));
-  height: calc(12px * var(--particle-size-multiplier, 1));
+  width: calc(24px * var(--particle-size-multiplier, 1));
+  height: calc(24px * var(--particle-size-multiplier, 1));
   border-radius: 50%;
   cursor: pointer;
   pointer-events: all;
@@ -178,13 +146,13 @@
 
 /* Large deals get bigger particles */
 #river-wrapper .deal-particle.large-deal {
-  width: calc(18px * var(--particle-size-multiplier, 1));
-  height: calc(18px * var(--particle-size-multiplier, 1));
+  width: calc(36px * var(--particle-size-multiplier, 1));
+  height: calc(36px * var(--particle-size-multiplier, 1));
 }
 
 #river-wrapper .deal-particle.mega-deal {
-  width: calc(24px * var(--particle-size-multiplier, 1));
-  height: calc(24px * var(--particle-size-multiplier, 1));
+  width: calc(48px * var(--particle-size-multiplier, 1));
+  height: calc(48px * var(--particle-size-multiplier, 1));
 }
 
 /* Lost Deals Drain */

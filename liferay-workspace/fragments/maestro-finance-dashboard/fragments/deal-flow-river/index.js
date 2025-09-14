@@ -28,7 +28,6 @@
         await this.loadDeals();
         this.createParticles();
         this.setupParticleEventHandlers();
-        this.setupStatusFilters();
         this.startAnimation();
         this.hideLoading();
       } catch (error) {
@@ -206,9 +205,9 @@
         particle.classList.add('large-deal');
       }
       
-      // Position within channel
-      const channelHeight = 40;
-      const verticalPosition = (channelHeight / 2) - 6; // Center vertically
+      // Position within channel (doubled height)
+      const channelHeight = 80;
+      const verticalPosition = (channelHeight / 2) - 12; // Center vertically for larger particles
       const horizontalSpacing = 100 / Math.max(totalInChannel, 1);
       const horizontalPosition = (index * horizontalSpacing) + (Math.random() * 20 - 10);
       
@@ -325,59 +324,6 @@
       }
     }
     
-    setupStatusFilters() {
-      // Set up click handlers for stage labels to filter particles
-      const stageLabels = this.container.querySelectorAll('.stage-label');
-      console.log(`Setting up status filters for ${stageLabels.length} stage labels`);
-      
-      stageLabels.forEach(label => {
-        label.style.cursor = 'pointer';
-        label.addEventListener('click', (e) => {
-          const targetStatus = label.dataset.stage;
-          console.log(`Filtering particles for status: ${targetStatus}`);
-          this.filterParticlesByStatus(targetStatus);
-          
-          // Update active state
-          stageLabels.forEach(l => l.classList.remove('active'));
-          label.classList.add('active');
-        });
-      });
-      
-      // Add "All" button functionality if needed
-      const allButton = document.createElement('div');
-      allButton.className = 'stage-label active';
-      allButton.textContent = 'All';
-      allButton.style.cursor = 'pointer';
-      allButton.addEventListener('click', () => {
-        console.log('Showing all particles');
-        this.showAllParticles();
-        stageLabels.forEach(l => l.classList.remove('active'));
-        allButton.classList.add('active');
-      });
-      
-      const stageContainer = this.container.querySelector('.pipeline-stages');
-      if (stageContainer) {
-        stageContainer.insertBefore(allButton, stageContainer.firstChild);
-      }
-    }
-    
-    filterParticlesByStatus(targetStatus) {
-      this.particles.forEach(particle => {
-        if (particle.status === targetStatus) {
-          particle.element.style.display = 'block';
-          particle.element.style.opacity = '1';
-        } else {
-          particle.element.style.opacity = '0.3';
-        }
-      });
-    }
-    
-    showAllParticles() {
-      this.particles.forEach(particle => {
-        particle.element.style.display = 'block';
-        particle.element.style.opacity = '1';
-      });
-    }
     
     setupParticleEventHandlers() {
       // Set up particle interaction events after particles are created
