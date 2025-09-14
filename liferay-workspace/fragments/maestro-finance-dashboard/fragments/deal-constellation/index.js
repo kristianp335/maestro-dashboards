@@ -561,8 +561,8 @@
         <div style="color: #ffffff;">
           <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Client:</strong> ${deal.clientName || 'Unknown'}</div>
           <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Value:</strong> ${this.formatCurrency(parseFloat(deal.dealValue) || 0)}</div>
-          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Status:</strong> ${deal.dealStatus || 'Unknown'}</div>
-          <div><strong style="color: #cccccc;">Probability:</strong> ${deal.dealProbability || 0}%</div>
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Status:</strong> ${deal.dealStatus?.name || deal.dealStatus || 'Unknown'}</div>
+          <div><strong style="color: #cccccc;">Probability:</strong> ${deal.dealProbability || this.calculateProbabilityFromStatus(deal.dealStatus?.key || deal.dealStatus)}%</div>
         </div>
       `;
       
@@ -616,8 +616,8 @@
     showDealDetails(deal) {
       const clientName = deal.clientName || 'Unknown Client';
       const dealValue = parseFloat(deal.dealValue) || 0;
-      const status = deal.dealStatus || 'Unknown';
-      const probability = deal.dealProbability || 0;
+      const statusName = deal.dealStatus?.name || deal.dealStatus || 'Unknown';
+      const probability = deal.dealProbability || this.calculateProbabilityFromStatus(deal.dealStatus?.key || deal.dealStatus);
       const manager = deal.relationshipManager || 'Unassigned';
       
       this.detailPanel.querySelector('.deal-title').textContent = deal.dealId || 'Deal';
@@ -699,6 +699,21 @@
       } else {
         return '€' + value.toLocaleString();
       }
+    }
+    
+    calculateProbabilityFromStatus(status) {
+      // Generate sensible probability percentages based on deal status
+      const statusKey = (status || 'prospect').toLowerCase();
+      const probabilities = {
+        'prospect': Math.floor(Math.random() * 11) + 15,     // 15-25%
+        'qualified': Math.floor(Math.random() * 11) + 35,    // 35-45%
+        'proposal': Math.floor(Math.random() * 11) + 55,     // 55-65%
+        'negotiation': Math.floor(Math.random() * 11) + 75,  // 75-85%
+        'closedwon': 100,                                    // 100%
+        'closedlost': 0                                      // 0%
+      };
+      
+      return probabilities[statusKey] || probabilities['prospect'];
     }
     
     hideLoading() {
