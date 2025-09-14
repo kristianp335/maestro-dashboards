@@ -195,8 +195,17 @@
     }
     
     createStars() {
-      const canvasWidth = this.canvas.clientWidth;
-      const canvasHeight = this.canvas.clientHeight;
+      // Ensure canvas has dimensions - wait for next frame if needed
+      let canvasWidth = this.canvas.clientWidth;
+      let canvasHeight = this.canvas.clientHeight;
+      
+      // Fallback dimensions if canvas isn't rendered yet
+      if (canvasWidth === 0 || canvasHeight === 0) {
+        canvasWidth = this.container.clientWidth || 800;
+        canvasHeight = 450; // Match CSS height
+      }
+      
+      console.log(`Canvas dimensions: ${canvasWidth}x${canvasHeight}`);
       
       // Clear existing stars
       this.canvas.innerHTML = '';
@@ -208,6 +217,9 @@
         this.canvas.appendChild(star.element);
         this.stars.push(star);
       });
+      
+      // Set up event handlers for all stars
+      this.setupStarEventHandlers();
     }
     
     createStar(deal, index, canvasWidth, canvasHeight) {
@@ -448,22 +460,6 @@
     }
     
     setupEventListeners() {
-      // Star click events
-      this.stars.forEach(star => {
-        star.element.addEventListener('click', (e) => {
-          this.selectStar(star);
-          this.showDealDetails(star.deal);
-        });
-        
-        star.element.addEventListener('mouseenter', () => {
-          this.highlightConnectedStars(star);
-        });
-        
-        star.element.addEventListener('mouseleave', () => {
-          this.clearHighlights();
-        });
-      });
-      
       // Control buttons
       const zoomIn = this.container.querySelector('#zoomIn');
       const zoomOut = this.container.querySelector('#zoomOut');
@@ -476,6 +472,64 @@
       resetView?.addEventListener('click', () => this.resetView());
       toggleConnections?.addEventListener('click', () => this.toggleConnections());
       closePanel?.addEventListener('click', () => this.hideDealDetails());
+    }
+    
+    setupStarEventHandlers() {
+      // Star interaction events - set up after stars are created
+      this.stars.forEach(star => {
+        star.element.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.selectStar(star);
+          this.showDealDetails(star.deal);
+          console.log('Star clicked:', star.deal.dealName);
+        });
+        
+        star.element.addEventListener('mouseenter', (e) => {
+          this.highlightConnectedStars(star);
+          this.showTooltip(star, e);
+        });
+        
+        star.element.addEventListener('mouseleave', () => {
+          this.clearHighlights();
+          this.hideTooltip();
+        });
+      });
+    }
+    
+    showTooltip(star, event) {
+      // Create tooltip element if it doesn't exist
+      let tooltip = this.container.querySelector('.star-tooltip');
+      if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.className = 'star-tooltip';
+        this.container.appendChild(tooltip);
+      }
+      
+      // Update tooltip content
+      const deal = star.deal;
+      tooltip.innerHTML = `
+        <div class="tooltip-header">${deal.dealName || 'Unknown Deal'}</div>
+        <div class="tooltip-content">
+          <div><strong>Client:</strong> ${deal.clientName || 'Unknown'}</div>
+          <div><strong>Value:</strong> ${this.formatCurrency(parseFloat(deal.dealValue) || 0)}</div>
+          <div><strong>Status:</strong> ${deal.dealStatus || 'Unknown'}</div>
+          <div><strong>Probability:</strong> ${deal.dealProbability || 0}%</div>
+        </div>
+      `;
+      
+      // Position tooltip near the star
+      const rect = star.element.getBoundingClientRect();
+      const containerRect = this.container.getBoundingClientRect();
+      tooltip.style.left = (rect.left - containerRect.left + rect.width + 10) + 'px';
+      tooltip.style.top = (rect.top - containerRect.top) + 'px';
+      tooltip.style.display = 'block';
+    }
+    
+    hideTooltip() {
+      const tooltip = this.container.querySelector('.star-tooltip');
+      if (tooltip) {
+        tooltip.style.display = 'none';
+      }
     }
     
     selectStar(star) {

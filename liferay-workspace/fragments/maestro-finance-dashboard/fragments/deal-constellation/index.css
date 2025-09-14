@@ -300,6 +300,40 @@
   box-shadow: 0 0 10px rgba(0, 166, 81, 0.4);
 }
 
+/* Star Tooltip */
+#wrapper .star-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(0, 166, 81, 0.5);
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 1000;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  max-width: 250px;
+  font-size: 0.8rem;
+  display: none;
+}
+
+#wrapper .tooltip-header {
+  color: #00A651;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+
+#wrapper .tooltip-content {
+  color: #ffffff;
+}
+
+#wrapper .tooltip-content div {
+  margin-bottom: 2px;
+}
+
+#wrapper .tooltip-content strong {
+  color: #cccccc;
+}
+
 /* Deal Detail Panel */
 #wrapper .deal-detail-panel {
   position: absolute;
