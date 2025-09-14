@@ -284,25 +284,22 @@
       // Position within channel (quadrupled height) - side by side arrangement
       const channelHeight = 160;
       
-      // Arrange multiple deals side by side with simpler, more reliable spacing
+      // Position deals in date order across the channel (earliest to latest)
       if (totalInChannel > 1) {
-        // Calculate simple horizontal spacing to fit all deals
-        const dealsPerRow = Math.min(8, totalInChannel); // Allow up to 8 smaller deals per row
-        const col = index % dealsPerRow;
-        const row = Math.floor(index / dealsPerRow);
+        // Calculate horizontal position based on chronological order
+        const channelWidth = 90; // Use 90% of channel width
+        const startMargin = 5; // 5% left margin
         
-        // Simple percentage-based positioning
-        const horizontalSpacing = 85 / dealsPerRow; // Use 85% of width
-        const horizontalPosition = 7.5 + (col * horizontalSpacing) + (horizontalSpacing / 2); // Start at 7.5% margin
+        // Distribute deals evenly across time (channel width)
+        const spacing = channelWidth / (totalInChannel - 1);
+        const horizontalPosition = startMargin + (index * spacing);
         
-        // Vertical positioning: center in available space
-        const rowsNeeded = Math.ceil(totalInChannel / dealsPerRow);
-        const availableHeight = channelHeight - 20; // Leave 10px margin top/bottom
-        const rowHeight = availableHeight / rowsNeeded;
-        const verticalPosition = 10 + (row * rowHeight) + (rowHeight / 2) - (calculatedSize / 2);
+        // For same dates, create slight vertical offset to avoid complete overlap
+        const sameTimeOffset = this.getSameTimeOffset(deal, index, totalInChannel);
+        const verticalPosition = (channelHeight / 2) - (calculatedSize / 2) + sameTimeOffset;
         
         particle.style.top = `${Math.max(5, Math.min(channelHeight - calculatedSize - 5, verticalPosition))}px`;
-        particle.style.left = `${horizontalPosition}%`;
+        particle.style.left = `${Math.min(95, horizontalPosition)}%`;
       } else {
         // Single deal: center in channel
         const verticalPosition = (channelHeight / 2) - (calculatedSize / 2);
@@ -371,6 +368,19 @@
       return particle;
     }
     
+    getSameTimeOffset(deal, index, totalInChannel) {
+      // Create slight vertical offset for deals with same dates to avoid overlap
+      // Group by date and create small vertical spacing within each date group
+      const dealDate = this.getDealDate(deal).toDateString();
+      const sameTimeDeals = [];
+      
+      // Find all deals with same date in current group (simplified approach)
+      const hash = this.hashCode(dealDate + deal.dealName);
+      const offset = (hash % 5) - 2; // Random offset between -2 and +2
+      
+      return offset * 3; // Multiply by 3px for subtle separation
+    }
+    
     groupDealsByStatus() {
       const groups = {
         qualified: [],
@@ -393,7 +403,41 @@
         }
       });
       
+      // Sort each group by date (earliest first)
+      Object.keys(groups).forEach(status => {
+        groups[status].sort((a, b) => {
+          const dateA = this.getDealDate(a);
+          const dateB = this.getDealDate(b);
+          return dateA - dateB;
+        });
+      });
+      
       return groups;
+    }
+    
+    getDealDate(deal) {
+      // Try to get a meaningful date from the deal
+      const dateStr = deal.expectedClosingDate || deal.lastUpdated || deal.dateCreated;
+      if (dateStr) {
+        return new Date(dateStr);
+      }
+      
+      // Generate consistent fake dates based on deal name for demo
+      const hash = this.hashCode(deal.dealName || 'Unknown');
+      const baseDate = new Date();
+      const daysOffset = (hash % 120) - 60; // ±60 days from now
+      baseDate.setDate(baseDate.getDate() + daysOffset);
+      return baseDate;
+    }
+    
+    hashCode(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+      return Math.abs(hash);
     }
     
     startAnimation() {
