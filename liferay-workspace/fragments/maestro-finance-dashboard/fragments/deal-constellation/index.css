@@ -5,7 +5,7 @@
   padding: 24px;
   color: #ffffff;
   position: relative;
-  overflow: visible; /* Allow tooltip to show outside container */
+  overflow: hidden; /* Contain stars within dark area */
   min-height: 500px;
 }
 

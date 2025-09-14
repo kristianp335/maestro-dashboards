@@ -220,12 +220,12 @@
     }
 
     render(viewportWidth, viewportHeight) {
-      // Apply significant padding to ensure stars stay inside dark area
-      const padding = 50;
+      // Apply padding to ensure stars stay well inside the universe viewport
+      const padding = 30; // Reduced padding since container overflow is now hidden
       const canvasWidth = Math.max(viewportWidth - (padding * 2), 200);
       const canvasHeight = Math.max(viewportHeight - (padding * 2), 200);
       
-      console.log(`🎯 RENDERING: ${canvasWidth}x${canvasHeight} (with ${padding}px padding)`);
+      console.log(`🎯 RENDERING: viewport ${viewportWidth}x${viewportHeight} → canvas ${canvasWidth}x${canvasHeight} (${padding}px padding)`);
       
       // Clear existing stars
       this.canvas.innerHTML = '';
@@ -238,7 +238,7 @@
         this.stars.push(star);
       });
       
-      console.log(`✅ Created ${this.stars.length} stars`);
+      console.log(`✅ Created ${this.stars.length} stars inside ${canvasWidth}x${canvasHeight} canvas area`);
       
       // Create connections AFTER stars are built
       this.createConnections();
@@ -272,7 +272,7 @@
       element.style.left = (position.x + padding) + 'px';
       element.style.top = (position.y + padding) + 'px';
       
-      console.log(`Star ${index}: ${deal.dealName} positioned at (${position.x + padding}, ${position.y + padding})`);
+      console.log(`⭐ Star ${index}: ${deal.dealName} → (${position.x + padding}, ${position.y + padding}) in ${canvasWidth + padding * 2}x${canvasHeight + padding * 2} viewport`);
       
       // Store deal data
       element.dealData = deal;
