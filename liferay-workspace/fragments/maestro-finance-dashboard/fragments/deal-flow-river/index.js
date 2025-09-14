@@ -403,6 +403,63 @@
       });
     }
     
+    createSafeTooltipContent(deal) {
+      // Create safe DOM structure to prevent XSS
+      const container = document.createElement('div');
+      
+      // Header
+      const header = document.createElement('div');
+      header.style.cssText = 'color: #00A651; font-weight: 600; margin-bottom: 4px; font-size: 0.85rem;';
+      header.textContent = deal.dealName || 'Unknown Deal';
+      container.appendChild(header);
+      
+      // Content wrapper
+      const content = document.createElement('div');
+      content.style.color = '#ffffff';
+      
+      // Client row
+      const clientRow = document.createElement('div');
+      clientRow.style.marginBottom = '2px';
+      const clientLabel = document.createElement('strong');
+      clientLabel.style.color = '#cccccc';
+      clientLabel.textContent = 'Client: ';
+      clientRow.appendChild(clientLabel);
+      clientRow.appendChild(document.createTextNode(deal.clientName || 'Unknown Client'));
+      content.appendChild(clientRow);
+      
+      // Value row
+      const valueRow = document.createElement('div');
+      valueRow.style.marginBottom = '2px';
+      const valueLabel = document.createElement('strong');
+      valueLabel.style.color = '#cccccc';
+      valueLabel.textContent = 'Value: ';
+      valueRow.appendChild(valueLabel);
+      valueRow.appendChild(document.createTextNode(`€${this.formatCurrency(parseFloat(deal.dealValue) || 0)}`));
+      content.appendChild(valueRow);
+      
+      // Status row
+      const statusRow = document.createElement('div');
+      statusRow.style.marginBottom = '2px';
+      const statusLabel = document.createElement('strong');
+      statusLabel.style.color = '#cccccc';
+      statusLabel.textContent = 'Status: ';
+      statusRow.appendChild(statusLabel);
+      statusRow.appendChild(document.createTextNode(deal.dealStatus || 'Unknown'));
+      content.appendChild(statusRow);
+      
+      // Probability row
+      const probRow = document.createElement('div');
+      const probLabel = document.createElement('strong');
+      probLabel.style.color = '#cccccc';
+      probLabel.textContent = 'Probability: ';
+      probRow.appendChild(probLabel);
+      probRow.appendChild(document.createTextNode(`${deal.dealProbability || 0}%`));
+      content.appendChild(probRow);
+      
+      container.appendChild(content);
+      return container;
+    }
+    
     showTooltip(event, deal) {
       if (!config.showTooltips) return;
       
@@ -430,22 +487,9 @@
         document.body.appendChild(tooltip);
       }
       
-      const clientName = deal.clientName || 'Unknown Client';
-      const dealValue = parseFloat(deal.dealValue) || 0;
-      const status = deal.dealStatus || 'Unknown';
-      const probability = deal.dealProbability || 0;
-      
-      tooltip.innerHTML = `
-        <div style="color: #00A651; font-weight: 600; margin-bottom: 4px; font-size: 0.85rem;">
-          ${deal.dealName || 'Unknown Deal'}
-        </div>
-        <div style="color: #ffffff;">
-          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Client:</strong> ${clientName}</div>
-          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Value:</strong> €${this.formatCurrency(dealValue)}</div>
-          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Status:</strong> ${status}</div>
-          <div><strong style="color: #cccccc;">Probability:</strong> ${probability}%</div>
-        </div>
-      `;
+      // Clear previous content and add safe content
+      tooltip.innerHTML = '';
+      tooltip.appendChild(this.createSafeTooltipContent(deal));
       
       // Position tooltip using getBoundingClientRect for accurate positioning
       const rect = event.target.getBoundingClientRect();
@@ -485,26 +529,58 @@
     }
     
     showDetailedTooltip(event, deal) {
-      // Enhanced tooltip for click events
+      // Enhanced tooltip for click events - use same unified system
       if (!config.showTooltips) return;
       
-      const clientName = deal.clientName || 'Unknown Client';
-      const dealValue = parseFloat(deal.dealValue) || 0;
-      const status = deal.dealStatus || 'Unknown';
-      const probability = deal.dealProbability || 0;
-      const manager = deal.relationshipManager || 'Unassigned';
+      // Create enhanced tooltip content with manager info
+      let tooltip = document.body.querySelector('.river-deal-tooltip');
+      if (!tooltip) {
+        // Create if doesn't exist
+        this.showTooltip(event, deal);
+        tooltip = document.body.querySelector('.river-deal-tooltip');
+      }
       
-      this.tooltip.querySelector('.deal-client').textContent = deal.dealName || 'Unknown Deal';
-      this.tooltip.querySelector('.deal-value').textContent = `€${this.formatCurrency(dealValue)}`;
-      this.tooltip.querySelector('.deal-status').textContent = `Status: ${status} (${probability}%)`;
-      this.tooltip.querySelector('.deal-probability').textContent = `Manager: ${manager}`;
+      // Clear and add enhanced content
+      tooltip.innerHTML = '';
+      const enhancedContent = this.createSafeTooltipContent(deal);
+      
+      // Add manager info for detailed view
+      const managerRow = document.createElement('div');
+      managerRow.style.marginTop = '4px';
+      managerRow.style.borderTop = '1px solid rgba(0, 166, 81, 0.3)';
+      managerRow.style.paddingTop = '4px';
+      const managerLabel = document.createElement('strong');
+      managerLabel.style.color = '#cccccc';
+      managerLabel.textContent = 'Manager: ';
+      managerRow.appendChild(managerLabel);
+      managerRow.appendChild(document.createTextNode(deal.relationshipManager || 'Unassigned'));
+      enhancedContent.appendChild(managerRow);
+      
+      tooltip.appendChild(enhancedContent);
       
       // Position tooltip
       const rect = event.target.getBoundingClientRect();
-      const containerRect = this.container.getBoundingClientRect();
-      this.tooltip.style.left = (rect.left - containerRect.left + rect.width + 10) + 'px';
-      this.tooltip.style.top = (rect.top - containerRect.top) + 'px';
-      this.tooltip.classList.add('show');
+      const tooltipWidth = 250;
+      const tooltipHeight = 120; // Slightly taller for enhanced content
+      
+      let left = rect.right + 10;
+      let top = rect.top;
+      
+      // Clamp to viewport boundaries
+      if (left + tooltipWidth > window.innerWidth) {
+        left = rect.left - tooltipWidth - 10;
+      }
+      if (top + tooltipHeight > window.innerHeight) {
+        top = window.innerHeight - tooltipHeight - 10;
+      }
+      if (left < 0) left = 10;
+      if (top < 0) top = 10;
+      
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+      tooltip.style.display = 'block';
+      tooltip.style.opacity = '1';
+      tooltip.style.visibility = 'visible';
       
       // Auto-hide after 3 seconds
       setTimeout(() => {
