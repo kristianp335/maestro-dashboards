@@ -11,10 +11,20 @@
 
 #wrapper .river-title {
   color: #00A651;
-  margin: 0 0 24px 0;
+  margin: 0 0 8px 0;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
+}
+
+#wrapper .river-description {
+  color: #b3b3b3;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Pipeline System */
