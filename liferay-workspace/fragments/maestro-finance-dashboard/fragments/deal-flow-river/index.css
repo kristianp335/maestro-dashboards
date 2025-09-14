@@ -119,13 +119,12 @@
 
 #river-wrapper .deal-particle {
   position: absolute;
-  width: calc(48px * var(--particle-size-multiplier, 1));
-  height: calc(48px * var(--particle-size-multiplier, 1));
   border-radius: 50%;
   cursor: pointer;
   pointer-events: all;
   transition: transform 0.2s ease;
   z-index: 10;
+  /* Size is now set dynamically via JavaScript based on deal value */
 }
 
 #river-wrapper .deal-particle:hover {
@@ -140,16 +139,8 @@
 #river-wrapper .particle-closedwon { background: #00A651; box-shadow: 0 0 12px rgba(0, 166, 81, 0.8); }
 #river-wrapper .particle-closedlost { background: #dc2626; box-shadow: 0 0 8px rgba(220, 38, 38, 0.6); }
 
-/* Large deals get bigger particles */
-#river-wrapper .deal-particle.large-deal {
-  width: calc(72px * var(--particle-size-multiplier, 1));
-  height: calc(72px * var(--particle-size-multiplier, 1));
-}
-
-#river-wrapper .deal-particle.mega-deal {
-  width: calc(96px * var(--particle-size-multiplier, 1));
-  height: calc(96px * var(--particle-size-multiplier, 1));
-}
+/* Particle sizes are now dynamically calculated based on deal value
+   Ranges from 30px (€500K) to 120px (€50M+) using logarithmic scaling */
 
 /* Lost Deals Drain */
 #river-wrapper .lost-drain {

@@ -197,50 +197,61 @@
       const particle = document.createElement('div');
       particle.className = `deal-particle particle-${status}`;
       
-      // Size based on deal value
-      const dealValue = parseFloat(deal.dealValue) || 0;
-      if (dealValue > 10000000) {
-        particle.classList.add('mega-deal');
-      } else if (dealValue > 5000000) {
-        particle.classList.add('large-deal');
-      }
+      // Dynamic size based on deal value - continuous scaling
+      const dealValue = parseFloat(deal.dealValue) || 1000000; // Default 1M if no value
+      
+      // Calculate size scaling: min 30px, max 120px, logarithmic scale for better distribution
+      const minSize = 30;
+      const maxSize = 120;
+      const minValue = 500000;   // €500K minimum
+      const maxValue = 50000000; // €50M maximum
+      
+      // Use logarithmic scaling for better visual distribution
+      const logValue = Math.log(Math.max(dealValue, minValue));
+      const logMin = Math.log(minValue);
+      const logMax = Math.log(maxValue);
+      const sizeRatio = Math.min(1, Math.max(0, (logValue - logMin) / (logMax - logMin)));
+      const calculatedSize = minSize + (maxSize - minSize) * sizeRatio;
+      
+      // Apply size directly to particle
+      particle.style.width = `${calculatedSize}px`;
+      particle.style.height = `${calculatedSize}px`;
+      
+      // Store size for positioning calculations
+      particle.calculatedSize = calculatedSize;
       
       // Position within channel (quadrupled height) - side by side arrangement
       const channelHeight = 160;
       
-      // Arrange multiple deals side by side with proper spacing
+      // Arrange multiple deals side by side with proper spacing based on actual sizes
       if (totalInChannel > 1) {
         // Multiple deals: arrange in a single row with proper spacing
         const maxDealsPerRow = Math.min(6, totalInChannel); // Allow up to 6 deals per row
         const row = Math.floor(index / maxDealsPerRow);
         const col = index % maxDealsPerRow;
         
-        // Calculate spacing to prevent overlap - use full width with margins
-        const particleWidth = dealValue > 10000000 ? 96 : dealValue > 5000000 ? 72 : 48;
-        const totalNeededWidth = maxDealsPerRow * particleWidth;
-        const availableWidth = this.container.offsetWidth * 0.9; // 90% of container width
+        // Calculate spacing based on actual particle size
+        const particleSize = calculatedSize;
+        const containerWidth = this.container.offsetWidth;
+        const availableWidth = containerWidth * 0.85; // 85% of container width
+        const spacing = availableWidth / maxDealsPerRow;
         
-        let spacing;
-        if (totalNeededWidth < availableWidth) {
-          // Distribute evenly across available width
-          spacing = availableWidth / maxDealsPerRow;
-        } else {
-          // Compress spacing if too many large deals
-          spacing = availableWidth / maxDealsPerRow;
-        }
+        // Ensure minimum spacing between particles
+        const minSpacing = particleSize + 20; // Particle size + 20px gap
+        const actualSpacing = Math.max(spacing, minSpacing);
         
-        const horizontalPosition = (col * spacing) + (spacing / 2) + 5; // Add 5% left margin
-        const horizontalPercentage = (horizontalPosition / this.container.offsetWidth) * 100;
+        const horizontalPosition = (col * actualSpacing) + (actualSpacing / 2) + (containerWidth * 0.075); // 7.5% left margin
+        const horizontalPercentage = (horizontalPosition / containerWidth) * 100;
         
         // Vertical positioning with more space between rows
-        const rowHeight = 60; // Fixed row height for better spacing
-        const verticalPosition = (row * rowHeight) + 30; // 30px from top of channel
+        const rowHeight = Math.max(60, particleSize + 20); // Adapt row height to particle size
+        const verticalPosition = (row * rowHeight) + (channelHeight / 2) - (particleSize / 2); // Center in channel
         
-        particle.style.top = `${verticalPosition}px`;
-        particle.style.left = `${Math.min(85, horizontalPercentage)}%`; // Cap at 85% to prevent overflow
+        particle.style.top = `${Math.max(10, verticalPosition)}px`;
+        particle.style.left = `${Math.min(90, horizontalPercentage)}%`; // Cap at 90% to prevent overflow
       } else {
         // Single deal: center in channel
-        const verticalPosition = (channelHeight / 2) - 24;
+        const verticalPosition = (channelHeight / 2) - (calculatedSize / 2);
         particle.style.top = `${verticalPosition}px`;
         particle.style.left = '50%';
         particle.style.transform = 'translateX(-50%)';
