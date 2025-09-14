@@ -568,6 +568,21 @@
       return groups;
     }
     
+    getDealStatusAtTime(deal, currentTime) {
+      // Find the most recent event for this deal before current time
+      const dealEvents = this.dealTimeline.filter(event => 
+        event.deal === deal && event.timestamp <= currentTime
+      );
+      
+      if (dealEvents.length === 0) {
+        // No events yet, deal starts in qualified status
+        return 'qualified';
+      }
+      
+      // Return the status from the most recent event
+      return dealEvents[dealEvents.length - 1].status;
+    }
+
     getLastEventTimeForDeal(deal, currentTime) {
       // Find the most recent event for this deal before current time
       const dealEvents = this.dealTimeline.filter(event => 
