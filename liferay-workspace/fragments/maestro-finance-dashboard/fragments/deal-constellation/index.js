@@ -46,30 +46,67 @@
     
     async loadDeals() {
       try {
-        const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
+        this.deals = [];
+        let page = 1;
+        let hasMorePages = true;
+        const pageSize = 20; // Default Liferay page size
+        
+        // Fetch all pages of deals
+        while (hasMorePages) {
+          const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals?page=${page}&pageSize=${pageSize}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          
+          const data = await response.json();
+          const pageDeals = data.items || [];
+          
+          if (pageDeals.length > 0) {
+            // Normalize deal data structure
+            const normalizedDeals = pageDeals.map(deal => this.normalizeDeal(deal));
+            this.deals.push(...normalizedDeals);
+            page++;
+            
+            // Check if we have more pages (if we got less than pageSize, we're done)
+            hasMorePages = pageDeals.length === pageSize;
+          } else {
+            hasMorePages = false;
+          }
         }
-        
-        const data = await response.json();
-        this.deals = data.items || [];
         
         // If no data from API, use sample data for demonstration
         if (this.deals.length === 0) {
           this.deals = this.getSampleDeals();
         }
         
-        console.log(`Loaded ${this.deals.length} deals for constellation visualization`);
+        console.log(`Loaded ${this.deals.length} deals for constellation visualization (${page - 1} pages)`);
       } catch (error) {
         console.error('Error loading deals, using sample data:', error);
         this.deals = this.getSampleDeals();
       }
+    }
+    
+    normalizeDeal(deal) {
+      // Handle Liferay object field structure where some fields are {key, name} objects
+      return {
+        dealName: deal.dealName || 'Unknown Deal',
+        clientName: deal.clientName || 'Unknown Client',
+        dealValue: parseFloat(deal.dealValue) || 0,
+        dealStatus: deal.dealStatus?.key || deal.dealStatus || 'prospect',
+        dealProbability: parseFloat(deal.dealProbability) || 0,
+        priority: deal.priority?.key || deal.priority || 'medium',
+        relationshipManager: deal.relationshipManager || 'Unknown Manager',
+        expectedClosingDate: deal.expectedClosingDate || '',
+        lastUpdated: deal.lastUpdated || '',
+        dealType: deal.dealType?.key || deal.dealType || 'Unknown',
+        sector: deal.sector?.key || deal.sector || 'Unknown'
+      };
     }
     
     getSampleDeals() {
