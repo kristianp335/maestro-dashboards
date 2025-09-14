@@ -26,8 +26,8 @@
       try {
         await this.loadDeals();
         this.createParticles();
+        this.setupParticleEventHandlers(); // Set up after particles are created
         this.startAnimation();
-        this.setupEventListeners();
         this.hideLoading();
       } catch (error) {
         console.error('Failed to initialize Deal Flow River:', error);
@@ -161,6 +161,8 @@
       // Group deals by status for channel assignment
       const dealsByStatus = this.groupDealsByStatus();
       
+      console.log(`Creating particles for ${this.deals.length} deals in river`);
+      
       // Create particles for each deal
       Object.keys(dealsByStatus).forEach(status => {
         const channelDeals = dealsByStatus[status];
@@ -169,18 +171,25 @@
         if (channel && channelDeals.length > 0) {
           const particleContainer = channel.querySelector('.deal-particles');
           
-          channelDeals.forEach((deal, index) => {
-            const particle = this.createParticle(deal, status, index, channelDeals.length);
-            particleContainer.appendChild(particle);
-            this.particles.push({
-              element: particle,
-              deal: deal,
-              status: status,
-              startTime: Date.now() + (index * 800) // Stagger particle creation
+          // Ensure particle container has dimensions
+          if (particleContainer) {
+            console.log(`Creating ${channelDeals.length} particles for ${status} channel`);
+            
+            channelDeals.forEach((deal, index) => {
+              const particle = this.createParticle(deal, status, index, channelDeals.length);
+              particleContainer.appendChild(particle);
+              this.particles.push({
+                element: particle,
+                deal: deal,
+                status: status,
+                startTime: Date.now() + (index * 800) // Stagger particle creation
+              });
             });
-          });
+          }
         }
       });
+      
+      console.log(`Total particles created: ${this.particles.length}`);
     }
     
     createParticle(deal, status, index, totalInChannel) {
@@ -294,14 +303,28 @@
     }
     
     setupEventListeners() {
-      // Tooltip on particle hover
-      this.particles.forEach(particle => {
+      // This method can be used for non-particle event listeners in the future
+      console.log('Setting up general event listeners');
+    }
+    
+    setupParticleEventHandlers() {
+      // Set up particle interaction events after particles are created
+      console.log(`Setting up event handlers for ${this.particles.length} particles`);
+      
+      this.particles.forEach((particle, index) => {
         particle.element.addEventListener('mouseenter', (e) => {
+          console.log(`Particle ${index} hovered:`, particle.deal.dealName);
           this.showTooltip(e, particle.deal);
         });
         
         particle.element.addEventListener('mouseleave', () => {
           this.hideTooltip();
+        });
+        
+        particle.element.addEventListener('click', (e) => {
+          e.stopPropagation();
+          console.log(`Particle clicked:`, particle.deal.dealName);
+          this.showDetailedTooltip(e, particle.deal);
         });
       });
     }
@@ -326,6 +349,34 @@
     
     hideTooltip() {
       this.tooltip.classList.remove('show');
+    }
+    
+    showDetailedTooltip(event, deal) {
+      // Enhanced tooltip for click events
+      if (!config.showTooltips) return;
+      
+      const clientName = deal.clientName || 'Unknown Client';
+      const dealValue = parseFloat(deal.dealValue) || 0;
+      const status = deal.dealStatus || 'Unknown';
+      const probability = deal.dealProbability || 0;
+      const manager = deal.relationshipManager || 'Unassigned';
+      
+      this.tooltip.querySelector('.deal-client').textContent = deal.dealName || 'Unknown Deal';
+      this.tooltip.querySelector('.deal-value').textContent = `€${this.formatCurrency(dealValue)}`;
+      this.tooltip.querySelector('.deal-status').textContent = `Status: ${status} (${probability}%)`;
+      this.tooltip.querySelector('.deal-probability').textContent = `Manager: ${manager}`;
+      
+      // Position tooltip
+      const rect = event.target.getBoundingClientRect();
+      const containerRect = this.container.getBoundingClientRect();
+      this.tooltip.style.left = (rect.left - containerRect.left + rect.width + 10) + 'px';
+      this.tooltip.style.top = (rect.top - containerRect.top) + 'px';
+      this.tooltip.classList.add('show');
+      
+      // Auto-hide after 3 seconds
+      setTimeout(() => {
+        this.hideTooltip();
+      }, 3000);
     }
     
     formatCurrency(value) {
