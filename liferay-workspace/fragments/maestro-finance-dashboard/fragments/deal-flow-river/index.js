@@ -205,14 +205,31 @@
         particle.classList.add('large-deal');
       }
       
-      // Position within channel (doubled height)
-      const channelHeight = 80;
-      const verticalPosition = (channelHeight / 2) - 12; // Center vertically for larger particles
-      const horizontalSpacing = 100 / Math.max(totalInChannel, 1);
-      const horizontalPosition = (index * horizontalSpacing) + (Math.random() * 20 - 10);
+      // Position within channel (quadrupled height) - side by side arrangement
+      const channelHeight = 160;
       
-      particle.style.top = `${verticalPosition}px`;
-      particle.style.left = `${Math.max(0, Math.min(95, horizontalPosition))}%`;
+      // Arrange multiple deals side by side, not overlapping
+      if (totalInChannel > 1) {
+        // Multiple deals: arrange in rows if needed
+        const dealsPerRow = Math.min(4, totalInChannel); // Max 4 deals per row
+        const row = Math.floor(index / dealsPerRow);
+        const col = index % dealsPerRow;
+        
+        const horizontalSpacing = 90 / dealsPerRow; // Use 90% width to leave margins
+        const horizontalPosition = 5 + (col * horizontalSpacing) + (horizontalSpacing / 2); // Start at 5% margin
+        
+        const rowHeight = channelHeight / Math.ceil(totalInChannel / dealsPerRow);
+        const verticalPosition = (row * rowHeight) + (rowHeight / 2) - 24;
+        
+        particle.style.top = `${Math.max(10, verticalPosition)}px`;
+        particle.style.left = `${horizontalPosition}%`;
+      } else {
+        // Single deal: center in channel
+        const verticalPosition = (channelHeight / 2) - 24;
+        particle.style.top = `${verticalPosition}px`;
+        particle.style.left = '50%';
+        particle.style.transform = 'translateX(-50%)';
+      }
       
       // Store deal data for tooltip
       particle.dealData = deal;
@@ -223,10 +240,10 @@
       valueLabel.textContent = `€${this.formatCurrency(dealValue)}`;
       valueLabel.style.cssText = `
         position: absolute;
-        top: -20px;
+        top: -35px;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 10px;
+        font-size: 11px;
         color: #00A651;
         font-weight: 600;
         white-space: nowrap;
@@ -235,6 +252,37 @@
         z-index: 30;
       `;
       particle.appendChild(valueLabel);
+      
+      // Create date label below the value
+      const dateLabel = document.createElement('div');
+      dateLabel.className = 'deal-date-label';
+      // Use expected closing date or last updated date
+      const dateToShow = deal.expectedClosingDate || deal.lastUpdated || deal.dateCreated;
+      let formattedDate = '';
+      if (dateToShow) {
+        const date = new Date(dateToShow);
+        formattedDate = date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
+      } else {
+        // Generate a realistic future date for demo
+        const futureDate = new Date();
+        futureDate.setDate(futureDate.getDate() + Math.floor(Math.random() * 90) + 30); // 30-120 days from now
+        formattedDate = futureDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
+      }
+      dateLabel.textContent = formattedDate;
+      dateLabel.style.cssText = `
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 9px;
+        color: #cccccc;
+        font-weight: 500;
+        white-space: nowrap;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        pointer-events: none;
+        z-index: 30;
+      `;
+      particle.appendChild(dateLabel);
       
       return particle;
     }
