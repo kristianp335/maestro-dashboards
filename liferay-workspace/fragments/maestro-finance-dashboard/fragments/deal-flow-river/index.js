@@ -9,6 +9,62 @@
     showLostDrain: true
   };
   
+  // Time Controller for temporal visualization
+  class TimeController {
+    constructor(riverInstance) {
+      this.river = riverInstance;
+      this.container = riverInstance.container;
+      this.sweepElement = null;
+      this.timeHudElement = null;
+      this.cycleDuration = 8; // seconds
+      this.isPaused = false;
+      this.currentSpeed = 'normal';
+    }
+    
+    start() {
+      this.sweepElement = this.container.querySelector('.now-sweep');
+      this.timeHudElement = this.container.querySelector('.current-time');
+      this.updateTimeDisplay();
+      this.updateSweepAnimation();
+    }
+    
+    stop() {
+      // Time visualization stops with main animation
+    }
+    
+    setPaused(paused) {
+      this.isPaused = paused;
+      if (this.sweepElement) {
+        this.sweepElement.style.animationPlayState = paused ? 'paused' : 'running';
+      }
+    }
+    
+    updateSpeed(speed) {
+      this.currentSpeed = speed;
+      this.updateSweepAnimation();
+    }
+    
+    updateSweepSpeed(cycleDuration) {
+      this.cycleDuration = cycleDuration;
+      this.updateSweepAnimation();
+    }
+    
+    updateSweepAnimation() {
+      if (this.sweepElement) {
+        this.sweepElement.style.animationDuration = `${this.cycleDuration}s`;
+      }
+    }
+    
+    updateTimeDisplay() {
+      if (this.timeHudElement) {
+        const today = new Date();
+        const options = { day: '2-digit', month: 'short' };
+        const dateStr = today.toLocaleDateString('en-GB', options);
+        this.timeHudElement.textContent = `Today ${dateStr}`;
+      }
+    }
+  }
+
   // Deal Flow River Animation Controller
   class DealFlowRiver {
     constructor(containerElement) {
@@ -20,6 +76,9 @@
       this.tooltip = this.container.querySelector('#dealTooltip');
       this.loading = this.container.querySelector('#riverLoading');
       
+      // Time controller for visualization
+      this.timeController = new TimeController(this);
+      
       this.init();
     }
     
@@ -28,7 +87,9 @@
         await this.loadDeals();
         this.createParticles();
         this.setupParticleEventHandlers();
+        this.setupTimeControls();
         this.startAnimation();
+        this.timeController.start();
         this.hideLoading();
       } catch (error) {
         console.error('Failed to initialize Deal Flow River:', error);
@@ -668,10 +729,40 @@
       }
     }
     
+    setupTimeControls() {
+      const playPauseBtn = this.container.querySelector('#playPauseBtn');
+      const speedBtn = this.container.querySelector('#speedBtn');
+      
+      if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+          this.isPaused = !this.isPaused;
+          playPauseBtn.textContent = this.isPaused ? '▶️' : '⏸️';
+          this.timeController.setPaused(this.isPaused);
+        });
+      }
+      
+      if (speedBtn) {
+        speedBtn.addEventListener('click', () => {
+          // Cycle through speeds: 1x -> 2x -> 0.5x -> 1x
+          const speeds = ['normal', 'fast', 'slow'];
+          const speedLabels = ['1x', '2x', '0.5x'];
+          
+          const currentIndex = speeds.indexOf(config.riverSpeed);
+          const nextIndex = (currentIndex + 1) % speeds.length;
+          
+          config.riverSpeed = speeds[nextIndex];
+          speedBtn.textContent = speedLabels[nextIndex];
+          
+          this.timeController.updateSpeed(config.riverSpeed);
+        });
+      }
+    }
+    
     destroy() {
       if (this.animationId) {
         cancelAnimationFrame(this.animationId);
       }
+      this.timeController.stop();
     }
   }
   
