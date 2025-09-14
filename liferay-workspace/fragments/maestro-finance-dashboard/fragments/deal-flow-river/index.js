@@ -16,6 +16,7 @@
       this.deals = [];
       this.particles = [];
       this.animationId = null;
+      this.isPaused = false;
       this.tooltip = this.container.querySelector('#dealTooltip');
       this.loading = this.container.querySelector('#riverLoading');
       
@@ -26,7 +27,8 @@
       try {
         await this.loadDeals();
         this.createParticles();
-        this.setupParticleEventHandlers(); // Set up after particles are created
+        this.setupParticleEventHandlers();
+        this.setupStatusFilters();
         this.startAnimation();
         this.hideLoading();
       } catch (error) {
@@ -216,6 +218,25 @@
       // Store deal data for tooltip
       particle.dealData = deal;
       
+      // Create deal value label above particle
+      const valueLabel = document.createElement('div');
+      valueLabel.className = 'deal-value-label';
+      valueLabel.textContent = `€${this.formatCurrency(dealValue)}`;
+      valueLabel.style.cssText = `
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        color: #00A651;
+        font-weight: 600;
+        white-space: nowrap;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        pointer-events: none;
+        z-index: 30;
+      `;
+      particle.appendChild(valueLabel);
+      
       return particle;
     }
     
@@ -250,6 +271,8 @@
     }
     
     updateParticles() {
+      if (this.isPaused) return; // Pause animation when hovering
+      
       const currentTime = Date.now();
       const speedMultiplier = config.riverSpeed === 'slow' ? 1.5 : 
                              config.riverSpeed === 'fast' ? 0.5 : 1.0;
@@ -302,9 +325,58 @@
       }
     }
     
-    setupEventListeners() {
-      // This method can be used for non-particle event listeners in the future
-      console.log('Setting up general event listeners');
+    setupStatusFilters() {
+      // Set up click handlers for stage labels to filter particles
+      const stageLabels = this.container.querySelectorAll('.stage-label');
+      console.log(`Setting up status filters for ${stageLabels.length} stage labels`);
+      
+      stageLabels.forEach(label => {
+        label.style.cursor = 'pointer';
+        label.addEventListener('click', (e) => {
+          const targetStatus = label.dataset.stage;
+          console.log(`Filtering particles for status: ${targetStatus}`);
+          this.filterParticlesByStatus(targetStatus);
+          
+          // Update active state
+          stageLabels.forEach(l => l.classList.remove('active'));
+          label.classList.add('active');
+        });
+      });
+      
+      // Add "All" button functionality if needed
+      const allButton = document.createElement('div');
+      allButton.className = 'stage-label active';
+      allButton.textContent = 'All';
+      allButton.style.cursor = 'pointer';
+      allButton.addEventListener('click', () => {
+        console.log('Showing all particles');
+        this.showAllParticles();
+        stageLabels.forEach(l => l.classList.remove('active'));
+        allButton.classList.add('active');
+      });
+      
+      const stageContainer = this.container.querySelector('.pipeline-stages');
+      if (stageContainer) {
+        stageContainer.insertBefore(allButton, stageContainer.firstChild);
+      }
+    }
+    
+    filterParticlesByStatus(targetStatus) {
+      this.particles.forEach(particle => {
+        if (particle.status === targetStatus) {
+          particle.element.style.display = 'block';
+          particle.element.style.opacity = '1';
+        } else {
+          particle.element.style.opacity = '0.3';
+        }
+      });
+    }
+    
+    showAllParticles() {
+      this.particles.forEach(particle => {
+        particle.element.style.display = 'block';
+        particle.element.style.opacity = '1';
+      });
     }
     
     setupParticleEventHandlers() {
@@ -314,10 +386,12 @@
       this.particles.forEach((particle, index) => {
         particle.element.addEventListener('mouseenter', (e) => {
           console.log(`Particle ${index} hovered:`, particle.deal.dealName);
+          this.isPaused = true; // Pause animation on hover
           this.showTooltip(e, particle.deal);
         });
         
         particle.element.addEventListener('mouseleave', () => {
+          this.isPaused = false; // Resume animation
           this.hideTooltip();
         });
         
@@ -332,23 +406,82 @@
     showTooltip(event, deal) {
       if (!config.showTooltips) return;
       
+      // Create tooltip in document.body to avoid clipping
+      let tooltip = document.body.querySelector('.river-deal-tooltip');
+      if (!tooltip) {
+        console.log('Creating new tooltip element in body');
+        tooltip = document.createElement('div');
+        tooltip.className = 'river-deal-tooltip';
+        tooltip.style.cssText = `
+          position: fixed;
+          background: rgba(0, 0, 0, 0.95);
+          border: 1px solid rgba(0, 166, 81, 0.5);
+          border-radius: 6px;
+          padding: 8px 12px;
+          z-index: 99999;
+          pointer-events: none;
+          backdrop-filter: blur(10px);
+          max-width: 250px;
+          font-size: 0.8rem;
+          color: white;
+          font-family: Arial, sans-serif;
+          display: none;
+        `;
+        document.body.appendChild(tooltip);
+      }
+      
       const clientName = deal.clientName || 'Unknown Client';
       const dealValue = parseFloat(deal.dealValue) || 0;
       const status = deal.dealStatus || 'Unknown';
       const probability = deal.dealProbability || 0;
       
-      this.tooltip.querySelector('.deal-client').textContent = clientName;
-      this.tooltip.querySelector('.deal-value').textContent = `€${this.formatCurrency(dealValue)}`;
-      this.tooltip.querySelector('.deal-status').textContent = `Status: ${status}`;
-      this.tooltip.querySelector('.deal-probability').textContent = `Probability: ${probability}%`;
+      tooltip.innerHTML = `
+        <div style="color: #00A651; font-weight: 600; margin-bottom: 4px; font-size: 0.85rem;">
+          ${deal.dealName || 'Unknown Deal'}
+        </div>
+        <div style="color: #ffffff;">
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Client:</strong> ${clientName}</div>
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Value:</strong> €${this.formatCurrency(dealValue)}</div>
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Status:</strong> ${status}</div>
+          <div><strong style="color: #cccccc;">Probability:</strong> ${probability}%</div>
+        </div>
+      `;
       
-      this.tooltip.style.left = event.pageX + 'px';
-      this.tooltip.style.top = event.pageY + 'px';
-      this.tooltip.classList.add('show');
+      // Position tooltip using getBoundingClientRect for accurate positioning
+      const rect = event.target.getBoundingClientRect();
+      const tooltipWidth = 250;
+      const tooltipHeight = 100;
+      
+      let left = rect.right + 10;
+      let top = rect.top;
+      
+      // Clamp to viewport boundaries
+      if (left + tooltipWidth > window.innerWidth) {
+        left = rect.left - tooltipWidth - 10;
+      }
+      if (top + tooltipHeight > window.innerHeight) {
+        top = window.innerHeight - tooltipHeight - 10;
+      }
+      if (left < 0) left = 10;
+      if (top < 0) top = 10;
+      
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+      tooltip.style.display = 'block';
+      tooltip.style.opacity = '1';
+      tooltip.style.visibility = 'visible';
+      
+      console.log(`✅ River tooltip positioned at (${left}, ${top}) for particle`);
     }
     
     hideTooltip() {
-      this.tooltip.classList.remove('show');
+      const tooltip = document.body.querySelector('.river-deal-tooltip');
+      if (tooltip) {
+        tooltip.style.display = 'none';
+        tooltip.style.opacity = '0';
+        tooltip.style.visibility = 'hidden';
+        console.log('River tooltip hidden');
+      }
     }
     
     showDetailedTooltip(event, deal) {

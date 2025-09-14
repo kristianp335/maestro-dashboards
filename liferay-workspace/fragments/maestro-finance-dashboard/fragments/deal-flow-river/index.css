@@ -49,6 +49,20 @@
   font-size: 0.85rem;
   font-weight: 500;
   border: 1px solid rgba(0, 166, 81, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#river-wrapper .stage-label:hover {
+  background: rgba(0, 166, 81, 0.3);
+  box-shadow: 0 0 10px rgba(0, 166, 81, 0.4);
+}
+
+#river-wrapper .stage-label.active {
+  background: rgba(0, 166, 81, 0.4);
+  color: #ffffff;
+  border-color: rgba(0, 166, 81, 0.6);
+  box-shadow: 0 0 15px rgba(0, 166, 81, 0.5);
 }
 
 /* River Channels */
