@@ -1,9 +1,0 @@
-{
-  "cssPath": "index.css",
-  "htmlPath": "index.html",
-  "jsPath": "index.js",
-  "name": "Deal Flow River",
-  "type": "component",
-  "configurationPath": "configuration.json",
-  "thumbnailPath": "thumbnail.png"
-}
