@@ -84,12 +84,14 @@
     
     async init() {
       try {
+        this.startTime = Date.now();
+        this.lastUpdateSecond = -1;
         await this.loadDeals();
-        this.createParticles();
-        this.setupParticleEventHandlers();
+        this.generateDealTimeline();
+        this.timeController = new TimeController(this);
+        this.timeController.start();
         this.setupTimeControls();
         this.startAnimation();
-        this.timeController.start();
         this.hideLoading();
       } catch (error) {
         console.error('Failed to initialize Deal Flow River:', error);
@@ -219,9 +221,15 @@
       ];
     }
     
-    createParticles() {
-      // Group deals by status for channel assignment
-      const dealsByStatus = this.groupDealsByStatus();
+    createParticles(dealGroups) {
+      // Accept pre-grouped deals or create initial grouping
+      if (!dealGroups) {
+        const timeRatio = this.getCurrentTimeRatio();
+        dealGroups = this.groupDealsByCurrentTime(timeRatio);
+      }
+      
+      this.particles = []; // Reset particles array
+      const dealsByStatus = dealGroups;
       
       console.log(`Creating particles for ${this.deals.length} deals in river`);
       
@@ -286,20 +294,29 @@
       
       // Position deals in date order across the channel (earliest to latest)
       if (totalInChannel > 1) {
-        // Calculate horizontal position based on chronological order
-        const channelWidth = 90; // Use 90% of channel width
-        const startMargin = 5; // 5% left margin
+        // Position deals with guaranteed non-overlapping layout
+        const sequencePosition = deal.sequenceInChannel || 0;
+        const position = this.calculateNonOverlappingPosition(
+          sequencePosition, 
+          totalInChannel, 
+          calculatedSize, 
+          channelHeight
+        );
         
-        // Distribute deals evenly across time (channel width)
-        const spacing = channelWidth / (totalInChannel - 1);
-        const horizontalPosition = startMargin + (index * spacing);
+        particle.style.top = `${position.top}px`;
+        particle.style.left = `${position.left}%`;
+        if (position.transform) {
+          particle.style.transform = position.transform;
+        }
+        if (position.display) {
+          particle.style.display = position.display;
+        }
         
-        // For same dates, create slight vertical offset to avoid complete overlap
-        const sameTimeOffset = this.getSameTimeOffset(deal, index, totalInChannel);
-        const verticalPosition = (channelHeight / 2) - (calculatedSize / 2) + sameTimeOffset;
-        
-        particle.style.top = `${Math.max(5, Math.min(channelHeight - calculatedSize - 5, verticalPosition))}px`;
-        particle.style.left = `${Math.min(95, horizontalPosition)}%`;
+        // Apply adjusted particle size if provided
+        if (position.adjustedSize && position.adjustedSize !== calculatedSize) {
+          particle.style.width = `${position.adjustedSize}px`;
+          particle.style.height = `${position.adjustedSize}px`;
+        }
       } else {
         // Single deal: center in channel
         const verticalPosition = (channelHeight / 2) - (calculatedSize / 2);
@@ -368,6 +385,75 @@
       return particle;
     }
     
+    calculateNonOverlappingPosition(sequencePosition, totalInChannel, particleSize, channelHeight) {
+      if (totalInChannel === 1) {
+        // Single deal: center in channel
+        const verticalPosition = (channelHeight / 2) - (particleSize / 2);
+        return {
+          top: Math.max(5, Math.min(channelHeight - particleSize - 5, verticalPosition)),
+          left: 50,
+          transform: 'translateX(-50%)'
+        };
+      }
+      
+      // Capacity-aware grid system - guaranteed zero overlap
+      const containerWidth = this.container.clientWidth || 800; // Fallback width
+      const channelWidthPx = containerWidth * 0.90; // 90% of container width in pixels
+      const startMarginPx = containerWidth * 0.05; // 5% left margin in pixels
+      
+      // Calculate adaptive sizing to fit all deals
+      let adjustedParticleSize = particleSize;
+      let minSpacingPx = Math.max(adjustedParticleSize + 10, 35);
+      let rowHeight = adjustedParticleSize + 15;
+      
+      // Calculate maximum possible grid capacity
+      let maxCols = Math.max(1, Math.floor(channelWidthPx / minSpacingPx));
+      let maxRows = Math.max(1, Math.floor((channelHeight - 10) / rowHeight));
+      let maxCapacity = maxCols * maxRows;
+      
+      // Reduce particle size if needed to fit all deals
+      while (maxCapacity < totalInChannel && adjustedParticleSize > 20) {
+        adjustedParticleSize = Math.max(20, adjustedParticleSize - 5);
+        minSpacingPx = Math.max(adjustedParticleSize + 8, 30);
+        rowHeight = adjustedParticleSize + 12;
+        maxCols = Math.max(1, Math.floor(channelWidthPx / minSpacingPx));
+        maxRows = Math.max(1, Math.floor((channelHeight - 10) / rowHeight));
+        maxCapacity = maxCols * maxRows;
+      }
+      
+      // Calculate required columns for this channel
+      const neededCols = Math.min(maxCols, Math.ceil(totalInChannel / maxRows));
+      
+      // Calculate grid position (no modulo wrapping - guaranteed unique positions)
+      const row = Math.floor(sequencePosition / neededCols);
+      const col = sequencePosition % neededCols;
+      
+      // If still exceeding capacity, use overflow paging
+      if (sequencePosition >= maxCapacity) {
+        // Hide overflow particles - they'll be shown in next animation cycle
+        return {
+          top: -1000, // Hide offscreen
+          left: -1000,
+          display: 'none'
+        };
+      }
+      
+      // Calculate horizontal position (center-based)
+      const colSpacing = neededCols > 1 ? channelWidthPx / (neededCols - 1) : 0;
+      const horizontalPositionPx = startMarginPx + (col * colSpacing);
+      const horizontalPositionPercent = (horizontalPositionPx / containerWidth) * 100;
+      
+      // Calculate vertical position
+      const verticalPosition = 10 + (row * rowHeight) + (rowHeight / 2) - (adjustedParticleSize / 2);
+      
+      return {
+        top: Math.max(5, Math.min(channelHeight - adjustedParticleSize - 5, verticalPosition)),
+        left: Math.max(5, Math.min(95, horizontalPositionPercent)),
+        transform: 'translateX(-50%)', // Center particles horizontally
+        adjustedSize: adjustedParticleSize // Return adjusted size for particle rendering
+      };
+    }
+    
     getSameTimeOffset(deal, index, totalInChannel) {
       // Create slight vertical offset for deals with same dates to avoid overlap
       // Group by date and create small vertical spacing within each date group
@@ -381,7 +467,75 @@
       return offset * 3; // Multiply by 3px for subtle separation
     }
     
-    groupDealsByStatus() {
+    generateDealTimeline() {
+      // Create synthetic timeline where all deals start in qualified and progress to final state
+      this.dealTimeline = [];
+      
+      this.deals.forEach(deal => {
+        const finalStatus = (deal.dealStatus?.key || deal.dealStatus || 'qualified').toLowerCase();
+        if (finalStatus === 'prospect') return; // Skip prospects
+        
+        const progression = this.createDealProgression(deal, finalStatus);
+        this.dealTimeline.push(...progression);
+      });
+      
+      // Sort all timeline events by timestamp
+      this.dealTimeline.sort((a, b) => a.timestamp - b.timestamp);
+    }
+    
+    createDealProgression(deal, finalStatus) {
+      const baseDate = this.getDealDate(deal);
+      const events = [];
+      
+      // Define progression path to final status
+      const progressionPath = this.getProgressionPath(finalStatus);
+      
+      // Generate timeline events for each stage
+      progressionPath.forEach((status, index) => {
+        // Space events over 30-90 days before final date
+        const daysBeforeEnd = (progressionPath.length - index - 1) * 20 + Math.random() * 20;
+        const eventDate = new Date(baseDate.getTime() - (daysBeforeEnd * 24 * 60 * 60 * 1000));
+        
+        events.push({
+          deal: deal,
+          status: status,
+          timestamp: eventDate.getTime(),
+          eventType: index === 0 ? 'entry' : 'transition'
+        });
+      });
+      
+      return events;
+    }
+    
+    getProgressionPath(finalStatus) {
+      // Define realistic progression paths to each final status
+      const paths = {
+        'qualified': ['qualified'],
+        'proposal': ['qualified', 'proposal'],
+        'negotiation': ['qualified', 'proposal', 'negotiation'],
+        'closedwon': ['qualified', 'proposal', 'negotiation', 'closedwon'],
+        'closedlost': Math.random() > 0.5 
+          ? ['qualified', 'closedlost'] // Early loss
+          : ['qualified', 'proposal', 'closedlost'] // Later loss
+      };
+      
+      return paths[finalStatus] || ['qualified'];
+    }
+    
+    getTimelineCurrentTime(timeRatio) {
+      // Convert animation time ratio (0-1) to actual timeline timestamp
+      if (!this.dealTimeline || this.dealTimeline.length === 0) return Date.now();
+      
+      const earliest = this.dealTimeline[0].timestamp;
+      const latest = this.dealTimeline[this.dealTimeline.length - 1].timestamp;
+      const timeRange = latest - earliest;
+      
+      return earliest + (timeRange * timeRatio);
+    }
+    
+    groupDealsByCurrentTime(currentTimeRatio) {
+      // Group deals by their current status at this point in the timeline
+      const currentTime = this.getTimelineCurrentTime(currentTimeRatio);
       const groups = {
         qualified: [],
         proposal: [],
@@ -390,29 +544,48 @@
         closedlost: []
       };
       
+      // Find what status each deal should be in at current time
       this.deals.forEach(deal => {
-        const status = (deal.dealStatus?.key || deal.dealStatus || 'qualified').toLowerCase();
-        // Skip prospect deals entirely
-        if (status === 'prospect') {
-          return;
-        }
-        if (groups[status]) {
-          groups[status].push(deal);
-        } else {
-          groups.qualified.push(deal); // Default fallback to qualified instead of prospect
+        const currentStatus = this.getDealStatusAtTime(deal, currentTime);
+        if (currentStatus && groups[currentStatus]) {
+          // Add deal with its last event timestamp for ordering
+          const lastEventTime = this.getLastEventTimeForDeal(deal, currentTime);
+          groups[currentStatus].push({
+            ...deal,
+            lastEventTime: lastEventTime
+          });
         }
       });
       
-      // Sort each group by date (earliest first)
+      // Sort each group chronologically and assign sequence positions
       Object.keys(groups).forEach(status => {
-        groups[status].sort((a, b) => {
-          const dateA = this.getDealDate(a);
-          const dateB = this.getDealDate(b);
-          return dateA - dateB;
+        groups[status].sort((a, b) => a.lastEventTime - b.lastEventTime);
+        groups[status].forEach((deal, index) => {
+          deal.sequenceInChannel = index;
         });
       });
       
       return groups;
+    }
+    
+    getLastEventTimeForDeal(deal, currentTime) {
+      // Find the most recent event for this deal before current time
+      const dealEvents = this.dealTimeline.filter(event => 
+        event.deal === deal && event.timestamp <= currentTime
+      );
+      
+      if (dealEvents.length === 0) return 0;
+      return dealEvents[dealEvents.length - 1].timestamp;
+    }
+    
+    getCurrentTimeRatio() {
+      if (!this.startTime) return 0;
+      const currentTime = Date.now();
+      const speedMultiplier = config.riverSpeed === 'slow' ? 1.5 : 
+                             config.riverSpeed === 'fast' ? 0.5 : 1.0;
+      const cycleDuration = 8 * speedMultiplier;
+      const elapsed = (currentTime - this.startTime) / 1000;
+      return (elapsed % cycleDuration) / cycleDuration;
     }
     
     getDealDate(deal) {
@@ -456,33 +629,34 @@
                              config.riverSpeed === 'fast' ? 0.5 : 1.0;
       const cycleDuration = 8 * speedMultiplier;
       
+      // Calculate current time ratio for timeline progression
+      const elapsed = (currentTime - this.startTime) / 1000;
+      const timeRatio = (elapsed % cycleDuration) / cycleDuration;
+      
+      // Update particles based on timeline - refresh deal states
+      if (Math.floor(elapsed) !== this.lastUpdateSecond) {
+        this.lastUpdateSecond = Math.floor(elapsed);
+        this.updateParticlesForTimeline(timeRatio);
+      }
+    }
+    
+    updateParticlesForTimeline(timeRatio) {
+      // Get current deal grouping based on timeline position
+      const currentGroups = this.groupDealsByCurrentTime(timeRatio);
+      
+      // Clear existing particles
       this.particles.forEach(particle => {
-        const elapsed = (currentTime - particle.startTime) / 1000;
-        
-        if (elapsed > 0) {
-          // Move particle from left to right
-          const progress = (elapsed % cycleDuration) / cycleDuration;
-          const newLeft = progress * 100;
-          
-          particle.element.style.left = `${newLeft}%`;
-          
-          // Add slight vertical bobbing
-          const bob = Math.sin(elapsed * 2) * 3;
-          const baseTop = parseInt(particle.element.style.top) || 14;
-          particle.element.style.transform = `translateY(${bob}px)`;
-          
-          // Handle particles that reach the end
-          if (progress > 0.95) {
-            if (particle.status === 'closedwon') {
-              // Victory animation
-              particle.element.style.boxShadow = '0 0 20px rgba(0, 166, 81, 1)';
-            } else if (particle.status === 'closedlost') {
-              // Move to drain
-              this.moveToLostDrain(particle);
-            }
-          }
+        if (particle.element && particle.element.parentNode) {
+          particle.element.parentNode.removeChild(particle.element);
         }
       });
+      this.particles = [];
+      
+      // Create new particles for current timeline state
+      this.createParticles(currentGroups);
+      
+      // Set up event handlers for new particles
+      this.setupParticleEventHandlers();
     }
     
     moveToLostDrain(particle) {
