@@ -159,8 +159,8 @@
 }
 
 #star-wrapper .star-negotiation {
-  background: radial-gradient(circle, #f56565 0%, #e53e3e 100%);
-  box-shadow: 0 0 15px rgba(245, 101, 101, 0.8), 0 0 30px rgba(245, 101, 101, 0.4);
+  background: radial-gradient(circle, #f97316 0%, #ea580c 100%);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.8), 0 0 30px rgba(249, 115, 22, 0.4);
 }
 
 #star-wrapper .star-closedwon {
@@ -269,7 +269,7 @@
 #star-wrapper .legend-prospect { background: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.6); }
 #star-wrapper .legend-qualified { background: #a855f7; box-shadow: 0 0 6px rgba(168, 85, 247, 0.6); }
 #star-wrapper .legend-proposal { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.6); }
-#star-wrapper .legend-negotiation { background: #f56565; box-shadow: 0 0 6px rgba(245, 101, 101, 0.6); }
+#star-wrapper .legend-negotiation { background: #f97316; box-shadow: 0 0 6px rgba(249, 115, 22, 0.6); }
 #star-wrapper .legend-closedwon { background: #00A651; box-shadow: 0 0 8px rgba(0, 166, 81, 0.8); }
 
 /* Controls */
