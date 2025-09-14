@@ -140,7 +140,7 @@
 #river-wrapper .particle-closedlost { background: #dc2626; box-shadow: 0 0 8px rgba(220, 38, 38, 0.6); }
 
 /* Particle sizes are now dynamically calculated based on deal value
-   Ranges from 30px (€500K) to 120px (€50M+) using logarithmic scaling */
+   Ranges from 20px (€500K) to 50px (€50M+) using logarithmic scaling for better fit */
 
 /* Lost Deals Drain */
 #river-wrapper .lost-drain {

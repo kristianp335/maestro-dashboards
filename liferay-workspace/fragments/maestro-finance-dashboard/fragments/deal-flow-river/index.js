@@ -200,9 +200,9 @@
       // Dynamic size based on deal value - continuous scaling
       const dealValue = parseFloat(deal.dealValue) || 1000000; // Default 1M if no value
       
-      // Calculate size scaling: min 30px, max 120px, logarithmic scale for better distribution
-      const minSize = 30;
-      const maxSize = 120;
+      // Calculate size scaling: more reasonable range for channel layout
+      const minSize = 20;
+      const maxSize = 50;
       const minValue = 500000;   // €500K minimum
       const maxValue = 50000000; // €50M maximum
       
@@ -223,32 +223,25 @@
       // Position within channel (quadrupled height) - side by side arrangement
       const channelHeight = 160;
       
-      // Arrange multiple deals side by side with proper spacing based on actual sizes
+      // Arrange multiple deals side by side with simpler, more reliable spacing
       if (totalInChannel > 1) {
-        // Multiple deals: arrange in a single row with proper spacing
-        const maxDealsPerRow = Math.min(6, totalInChannel); // Allow up to 6 deals per row
-        const row = Math.floor(index / maxDealsPerRow);
-        const col = index % maxDealsPerRow;
+        // Calculate simple horizontal spacing to fit all deals
+        const dealsPerRow = Math.min(8, totalInChannel); // Allow up to 8 smaller deals per row
+        const col = index % dealsPerRow;
+        const row = Math.floor(index / dealsPerRow);
         
-        // Calculate spacing based on actual particle size
-        const particleSize = calculatedSize;
-        const containerWidth = this.container.offsetWidth;
-        const availableWidth = containerWidth * 0.85; // 85% of container width
-        const spacing = availableWidth / maxDealsPerRow;
+        // Simple percentage-based positioning
+        const horizontalSpacing = 85 / dealsPerRow; // Use 85% of width
+        const horizontalPosition = 7.5 + (col * horizontalSpacing) + (horizontalSpacing / 2); // Start at 7.5% margin
         
-        // Ensure minimum spacing between particles
-        const minSpacing = particleSize + 20; // Particle size + 20px gap
-        const actualSpacing = Math.max(spacing, minSpacing);
+        // Vertical positioning: center in available space
+        const rowsNeeded = Math.ceil(totalInChannel / dealsPerRow);
+        const availableHeight = channelHeight - 20; // Leave 10px margin top/bottom
+        const rowHeight = availableHeight / rowsNeeded;
+        const verticalPosition = 10 + (row * rowHeight) + (rowHeight / 2) - (calculatedSize / 2);
         
-        const horizontalPosition = (col * actualSpacing) + (actualSpacing / 2) + (containerWidth * 0.075); // 7.5% left margin
-        const horizontalPercentage = (horizontalPosition / containerWidth) * 100;
-        
-        // Vertical positioning with more space between rows
-        const rowHeight = Math.max(60, particleSize + 20); // Adapt row height to particle size
-        const verticalPosition = (row * rowHeight) + (channelHeight / 2) - (particleSize / 2); // Center in channel
-        
-        particle.style.top = `${Math.max(10, verticalPosition)}px`;
-        particle.style.left = `${Math.min(90, horizontalPercentage)}%`; // Cap at 90% to prevent overflow
+        particle.style.top = `${Math.max(5, Math.min(channelHeight - calculatedSize - 5, verticalPosition))}px`;
+        particle.style.left = `${horizontalPosition}%`;
       } else {
         // Single deal: center in channel
         const verticalPosition = (channelHeight / 2) - (calculatedSize / 2);
