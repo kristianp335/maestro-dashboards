@@ -108,8 +108,6 @@
         
         // Fetch all pages of deals
         while (hasMorePages) {
-          console.log(`Fetching deals page ${page} from: ${LIFERAY_HOST}/o/c/maestrodeals`);
-          
           const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals?page=${page}&pageSize=${pageSize}&p_auth=${Liferay.authToken}`, {
             method: 'GET',
             headers: {
@@ -118,14 +116,10 @@
           });
           
           if (!response.ok) {
-            console.error(`Failed to fetch deals: ${response.status} ${response.statusText}`);
-            const errorText = await response.text();
-            console.error('Error response:', errorText);
-            throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
           
           const data = await response.json();
-          console.log('Deals API response:', data);
           const pageDeals = data.items || [];
           
           if (pageDeals.length > 0) {
