@@ -195,34 +195,36 @@
     }
     
     createStars() {
-      // Get the universe viewport dimensions (the dark area)
-      const viewport = this.container.querySelector('.universe-viewport');
-      let canvasWidth = viewport ? viewport.clientWidth : 800;
-      let canvasHeight = viewport ? viewport.clientHeight : 450;
-      
-      // Apply padding to keep stars inside the visible area
-      const padding = 30;
-      canvasWidth = canvasWidth - (padding * 2);
-      canvasHeight = canvasHeight - (padding * 2);
-      
-      console.log(`Viewport dimensions: ${canvasWidth + padding * 2}x${canvasHeight + padding * 2}`);
-      console.log(`Canvas dimensions (with padding): ${canvasWidth}x${canvasHeight}`);
-      
-      // Clear existing stars
-      this.canvas.innerHTML = '';
-      this.stars = [];
-      
-      // Position deals using spiral galaxy pattern
-      this.deals.forEach((deal, index) => {
-        const star = this.createStar(deal, index, canvasWidth, canvasHeight, padding);
-        this.canvas.appendChild(star.element);
-        this.stars.push(star);
-      });
-      
-      console.log(`Created ${this.stars.length} stars`);
-      
-      // Set up event handlers for all stars
-      this.setupStarEventHandlers();
+      // Wait for DOM to be ready and get accurate viewport dimensions
+      setTimeout(() => {
+        const viewport = this.container.querySelector('.universe-viewport');
+        let canvasWidth = viewport ? viewport.clientWidth : 800;
+        let canvasHeight = viewport ? viewport.clientHeight : 450;
+        
+        // Apply significant padding to ensure stars stay inside dark area
+        const padding = 50; // Increased padding
+        canvasWidth = Math.max(canvasWidth - (padding * 2), 200);
+        canvasHeight = Math.max(canvasHeight - (padding * 2), 200);
+        
+        console.log(`🌟 VIEWPORT: ${viewport ? viewport.clientWidth : 'N/A'}x${viewport ? viewport.clientHeight : 'N/A'}`);
+        console.log(`🎯 CANVAS AREA: ${canvasWidth}x${canvasHeight} (with ${padding}px padding)`);
+        
+        // Clear existing stars
+        this.canvas.innerHTML = '';
+        this.stars = [];
+        
+        // Position deals using spiral galaxy pattern
+        this.deals.forEach((deal, index) => {
+          const star = this.createStar(deal, index, canvasWidth, canvasHeight, padding);
+          this.canvas.appendChild(star.element);
+          this.stars.push(star);
+        });
+        
+        console.log(`✅ Created ${this.stars.length} stars inside ${canvasWidth}x${canvasHeight} area`);
+        
+        // Set up event handlers for all stars
+        this.setupStarEventHandlers();
+      }, 100); // Small delay to ensure DOM is fully rendered
     }
     
     createStar(deal, index, canvasWidth, canvasHeight, padding) {
@@ -513,7 +515,7 @@
         tooltip = document.createElement('div');
         tooltip.className = 'star-tooltip';
         tooltip.style.position = 'absolute';
-        tooltip.style.zIndex = '1000';
+        tooltip.style.zIndex = '9999';
         tooltip.style.pointerEvents = 'none';
         this.container.appendChild(tooltip);
       }

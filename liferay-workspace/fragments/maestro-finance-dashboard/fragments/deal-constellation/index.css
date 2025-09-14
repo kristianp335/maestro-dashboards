@@ -34,7 +34,7 @@
   height: 450px;
   width: 100%;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; /* This MUST contain stars inside dark area */
   background: inherit;
 }
 
@@ -307,7 +307,7 @@
   border: 1px solid rgba(0, 166, 81, 0.5);
   border-radius: 6px;
   padding: 8px 12px;
-  z-index: 1000;
+  z-index: 9999; /* Higher z-index to ensure visibility */
   pointer-events: none;
   backdrop-filter: blur(10px);
   max-width: 250px;
