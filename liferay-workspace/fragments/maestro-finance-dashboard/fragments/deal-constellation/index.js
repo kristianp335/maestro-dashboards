@@ -34,8 +34,7 @@
     async init() {
       try {
         await this.loadDeals();
-        this.createStars();
-        this.createConnections();
+        this.setupRenderController();
         this.setupEventListeners();
         this.hideLoading();
       } catch (error) {
@@ -194,37 +193,58 @@
       ];
     }
     
-    createStars() {
-      // Wait for DOM to be ready and get accurate viewport dimensions
-      setTimeout(() => {
-        const viewport = this.container.querySelector('.universe-viewport');
-        let canvasWidth = viewport ? viewport.clientWidth : 800;
-        let canvasHeight = viewport ? viewport.clientHeight : 450;
-        
-        // Apply significant padding to ensure stars stay inside dark area
-        const padding = 50; // Increased padding
-        canvasWidth = Math.max(canvasWidth - (padding * 2), 200);
-        canvasHeight = Math.max(canvasHeight - (padding * 2), 200);
-        
-        console.log(`🌟 VIEWPORT: ${viewport ? viewport.clientWidth : 'N/A'}x${viewport ? viewport.clientHeight : 'N/A'}`);
-        console.log(`🎯 CANVAS AREA: ${canvasWidth}x${canvasHeight} (with ${padding}px padding)`);
-        
-        // Clear existing stars
-        this.canvas.innerHTML = '';
-        this.stars = [];
-        
-        // Position deals using spiral galaxy pattern
-        this.deals.forEach((deal, index) => {
-          const star = this.createStar(deal, index, canvasWidth, canvasHeight, padding);
-          this.canvas.appendChild(star.element);
-          this.stars.push(star);
-        });
-        
-        console.log(`✅ Created ${this.stars.length} stars inside ${canvasWidth}x${canvasHeight} area`);
-        
-        // Set up event handlers for all stars
-        this.setupStarEventHandlers();
-      }, 100); // Small delay to ensure DOM is fully rendered
+    setupRenderController() {
+      const viewport = this.container.querySelector('.universe-viewport');
+      if (!viewport) {
+        console.error('Universe viewport not found');
+        return;
+      }
+
+      // ResizeObserver for robust dimension tracking
+      this.resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const { width, height } = entry.contentRect;
+          if (width > 0 && height > 0) {
+            console.log(`🌟 VIEWPORT RESIZED: ${width}x${height}`);
+            this.render(width, height);
+          }
+        }
+      });
+
+      this.resizeObserver.observe(viewport);
+      
+      // Initial render if dimensions are already available
+      if (viewport.clientWidth > 0 && viewport.clientHeight > 0) {
+        this.render(viewport.clientWidth, viewport.clientHeight);
+      }
+    }
+
+    render(viewportWidth, viewportHeight) {
+      // Apply significant padding to ensure stars stay inside dark area
+      const padding = 50;
+      const canvasWidth = Math.max(viewportWidth - (padding * 2), 200);
+      const canvasHeight = Math.max(viewportHeight - (padding * 2), 200);
+      
+      console.log(`🎯 RENDERING: ${canvasWidth}x${canvasHeight} (with ${padding}px padding)`);
+      
+      // Clear existing stars
+      this.canvas.innerHTML = '';
+      this.stars = [];
+      
+      // Position deals using spiral galaxy pattern
+      this.deals.forEach((deal, index) => {
+        const star = this.createStar(deal, index, canvasWidth, canvasHeight, padding);
+        this.canvas.appendChild(star.element);
+        this.stars.push(star);
+      });
+      
+      console.log(`✅ Created ${this.stars.length} stars`);
+      
+      // Create connections AFTER stars are built
+      this.createConnections();
+      
+      // Set up event handlers for all stars
+      this.setupStarEventHandlers();
     }
     
     createStar(deal, index, canvasWidth, canvasHeight, padding) {
@@ -508,39 +528,62 @@
     showTooltip(star, event) {
       console.log('Showing tooltip for:', star.deal.dealName);
       
-      // Create tooltip element if it doesn't exist
-      let tooltip = this.container.querySelector('.star-tooltip');
+      // Create tooltip element in document.body to avoid clipping
+      let tooltip = document.body.querySelector('.constellation-star-tooltip');
       if (!tooltip) {
-        console.log('Creating new tooltip element');
+        console.log('Creating new tooltip element in body');
         tooltip = document.createElement('div');
-        tooltip.className = 'star-tooltip';
-        tooltip.style.position = 'absolute';
-        tooltip.style.zIndex = '9999';
-        tooltip.style.pointerEvents = 'none';
-        this.container.appendChild(tooltip);
+        tooltip.className = 'constellation-star-tooltip';
+        tooltip.style.cssText = `
+          position: fixed;
+          background: rgba(0, 0, 0, 0.95);
+          border: 1px solid rgba(0, 166, 81, 0.5);
+          border-radius: 6px;
+          padding: 8px 12px;
+          z-index: 99999;
+          pointer-events: none;
+          backdrop-filter: blur(10px);
+          max-width: 250px;
+          font-size: 0.8rem;
+          color: white;
+          font-family: Arial, sans-serif;
+          display: none;
+        `;
+        document.body.appendChild(tooltip);
       }
       
       // Update tooltip content
       const deal = star.deal;
       tooltip.innerHTML = `
-        <div class="tooltip-header">${deal.dealName || 'Unknown Deal'}</div>
-        <div class="tooltip-content">
-          <div><strong>Client:</strong> ${deal.clientName || 'Unknown'}</div>
-          <div><strong>Value:</strong> ${this.formatCurrency(parseFloat(deal.dealValue) || 0)}</div>
-          <div><strong>Status:</strong> ${deal.dealStatus || 'Unknown'}</div>
-          <div><strong>Probability:</strong> ${deal.dealProbability || 0}%</div>
+        <div style="color: #00A651; font-weight: 600; margin-bottom: 4px; font-size: 0.85rem;">
+          ${deal.dealName || 'Unknown Deal'}
+        </div>
+        <div style="color: #ffffff;">
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Client:</strong> ${deal.clientName || 'Unknown'}</div>
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Value:</strong> ${this.formatCurrency(parseFloat(deal.dealValue) || 0)}</div>
+          <div style="margin-bottom: 2px;"><strong style="color: #cccccc;">Status:</strong> ${deal.dealStatus || 'Unknown'}</div>
+          <div><strong style="color: #cccccc;">Probability:</strong> ${deal.dealProbability || 0}%</div>
         </div>
       `;
       
-      // Position tooltip near the star using relative positioning within fragment
-      // Get star position relative to the universe viewport
-      const starLeft = parseFloat(star.element.style.left) || star.x;
-      const starTop = parseFloat(star.element.style.top) || star.y;
-      const starSize = parseFloat(star.element.style.width) || 16;
+      // Position tooltip using getBoundingClientRect for accurate positioning
+      const rect = star.element.getBoundingClientRect();
+      const tooltipWidth = 250; // max-width
+      const tooltipHeight = 100; // estimated height
       
-      // Position tooltip to the right of the star
-      const left = starLeft + starSize + 10;
-      const top = starTop;
+      // Position to the right of the star, but clamp within viewport
+      let left = rect.right + 10;
+      let top = rect.top;
+      
+      // Clamp to viewport boundaries
+      if (left + tooltipWidth > window.innerWidth) {
+        left = rect.left - tooltipWidth - 10; // Show on left side
+      }
+      if (top + tooltipHeight > window.innerHeight) {
+        top = window.innerHeight - tooltipHeight - 10;
+      }
+      if (left < 0) left = 10;
+      if (top < 0) top = 10;
       
       tooltip.style.left = left + 'px';
       tooltip.style.top = top + 'px';
@@ -548,11 +591,11 @@
       tooltip.style.opacity = '1';
       tooltip.style.visibility = 'visible';
       
-      console.log(`Star at (${starLeft}, ${starTop}), Tooltip positioned at (${left}, ${top})`);
+      console.log(`✅ Tooltip positioned at (${left}, ${top}) for star at (${rect.left}, ${rect.top})`);
     }
     
     hideTooltip() {
-      const tooltip = this.container.querySelector('.star-tooltip');
+      const tooltip = document.body.querySelector('.constellation-star-tooltip');
       if (tooltip) {
         tooltip.style.display = 'none';
         tooltip.style.opacity = '0';
