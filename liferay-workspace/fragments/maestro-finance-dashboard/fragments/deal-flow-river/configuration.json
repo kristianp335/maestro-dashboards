@@ -7,12 +7,14 @@
           "label": "Animation Speed",
           "description": "Control the speed of the flowing animation",
           "type": "select",
-          "defaultValue": "normal",
-          "options": [
-            { "label": "Slow", "value": "slow" },
-            { "label": "Normal", "value": "normal" },
-            { "label": "Fast", "value": "fast" }
-          ]
+          "typeOptions": {
+            "validValues": [
+              { "label": "Slow", "value": "slow" },
+              { "label": "Normal", "value": "normal" },
+              { "label": "Fast", "value": "fast" }
+            ]
+          },
+          "defaultValue": "normal"
         },
         {
           "name": "showTooltips",
@@ -26,12 +28,14 @@
           "label": "Particle Size",
           "description": "Base size for deal particles",
           "type": "select",
-          "defaultValue": "medium",
-          "options": [
-            { "label": "Small", "value": "small" },
-            { "label": "Medium", "value": "medium" },
-            { "label": "Large", "value": "large" }
-          ]
+          "typeOptions": {
+            "validValues": [
+              { "label": "Small", "value": "small" },
+              { "label": "Medium", "value": "medium" },
+              { "label": "Large", "value": "large" }
+            ]
+          },
+          "defaultValue": "medium"
         },
         {
           "name": "showLostDrain",
