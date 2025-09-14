@@ -1,4 +1,4 @@
-#wrapper .deal-constellation-container {
+#star-wrapper .deal-constellation-container {
   font-family: 'Arial', sans-serif;
   background: radial-gradient(ellipse at center, #0f0f23 0%, #050511 70%, #000000 100%);
   border-radius: 12px;
@@ -9,7 +9,7 @@
   min-height: 500px;
 }
 
-#wrapper .constellation-title {
+#star-wrapper .constellation-title {
   color: #00A651;
   margin: 0 0 8px 0;
   font-size: 1.5rem;
@@ -18,7 +18,7 @@
   text-shadow: 0 0 10px rgba(0, 166, 81, 0.5);
 }
 
-#wrapper .constellation-description {
+#star-wrapper .constellation-description {
   color: #b3b3b3;
   font-size: 14px;
   text-align: center;
@@ -29,7 +29,7 @@
 }
 
 /* Universe Viewport */
-#wrapper .universe-viewport {
+#star-wrapper .universe-viewport {
   position: relative;
   height: 450px;
   width: 100%;
@@ -39,7 +39,7 @@
 }
 
 /* Star Field Background */
-#wrapper .star-field {
+#star-wrapper .star-field {
   position: absolute;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@
   z-index: 1;
 }
 
-#wrapper .distant-stars {
+#star-wrapper .distant-stars {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -69,7 +69,7 @@
 }
 
 /* Constellation Canvas */
-#wrapper .constellation-canvas {
+#star-wrapper .constellation-canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -81,7 +81,7 @@
 }
 
 /* Deal Stars */
-#wrapper .deal-star {
+#star-wrapper .deal-star {
   position: absolute;
   border-radius: 50%;
   cursor: pointer;
@@ -96,75 +96,75 @@
 }
 
 /* Animation intensity configurations */
-#wrapper .star-animation-none .deal-star {
+#star-wrapper .star-animation-none .deal-star {
   animation: none;
 }
 
-#wrapper .star-animation-subtle .deal-star {
+#star-wrapper .star-animation-subtle .deal-star {
   animation: starPulse 6s ease-in-out infinite alternate;
 }
 
-#wrapper .star-animation-normal .deal-star {
+#star-wrapper .star-animation-normal .deal-star {
   animation: starPulse 3s ease-in-out infinite alternate;
 }
 
-#wrapper .star-animation-intense .deal-star {
+#star-wrapper .star-animation-intense .deal-star {
   animation: starPulse 1.5s ease-in-out infinite alternate;
 }
 
-#wrapper .deal-star:hover {
+#star-wrapper .deal-star:hover {
   transform: scale(1.3) !important;
   z-index: 30;
 }
 
 /* Star Sizes based on deal value */
-#wrapper .deal-star.size-small {
+#star-wrapper .deal-star.size-small {
   width: 8px;
   height: 8px;
 }
 
-#wrapper .deal-star.size-medium {
+#star-wrapper .deal-star.size-medium {
   width: 12px;
   height: 12px;
 }
 
-#wrapper .deal-star.size-large {
+#star-wrapper .deal-star.size-large {
   width: 16px;
   height: 16px;
 }
 
-#wrapper .deal-star.size-huge {
+#star-wrapper .deal-star.size-huge {
   width: 20px;
   height: 20px;
 }
 
-#wrapper .deal-star.size-mega {
+#star-wrapper .deal-star.size-mega {
   width: 24px;
   height: 24px;
 }
 
 /* Star Colors by Status */
-#wrapper .star-prospect {
+#star-wrapper .star-prospect {
   background: radial-gradient(circle, #3b82f6 0%, #1e40af 100%);
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4);
 }
 
-#wrapper .star-qualified {
+#star-wrapper .star-qualified {
   background: radial-gradient(circle, #a855f7 0%, #7c3aed 100%);
   box-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 30px rgba(168, 85, 247, 0.4);
 }
 
-#wrapper .star-proposal {
+#star-wrapper .star-proposal {
   background: radial-gradient(circle, #fbbf24 0%, #f59e0b 100%);
   box-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.4);
 }
 
-#wrapper .star-negotiation {
+#star-wrapper .star-negotiation {
   background: radial-gradient(circle, #f56565 0%, #e53e3e 100%);
   box-shadow: 0 0 15px rgba(245, 101, 101, 0.8), 0 0 30px rgba(245, 101, 101, 0.4);
 }
 
-#wrapper .star-closedwon {
+#star-wrapper .star-closedwon {
   background: radial-gradient(circle, #00A651 0%, #027a3e 100%);
   box-shadow: 0 0 20px rgba(0, 166, 81, 1), 0 0 40px rgba(0, 166, 81, 0.6);
   animation: victoryPulse 2s ease-in-out infinite alternate;
@@ -181,14 +181,14 @@
   }
 }
 
-#wrapper .star-closedlost {
+#star-wrapper .star-closedlost {
   background: radial-gradient(circle, #dc2626 0%, #991b1b 100%);
   box-shadow: 0 0 10px rgba(220, 38, 38, 0.6), 0 0 20px rgba(220, 38, 38, 0.3);
   opacity: 0.6;
 }
 
 /* Connection SVG */
-#wrapper .connection-svg {
+#star-wrapper .connection-svg {
   position: absolute;
   top: 0;
   left: 0;
@@ -198,7 +198,7 @@
   pointer-events: none;
 }
 
-#wrapper .connection-line {
+#star-wrapper .connection-line {
   stroke: rgba(0, 166, 81, 0.3);
   stroke-width: 1;
   opacity: 0.7;
@@ -210,12 +210,12 @@
   100% { opacity: 0.7; }
 }
 
-#wrapper .connection-line.strong {
+#star-wrapper .connection-line.strong {
   stroke: rgba(0, 166, 81, 0.6);
   stroke-width: 2;
 }
 
-#wrapper .connection-line.active {
+#star-wrapper .connection-line.active {
   stroke: rgba(251, 191, 36, 0.8);
   stroke-width: 2;
   animation: activeConnection 2s ease-in-out infinite alternate;
@@ -227,7 +227,7 @@
 }
 
 /* Legend */
-#wrapper .constellation-legend {
+#star-wrapper .constellation-legend {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -239,7 +239,7 @@
   backdrop-filter: blur(10px);
 }
 
-#wrapper .legend-title {
+#star-wrapper .legend-title {
   color: #00A651;
   font-size: 0.85rem;
   font-weight: 600;
@@ -247,13 +247,13 @@
   text-align: center;
 }
 
-#wrapper .legend-items {
+#star-wrapper .legend-items {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-#wrapper .legend-item {
+#star-wrapper .legend-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -261,20 +261,20 @@
   color: #ffffff;
 }
 
-#wrapper .legend-star {
+#star-wrapper .legend-star {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
 
-#wrapper .legend-prospect { background: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.6); }
-#wrapper .legend-qualified { background: #a855f7; box-shadow: 0 0 6px rgba(168, 85, 247, 0.6); }
-#wrapper .legend-proposal { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.6); }
-#wrapper .legend-negotiation { background: #f56565; box-shadow: 0 0 6px rgba(245, 101, 101, 0.6); }
-#wrapper .legend-closedwon { background: #00A651; box-shadow: 0 0 8px rgba(0, 166, 81, 0.8); }
+#star-wrapper .legend-prospect { background: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.6); }
+#star-wrapper .legend-qualified { background: #a855f7; box-shadow: 0 0 6px rgba(168, 85, 247, 0.6); }
+#star-wrapper .legend-proposal { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.6); }
+#star-wrapper .legend-negotiation { background: #f56565; box-shadow: 0 0 6px rgba(245, 101, 101, 0.6); }
+#star-wrapper .legend-closedwon { background: #00A651; box-shadow: 0 0 8px rgba(0, 166, 81, 0.8); }
 
 /* Controls */
-#wrapper .constellation-controls {
+#star-wrapper .constellation-controls {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -283,7 +283,7 @@
   z-index: 100;
 }
 
-#wrapper .control-btn {
+#star-wrapper .control-btn {
   background: rgba(0, 166, 81, 0.2);
   border: 1px solid rgba(0, 166, 81, 0.5);
   color: #00A651;
@@ -295,13 +295,13 @@
   backdrop-filter: blur(10px);
 }
 
-#wrapper .control-btn:hover {
+#star-wrapper .control-btn:hover {
   background: rgba(0, 166, 81, 0.3);
   box-shadow: 0 0 10px rgba(0, 166, 81, 0.4);
 }
 
 /* Star Tooltip */
-#wrapper .star-tooltip {
+#star-wrapper .star-tooltip {
   position: absolute;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid rgba(0, 166, 81, 0.5);
@@ -315,27 +315,27 @@
   display: none;
 }
 
-#wrapper .tooltip-header {
+#star-wrapper .tooltip-header {
   color: #00A651;
   font-weight: 600;
   margin-bottom: 4px;
   font-size: 0.85rem;
 }
 
-#wrapper .tooltip-content {
+#star-wrapper .tooltip-content {
   color: #ffffff;
 }
 
-#wrapper .tooltip-content div {
+#star-wrapper .tooltip-content div {
   margin-bottom: 2px;
 }
 
-#wrapper .tooltip-content strong {
+#star-wrapper .tooltip-content strong {
   color: #cccccc;
 }
 
 /* Deal Detail Panel */
-#wrapper .deal-detail-panel {
+#star-wrapper .deal-detail-panel {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -349,11 +349,11 @@
   transition: transform 0.3s ease;
 }
 
-#wrapper .deal-detail-panel.show {
+#star-wrapper .deal-detail-panel.show {
   transform: translateX(0);
 }
 
-#wrapper .panel-header {
+#star-wrapper .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -361,14 +361,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#wrapper .deal-title {
+#star-wrapper .deal-title {
   color: #00A651;
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
 }
 
-#wrapper .close-btn {
+#star-wrapper .close-btn {
   background: none;
   border: none;
   color: #ffffff;
@@ -382,11 +382,11 @@
   justify-content: center;
 }
 
-#wrapper .panel-content {
+#star-wrapper .panel-content {
   padding: 16px;
 }
 
-#wrapper .info-row {
+#star-wrapper .info-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -394,18 +394,18 @@
   font-size: 0.85rem;
 }
 
-#wrapper .info-row .label {
+#star-wrapper .info-row .label {
   color: #cccccc;
   font-weight: 500;
 }
 
-#wrapper .info-row .value {
+#star-wrapper .info-row .value {
   color: #ffffff;
   font-weight: 600;
 }
 
 /* Loading State */
-#wrapper .constellation-loading {
+#star-wrapper .constellation-loading {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -414,20 +414,20 @@
   z-index: 1000;
 }
 
-#wrapper .loading-text {
+#star-wrapper .loading-text {
   color: #00A651;
   margin-bottom: 20px;
   font-weight: 500;
   font-size: 1rem;
 }
 
-#wrapper .loading-stars {
+#star-wrapper .loading-stars {
   display: flex;
   justify-content: center;
   gap: 12px;
 }
 
-#wrapper .loading-star {
+#star-wrapper .loading-star {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -436,11 +436,11 @@
   animation: loadingPulse 1.5s ease-in-out infinite alternate;
 }
 
-#wrapper .loading-star:nth-child(2) {
+#star-wrapper .loading-star:nth-child(2) {
   animation-delay: 0.3s;
 }
 
-#wrapper .loading-star:nth-child(3) {
+#star-wrapper .loading-star:nth-child(3) {
   animation-delay: 0.6s;
 }
 
@@ -457,30 +457,30 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  #wrapper .constellation-legend {
+  #star-wrapper .constellation-legend {
     position: static;
     margin-bottom: 16px;
   }
   
-  #wrapper .legend-items {
+  #star-wrapper .legend-items {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 8px;
   }
   
-  #wrapper .constellation-controls {
+  #star-wrapper .constellation-controls {
     position: static;
     justify-content: center;
     margin-top: 16px;
   }
   
-  #wrapper .deal-detail-panel {
+  #star-wrapper .deal-detail-panel {
     width: calc(100% - 40px);
     left: 20px;
     transform: translateY(-100%);
   }
   
-  #wrapper .deal-detail-panel.show {
+  #star-wrapper .deal-detail-panel.show {
     transform: translateY(0);
   }
 }
