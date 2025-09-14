@@ -1,13 +1,12 @@
-<div class="deal-flow-river-container">
+<div id="river-wrapper" class="deal-flow-river-container">
   <div data-lfr-editable-id="title" data-lfr-editable-type="rich-text">
     <h2 class="river-title">Deal Pipeline Flow</h2>
   </div>
   <div data-lfr-editable-id="description" data-lfr-editable-type="rich-text">
     <p class="river-description">Watch deals flow through your pipeline stages with animated particles representing active opportunities.</p>
   </div>
-</div>
 
-<div class="river-system">
+  <div class="river-system">
   <!-- Pipeline Stages -->
   <div class="pipeline-stages">
     <div class="stage-label" data-stage="prospect">Prospect</div>
@@ -55,9 +54,8 @@
     <div class="drain-label">Lost Deals</div>
     <div class="drain-particles"></div>
   </div>
-</div>
 
-<!-- Deal Tooltip -->
+  <!-- Deal Tooltip -->
 <div class="deal-tooltip" id="dealTooltip">
   <div class="tooltip-header">
     <strong class="deal-client"></strong>
@@ -67,9 +65,10 @@
     <div class="deal-status"></div>
     <div class="deal-probability"></div>
   </div>
+
 </div>
 
-<!-- Loading State -->
+  <!-- Loading State -->
 <div class="river-loading" id="riverLoading">
   <div class="loading-text">Loading deal flow...</div>
   <div class="loading-river"></div>

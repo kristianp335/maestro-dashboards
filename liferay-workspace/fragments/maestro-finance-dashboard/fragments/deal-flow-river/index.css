@@ -1,4 +1,4 @@
-#wrapper .deal-flow-river-container {
+#river-wrapper .deal-flow-river-container {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   border-radius: 12px;
@@ -9,7 +9,7 @@
   min-height: 400px;
 }
 
-#wrapper .river-title {
+#river-wrapper .river-title {
   color: #00A651;
   margin: 0 0 8px 0;
   font-size: 1.5rem;
@@ -17,7 +17,7 @@
   text-align: center;
 }
 
-#wrapper .river-description {
+#river-wrapper .river-description {
   color: #b3b3b3;
   font-size: 14px;
   text-align: center;
@@ -28,20 +28,20 @@
 }
 
 /* Pipeline System */
-#wrapper .river-system {
+#river-wrapper .river-system {
   position: relative;
   height: 370px;
   width: 100%;
 }
 
-#wrapper .pipeline-stages {
+#river-wrapper .pipeline-stages {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
   padding: 0 20px;
 }
 
-#wrapper .stage-label {
+#river-wrapper .stage-label {
   background: rgba(0, 166, 81, 0.2);
   color: #00A651;
   padding: 6px 12px;
@@ -52,13 +52,13 @@
 }
 
 /* River Channels */
-#wrapper .river-channels {
+#river-wrapper .river-channels {
   position: relative;
   height: 300px;
   margin-bottom: 16px;
 }
 
-#wrapper .channel {
+#river-wrapper .channel {
   position: absolute;
   width: 100%;
   height: 40px;
@@ -67,40 +67,40 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#wrapper .channel[data-stage="prospect"] {
+#river-wrapper .channel[data-stage="prospect"] {
   top: 0;
   background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 100%);
 }
 
-#wrapper .channel[data-stage="qualified"] {
+#river-wrapper .channel[data-stage="qualified"] {
   top: 50px;
   background: linear-gradient(90deg, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.1) 100%);
 }
 
-#wrapper .channel[data-stage="proposal"] {
+#river-wrapper .channel[data-stage="proposal"] {
   top: 100px;
   background: linear-gradient(90deg, rgba(251, 191, 36, 0.3) 0%, rgba(251, 191, 36, 0.1) 100%);
 }
 
-#wrapper .channel[data-stage="negotiation"] {
+#river-wrapper .channel[data-stage="negotiation"] {
   top: 150px;
   background: linear-gradient(90deg, rgba(245, 101, 101, 0.3) 0%, rgba(245, 101, 101, 0.1) 100%);
 }
 
-#wrapper .victory-channel {
+#river-wrapper .victory-channel {
   top: 200px;
   background: linear-gradient(90deg, rgba(0, 166, 81, 0.4) 0%, rgba(0, 166, 81, 0.2) 100%);
   box-shadow: 0 0 20px rgba(0, 166, 81, 0.3);
 }
 
-#wrapper .lost-channel {
+#river-wrapper .lost-channel {
   top: 250px;
   background: linear-gradient(90deg, rgba(220, 38, 38, 0.3) 0%, rgba(220, 38, 38, 0.1) 100%);
   opacity: 0.7;
 }
 
 /* Flowing Animation */
-#wrapper .channel-flow {
+#river-wrapper .channel-flow {
   position: absolute;
   top: 0;
   left: -100%;
@@ -115,7 +115,7 @@
   animation: flowRight var(--flow-duration, 4s) linear infinite;
 }
 
-#wrapper .victory-flow {
+#river-wrapper .victory-flow {
   background: linear-gradient(90deg, 
     transparent 0%, 
     rgba(0, 166, 81, 0.3) 20%, 
@@ -130,7 +130,7 @@
 }
 
 /* Deal Particles */
-#wrapper .deal-particles {
+#river-wrapper .deal-particles {
   position: absolute;
   top: 0;
   left: 0;
@@ -139,7 +139,7 @@
   pointer-events: none;
 }
 
-#wrapper .deal-particle {
+#river-wrapper .deal-particle {
   position: absolute;
   width: calc(12px * var(--particle-size-multiplier, 1));
   height: calc(12px * var(--particle-size-multiplier, 1));
@@ -150,31 +150,31 @@
   z-index: 10;
 }
 
-#wrapper .deal-particle:hover {
+#river-wrapper .deal-particle:hover {
   transform: scale(1.3);
 }
 
 /* Particle Colors by Status */
-#wrapper .particle-prospect { background: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.6); }
-#wrapper .particle-qualified { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
-#wrapper .particle-proposal { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
-#wrapper .particle-negotiation { background: #f56565; box-shadow: 0 0 8px rgba(245, 101, 101, 0.6); }
-#wrapper .particle-closedwon { background: #00A651; box-shadow: 0 0 12px rgba(0, 166, 81, 0.8); }
-#wrapper .particle-closedlost { background: #dc2626; box-shadow: 0 0 8px rgba(220, 38, 38, 0.6); }
+#river-wrapper .particle-prospect { background: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.6); }
+#river-wrapper .particle-qualified { background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+#river-wrapper .particle-proposal { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.6); }
+#river-wrapper .particle-negotiation { background: #f56565; box-shadow: 0 0 8px rgba(245, 101, 101, 0.6); }
+#river-wrapper .particle-closedwon { background: #00A651; box-shadow: 0 0 12px rgba(0, 166, 81, 0.8); }
+#river-wrapper .particle-closedlost { background: #dc2626; box-shadow: 0 0 8px rgba(220, 38, 38, 0.6); }
 
 /* Large deals get bigger particles */
-#wrapper .deal-particle.large-deal {
+#river-wrapper .deal-particle.large-deal {
   width: calc(18px * var(--particle-size-multiplier, 1));
   height: calc(18px * var(--particle-size-multiplier, 1));
 }
 
-#wrapper .deal-particle.mega-deal {
+#river-wrapper .deal-particle.mega-deal {
   width: calc(24px * var(--particle-size-multiplier, 1));
   height: calc(24px * var(--particle-size-multiplier, 1));
 }
 
 /* Lost Deals Drain */
-#wrapper .lost-drain {
+#river-wrapper .lost-drain {
   position: absolute;
   bottom: 0;
   right: 20px;
@@ -188,21 +188,21 @@
   justify-content: center;
 }
 
-#wrapper .drain-label {
+#river-wrapper .drain-label {
   color: #dc2626;
   font-size: 0.75rem;
   font-weight: 500;
   margin-bottom: 4px;
 }
 
-#wrapper .drain-particles {
+#river-wrapper .drain-particles {
   position: relative;
   width: 100%;
   height: 20px;
 }
 
 /* Deal Tooltip */
-#wrapper .deal-tooltip {
+#river-wrapper .deal-tooltip {
   position: absolute;
   background: rgba(0, 0, 0, 0.95);
   border: 1px solid rgba(0, 166, 81, 0.5);
@@ -221,11 +221,11 @@
   backdrop-filter: blur(10px);
 }
 
-#wrapper .deal-tooltip.show {
+#river-wrapper .deal-tooltip.show {
   opacity: 1;
 }
 
-#wrapper .tooltip-header {
+#river-wrapper .tooltip-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -234,22 +234,22 @@
   padding-bottom: 4px;
 }
 
-#wrapper .deal-client {
+#river-wrapper .deal-client {
   color: #00A651;
 }
 
-#wrapper .deal-value {
+#river-wrapper .deal-value {
   color: #fbbf24;
   font-weight: 600;
 }
 
-#wrapper .tooltip-details {
+#river-wrapper .tooltip-details {
   font-size: 0.8rem;
   line-height: 1.4;
 }
 
 /* Loading State */
-#wrapper .river-loading {
+#river-wrapper .river-loading {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -258,13 +258,13 @@
   z-index: 100;
 }
 
-#wrapper .loading-text {
+#river-wrapper .loading-text {
   color: #00A651;
   margin-bottom: 16px;
   font-weight: 500;
 }
 
-#wrapper .loading-river {
+#river-wrapper .loading-river {
   width: 200px;
   height: 4px;
   background: rgba(255, 255, 255, 0.1);
@@ -272,7 +272,7 @@
   overflow: hidden;
 }
 
-#wrapper .loading-river::after {
+#river-wrapper .loading-river::after {
   content: '';
   display: block;
   width: 40px;
@@ -288,28 +288,28 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  #wrapper .pipeline-stages {
+  #river-wrapper .pipeline-stages {
     flex-direction: column;
     gap: 8px;
     margin-bottom: 20px;
   }
   
-  #wrapper .stage-label {
+  #river-wrapper .stage-label {
     text-align: center;
     font-size: 0.8rem;
   }
   
-  #wrapper .river-system {
+  #river-wrapper .river-system {
     height: 280px;
   }
   
-  #wrapper .channel {
+  #river-wrapper .channel {
     height: 35px;
   }
   
-  #wrapper .channel[data-stage="prospect"] { top: 0; }
-  #wrapper .channel[data-stage="qualified"] { top: 42px; }
-  #wrapper .channel[data-stage="proposal"] { top: 84px; }
-  #wrapper .channel[data-stage="negotiation"] { top: 126px; }
-  #wrapper .victory-channel { top: 168px; }
+  #river-wrapper .channel[data-stage="prospect"] { top: 0; }
+  #river-wrapper .channel[data-stage="qualified"] { top: 42px; }
+  #river-wrapper .channel[data-stage="proposal"] { top: 84px; }
+  #river-wrapper .channel[data-stage="negotiation"] { top: 126px; }
+  #river-wrapper .victory-channel { top: 168px; }
 }
