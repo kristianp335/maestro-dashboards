@@ -5,7 +5,7 @@
   padding: 24px;
   color: #ffffff;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow tooltip to show outside container */
   min-height: 500px;
 }
 

@@ -530,11 +530,15 @@
         </div>
       `;
       
-      // Position tooltip near the star
-      const rect = star.element.getBoundingClientRect();
-      const containerRect = this.container.getBoundingClientRect();
-      const left = rect.left - containerRect.left + rect.width + 10;
-      const top = rect.top - containerRect.top;
+      // Position tooltip near the star using relative positioning within fragment
+      // Get star position relative to the universe viewport
+      const starLeft = parseFloat(star.element.style.left) || star.x;
+      const starTop = parseFloat(star.element.style.top) || star.y;
+      const starSize = parseFloat(star.element.style.width) || 16;
+      
+      // Position tooltip to the right of the star
+      const left = starLeft + starSize + 10;
+      const top = starTop;
       
       tooltip.style.left = left + 'px';
       tooltip.style.top = top + 'px';
@@ -542,7 +546,7 @@
       tooltip.style.opacity = '1';
       tooltip.style.visibility = 'visible';
       
-      console.log(`Tooltip positioned at (${left}, ${top})`);
+      console.log(`Star at (${starLeft}, ${starTop}), Tooltip positioned at (${left}, ${top})`);
     }
     
     hideTooltip() {
