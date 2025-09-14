@@ -36,20 +36,92 @@
     }
     
     async loadDeals() {
-      const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+      try {
+        const response = await fetch(`${LIFERAY_HOST}/o/c/maestrodeals`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const data = await response.json();
+        this.deals = data.items || [];
+        
+        // If no data from API, use sample data for demonstration
+        if (this.deals.length === 0) {
+          this.deals = this.getSampleDeals();
+        }
+        
+        console.log(`Loaded ${this.deals.length} deals for flow visualization`);
+      } catch (error) {
+        console.error('Error loading deals, using sample data:', error);
+        this.deals = this.getSampleDeals();
       }
-      
-      const data = await response.json();
-      this.deals = data.items || [];
-      console.log(`Loaded ${this.deals.length} deals for flow visualization`);
+    }
+    
+    getSampleDeals() {
+      return [
+        {
+          dealName: "Air France-KLM Digital Project",
+          clientName: "Air France-KLM", 
+          dealValue: 1140348138,
+          dealStatus: "prospect",
+          dealProbability: 25
+        },
+        {
+          dealName: "Intesa Sanpaolo Sustainability",
+          clientName: "Intesa Sanpaolo",
+          dealValue: 568427960,
+          dealStatus: "qualified", 
+          dealProbability: 65
+        },
+        {
+          dealName: "Schneider Electric Expansion",
+          clientName: "Schneider Electric",
+          dealValue: 890000000,
+          dealStatus: "proposal",
+          dealProbability: 80
+        },
+        {
+          dealName: "Total Energies Green Finance",
+          clientName: "Total Energies",
+          dealValue: 1250000000,
+          dealStatus: "negotiation",
+          dealProbability: 90
+        },
+        {
+          dealName: "Vivendi Media Partnership",
+          clientName: "Vivendi",
+          dealValue: 420000000,
+          dealStatus: "closedwon",
+          dealProbability: 100
+        },
+        {
+          dealName: "Failed Telecom Deal",
+          clientName: "Orange",
+          dealValue: 75000000,
+          dealStatus: "closedlost",
+          dealProbability: 0
+        },
+        {
+          dealName: "BNP Paribas Digital Bank",
+          clientName: "BNP Paribas",
+          dealValue: 2400000000,
+          dealStatus: "negotiation",
+          dealProbability: 85
+        },
+        {
+          dealName: "Carrefour Supply Chain",
+          clientName: "Carrefour",
+          dealValue: 650000000,
+          dealStatus: "qualified",
+          dealProbability: 70
+        }
+      ];
     }
     
     createParticles() {
