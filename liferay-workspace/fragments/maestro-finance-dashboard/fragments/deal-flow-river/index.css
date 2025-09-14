@@ -30,7 +30,7 @@
 /* Pipeline System */
 #river-wrapper .river-system {
   position: relative;
-  height: 1000px;
+  height: 800px;
   width: 100%;
 }
 
@@ -43,7 +43,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 40px 0;
-  gap: 20px;
+  gap: 35px;
 }
 
 #river-wrapper .channel {
@@ -55,10 +55,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#river-wrapper .channel[data-stage="prospect"] {
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 100%);
-}
-
 #river-wrapper .channel[data-stage="qualified"] {
   background: linear-gradient(90deg, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.1) 100%);
 }
@@ -68,7 +64,7 @@
 }
 
 #river-wrapper .channel[data-stage="negotiation"] {
-  background: linear-gradient(90deg, rgba(245, 101, 101, 0.3) 0%, rgba(245, 101, 101, 0.1) 100%);
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.3) 0%, rgba(249, 115, 22, 0.1) 100%);
 }
 
 #river-wrapper .victory-channel {

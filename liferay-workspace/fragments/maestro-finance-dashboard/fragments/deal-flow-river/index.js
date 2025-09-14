@@ -208,21 +208,36 @@
       // Position within channel (quadrupled height) - side by side arrangement
       const channelHeight = 160;
       
-      // Arrange multiple deals side by side, not overlapping
+      // Arrange multiple deals side by side with proper spacing
       if (totalInChannel > 1) {
-        // Multiple deals: arrange in rows if needed
-        const dealsPerRow = Math.min(4, totalInChannel); // Max 4 deals per row
-        const row = Math.floor(index / dealsPerRow);
-        const col = index % dealsPerRow;
+        // Multiple deals: arrange in a single row with proper spacing
+        const maxDealsPerRow = Math.min(6, totalInChannel); // Allow up to 6 deals per row
+        const row = Math.floor(index / maxDealsPerRow);
+        const col = index % maxDealsPerRow;
         
-        const horizontalSpacing = 90 / dealsPerRow; // Use 90% width to leave margins
-        const horizontalPosition = 5 + (col * horizontalSpacing) + (horizontalSpacing / 2); // Start at 5% margin
+        // Calculate spacing to prevent overlap - use full width with margins
+        const particleWidth = dealValue > 10000000 ? 96 : dealValue > 5000000 ? 72 : 48;
+        const totalNeededWidth = maxDealsPerRow * particleWidth;
+        const availableWidth = this.container.offsetWidth * 0.9; // 90% of container width
         
-        const rowHeight = channelHeight / Math.ceil(totalInChannel / dealsPerRow);
-        const verticalPosition = (row * rowHeight) + (rowHeight / 2) - 24;
+        let spacing;
+        if (totalNeededWidth < availableWidth) {
+          // Distribute evenly across available width
+          spacing = availableWidth / maxDealsPerRow;
+        } else {
+          // Compress spacing if too many large deals
+          spacing = availableWidth / maxDealsPerRow;
+        }
         
-        particle.style.top = `${Math.max(10, verticalPosition)}px`;
-        particle.style.left = `${horizontalPosition}%`;
+        const horizontalPosition = (col * spacing) + (spacing / 2) + 5; // Add 5% left margin
+        const horizontalPercentage = (horizontalPosition / this.container.offsetWidth) * 100;
+        
+        // Vertical positioning with more space between rows
+        const rowHeight = 60; // Fixed row height for better spacing
+        const verticalPosition = (row * rowHeight) + 30; // 30px from top of channel
+        
+        particle.style.top = `${verticalPosition}px`;
+        particle.style.left = `${Math.min(85, horizontalPercentage)}%`; // Cap at 85% to prevent overflow
       } else {
         // Single deal: center in channel
         const verticalPosition = (channelHeight / 2) - 24;
@@ -240,16 +255,18 @@
       valueLabel.textContent = `€${this.formatCurrency(dealValue)}`;
       valueLabel.style.cssText = `
         position: absolute;
-        top: -35px;
+        top: -45px;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 11px;
+        font-size: 16px;
         color: #00A651;
-        font-weight: 600;
+        font-weight: 700;
         white-space: nowrap;
-        text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
         pointer-events: none;
         z-index: 30;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 2px 6px;
+        border-radius: 4px;
       `;
       particle.appendChild(valueLabel);
       
@@ -271,16 +288,18 @@
       dateLabel.textContent = formattedDate;
       dateLabel.style.cssText = `
         position: absolute;
-        top: -18px;
+        top: -22px;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 9px;
-        color: #cccccc;
-        font-weight: 500;
+        font-size: 13px;
+        color: #ffffff;
+        font-weight: 600;
         white-space: nowrap;
-        text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
         pointer-events: none;
         z-index: 30;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 1px 4px;
+        border-radius: 3px;
       `;
       particle.appendChild(dateLabel);
       
@@ -289,7 +308,6 @@
     
     groupDealsByStatus() {
       const groups = {
-        prospect: [],
         qualified: [],
         proposal: [],
         negotiation: [],
@@ -298,11 +316,15 @@
       };
       
       this.deals.forEach(deal => {
-        const status = (deal.dealStatus?.key || deal.dealStatus || 'prospect').toLowerCase();
+        const status = (deal.dealStatus?.key || deal.dealStatus || 'qualified').toLowerCase();
+        // Skip prospect deals entirely
+        if (status === 'prospect') {
+          return;
+        }
         if (groups[status]) {
           groups[status].push(deal);
         } else {
-          groups.prospect.push(deal); // Default fallback
+          groups.qualified.push(deal); // Default fallback to qualified instead of prospect
         }
       });
       
