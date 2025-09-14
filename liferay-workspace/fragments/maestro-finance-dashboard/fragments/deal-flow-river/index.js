@@ -250,7 +250,7 @@
       };
       
       this.deals.forEach(deal => {
-        const status = deal.dealStatus?.toLowerCase() || 'prospect';
+        const status = (deal.dealStatus?.key || deal.dealStatus || 'prospect').toLowerCase();
         if (groups[status]) {
           groups[status].push(deal);
         } else {

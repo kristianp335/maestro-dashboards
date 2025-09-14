@@ -260,7 +260,7 @@
       else if (dealValue > 5000000) sizeClass = 'size-medium';
       
       // Determine color based on status
-      const status = deal.dealStatus?.toLowerCase() || 'prospect';
+      const status = (deal.dealStatus?.key || deal.dealStatus || 'prospect').toLowerCase();
       const colorClass = `star-${status}`;
       
       element.className += ` ${sizeClass} ${colorClass}`;
@@ -375,7 +375,7 @@
       
       const statusOrder = ['prospect', 'qualified', 'proposal', 'negotiation', 'closedwon'];
       const deal = this.deals[index];
-      const status = deal.dealStatus?.toLowerCase() || 'prospect';
+      const status = (deal.dealStatus?.key || deal.dealStatus || 'prospect').toLowerCase();
       const clusterIndex = statusOrder.indexOf(status);
       const center = clusterCenters[clusterIndex] || clusterCenters[0];
       
