@@ -104,14 +104,14 @@
      * Adjust navigation position based on Liferay control menu presence
      */
     function adjustNavigationForControlMenu() {
-        const controlMenu = fragmentElement.closest('#wrapper')?.querySelector('.control-menu-level-1-nav.control-menu-nav') || document.querySelector('.control-menu-level-1-nav.control-menu-nav');
+        const hasControlMenu = document.body.classList.contains('has-control-menu');
         const navigation = fragmentElement.querySelector('#maestro-sliding-menu');
         
-        if (!controlMenu && navigation) {
+        if (!hasControlMenu && navigation) {
             // Control menu not present, use default top positioning
             navigation.style.top = '0';
             navigation.style.marginTop = '0';
-        } else if (controlMenu && navigation) {
+        } else if (hasControlMenu && navigation) {
             // Control menu present, use default positioning
             navigation.style.top = '';
             navigation.style.marginTop = '';
