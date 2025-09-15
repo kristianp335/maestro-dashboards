@@ -89,7 +89,7 @@ function Zone({ zoneId, widgetId, availableWidgets, handleWidgetSelection, handl
                             }}
                         >
                             <ClayIcon symbol="drag" />
-                            <h4 class="d-inline-block">{widgetLabel}</h4>
+                            <h4 className="d-inline-block">{widgetLabel}</h4>
                         </div>            
 
                         <Button
