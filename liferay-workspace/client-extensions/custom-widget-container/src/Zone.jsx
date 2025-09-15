@@ -93,7 +93,7 @@ function Zone({ zoneId, widgetId, availableWidgets, handleWidgetSelection, handl
                                 height="16" 
                                 viewBox="0 0 16 16" 
                                 fill="currentColor" 
-                                style={{ marginRight: '8px' }}
+                                style={{ marginRight: '8px', marginBottom: '5px' }}
                                 aria-label="Drag handle"
                             >
                                 <circle cx="4" cy="4" r="1.5"/>
@@ -103,7 +103,7 @@ function Zone({ zoneId, widgetId, availableWidgets, handleWidgetSelection, handl
                                 <circle cx="8" cy="8" r="1.5"/>
                                 <circle cx="8" cy="12" r="1.5"/>
                             </svg>
-                            <h4 className="d-inline-block">{widgetLabel}</h4>
+                            <h4 className="d-inline-block" style={{ marginTop: '10px' }}>{widgetLabel}</h4>
                         </div>            
 
                         <Button
