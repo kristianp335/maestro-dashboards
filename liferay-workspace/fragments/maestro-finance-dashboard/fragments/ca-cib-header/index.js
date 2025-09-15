@@ -108,8 +108,13 @@
         const navigation = fragmentElement.querySelector('#maestro-sliding-menu');
         
         if (!controlMenu && navigation) {
-            // Control menu not present, adjust navigation position
-            navigation.style.marginTop = '-60px';
+            // Control menu not present, shift navigation down to prevent cutoff
+            navigation.style.top = '68px';
+            navigation.style.marginTop = '0';
+        } else if (controlMenu && navigation) {
+            // Control menu present, use default positioning
+            navigation.style.top = '';
+            navigation.style.marginTop = '';
         }
     }
 
