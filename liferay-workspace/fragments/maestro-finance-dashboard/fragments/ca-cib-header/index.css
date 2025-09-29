@@ -510,6 +510,11 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     border: 2px dashed var(--gray-400, #ced4da);
 }
 
+/* Search bar suggestions dropdown - Maximum z-index */
+#wrapper .search-bar-suggestions-dropdown-menu {
+    z-index: 2147483647 !important;
+}
+
 /* Animation */
 @keyframes slideInDown {
     from {
