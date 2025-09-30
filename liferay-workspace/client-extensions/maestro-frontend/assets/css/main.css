@@ -336,6 +336,7 @@
     box-shadow: var(--shadow-md);
     overflow: hidden;
     margin-bottom: var(--spacing-lg);
+    padding-bottom: 3rem;
 }
 
 /* Management Bar */
