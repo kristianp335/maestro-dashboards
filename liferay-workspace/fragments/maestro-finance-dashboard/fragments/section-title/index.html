@@ -1,0 +1,65 @@
+<div class="maestro-section-title 
+            [#if configuration.titleStyle??]style-${configuration.titleStyle}[/#if]
+            [#if configuration.titleSize??]size-${configuration.titleSize}[/#if]
+            [#if configuration.topSpacing??]spacing-top-${configuration.topSpacing}[/#if]
+            [#if configuration.bottomSpacing??]spacing-bottom-${configuration.bottomSpacing}[/#if]">
+    
+    [#if configuration.showIcon!true]
+        <div class="title-icon icon-${configuration.iconType!'analytics'}">
+            [#if configuration.iconType?? && configuration.iconType == 'analytics']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 28V16H10V28H4ZM13 28V4H19V28H13ZM22 28V10H28V28H22Z" fill="currentColor"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'chart']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 28L4 6C4 4.89543 4.89543 4 6 4L26 4C27.1046 4 28 4.89543 28 6V28M6 22L11 17L16 20L26 10M26 10V14M26 10H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'document']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 4H18L24 10V26C24 27.1046 23.1046 28 22 28H8C6.89543 28 6 27.1046 6 26V6C6 4.89543 6.89543 4 8 4Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M10 16H22M10 20H22M10 12H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'briefcase']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="10" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M11 10V8C11 6.89543 11.8954 6 13 6H19C20.1046 6 21 6.89543 21 8V10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 16H28" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'globe']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 5C16 5 11 10 11 16C11 22 16 27 16 27M16 5C16 5 21 10 21 16C21 22 16 27 16 27M5 16H27" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'database']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="16" cy="8" rx="10" ry="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M6 8V24C6 26.2091 10.4772 28 16 28C21.5228 28 26 26.2091 26 24V8M6 16C6 18.2091 10.4772 20 16 20C21.5228 20 26 18.2091 26 16" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'star']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L19.5 13.5L29 15L21 21.5L23.5 31L16 25.5L8.5 31L11 21.5L3 15L12.5 13.5L16 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'shield']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L6 8V15C6 22 10 27 16 28C22 27 26 22 26 15V8L16 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M12 16L15 19L21 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'target']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="16" cy="16" r="7" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="16" cy="16" r="3" fill="currentColor"/>
+                </svg>
+            [#elseif configuration.iconType?? && configuration.iconType == 'rocket']
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 20L8 28L10 22L4 20L12 18M20 12C20 12 26 6 26 6C26 6 28 10 26 12L20 12ZM14 18L8 12C8 12 4 4 16 4C20 4 24 6 26 6L14 18Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <circle cx="19" cy="13" r="1.5" fill="currentColor"/>
+                </svg>
+            [/#if]
+        </div>
+    [/#if]
+    
+    <h2 class="title-text" data-lfr-editable-id="title" data-lfr-editable-type="rich-text">
+        Section Title
+    </h2>
+</div>

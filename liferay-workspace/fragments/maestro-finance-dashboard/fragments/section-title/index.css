@@ -1,0 +1,202 @@
+/* Maestro Section Title Fragment - CA-CIB Styling */
+
+.maestro-section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    position: relative;
+}
+
+/* Icon Styling */
+.maestro-section-title .title-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ca-cib-green, #00A651);
+    transition: transform 0.2s ease;
+}
+
+.maestro-section-title .title-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* Title Text */
+.maestro-section-title .title-text {
+    flex: 1;
+    margin: 0;
+    font-family: var(--font-family-primary, 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: 600;
+    color: var(--ca-cib-dark-blue, #003366);
+    line-height: 1.3;
+}
+
+/* Title Sizes */
+.maestro-section-title.size-small .title-text {
+    font-size: 1.25rem;
+}
+
+.maestro-section-title.size-small .title-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.maestro-section-title.size-medium .title-text {
+    font-size: 1.75rem;
+}
+
+.maestro-section-title.size-medium .title-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.maestro-section-title.size-large .title-text {
+    font-size: 2.25rem;
+}
+
+.maestro-section-title.size-large .title-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.maestro-section-title.size-xlarge .title-text {
+    font-size: 3rem;
+}
+
+.maestro-section-title.size-xlarge .title-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+/* Title Styles */
+
+/* Default - Clean and simple */
+.maestro-section-title.style-default {
+    padding-left: 0;
+    border-left: none;
+}
+
+/* Underline Style */
+.maestro-section-title.style-underline {
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--ca-cib-green, #00A651);
+}
+
+.maestro-section-title.style-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--ca-cib-dark-blue, #003366);
+}
+
+/* Left Border Style */
+.maestro-section-title.style-border-left {
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--ca-cib-green, #00A651);
+}
+
+/* Background Style */
+.maestro-section-title.style-background {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, 
+        rgba(0, 166, 81, 0.05) 0%, 
+        rgba(0, 51, 102, 0.05) 100%);
+    border-radius: 8px;
+    border-left: 4px solid var(--ca-cib-green, #00A651);
+}
+
+/* Spacing - Top */
+.maestro-section-title.spacing-top-none {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.maestro-section-title.spacing-top-small {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.maestro-section-title.spacing-top-medium {
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.maestro-section-title.spacing-top-large {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.maestro-section-title.spacing-top-xlarge {
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+/* Spacing - Bottom */
+.maestro-section-title.spacing-bottom-none {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.maestro-section-title.spacing-bottom-small {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.maestro-section-title.spacing-bottom-medium {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.maestro-section-title.spacing-bottom-large {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.maestro-section-title.spacing-bottom-xlarge {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Hover Effect */
+.maestro-section-title:hover .title-icon {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .maestro-section-title {
+        gap: 0.75rem;
+    }
+    
+    .maestro-section-title.size-xlarge .title-text {
+        font-size: 2rem;
+    }
+    
+    .maestro-section-title.size-large .title-text {
+        font-size: 1.75rem;
+    }
+    
+    .maestro-section-title.size-medium .title-text {
+        font-size: 1.5rem;
+    }
+    
+    .maestro-section-title.size-small .title-text {
+        font-size: 1.125rem;
+    }
+    
+    .maestro-section-title.style-background {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Edit Mode Styling */
+.has-edit-mode-menu .maestro-section-title,
+.control-menu-shown .maestro-section-title {
+    outline: 2px dashed rgba(0, 166, 81, 0.3);
+    outline-offset: 4px;
+}

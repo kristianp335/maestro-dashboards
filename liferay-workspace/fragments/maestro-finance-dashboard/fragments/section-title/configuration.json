@@ -1,0 +1,188 @@
+{
+  "fieldSets": [
+    {
+      "label": "Icon Settings",
+      "fields": [
+        {
+          "name": "showIcon",
+          "label": "Show Icon",
+          "description": "Display an icon before the title",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "iconType",
+          "label": "Icon Type",
+          "description": "Select the icon to display",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "analytics",
+          "options": [
+            {
+              "label": "Analytics",
+              "value": "analytics"
+            },
+            {
+              "label": "Chart",
+              "value": "chart"
+            },
+            {
+              "label": "Document",
+              "value": "document"
+            },
+            {
+              "label": "Briefcase",
+              "value": "briefcase"
+            },
+            {
+              "label": "Globe",
+              "value": "globe"
+            },
+            {
+              "label": "Database",
+              "value": "database"
+            },
+            {
+              "label": "Star",
+              "value": "star"
+            },
+            {
+              "label": "Shield",
+              "value": "shield"
+            },
+            {
+              "label": "Target",
+              "value": "target"
+            },
+            {
+              "label": "Rocket",
+              "value": "rocket"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Spacing Settings",
+      "fields": [
+        {
+          "name": "topSpacing",
+          "label": "Top Spacing",
+          "description": "Padding/margin above the title",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "medium",
+          "options": [
+            {
+              "label": "None",
+              "value": "none"
+            },
+            {
+              "label": "Small",
+              "value": "small"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "Large",
+              "value": "large"
+            },
+            {
+              "label": "Extra Large",
+              "value": "xlarge"
+            }
+          ]
+        },
+        {
+          "name": "bottomSpacing",
+          "label": "Bottom Spacing",
+          "description": "Padding/margin below the title",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "medium",
+          "options": [
+            {
+              "label": "None",
+              "value": "none"
+            },
+            {
+              "label": "Small",
+              "value": "small"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "Large",
+              "value": "large"
+            },
+            {
+              "label": "Extra Large",
+              "value": "xlarge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Style Settings",
+      "fields": [
+        {
+          "name": "titleStyle",
+          "label": "Title Style",
+          "description": "Visual style of the title",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "default",
+          "options": [
+            {
+              "label": "Default",
+              "value": "default"
+            },
+            {
+              "label": "With Underline",
+              "value": "underline"
+            },
+            {
+              "label": "With Left Border",
+              "value": "border-left"
+            },
+            {
+              "label": "With Background",
+              "value": "background"
+            }
+          ]
+        },
+        {
+          "name": "titleSize",
+          "label": "Title Size",
+          "description": "Size of the title text",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "large",
+          "options": [
+            {
+              "label": "Small",
+              "value": "small"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "Large",
+              "value": "large"
+            },
+            {
+              "label": "Extra Large",
+              "value": "xlarge"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
