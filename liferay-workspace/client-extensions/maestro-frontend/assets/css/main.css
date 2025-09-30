@@ -771,3 +771,97 @@
     white-space: normal;
     word-break: break-word;
 }
+
+/* ========================================
+   Regular Tables - CA-CIB Styling
+   ======================================== */
+
+/* Standard HTML Tables with .table class */
+#wrapper table.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: var(--spacing-lg);
+    background: var(--ca-cib-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+/* Table Headers */
+#wrapper table.table thead th {
+    background: var(--ca-cib-dark-blue);
+    color: var(--ca-cib-white);
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    white-space: nowrap;
+}
+
+#wrapper table.table thead tr th:first-child {
+    border-top-left-radius: var(--border-radius-sm);
+}
+
+#wrapper table.table thead tr th:last-child {
+    border-top-right-radius: var(--border-radius-sm);
+}
+
+/* Table Body */
+#wrapper table.table tbody tr {
+    border-bottom: 1px solid var(--ca-cib-medium-gray);
+    transition: all 0.2s ease;
+}
+
+#wrapper table.table tbody tr:hover {
+    background: var(--ca-cib-light-gray);
+}
+
+#wrapper table.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+#wrapper table.table tbody td {
+    padding: var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--ca-cib-dark-gray);
+    border: none;
+    vertical-align: middle;
+}
+
+/* Striped Tables */
+#wrapper table.table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(245, 245, 245, 0.5);
+}
+
+#wrapper table.table-striped tbody tr:nth-of-type(odd):hover {
+    background: var(--ca-cib-light-gray);
+}
+
+/* Bordered Tables */
+#wrapper table.table-bordered {
+    border: 1px solid var(--ca-cib-medium-gray);
+}
+
+#wrapper table.table-bordered th,
+#wrapper table.table-bordered td {
+    border: 1px solid var(--ca-cib-medium-gray);
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+    #wrapper table.table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    #wrapper table.table thead th,
+    #wrapper table.table tbody td {
+        padding: var(--spacing-sm);
+        font-size: 0.75rem;
+    }
+}
