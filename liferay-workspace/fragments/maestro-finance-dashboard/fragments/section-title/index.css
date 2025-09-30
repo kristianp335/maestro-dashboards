@@ -15,12 +15,15 @@
     align-items: center;
     justify-content: center;
     color: var(--ca-cib-green, #00A651);
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .maestro-section-title .title-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Title Text */
@@ -39,8 +42,8 @@
 }
 
 .maestro-section-title.size-small .title-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 }
 
 .maestro-section-title.size-medium .title-text {
@@ -48,8 +51,8 @@
 }
 
 .maestro-section-title.size-medium .title-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
 }
 
 .maestro-section-title.size-large .title-text {
@@ -57,8 +60,8 @@
 }
 
 .maestro-section-title.size-large .title-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 }
 
 .maestro-section-title.size-xlarge .title-text {
@@ -66,8 +69,8 @@
 }
 
 .maestro-section-title.size-xlarge .title-icon svg {
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
 }
 
 /* Title Styles */
@@ -164,7 +167,7 @@
 
 /* Hover Effect */
 .maestro-section-title:hover .title-icon {
-    transform: scale(1.1);
+    color: var(--ca-cib-dark-blue, #003366);
 }
 
 /* Responsive Design */

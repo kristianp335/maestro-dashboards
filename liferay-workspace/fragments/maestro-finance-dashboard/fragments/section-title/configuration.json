@@ -19,11 +19,11 @@
           "defaultValue": "analytics",
           "options": [
             {
-              "label": "Analytics",
+              "label": "Analytics (Bar Chart)",
               "value": "analytics"
             },
             {
-              "label": "Chart",
+              "label": "Chart (Trending Up)",
               "value": "chart"
             },
             {
@@ -31,11 +31,11 @@
               "value": "document"
             },
             {
-              "label": "Briefcase",
+              "label": "Briefcase (Business)",
               "value": "briefcase"
             },
             {
-              "label": "Globe",
+              "label": "Globe (Global)",
               "value": "globe"
             },
             {
@@ -43,20 +43,20 @@
               "value": "database"
             },
             {
-              "label": "Star",
-              "value": "star"
+              "label": "Performance (Activity)",
+              "value": "performance"
             },
             {
-              "label": "Shield",
+              "label": "Shield (Security/Risk)",
               "value": "shield"
             },
             {
-              "label": "Target",
+              "label": "Target (Goals)",
               "value": "target"
             },
             {
-              "label": "Rocket",
-              "value": "rocket"
+              "label": "Money (Finance)",
+              "value": "money"
             }
           ]
         }
