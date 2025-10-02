@@ -24,6 +24,13 @@
           "defaultValue": true
         },
         {
+          "name": "useHeadlessAPI",
+          "label": "Use Headless API for Navigation",
+          "description": "Fetch navigation from Liferay Headless API. If disabled, a dropzone will be shown for manual menu configuration.",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
           "name": "showAccountSelector",
           "label": "Show Account Selector",
           "description": "Display account selector dropdown widget in header",

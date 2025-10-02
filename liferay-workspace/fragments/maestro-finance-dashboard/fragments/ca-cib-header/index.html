@@ -90,9 +90,18 @@
                 </button>
             </div>
             <nav class="maestro-menu-nav" role="navigation" aria-label="Main navigation">
+                [#if configuration.useHeadlessAPI!true]
+                <!-- API-based navigation -->
                 <ul class="maestro-menu-list" id="maestro-menu-list">
                     <!-- Navigation will be populated by JavaScript -->
                 </ul>
+                [#else]
+                <!-- Manual dropzone navigation -->
+                <div class="maestro-menu-dropzone-container">
+                    <lfr-drop-zone data-lfr-drop-zone-id="navigation-menu">
+                    </lfr-drop-zone>
+                </div>
+                [/#if]
             </nav>
         </div>
         

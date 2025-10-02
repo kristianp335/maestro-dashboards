@@ -515,6 +515,40 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     z-index: 2147483647 !important;
 }
 
+/* Navigation Menu Dropzone Container */
+#wrapper .maestro-menu-dropzone-container {
+    padding: var(--spacer-3, 1rem);
+}
+
+#wrapper .maestro-menu-dropzone-container lfr-drop-zone {
+    min-height: 300px;
+    border: 2px dashed var(--gray-300, #dee2e6);
+    border-radius: var(--border-radius, 8px);
+    background-color: var(--brand-color-neutral-1, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#wrapper .maestro-menu-dropzone-container lfr-drop-zone:hover {
+    border-color: var(--brand-color-1, #00A651);
+    background-color: rgba(0, 166, 81, 0.05);
+}
+
+#wrapper .maestro-menu-dropzone-container lfr-drop-zone::before {
+    content: 'Drop navigation widgets here';
+    color: var(--gray-600, #6c757d);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+#wrapper .maestro-menu-dropzone-container lfr-drop-zone:not(:empty)::before {
+    display: none;
+}
+
 /* Animation */
 @keyframes slideInDown {
     from {

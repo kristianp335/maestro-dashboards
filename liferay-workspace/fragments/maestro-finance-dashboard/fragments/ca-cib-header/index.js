@@ -93,8 +93,11 @@
         ensureModalsHidden();
         applyConfiguration(config);
         
-        // Initialize navigation from API
-        loadNavigationMenu();
+        // Initialize navigation from API only if useHeadlessAPI is enabled
+        const useHeadlessAPI = config.useHeadlessAPI !== false; // default to true
+        if (useHeadlessAPI) {
+            loadNavigationMenu();
+        }
         
         initializeMobileMenu();
         initializeModals();
