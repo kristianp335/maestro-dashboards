@@ -1,0 +1,478 @@
+<div class="maestro-menu-dropzone-container">
+                    <div><div class="lfr-layout-structure-item-com-liferay-site-navigation-menu-web-portlet-sitenavigationmenuportlet lfr-layout-structure-item-2b8d6fbc-9ab4-d579-7e3e-b00e17f6ab66 " data-layout-structure-item-id="2b8d6fbc-9ab4-d579-7e3e-b00e17f6ab66"><div id="fragment-d652cd4e-5414-bf5f-fca4-d45d5e5f7abb"><link href="/combo?browserId=chrome&amp;minifierType=css&amp;themeId=classic_WAR_classictheme&amp;languageId=en_US&amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq:%2Fo%2Fsite-navigation-menu-web%2Fcss%2Fmain.css&amp;t=1755088934000" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_  portlet-static portlet-static-end portlet-borderless portlet-navigation " id="p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_">
+		<span id="p_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq">
+
+	<div class="portlet-content">
+
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+			
+				
+<style>
+/* Maestro Vertical Navigation Styles */
+.maestro-vertical-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.maestro-nav-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.maestro-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    width: 100%;
+    color: var(--brand-color-2, #003366);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.maestro-nav-link:hover {
+    background-color: rgba(0, 166, 81, 0.08);
+    color: var(--brand-color-1, #00A651);
+    text-decoration: none;
+}
+
+.maestro-nav-item.active .maestro-nav-link,
+.maestro-nav-item.selected .maestro-nav-link {
+    background-color: rgba(0, 166, 81, 0.12);
+    color: var(--brand-color-1, #00A651);
+    font-weight: 600;
+}
+
+.maestro-nav-text {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex: 1;
+}
+
+.maestro-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.maestro-nav-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.maestro-nav-child-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.maestro-nav-item.has-children.open .maestro-nav-child-toggle {
+    transform: rotate(180deg);
+}
+
+.maestro-child-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 2.5rem;
+    display: none;
+}
+
+.maestro-nav-item.has-children.open .maestro-child-menu {
+    display: block;
+}
+
+.maestro-child-menu .maestro-nav-item {
+    margin-top: 0.25rem;
+}
+
+.maestro-child-menu .maestro-nav-link {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+</style>
+
+
+        <div id="navbar_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq">
+                <ul aria-label="Site Pages" class="maestro-vertical-nav" role="menubar" id="yui_patched_v3_20_6_1_1759399624951_1594">
+
+
+
+
+
+
+                                        <li class="maestro-nav-item selected active" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_52145" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/dashboard" role="menuitem" tabindex="0" id="yui_patched_v3_20_6_1_1759399624951_1611">
+                                                        <span class="maestro-nav-text">
+
+                                                                Dashboard 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+
+
+
+
+
+                                        <li class="maestro-nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_52186" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/kpi" role="menuitem" tabindex="-1" id="yui_patched_v3_20_6_1_1759399624951_1613">
+                                                        <span class="maestro-nav-text">
+
+                                                                KPI 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+
+
+
+
+
+                                        <li class="maestro-nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_52230" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/risk" role="menuitem" tabindex="-1" id="yui_patched_v3_20_6_1_1759399624951_1615">
+                                                        <span class="maestro-nav-text">
+
+                                                                Risk 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+
+
+
+
+
+                                        <li class="maestro-nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_57239" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/your-dashboard" role="menuitem" tabindex="-1" id="yui_patched_v3_20_6_1_1759399624951_1617">
+                                                        <span class="maestro-nav-text">
+
+                                                                Your dashboard 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+
+
+
+
+
+                                        <li class="maestro-nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_78039" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/know-your-customer" role="menuitem" tabindex="-1" id="yui_patched_v3_20_6_1_1759399624951_1619">
+                                                        <span class="maestro-nav-text">
+
+                                                                Know Your Customer 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+
+
+
+
+
+                                        <li class="maestro-nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_78151" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/portfolio" role="menuitem" tabindex="-1" id="yui_patched_v3_20_6_1_1759399624951_1621">
+                                                        <span class="maestro-nav-text">
+
+                                                                Portfolio 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+
+
+
+
+
+                                        <li class="maestro-nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_wxhq_79201" role="presentation">
+                                                <a class="maestro-nav-link" href="https://webserver-lctbootsopticians-prd.lfr.cloud/web/maestro-dashboard/kyc-petitions" role="menuitem" tabindex="-1" id="yui_patched_v3_20_6_1_1759399624951_1623">
+                                                        <span class="maestro-nav-text">
+
+                                                                KYC Petitions 
+                                                        </span>
+                                                </a>
+
+                                        </li>
+                </ul>
+        </div>
+
+
+			
+			
+		
+	
+	
+	
+	
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+</div></div></div>
+                </div>
