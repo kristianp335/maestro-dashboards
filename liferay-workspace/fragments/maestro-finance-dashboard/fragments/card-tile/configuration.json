@@ -1,0 +1,205 @@
+{
+  "fieldSets": [
+    {
+      "label": "Icon Settings",
+      "fields": [
+        {
+          "name": "showIcon",
+          "label": "Show Icon",
+          "description": "Display an icon in the card",
+          "type": "checkbox",
+          "defaultValue": true
+        },
+        {
+          "name": "iconType",
+          "label": "Icon Type",
+          "description": "Select the icon to display",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "dashboard",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Dashboard",
+                "value": "dashboard"
+              },
+              {
+                "label": "KPI",
+                "value": "kpi"
+              },
+              {
+                "label": "Risk",
+                "value": "risk"
+              },
+              {
+                "label": "Your Dashboard",
+                "value": "your-dashboard"
+              },
+              {
+                "label": "Know Your Customer",
+                "value": "know-your-customer"
+              },
+              {
+                "label": "Portfolio",
+                "value": "portfolio"
+              },
+              {
+                "label": "KYC Petitions",
+                "value": "kyc-petitions"
+              },
+              {
+                "label": "Loan",
+                "value": "loan"
+              },
+              {
+                "label": "Deal",
+                "value": "deal"
+              },
+              {
+                "label": "Workflow",
+                "value": "workflow"
+              }
+            ]
+          }
+        },
+        {
+          "name": "iconPosition",
+          "label": "Icon Position",
+          "description": "Position of the icon relative to text",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "left",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Left",
+                "value": "left"
+              },
+              {
+                "label": "Top",
+                "value": "top"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Link Settings",
+      "fields": [
+        {
+          "name": "enableLink",
+          "label": "Enable Link",
+          "description": "Make the card clickable",
+          "type": "checkbox",
+          "defaultValue": false
+        },
+        {
+          "name": "linkUrl",
+          "label": "Link URL",
+          "description": "URL to navigate when card is clicked",
+          "type": "text",
+          "dataType": "string",
+          "defaultValue": "#"
+        },
+        {
+          "name": "linkTarget",
+          "label": "Link Target",
+          "description": "How to open the link",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "_self",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Same Window",
+                "value": "_self"
+              },
+              {
+                "label": "New Window",
+                "value": "_blank"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Card Style Settings",
+      "fields": [
+        {
+          "name": "cardStyle",
+          "label": "Card Style",
+          "description": "Visual style of the card",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "default",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Default",
+                "value": "default"
+              },
+              {
+                "label": "Elevated (Shadow)",
+                "value": "elevated"
+              },
+              {
+                "label": "Highlighted",
+                "value": "highlighted"
+              },
+              {
+                "label": "Minimal",
+                "value": "minimal"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cardSize",
+          "label": "Card Size",
+          "description": "Size of the card",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "medium",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Small",
+                "value": "small"
+              },
+              {
+                "label": "Medium",
+                "value": "medium"
+              },
+              {
+                "label": "Large",
+                "value": "large"
+              }
+            ]
+          }
+        },
+        {
+          "name": "textAlign",
+          "label": "Text Alignment",
+          "description": "Alignment of content inside card",
+          "type": "select",
+          "dataType": "string",
+          "defaultValue": "left",
+          "typeOptions": {
+            "validValues": [
+              {
+                "label": "Left",
+                "value": "left"
+              },
+              {
+                "label": "Center",
+                "value": "center"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
