@@ -523,6 +523,10 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     z-index: 10000 !important;
 }
 
+.search-bar-suggestions-dropdown-menu {
+    z-index: 2147483647 !important;
+}
+
 #wrapper .search-bar-suggestions-dropdown-menu {
     z-index: 2147483647 !important;
 }
