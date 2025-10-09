@@ -510,12 +510,7 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     border: 2px dashed var(--gray-400, #ced4da);
 }
 
-/* Search bar suggestions dropdown - Maximum z-index */
-#wrapper .search-bar-suggestions-dropdown-menu {
-    z-index: 2147483647 !important;
-}
-
-/* Liferay Edit Mode - Increased z-index for editor controls */
+/* Z-Index Overrides for Liferay Edit Mode and Dropdowns */
 .cadmin.page-editor__topper__bar {
     z-index: 9999 !important;
 }
@@ -526,6 +521,10 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
 
 .dropdown-menu-personal-menu {
     z-index: 10000 !important;
+}
+
+#wrapper .search-bar-suggestions-dropdown-menu {
+    z-index: 2147483647 !important;
 }
 
 /* Navigation Menu Dropzone Container */
