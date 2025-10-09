@@ -524,6 +524,10 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     z-index: 10000 !important;
 }
 
+.dropdown-menu-personal-menu {
+    z-index: 10000 !important;
+}
+
 /* Navigation Menu Dropzone Container */
 #wrapper .maestro-menu-dropzone-container {
     padding: var(--spacer-3, 1rem);
