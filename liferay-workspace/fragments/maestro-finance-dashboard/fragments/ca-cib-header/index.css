@@ -515,6 +515,15 @@ body.has-edit-mode-menu #wrapper .maestro-search-overlay .maestro-search-modal {
     z-index: 2147483647 !important;
 }
 
+/* Liferay Edit Mode - Increased z-index for editor controls */
+.cadmin.page-editor__topper__bar {
+    z-index: 9999 !important;
+}
+
+.cadmin .dropdown-menu {
+    z-index: 10000 !important;
+}
+
 /* Navigation Menu Dropzone Container */
 #wrapper .maestro-menu-dropzone-container {
     padding: var(--spacer-3, 1rem);
